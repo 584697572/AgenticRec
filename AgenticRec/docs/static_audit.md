@@ -1,5 +1,16 @@
 # 固定源码风险复核（T01）
 
+## T03 实际资源证据补充（2026-10-01）
+
+下表及旧静态推断为上一轮记录；最新证据见 `reproduction/logs/t03_20261001/resource_contract_audit.json` 与本轮 index。
+
+- F01：Google 原 ZIP 已通过 HTTP 206 小范围读取确认可达，目录共 15 条目；独立数据/权重许可仍 NOT VERIFIED。没有将 Issue #110 当作失效结论。
+- F08：完整电影目录 9,888 行，ID=1..9888；矩阵头部 (9889,9889)，仅 shape 可核验；checkpoint metadata/embedding 维度 36,255，与目录/矩阵不一致，无映射文件。矩阵行语义、完整权重和 UniRec 运行兼容性仍 NOT VERIFIED。A1 BLOCKED，规范 B 已选定。
+- CandidateBuffer：执行未修改的 __init__，gallery 长度取自真实目录，得到 9,887 项，遗漏实际合法 ID 9888。只隔离类与依赖，不是完整 Gallery 初始化或推荐实验。没有修复；保留事实供后续 regression。
+- F10：Feather 表全部必需列存在，各列无 null，id/release_date/visited_num=int64，title=string，tags=list<string>；有 257 个重复标题条目。完整表成员 CRC 和 SHA256 已核验，gte-base 实际编码仍 NOT VERIFIED。
+
+## 首轮静态记录
+
 commit：`0959ecb05b0794748426e73e6efc1b6b35ec433d`。2026-10-01。事实、静态推断、隔离测试与真实运行分开记录。
 
 | 项目 | 本轮证据与结论 | 尚未验证 / 对应任务 |

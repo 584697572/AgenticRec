@@ -56,12 +56,13 @@
         "T00",
         "T01"
       ],
-      "status": "IN_PROGRESS",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T03",
       "deliverables": "`reproduction/resource_manifest.json`；`reproduction/route_decision.md`。",
       "acceptance": "访问状态与报告来源区分清楚。 A/B 路线、原因、缺失资源和数据合规记录齐全。",
       "checks": "`静态验证资源清单；下载/加载前按权限门禁执行`。",
-      "remaining": "Archive inventory, resource license, ID/matrix/checkpoint integrity and final route NOT VERIFIED"
+      "evidence": "reproduction/t03_evidence_index.json",
+      "verification": "Audit exit 0; required alignment exit 1; route B recorded. Original runtime NOT VERIFIED; metrics NOT EVALUATED."
     },
     {
       "id": "T04",
@@ -72,12 +73,13 @@
         "T02",
         "T03"
       ],
-      "status": "TODO",
+      "status": "BLOCKED",
       "source": "AgenticRec_完整复现与优化执行规范.md#T04",
       "condition": "仅 A 路径且原资源/授权齐备；否则 BLOCKED/SKIPPED 并写原因。",
       "deliverables": "`reproduction/UPSTREAM_REPRODUCTION.md`；`reproduction/native_runs/`。",
       "acceptance": "原始输出、配置和数据哈希可追溯；未运行项为 not_run。 原文模糊命中不标为 ID NDCG。",
-      "checks": "`规范5.3的原 app.py 与 one_turn_eval.py 命令（前置完成后）`。"
+      "checks": "`规范5.3的原 app.py 与 one_turn_eval.py 命令（前置完成后）`。",
+      "reason": "Conditional A path: original shared ID contract fails validation; original runtime not_run; legacy environment and resource provenance NOT VERIFIED."
     },
     {
       "id": "T05",

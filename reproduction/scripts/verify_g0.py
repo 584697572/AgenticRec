@@ -41,7 +41,7 @@ def verify():
         assert task["status"] in ("TODO", "IN_PROGRESS", "BLOCKED", "DONE", "SKIPPED")
         if task["status"] == "DONE":
             assert all(by_id[dependency]["status"] == "DONE" for dependency in task["depends_on"])
-    assert by_id["T03"]["status"] == "IN_PROGRESS"
+    assert by_id["T03"]["status"] in ("IN_PROGRESS", "DONE")
     assert "T18" in by_id["T16"]["depends_on"]
     checks = json.loads((ROOT / "reproduction/logs/g0/audit_result.json").read_text(encoding="utf-8"))
     assert checks["successful"] and checks["tests_run"] > 0
@@ -80,6 +80,27 @@ def verify():
     assert not manifest["archive_downloaded"]
     assert manifest["runtime_metrics"]["status"] == "not_run"
     assert all(value is None for key, value in manifest["runtime_metrics"].items() if key != "status")
+    if by_id["T03"]["status"] == "DONE":
+        assert manifest["route_final"] == "B" and manifest["a1_status"] == "BLOCKED"
+        logs = ROOT / "reproduction/logs/t03_20261001"
+        audit = json.loads((logs / "resource_contract_audit.json").read_text(encoding="utf-8"))
+        assert audit == json.loads((ROOT / "reproduction/resource_contract_summary.json").read_text(encoding="utf-8"))
+        assert json.loads((logs / "archive_entries.json").read_text(encoding="utf-8")) == json.loads((ROOT / "reproduction/archive_inventory.json").read_text(encoding="utf-8"))
+        assert audit["matrix"]["catalog_dimensions_match"]
+        assert not audit["checkpoint_catalog_dimensions_match"]
+        assert audit["checkpoint"]["method"] == "pickletools.genops_static_only"
+        assert not audit["checkpoint"]["weights_loaded"]
+        assert (logs / "alignment_requirement.exitcode.txt").read_text().strip() == "1"
+        received = 0
+        for relative in ("remote_inspection.json", "details/remote_inspection.json"):
+            inspection = json.loads((logs / relative).read_text(encoding="utf-8"))
+            assert inspection["status"] == "completed" and not inspection["full_archive_downloaded"]
+            assert inspection["received_body_bytes"] <= inspection["byte_cap"]
+            assert sum(request["bytes"] for request in inspection["requests"]) == inspection["received_body_bytes"]
+            received += inspection["received_body_bytes"]
+            for selected in inspection["selected"]:
+                assert digest(ROOT / selected["local_path"]) == selected["sha256"]
+        assert received == manifest["this_round_received_body_bytes"]
     print("PASS: unchanged spec, pinned pristine upstream, license, 25 task dependencies, source symbols, audit results, honest resource status")
 
 

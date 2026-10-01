@@ -1,36 +1,36 @@
 # 项目状态
 
-最后核验：2026-10-01（Asia/Shanghai）。当前阶段：**G0首批审计；G0尚未整体验收**。
+最后核验：2026-10-01（Asia/Shanghai）。当前阶段：G0 的源码与资源审计完成；现代开发环境 T05 待开始，G1 未完成。
 
-最高实施规范：工作区`AgenticRec_完整复现与优化执行规范.md`，完整读取1240行，未修改；任务依赖按附录导出至工作区`TASKS.yaml`。
+最高实施规范 `AgenticRec_完整复现与优化执行规范.md` 已完整读取，文件 SHA256 未变。任务依赖按规范附录保留于根目录 `TASKS.yaml`；规范不修改。
 
-| 任务 | 状态 | 验证命令 / 退出码 / 日志 | 产物与hash |
+| 任务 | 状态 | 验证 / 证据 | 限制 |
 |---|---|---|---|
-| T00 锁定工作区、源码与出处 | DONE | `git -C RecAI rev-parse HEAD`、`git -C RecAI status --short`；0；`reproduction/logs/g0/git_verification.json`；audit_v2的pin测试通过 | upstream_lock.json；SHA和文件hash在版本锁及g0_evidence_index.json |
-| T01 逐文件走读与静态风险复核 | DONE（仅审计） | `python reproduction/scripts/audit_upstream.py`；0；`audit_v2.stdout/stderr.log`、audit_result.json。四项检查通过；源码路径/符号人工对照 | source_walkthrough.md、static_audit.md、control_flow_trace.json、duplicate_observed.json；hash见g0_evidence_index.json |
-| T03 核验资源并决定A/B | IN_PROGRESS | 公开资源小范围probe已执行，程序退出0仅代表完成记录；不代表资源验证通过。详见resource_manifest.json与resource_network/download日志 | manifest及route_decision.md；授权、包清单、ID/矩阵/model检查NOT VERIFIED；最终路线未冻结 |
-| T02 legacy环境 | TODO | 未安装；Python3.9/Conda未发现 | 没有成功lock或兼容patch，不伪造 |
-| T04 原资源运行/评测 | TODO | 前置资源、环境、预算未就绪，not_run | A1/A2 NOT VERIFIED；U0 NOT EVALUATED |
-| T05—T24 | TODO | 本轮未执行后续实现、训练与实验；可选任务需满足条件 | 所有模型/系统指标NOT EVALUATED |
+| T00 锁定工作区、源码与出处 | DONE | 固定 SHA 0959ecb05b0794748426e73e6efc1b6b35ec433d，upstream pristine；upstream_lock.json | sibling 布局见 ADR-001 |
+| T01 源码走读与静态审计 | DONE | 四项隔离源码检查通过；重复工具保留断言真实失败；源码路径/符号核验 | 审计不代表 A1；未修 bug |
+| T03 核验资源并决定 A/B | DONE | Range 检查 0；资源审计 0；共享 ID 维度要求 1；route_decision、manifest、t03_evidence_index | A1 BLOCKED；B 已选，NOT EVALUATED |
+| T02 legacy 环境 | TODO（conditional） | Python 3.9/Conda 未发现；未安装 | NOT VERIFIED；不阻塞规范 B 的独立 dev 工作 |
+| T04 原资源运行 / 原评测 | BLOCKED | 原资源共同 ID 不能验收；legacy/来源/授权未就绪 | U0/A2 not_run，不能宣称原版复现 |
+| T05 现代环境与协议 / 离线测试 | TODO | 尚无开发包或成功 lock | 下一批首先执行 |
+| T06—T24 | TODO | 后续任务依赖未满足 | 所有推荐/Agent 指标 NOT EVALUATED |
 
-## 尚缺证据 / 约束
+## 本轮核验
 
-- 原资源包尚未下载。Google入口可访问但返回474M病毒扫描确认HTML；RecDrive为SPA；没有证明失效，也没有确认下载授权与内容。T03未完成，不能标DONE。
-- 本机只发现Python3.13.7；py launcher无注册Python；没有Conda。3.9/3.11环境尚未建立；GPU为GTX1650Ti 4096MiB，Torch/CUDA兼容性NOT VERIFIED。
-- Python urllib访问GroupLens时证书链验证失败；保留错误，不关闭TLS；官方条款通过Web工具读到。后续数据下载需正常TLS链路径。
-- 真实LLM默认关闭，allow_paid_api=false、api_request_cap=0，未请求预算或读取真实key；live not_run。
-- 原重复工具调用保留要求失败；已观察覆盖，但未修复。T14仍TODO，不以审计通过掩盖bug。
+- 读取器离线测试 3 项通过；公开原包 497,403,134 bytes、15 条目；两次响应正文合计 471,747 bytes（约 461 KiB），未下载完整 ZIP。
+- 完整 settings、columns 和电影 Feather 已验证成员 CRC 与 SHA。目录 9,888 个唯一连续 ID=1..9888，各列无 null，257 个重复标题；无 ID 0 行。
+- 矩阵仅头部 `(9889,9889)`；checkpoint 仅前缀，静态 metadata `n_items=36255`、embedding `(36255,32)`。没有 unpickle/torch.load；完整权重、矩阵语义和运行兼容性 NOT VERIFIED。
+- 原包没有 ID 映射/授权文件。更多 embedding 行不能自动证明所有分数错误，但共享 ID 语义缺证据；保留真实退出 1，采用规范 B（ADR-004）。
+- 原 CandidateBuffer 初始化对真实目录遗漏 ID 9888；保留未修复。upstream 无 patch。
+- `verify_g0.py` 核对未改规范、固定源码、25 项依赖、实际审计和下载子集 hash；本轮产物/hash 在 t03_evidence_index，G0 index 保留为历史快照。
+
+## Blocker
+
+A1 所需共同 ID 映射、训练来源、独立资源授权、完整权重校验与 legacy 兼容性尚未验证。3.9/3.11 环境未建立；本机现有 Python 3.13.7、pyarrow 24.0.0 可做当前审计。GPU GTX1650Ti 4096 MiB；Torch/CUDA 训练兼容性 NOT VERIFIED。
+
+GroupLens 的早期 urllib 证书错误保留，未禁用 TLS；官方数据条款已通过 Web 阅读，本轮无 MovieLens 下载。真实 LLM 默认关闭，`allow_paid_api=false`、`api_request_cap=0`，无真实调用或指标实验。
 
 ## 下一任务
 
-1. 继续T03：在原资源可达事实基础上核验包授权、清单、settings和ID契约，明确能否走A1；证据不足不提前激活B。
-2. 工作区布局已记录ADR-001；按T02/T05分别建立legacy/dev隔离环境，确认3.9/3.11来源和真实依赖组合。T02阻塞时按规范允许继续独立dev。
-3. A路径前置成立再T04无LLM工具冒烟；B路径决定成立并完成T05后再T06数据契约。不得跳到训练。
+先 T05：隔离现代开发环境、新包与 CLI、配置/错误 schema、doctor --offline、FakeLLM 和预定义工具 fixture；完成相应测试与真实 lock。再 T06：官方 MovieLens 1M 小规模数据获取、授权/hash、全局时间划分、训练期映射与过滤、warm/cold 分层、ID 契约、防泄漏测试。
 
-## 最后验证
-
-- 上游HEAD固定`0959ecb05b0794748426e73e6efc1b6b35ec433d`；分支work/agenticrec；上游跟踪文件diff为空。
-- 原执行规范hash不变；初始用户文件未覆盖。
-- 审计测试4项通过；重复保留要求1项真实断言失败（退出1），未修复。
-- 自造fixture只证明隔离控制流：原run→plan_and_exe→ToolBox→候选变化→原Map→总结→原DialogueMemory。
-- 无真实数据实验、无模型训练、无依赖安装、无真实API、无push/PR。
+不得提前训练新模型、修复后期 Agent、引入 UI 或其他架构；未验证写 NOT VERIFIED，未实验写 NOT EVALUATED。原资源 U0 和未来方法级重建 U1 明确区分。

@@ -1,0 +1,102 @@
+{
+  "settings_keys": [
+    "CATEGORICAL_COLS",
+    "GAME_INFO_FILE",
+    "ITEM_SIM_FILE",
+    "MODEL_CKPT_FILE",
+    "TABLE_COL_DESC_FILE",
+    "USE_COLS"
+  ],
+  "settings": {
+    "GAME_INFO_FILE": "movies.ftr",
+    "TABLE_COL_DESC_FILE": "columns.json",
+    "MODEL_CKPT_FILE": "SASRec-SASRec.pth",
+    "ITEM_SIM_FILE": "movie_sim.npy",
+    "USE_COLS": [
+      "id",
+      "title",
+      "tags",
+      "release_date",
+      "visited_num"
+    ],
+    "CATEGORICAL_COLS": [
+      "tags"
+    ]
+  },
+  "settings_resource_members_present": true,
+  "table": {
+    "rows": 9888,
+    "unique_ids": 9888,
+    "id_min": 1,
+    "id_max": 9888,
+    "padding_row_present": false,
+    "null_counts": {
+      "id": 0,
+      "title": 0,
+      "release_date": 0,
+      "tags": 0,
+      "visited_num": 0
+    },
+    "schema": {
+      "id": "int64",
+      "title": "string",
+      "release_date": "int64",
+      "tags": "list<item: string>",
+      "visited_num": "int64"
+    },
+    "duplicate_title_count": 257,
+    "sha256": "1a0e8687ba0c366cf4ab7837c591542f9bbb3b445ec4f4155fe1e932b58bb8c9",
+    "member_crc_verified": true
+  },
+  "matrix": {
+    "format_version": [
+      1,
+      0
+    ],
+    "data_offset": 128,
+    "descr": "<f8",
+    "fortran_order": false,
+    "shape": [
+      9889,
+      9889
+    ],
+    "catalog_dimensions_match": true,
+    "full_matrix_downloaded": false,
+    "full_crc_verified": false,
+    "row_order_matches_model": "NOT VERIFIED"
+  },
+  "checkpoint": {
+    "metadata": {
+      "model": "SASRec",
+      "max_seq_len": 20,
+      "hidden_size": 32,
+      "n_items": 36255,
+      "n_users": 298074,
+      "dataset": "ml-10m",
+      "embedding_size": 32
+    },
+    "item_embedding_shape": [
+      36255,
+      32
+    ],
+    "pickle_opcode_count": 5316,
+    "pickle_metadata_bytes": 20254,
+    "method": "pickletools.genops_static_only",
+    "weights_loaded": false,
+    "complete_checkpoint_crc_verified": false
+  },
+  "checkpoint_catalog_dimensions_match": false,
+  "original_buffer": {
+    "candidate_count": 9887,
+    "catalog_ids_missing": [
+      9888
+    ],
+    "tested_original_method": "CandidateBuffer.__init__",
+    "fixed": false
+  },
+  "license_members": [],
+  "mapping_members": [],
+  "pyarrow_version": "24.0.0",
+  "runtime_model_compatibility": "NOT VERIFIED",
+  "runtime_metrics": "NOT EVALUATED"
+}

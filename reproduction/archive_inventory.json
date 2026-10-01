@@ -1,0 +1,137 @@
+[
+  {
+    "name": "beauty_product/columns.json",
+    "bytes": 512,
+    "compressed_bytes": 259,
+    "compression": 8,
+    "crc32": "006c4784",
+    "header_offset": 0,
+    "encrypted": false
+  },
+  {
+    "name": "beauty_product/item_sim.npy",
+    "bytes": 150650210,
+    "compressed_bytes": 4822728,
+    "compression": 8,
+    "crc32": "1e48fbd3",
+    "header_offset": 316,
+    "encrypted": false
+  },
+  {
+    "name": "beauty_product/products.ftr",
+    "bytes": 2972010,
+    "compressed_bytes": 2253869,
+    "compression": 8,
+    "crc32": "396a46d4",
+    "header_offset": 4823101,
+    "encrypted": false
+  },
+  {
+    "name": "beauty_product/SASRec-SASRec.pth",
+    "bytes": 3989729,
+    "compressed_bytes": 3655118,
+    "compression": 8,
+    "crc32": "16b7ca59",
+    "header_offset": 7077027,
+    "encrypted": false
+  },
+  {
+    "name": "beauty_product/settings.json",
+    "bytes": 304,
+    "compressed_bytes": 198,
+    "compression": 8,
+    "crc32": "fea35ae8",
+    "header_offset": 10732207,
+    "encrypted": false
+  },
+  {
+    "name": "game/columns.json",
+    "bytes": 467,
+    "compressed_bytes": 243,
+    "compression": 8,
+    "crc32": "6ecc3614",
+    "header_offset": 10732463,
+    "encrypted": false
+  },
+  {
+    "name": "game/games.ftr",
+    "bytes": 8969010,
+    "compressed_bytes": 6876042,
+    "compression": 8,
+    "crc32": "8e9f838c",
+    "header_offset": 10732753,
+    "encrypted": false
+  },
+  {
+    "name": "game/item_sim.npy",
+    "bytes": 286179016,
+    "compressed_bytes": 75285822,
+    "compression": 8,
+    "crc32": "9cc118fa",
+    "header_offset": 17608839,
+    "encrypted": false
+  },
+  {
+    "name": "game/SASRec-SASRec.pth",
+    "bytes": 5289697,
+    "compressed_bytes": 4880368,
+    "compression": 8,
+    "crc32": "1bcdaf44",
+    "header_offset": 92894708,
+    "encrypted": false
+  },
+  {
+    "name": "game/settings.json",
+    "bytes": 291,
+    "compressed_bytes": 194,
+    "compression": 8,
+    "crc32": "19ba51bd",
+    "header_offset": 97775128,
+    "encrypted": false
+  },
+  {
+    "name": "movie/columns.json",
+    "bytes": 392,
+    "compressed_bytes": 213,
+    "compression": 8,
+    "crc32": "1a22559c",
+    "header_offset": 97775370,
+    "encrypted": false
+  },
+  {
+    "name": "movie/movie_sim.npy",
+    "bytes": 782338696,
+    "compressed_bytes": 385566184,
+    "compression": 8,
+    "crc32": "7e57aff2",
+    "header_offset": 97775631,
+    "encrypted": false
+  },
+  {
+    "name": "movie/movies.ftr",
+    "bytes": 452706,
+    "compressed_bytes": 265226,
+    "compression": 8,
+    "crc32": "eb7c4328",
+    "header_offset": 483341864,
+    "encrypted": false
+  },
+  {
+    "name": "movie/SASRec-SASRec.pth",
+    "bytes": 14909665,
+    "compressed_bytes": 13794681,
+    "compression": 8,
+    "crc32": "4ae78772",
+    "header_offset": 483607136,
+    "encrypted": false
+  },
+  {
+    "name": "movie/settings.json",
+    "bytes": 269,
+    "compressed_bytes": 179,
+    "compression": 8,
+    "crc32": "1940949f",
+    "header_offset": 497401870,
+    "encrypted": false
+  }
+]

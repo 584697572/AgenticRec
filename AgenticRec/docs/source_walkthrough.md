@@ -1,5 +1,7 @@
 # 固定版本源码走读（T01）
 
+后续 T03 补充：以真实 movies.ftr 和原 CandidateBuffer 初始化复核发现遗漏合法 ID 9888；目录/矩阵 9889 个位置与 checkpoint 36255 行无法核验共同映射。原资源运行仍 NOT VERIFIED，路线 B；细节与可比性见 `reproduction/route_decision.md`。以下为首轮源码走读的原始范围，保留历史上下文。
+
 核验日期：2026-10-01。源码：`RecAI/`，commit `0959ecb05b0794748426e73e6efc1b6b35ec433d`。以下行号均相对固定版本 `InteRecAgent/`；文件哈希及 Git blob 见 `reproduction/upstream_lock.json`。
 
 这是源码审计与隔离控制流测试。没有加载真实物品表、相似度或 UniRec checkpoint，没有调用真实 LLM，**A1/A2 NOT VERIFIED；推荐与交互效果 NOT EVALUATED**。

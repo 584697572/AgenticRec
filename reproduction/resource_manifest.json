@@ -4,8 +4,8 @@
   "upstream_commit": "0959ecb05b0794748426e73e6efc1b6b35ec433d",
   "original_resource_integrity": "NOT VERIFIED",
   "archive_downloaded": false,
-  "route_candidate": "A1",
-  "route_final": "NOT VERIFIED",
+  "route_candidate": "B",
+  "route_final": "B",
   "local_resources_directory_exists": false,
   "required_settings_keys": [
     "GAME_INFO_FILE",
@@ -15,57 +15,65 @@
     "USE_COLS",
     "CATEGORICAL_COLS"
   ],
-  "local_settings": "missing",
+  "local_settings": "audit copy: data/raw/upstream_audit/03_settings.json",
   "resources": [
     {
       "key": "GAME_INFO_FILE",
-      "local_path": null,
-      "status": "missing",
-      "sha256": null,
-      "source": "README all_resources.zip; archive not obtained",
+      "local_path": "data/raw/upstream_audit/movies.ftr",
+      "status": "read_crc_verified",
+      "sha256": "1a0e8687ba0c366cf4ab7837c591542f9bbb3b445ec4f4155fe1e932b58bb8c9",
+      "source": "Pinned upstream README public all_resources.zip; bounded HTTP Range",
       "license": "NOT VERIFIED",
       "id_integrity": "NOT VERIFIED"
     },
     {
       "key": "TABLE_COL_DESC_FILE",
-      "local_path": null,
-      "status": "missing",
-      "sha256": null,
-      "source": "README all_resources.zip; archive not obtained",
+      "local_path": "data/raw/upstream_audit/02_columns.json",
+      "status": "read_crc_verified",
+      "sha256": "5e063787c0f141956023300b41b88520eb6062c6556baef0170e94d8aa9ac0d0",
+      "source": "Pinned upstream README public all_resources.zip; bounded HTTP Range",
       "license": "NOT VERIFIED",
       "id_integrity": "NOT VERIFIED"
     },
     {
       "key": "MODEL_CKPT_FILE",
-      "local_path": null,
-      "status": "missing",
+      "local_path": "data/raw/upstream_audit/checkpoint.prefix.bin",
+      "status": "prefix_only_crc_not_verified",
       "sha256": null,
-      "source": "README all_resources.zip; archive not obtained",
+      "source": "Pinned upstream README public all_resources.zip; bounded HTTP Range",
       "license": "NOT VERIFIED",
-      "id_integrity": "NOT VERIFIED"
+      "id_integrity": "NOT VERIFIED",
+      "prefix_sha256": "acccbbe291c44302de6aa59d2dc216734f37bd51c7ff66b8a6a3f1cbfc272652"
     },
     {
       "key": "ITEM_SIM_FILE",
-      "local_path": null,
-      "status": "missing",
+      "local_path": "data/raw/upstream_audit/movie_sim.header.bin",
+      "status": "prefix_only_crc_not_verified",
       "sha256": null,
-      "source": "README all_resources.zip; archive not obtained",
+      "source": "Pinned upstream README public all_resources.zip; bounded HTTP Range",
       "license": "NOT VERIFIED",
-      "id_integrity": "NOT VERIFIED"
+      "id_integrity": "NOT VERIFIED",
+      "prefix_sha256": "3097d53c726f9dfbb1e13c6bc0095bd305baf9298fb3378fd598b7e1edc439c3"
     }
   ],
   "checks": {
-    "settings_schema": "NOT VERIFIED",
-    "unique_item_ids": "NOT VERIFIED",
-    "padding_convention": "NOT VERIFIED",
-    "csv_header": "NOT VERIFIED",
-    "dtypes": "NOT VERIFIED",
-    "required_columns": "NOT VERIFIED",
-    "categorical_values": "NOT VERIFIED",
-    "similarity_shape": "NOT VERIFIED",
+    "settings_schema": "PASS",
+    "unique_item_ids": "PASS: 9888 unique IDs 1..9888",
+    "padding_convention": "Catalog excludes 0; matrix header has 9889 positions; semantic alignment NOT VERIFIED",
+    "csv_header": "NOT APPLICABLE: original Feather table",
+    "dtypes": {
+      "id": "int64",
+      "title": "string",
+      "release_date": "int64",
+      "tags": "list<item: string>",
+      "visited_num": "int64"
+    },
+    "required_columns": "PASS",
+    "categorical_values": "tags list<string>; no null; metadata semantics NOT VERIFIED",
+    "similarity_shape": "PASS: header (9889,9889), full matrix NOT VERIFIED",
     "similarity_id_order": "NOT VERIFIED",
-    "checkpoint_source": "NOT VERIFIED",
-    "checkpoint_item_count": "NOT VERIFIED",
+    "checkpoint_source": "metadata says SASRec / ml-10m; training provenance NOT VERIFIED",
+    "checkpoint_item_count": "FAIL: 36255 vs catalog/matrix vocabulary 9889",
     "unirec_compatibility": "NOT VERIFIED"
   },
   "local_network_probes": [
@@ -152,7 +160,7 @@
     }
   ],
   "interpretation": {
-    "GoogleDrive": "preview reachable; download endpoint is HTML virus-scan confirmation for 474M file, not archive",
+    "GoogleDrive": "Confirmed bounded HTTP 206 ZIP reads this round; historical preview/download form probes retained",
     "RecDrive": "HTML SPA only; actual share availability unverified"
   },
   "issue_report": {
@@ -172,7 +180,9 @@
       "Separate permission for redistribution",
       "Prior permission for commercial use"
     ],
-    "archive_data_license": "NOT VERIFIED"
+    "archive_data_license": "NOT VERIFIED",
+    "movielens_10m_terms_url": "https://files.grouplens.org/datasets/movielens/ml-10m-README.html",
+    "movielens_10m_terms_read": true
   },
   "allow_paid_api": false,
   "api_request_cap": 0,
@@ -185,9 +195,65 @@
     "token_usage": null
   },
   "next_checks": [
-    "Original archive license and file inventory",
-    "Settings and resource integrity",
-    "Trusted checkpoint and isolated UniRec compatibility",
-    "Freeze A1 or evidence-based B route"
-  ]
+    "T05 modern isolated development environment, config contracts and offline CLI",
+    "T06 official MovieLens 1M acquisition and independent temporal/ID contracts after T05",
+    "A1 recovery requires authoritative shared ID mapping, resource provenance, full checksums and legacy runtime evidence"
+  ],
+  "a1_status": "BLOCKED",
+  "archive_bytes": 497403134,
+  "archive_entry_count": 15,
+  "this_round_received_body_bytes": 471747,
+  "partial_members": [
+    {
+      "name": "beauty_product/settings.json",
+      "status": "read_crc_verified",
+      "bytes": 304,
+      "sha256": "21659b819fa6e2b9ff227a9b7ffde38bbfe9d1c92c8b3cffc320c0c2742201ea",
+      "local_path": "data/raw/upstream_audit/00_settings.json"
+    },
+    {
+      "name": "game/settings.json",
+      "status": "read_crc_verified",
+      "bytes": 291,
+      "sha256": "106b1223dea0362e6cff54aae77896da52b24d9b8b87d39577df10db8a743aa6",
+      "local_path": "data/raw/upstream_audit/01_settings.json"
+    },
+    {
+      "name": "movie/columns.json",
+      "status": "read_crc_verified",
+      "bytes": 392,
+      "sha256": "5e063787c0f141956023300b41b88520eb6062c6556baef0170e94d8aa9ac0d0",
+      "local_path": "data/raw/upstream_audit/02_columns.json"
+    },
+    {
+      "name": "movie/settings.json",
+      "status": "read_crc_verified",
+      "bytes": 269,
+      "sha256": "22f83b97705cd891d84efb37c27b405c10b4ecbdef25ac5c1141ce219c149dc9",
+      "local_path": "data/raw/upstream_audit/03_settings.json"
+    },
+    {
+      "name": "movie/movie_sim.npy",
+      "status": "prefix_only_crc_not_verified",
+      "bytes": 512,
+      "sha256": "3097d53c726f9dfbb1e13c6bc0095bd305baf9298fb3378fd598b7e1edc439c3",
+      "local_path": "data/raw/upstream_audit/movie_sim.header.bin"
+    },
+    {
+      "name": "movie/movies.ftr",
+      "status": "read_crc_verified",
+      "bytes": 452706,
+      "sha256": "1a0e8687ba0c366cf4ab7837c591542f9bbb3b445ec4f4155fe1e932b58bb8c9",
+      "local_path": "data/raw/upstream_audit/movies.ftr"
+    },
+    {
+      "name": "movie/SASRec-SASRec.pth",
+      "status": "prefix_only_crc_not_verified",
+      "bytes": 65536,
+      "sha256": "acccbbe291c44302de6aa59d2dc216734f37bd51c7ff66b8a6a3f1cbfc272652",
+      "local_path": "data/raw/upstream_audit/checkpoint.prefix.bin"
+    }
+  ],
+  "resource_contract_evidence": "reproduction/logs/t03_20261001/resource_contract_audit.json",
+  "archive_entries_evidence": "reproduction/logs/t03_20261001/archive_entries.json"
 }
