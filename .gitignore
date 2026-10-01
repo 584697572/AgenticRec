@@ -1,0 +1,14 @@
+# Upstream retains its own original Git history; see reproduction/upstream_lock.json.
+/RecAI/
+/RecAI-pristine/
+data/
+artifacts/
+**/resources/
+**/.venv*/
+**/__pycache__/
+**/.pytest_cache/
+**/.cache/
+*.pyc
+.env
+.env.*
+reproduction/logs/

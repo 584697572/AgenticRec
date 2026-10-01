@@ -1,0 +1,171 @@
+{
+  "repository_url": "https://github.com/microsoft/RecAI",
+  "commit": "0959ecb05b0794748426e73e6efc1b6b35ec433d",
+  "branch": "work/agenticrec",
+  "verified_at": "2026-10-01T16:47:55.215560+08:00",
+  "checkout_path": "RecAI",
+  "source_acquisition": "git clone",
+  "license": "MIT",
+  "license_path": "RecAI/LICENSE.txt",
+  "license_sha256": "9906940f61b1f0b533fa7d99baf55178b2808fbe113ea51dfbfad8572ccd5f2b",
+  "local_patches": [],
+  "local_patch_sha256": null,
+  "read_files": [
+    {
+      "path": "LICENSE.txt",
+      "working_tree_sha256": "9906940f61b1f0b533fa7d99baf55178b2808fbe113ea51dfbfad8572ccd5f2b",
+      "git_blob": "9e841e7a26e4eb057b24511e7b92d42b257a80e5",
+      "lines": 21
+    },
+    {
+      "path": "InteRecAgent/README.md",
+      "working_tree_sha256": "bae0ee755ee5c5a330563984258f5f15559f662e092a7144efdaa9c5e1b3a25b",
+      "git_blob": "6f4154c1bacc892fc2fca320bb44f4ede528e5e7",
+      "lines": 195
+    },
+    {
+      "path": "InteRecAgent/requirements.txt",
+      "working_tree_sha256": "36235f027261427be6b0d1e260d4935dd8a3ac6d38e9af7467a9484bc3e648ef",
+      "git_blob": "9fe1690a034a70a956b1f17cbbd5c8bb8ca015bf",
+      "lines": 17
+    },
+    {
+      "path": "InteRecAgent/app.py",
+      "working_tree_sha256": "b51ef21356b597b46651f22b2f2c6548877b542ca43677a6156ca0142e1b90bb",
+      "git_blob": "12c634def382912d187f67c69e81d2da787fa656",
+      "lines": 301
+    },
+    {
+      "path": "InteRecAgent/llm4crs/environ_variables.py",
+      "working_tree_sha256": "3824f8ca463d6ed002fb5bd6d3164b06942b243bfa1dd46fbe970c8934772785",
+      "git_blob": "cc505487e08242fc9b3fa0cafd0f76ead3d951fe",
+      "lines": 22
+    },
+    {
+      "path": "InteRecAgent/llm4crs/agent_plan_first_openai.py",
+      "working_tree_sha256": "14f6598930e31ff7d78f2235b0e76680ca86985de875d3ae6fa00c59cc6c8bb3",
+      "git_blob": "4e747688fa8b108bb536f0b3768d15f9ac027d5e",
+      "lines": 584
+    },
+    {
+      "path": "InteRecAgent/llm4crs/buffer/base.py",
+      "working_tree_sha256": "0a5739335a98071132470ef42861585aafd2d7eb0e623bedc61b6c9d8ba5682f",
+      "git_blob": "8988a93e9917f1be593a5e9a7a65682f780607a6",
+      "lines": 170
+    },
+    {
+      "path": "InteRecAgent/llm4crs/query/query_tool.py",
+      "working_tree_sha256": "0c5fdff28a49e46fc2908352f8c1f5d934b2ea9c287d6299a7ed7a9da59a1b3a",
+      "git_blob": "9428328778a37b6a7f5b9a62e14041ffcf2a2302",
+      "lines": 140
+    },
+    {
+      "path": "InteRecAgent/llm4crs/retrieval/sql_tool.py",
+      "working_tree_sha256": "64cc9f10b037a0253aa9fd5a3f7214a5e330042179cb5ab2c7aef67af22a2843",
+      "git_blob": "73ba0a0aabbac5e9470e32d9c57c8850ecc7d2b9",
+      "lines": 106
+    },
+    {
+      "path": "InteRecAgent/llm4crs/retrieval/itemcf_tool.py",
+      "working_tree_sha256": "b51f876a23d289e844daff27f9fda2d9a3cbc14bd374b92367b830d693ceb583",
+      "git_blob": "430824f01b0c6d5eb469058bca73ad147daaab0e",
+      "lines": 83
+    },
+    {
+      "path": "InteRecAgent/llm4crs/ranking/reco_model_tool.py",
+      "working_tree_sha256": "be5fa00ed59d55db2ee0fcc05d6132fa249120d560c05de2642cd5ace81e216e",
+      "git_blob": "3ff09cfb2eaff3f09a850f553a86361ef1c5261a",
+      "lines": 226
+    },
+    {
+      "path": "InteRecAgent/llm4crs/mapper/map_tool.py",
+      "working_tree_sha256": "804fae0dadc9dc563b0cd1193fad1667f4146fe703def5c32466b1be86b20b28",
+      "git_blob": "df2434abba36337baf6ad9b01f2601da5d23b256",
+      "lines": 65
+    },
+    {
+      "path": "InteRecAgent/llm4crs/corups/base.py",
+      "working_tree_sha256": "fd6a7613ee594551c8b0e94a801fc6f9f7aa9715444f5272d46d4ec47d4cfb60",
+      "git_blob": "c0dbccc63fcd3cfade7caea22837cf8ec7ca70d0",
+      "lines": 276
+    },
+    {
+      "path": "InteRecAgent/llm4crs/memory/memory.py",
+      "working_tree_sha256": "f13b8fb52fdcd2eadac90afc4e6a5ffba678dc84d091dcd869f51475ac6af7f5",
+      "git_blob": "a255503e162d319aea2ae721cc30d8ed2fa12dd8",
+      "lines": 93
+    },
+    {
+      "path": "InteRecAgent/llm4crs/critic/base.py",
+      "working_tree_sha256": "d84a85c0ea4eee0e59dff6dfac54aeb3617abe01e916452499963812b129a7b4",
+      "git_blob": "4a75d6dab6e2ea225e60f648702d8541621f233d",
+      "lines": 95
+    },
+    {
+      "path": "InteRecAgent/llm4crs/demo/base.py",
+      "working_tree_sha256": "edc52d844b8fb9ed8ef9723519d3a0510b70473c55e18c827a2a4da2bc4fc4fe",
+      "git_blob": "1090b3f7ead1c379eab9d93687e54c6ee087aa3c",
+      "lines": 102
+    },
+    {
+      "path": "InteRecAgent/llm4crs/utils/open_ai.py",
+      "working_tree_sha256": "60e7d6c6fbca1aaf334efb5106edaffccbf34cba7dcb5e983d5980ff94251b57",
+      "git_blob": "7ea7e3b9f71e0f7a9ea3f9640371486acb2585b3",
+      "lines": 242
+    },
+    {
+      "path": "InteRecAgent/llm4crs/utils/util.py",
+      "working_tree_sha256": "54c01a89e49299cedd6c1f7d581dac556a040b26f2236e44397a848622fcfc6f",
+      "git_blob": "1e4332733ed317d8e654d24877c5ecd22ac00e6f",
+      "lines": 175
+    },
+    {
+      "path": "InteRecAgent/llm4crs/utils/__init__.py",
+      "working_tree_sha256": "bdd77f79ce2ebd3a004412874440dae7e075cf226b6ec5c2a588782d0920ca23",
+      "git_blob": "c8896e79428019e55fd8aadd662ff50b75eaa976",
+      "lines": 5
+    },
+    {
+      "path": "InteRecAgent/llm4crs/__init__.py",
+      "working_tree_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "lines": 0
+    },
+    {
+      "path": "InteRecAgent/llm4crs/prompt/__init__.py",
+      "working_tree_sha256": "fcea8838dde6c748ee5bbdc97deac18e5cdb471d364cd3fed8e754d486768449",
+      "git_blob": "067c308eb30167e3e53a8a90a9d5dd8180479eba",
+      "lines": 6
+    },
+    {
+      "path": "InteRecAgent/llm4crs/prompt/system.py",
+      "working_tree_sha256": "ed51223b3edd2ef0e627f44a18773a70742574897db5a5e29f31021735a91190",
+      "git_blob": "acd53182376a4c264261a243265f7576c47b78fb",
+      "lines": 179
+    },
+    {
+      "path": "InteRecAgent/llm4crs/prompt/tool.py",
+      "working_tree_sha256": "95fd8bac571ab0e13c8b5877945c89007c7a7cb5345afbd8a40e35c979acd28a",
+      "git_blob": "690fb299dae817a9f87e73877b97e61a096a216e",
+      "lines": 119
+    },
+    {
+      "path": "InteRecAgent/eval/one_turn_eval.py",
+      "working_tree_sha256": "36fcb6e2ab1ba3226894502098c03544221ee0494b95b0714995b4eef9ec6c93",
+      "git_blob": "f2137592e65465b012707446c2a05ab6fc34b31f",
+      "lines": 525
+    },
+    {
+      "path": "InteRecAgent/eval/user_simulator.py",
+      "working_tree_sha256": "678ca73dafe38c8f43480a62b9c014b6bb1956769a04825dcd64f773500cd804",
+      "git_blob": "a0eb7c2cb8fa43906dd99e79a4f8acea9bae6f8f",
+      "lines": 676
+    },
+    {
+      "path": "InteRecAgent/eval/eval_single_turn.sh",
+      "working_tree_sha256": "866b90fd8536e8040780bc073e6313176a10bd233e2d801031faf57a42d6d679",
+      "git_blob": "06202952afa2d62f020effc9287a55ede7d5cc55",
+      "lines": 29
+    }
+  ]
+}

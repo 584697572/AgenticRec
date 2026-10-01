@@ -1,0 +1,15 @@
+{
+  "python_version": "3.13.7",
+  "os": "Windows",
+  "os_release": "10",
+  "machine": "AMD64",
+  "legacy_environment": "not_created",
+  "dev_environment": "not_created",
+  "dependencies_installed": false,
+  "torch_cuda_runtime": "NOT VERIFIED",
+  "allow_paid_api": false,
+  "api_request_cap": 0,
+  "gpu_inventory_command_exit_code": 0,
+  "gpu_inventory": "NVIDIA GeForce GTX 1650 Ti, 4096 MiB, 576.02",
+  "interpreter_discovery": "python --version -> 3.13.7; py -0p -> no registered interpreters; conda not found on PATH"
+}

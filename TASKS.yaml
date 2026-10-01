@@ -1,0 +1,384 @@
+{
+  "schema_version": 1,
+  "format_note": "JSON is valid YAML 1.2; generated from the unmodified appendix task cards.",
+  "spec_sha256": "d88f02c84855234673514519486e74e73c61ffd4e2ec75594020fdf9b8ebb677",
+  "tasks": [
+    {
+      "id": "T00",
+      "title": "锁定工作区、源码与出处",
+      "phase": "G0",
+      "type": "core",
+      "depends_on": [],
+      "status": "DONE",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T00",
+      "deliverables": "`reproduction/upstream_lock.json`；`AgenticRec/docs/STATUS.md`。",
+      "acceptance": "源码 SHA 与规范一致，或有单独记录的升级决定。 已有用户改动未被覆盖；无 push、无密钥入库。",
+      "checks": "`git rev-parse HEAD`；`git status --short`。",
+      "evidence": "reproduction/g0_evidence_index.json"
+    },
+    {
+      "id": "T01",
+      "title": "逐文件走读与静态风险复核",
+      "phase": "G0",
+      "type": "core",
+      "depends_on": [
+        "T00"
+      ],
+      "status": "DONE",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T01",
+      "deliverables": "`AgenticRec/docs/source_walkthrough.md`；`AgenticRec/docs/static_audit.md`。",
+      "acceptance": "每个模块有输入/输出与 state 变化说明。 原有 reflection、memory、demo selector 不被写成新增。",
+      "checks": "`人工/Agent 对照源码检查每个路径和符号；保留行号或函数名`。",
+      "evidence": "reproduction/g0_evidence_index.json"
+    },
+    {
+      "id": "T02",
+      "title": "隔离 legacy 环境与最小兼容补丁",
+      "phase": "G0",
+      "type": "conditional",
+      "depends_on": [
+        "T00",
+        "T01"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T02",
+      "condition": "原环境可获得；失败可阻塞 A 路径但不能假装完成，也不阻塞独立 B 路径。",
+      "deliverables": "`reproduction/environment_legacy.json`；`reproduction/legacy_compat.patch`；`reproduction/requirements.legacy.lock.txt`。",
+      "acceptance": "环境可重建；或存在具体 BLOCKED 日志和 B 路径决定。 兼容补丁没有混入推荐增强。",
+      "checks": "`python -m pip check`；`仅运行已验证不会自动调 API 的 import/adapter mock 测试`。"
+    },
+    {
+      "id": "T03",
+      "title": "核验资源并决定 A/B 路径",
+      "phase": "G0",
+      "type": "core",
+      "depends_on": [
+        "T00",
+        "T01"
+      ],
+      "status": "IN_PROGRESS",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T03",
+      "deliverables": "`reproduction/resource_manifest.json`；`reproduction/route_decision.md`。",
+      "acceptance": "访问状态与报告来源区分清楚。 A/B 路线、原因、缺失资源和数据合规记录齐全。",
+      "checks": "`静态验证资源清单；下载/加载前按权限门禁执行`。",
+      "remaining": "Archive inventory, resource license, ID/matrix/checkpoint integrity and final route NOT VERIFIED"
+    },
+    {
+      "id": "T04",
+      "title": "原资源下的工具、Agent 与原评测复现",
+      "phase": "G1",
+      "type": "conditional",
+      "depends_on": [
+        "T02",
+        "T03"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T04",
+      "condition": "仅 A 路径且原资源/授权齐备；否则 BLOCKED/SKIPPED 并写原因。",
+      "deliverables": "`reproduction/UPSTREAM_REPRODUCTION.md`；`reproduction/native_runs/`。",
+      "acceptance": "原始输出、配置和数据哈希可追溯；未运行项为 not_run。 原文模糊命中不标为 ID NDCG。",
+      "checks": "`规范5.3的原 app.py 与 one_turn_eval.py 命令（前置完成后）`。"
+    },
+    {
+      "id": "T05",
+      "title": "现代开发环境、协议与离线测试骨架",
+      "phase": "G1",
+      "type": "core",
+      "depends_on": [
+        "T00",
+        "T01"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T05",
+      "deliverables": "`AgenticRec/pyproject.toml`；`AgenticRec/src/agenticrec/`；`AgenticRec/tests/`；`AgenticRec/requirements.dev.lock.txt`。",
+      "acceptance": "无 key、无网络也能加载新包和运行 fixture。 未知配置/参数报错；默认 0 付费请求。",
+      "checks": "`python -m agenticrec.cli doctor --offline`；`python -m pytest tests/unit/test_config.py`。"
+    },
+    {
+      "id": "T06",
+      "title": "MovieLens 数据、时间划分和 ID 契约",
+      "phase": "G1",
+      "type": "core",
+      "depends_on": [
+        "T03",
+        "T05"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T06",
+      "deliverables": "`data/processed/`；`artifacts/data_manifest.json`；`AgenticRec/configs/data.yaml`。",
+      "acceptance": "训练图、热门、映射不读取 holdout。 所有排除数量、ID 和时间边界有记录。 缺失剧情/片长不生成假值。",
+      "checks": "`python -m pytest tests/unit/test_data_contract.py tests/regression/test_no_leakage.py`。"
+    },
+    {
+      "id": "T07",
+      "title": "先验证指标，再跑大实验",
+      "phase": "G1",
+      "type": "core",
+      "depends_on": [
+        "T05",
+        "T06"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T07",
+      "deliverables": "`AgenticRec/src/agenticrec/evaluation/metrics.py`；`AgenticRec/tests/unit/test_metrics.py`。",
+      "acceptance": "手算结果与实现一致。 失败和空返回不会从系统评测分母消失。",
+      "checks": "`python -m pytest tests/unit/test_metrics.py`。"
+    },
+    {
+      "id": "T08",
+      "title": "Random、Popularity 与 BPR-MF",
+      "phase": "G2",
+      "type": "core",
+      "depends_on": [
+        "T06",
+        "T07"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T08",
+      "deliverables": "`AgenticRec/src/agenticrec/models/bpr.py`；`AgenticRec/configs/bpr.yaml`；`artifacts/models/bpr/`；`reports/rec_baselines/`。",
+      "acceptance": "有真实训练日志，梯度和输出维度正确。 negative sampler 不读取未来，也不采训练期已评分物品。 是否超过热门如实报告，不伪造提升。",
+      "checks": "`python -m pytest tests/unit/test_bpr.py`；`python -m agenticrec.cli train --config configs/bpr.yaml --seed 42`。"
+    },
+    {
+      "id": "T09",
+      "title": "LightGCN 训练和小图校验",
+      "phase": "G2",
+      "type": "core",
+      "depends_on": [
+        "T08"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T09",
+      "deliverables": "`AgenticRec/src/agenticrec/models/lightgcn.py`；`AgenticRec/configs/lightgcn.yaml`；`artifacts/models/lightgcn/`。",
+      "acceptance": "传播数值校验通过（float32建议误差≤1e-5，按设备记录）。 图无 holdout 边；checkpoint 与 ID/hash 一致。",
+      "checks": "`python -m pytest tests/unit/test_lightgcn.py`；`python -m agenticrec.cli train --config configs/lightgcn.yaml --seed 42`。"
+    },
+    {
+      "id": "T10",
+      "title": "模型适配与上游方法基线",
+      "phase": "G2",
+      "type": "core",
+      "depends_on": [
+        "T01",
+        "T05",
+        "T06",
+        "T08",
+        "T09"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T10",
+      "deliverables": "`AgenticRec/src/agenticrec/adapters/`；`AgenticRec/docs/UPSTREAM_DIFF.md`；`reports/upstream_rebuilt/`。",
+      "acceptance": "相同 candidate_ids 的评分对齐；未知用户有明确 fallback。 能展示至少一条源自上游方法的端到端轨迹。 上游来源与改动一一对应。",
+      "checks": "`python -m pytest tests/integration/test_model_adapter.py tests/integration/test_upstream_bridge.py`。"
+    },
+    {
+      "id": "T11",
+      "title": "多路候选融合与硬约束",
+      "phase": "G2",
+      "type": "core",
+      "depends_on": [
+        "T10"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T11",
+      "deliverables": "`AgenticRec/src/agenticrec/retrieval/`；`AgenticRec/src/agenticrec/ranking/`。",
+      "acceptance": "排除物品在任意 k 和候选不足场景均不返回。 无解/缺失字段结构化返回；不放宽硬条件。",
+      "checks": "`python -m pytest tests/unit/test_constraints.py tests/unit/test_fusion.py`。"
+    },
+    {
+      "id": "T12",
+      "title": "完整固定推荐流程",
+      "phase": "G2",
+      "type": "core",
+      "depends_on": [
+        "T11"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T12",
+      "deliverables": "`AgenticRec/src/agenticrec/pipeline.py`；`reports/fixed_pipeline/`。",
+      "acceptance": "无 LLM 结构化请求可工作；自然语言解析单独计费。 成功、匿名、排除、无解四场景可复现。",
+      "checks": "`python -m pytest tests/integration/test_fixed_pipeline.py`。"
+    },
+    {
+      "id": "T13",
+      "title": "统一 LLM 适配、schema 与预算",
+      "phase": "G3",
+      "type": "core",
+      "depends_on": [
+        "T05",
+        "T12"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T13",
+      "deliverables": "`AgenticRec/src/agenticrec/adapters/llm.py`；`AgenticRec/src/agenticrec/runtime/`。",
+      "acceptance": "每次尝试计数；401不重试；unknown usage 不记0。 没有授权的 live 测试被明确阻止而非偷偷运行。",
+      "checks": "`python -m pytest tests/unit/test_llm_adapter.py tests/unit/test_budget.py`。"
+    },
+    {
+      "id": "T14",
+      "title": "有序计划执行器与上游问题回归",
+      "phase": "G3",
+      "type": "core",
+      "depends_on": [
+        "T10",
+        "T13"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T14",
+      "deliverables": "`AgenticRec/src/agenticrec/agent/executor.py`；`AgenticRec/tests/regression/test_plan_execution.py`。",
+      "acceptance": "同工具两次调用两次执行，原参数均保留。 未知工具、重复 step_id 与坏参数拒绝执行。",
+      "checks": "`python -m pytest tests/regression/test_plan_execution.py`。"
+    },
+    {
+      "id": "T15",
+      "title": "多轮偏好状态与证据更新",
+      "phase": "G3",
+      "type": "core",
+      "depends_on": [
+        "T12",
+        "T13"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T15",
+      "deliverables": "`AgenticRec/src/agenticrec/agent/state.py`；`AgenticRec/tests/unit/test_preference_state.py`。",
+      "acceptance": "明确反馈优先，模型推断不能盖过用户硬条件。 一次否定不被错误扩展为全类型否定。",
+      "checks": "`python -m pytest tests/unit/test_preference_state.py`。"
+    },
+    {
+      "id": "T16",
+      "title": "规则路由与有限 Agent 闭环",
+      "phase": "G3",
+      "type": "core",
+      "depends_on": [
+        "T14",
+        "T15",
+        "T18"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T16",
+      "deliverables": "`AgenticRec/src/agenticrec/agent/router.py`；`AgenticRec/src/agenticrec/agent/loop.py`。",
+      "acceptance": "FakeLLM 的成功/重规划/澄清/预算耗尽轨迹可重放。 不把所有请求都走 Agent 作为唯一方案。",
+      "checks": "`python -m pytest tests/integration/test_end_to_end.py`。"
+    },
+    {
+      "id": "T17",
+      "title": "故障注入、安全和会话隔离",
+      "phase": "G3",
+      "type": "core",
+      "depends_on": [
+        "T16"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T17",
+      "deliverables": "`AgenticRec/tests/regression/`；`reports/reliability/`。",
+      "acceptance": "没有越权工具执行、跨 session 状态泄漏。 失败不会挂死、无限重试或绕过硬约束。",
+      "checks": "`python -m pytest tests/regression/test_runtime.py tests/regression/test_session_isolation.py`。"
+    },
+    {
+      "id": "T18",
+      "title": "冻结交互评测集与评分器",
+      "phase": "G2/G3",
+      "type": "core",
+      "depends_on": [
+        "T07",
+        "T12",
+        "T15"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T18",
+      "deliverables": "`data/eval_private/`；`artifacts/eval_manifest.json`；`AgenticRec/src/agenticrec/evaluation/episodes.py`。",
+      "acceptance": "test target 不进入可见 prompt、demo 检索或工具历史。 全空输出不能刷高可行任务成功率。 在 T16 调参前冻结 test。",
+      "checks": "`python -m pytest tests/regression/test_eval_leakage.py tests/unit/test_episode_metrics.py`。"
+    },
+    {
+      "id": "T19",
+      "title": "真实基线、消融与配对统计",
+      "phase": "G4",
+      "type": "core",
+      "depends_on": [
+        "T17",
+        "T18",
+        "T10"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T19",
+      "deliverables": "`artifacts/runs/`；`AgenticRec/reports/benchmark.md`；`AgenticRec/reports/ablations.md`；`AgenticRec/reports/failure_analysis.md`。",
+      "acceptance": "表格可由原始预测重新生成；无手填指标。 含负收益、失败与分层覆盖率；各方法条件一致。 置信度不够时不声称显著提升。",
+      "checks": "`python -m agenticrec.cli benchmark --config configs/benchmark.yaml --dry-run`；`预算授权后运行同一命令去掉 --dry-run；先核验总请求数`。"
+    },
+    {
+      "id": "T20",
+      "title": "独立环境复现与发布材料",
+      "phase": "G4",
+      "type": "core",
+      "depends_on": [
+        "T19"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T20",
+      "deliverables": "`AgenticRec/README.md`；`AgenticRec/docs/REPRODUCE.md`；`AgenticRec/docs/MY_CONTRIBUTIONS.md`；`AgenticRec/docs/KNOWN_LIMITATIONS.md`。",
+      "acceptance": "第三方按文档知道哪些命令存在、数据如何合法取得。 不宣称保证面试、生产级或论文全部复现。",
+      "checks": "`python -m pytest tests/unit tests/integration tests/regression`；`干净环境完整重建日志`。"
+    },
+    {
+      "id": "T21",
+      "title": "技术报告与简历事实核对",
+      "phase": "G4",
+      "type": "core",
+      "depends_on": [
+        "T20"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T21",
+      "deliverables": "`AgenticRec/docs/INTERVIEW_GUIDE.md`；`AgenticRec/docs/RESUME_FACTS.md`。",
+      "acceptance": "每一条可在仓库/报告中核验。 原版功能与新贡献分开；离线不写线上指标。",
+      "checks": "`贡献-证据矩阵逐条审核`。"
+    },
+    {
+      "id": "T22",
+      "title": "可选：序列推荐 SASRec",
+      "phase": "P1",
+      "type": "optional",
+      "depends_on": [
+        "T20"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T22",
+      "condition": "P0完成且项目负责人明确启用。",
+      "deliverables": "`可选 SASRec adapter、配置与实验`。",
+      "acceptance": "不修改测试窗口提升结果；真实贡献明确。",
+      "checks": "`序列因果性/未来信息隔离测试`；`与现有模型统一协议对照`。"
+    },
+    {
+      "id": "T23",
+      "title": "可选：学习式成本路由",
+      "phase": "P1",
+      "type": "optional",
+      "depends_on": [
+        "T20",
+        "T18"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T23",
+      "condition": "P0完成，数据足够且明确授权。",
+      "deliverables": "`可选 router model 与实验`。",
+      "acceptance": "复杂度带来可测收益才保留；否则维持规则版本。",
+      "checks": "`路由训练/测试隔离`；`配对成功率与成本比较`。"
+    },
+    {
+      "id": "T24",
+      "title": "可选：向上游贡献最小修复",
+      "phase": "P1",
+      "type": "optional",
+      "depends_on": [
+        "T21"
+      ],
+      "status": "TODO",
+      "source": "AgenticRec_完整复现与优化执行规范.md#T24",
+      "condition": "只有明确授权才能执行远端动作。",
+      "deliverables": "`上游补丁和测试；若已授权则附真实 PR链接`。",
+      "acceptance": "不得把未提交/未合并写成被微软采纳。 按实际状态陈述贡献。",
+      "checks": "`原始失败与修复后通过对照`。"
+    }
+  ]
+}

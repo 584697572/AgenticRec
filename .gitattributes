@@ -1,0 +1,5 @@
+# Keep newly created project text consistent across platforms.
+* text=auto eol=lf
+# Preserve imported baseline files byte-for-byte on future checkouts.
+AgenticRec_完整复现与优化执行规范.md -text
+LICENSE.txt -text

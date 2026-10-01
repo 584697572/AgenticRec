@@ -1,0 +1,193 @@
+{
+  "checked_date": "2026-10-01",
+  "timezone": "Asia/Shanghai",
+  "upstream_commit": "0959ecb05b0794748426e73e6efc1b6b35ec433d",
+  "original_resource_integrity": "NOT VERIFIED",
+  "archive_downloaded": false,
+  "route_candidate": "A1",
+  "route_final": "NOT VERIFIED",
+  "local_resources_directory_exists": false,
+  "required_settings_keys": [
+    "GAME_INFO_FILE",
+    "TABLE_COL_DESC_FILE",
+    "MODEL_CKPT_FILE",
+    "ITEM_SIM_FILE",
+    "USE_COLS",
+    "CATEGORICAL_COLS"
+  ],
+  "local_settings": "missing",
+  "resources": [
+    {
+      "key": "GAME_INFO_FILE",
+      "local_path": null,
+      "status": "missing",
+      "sha256": null,
+      "source": "README all_resources.zip; archive not obtained",
+      "license": "NOT VERIFIED",
+      "id_integrity": "NOT VERIFIED"
+    },
+    {
+      "key": "TABLE_COL_DESC_FILE",
+      "local_path": null,
+      "status": "missing",
+      "sha256": null,
+      "source": "README all_resources.zip; archive not obtained",
+      "license": "NOT VERIFIED",
+      "id_integrity": "NOT VERIFIED"
+    },
+    {
+      "key": "MODEL_CKPT_FILE",
+      "local_path": null,
+      "status": "missing",
+      "sha256": null,
+      "source": "README all_resources.zip; archive not obtained",
+      "license": "NOT VERIFIED",
+      "id_integrity": "NOT VERIFIED"
+    },
+    {
+      "key": "ITEM_SIM_FILE",
+      "local_path": null,
+      "status": "missing",
+      "sha256": null,
+      "source": "README all_resources.zip; archive not obtained",
+      "license": "NOT VERIFIED",
+      "id_integrity": "NOT VERIFIED"
+    }
+  ],
+  "checks": {
+    "settings_schema": "NOT VERIFIED",
+    "unique_item_ids": "NOT VERIFIED",
+    "padding_convention": "NOT VERIFIED",
+    "csv_header": "NOT VERIFIED",
+    "dtypes": "NOT VERIFIED",
+    "required_columns": "NOT VERIFIED",
+    "categorical_values": "NOT VERIFIED",
+    "similarity_shape": "NOT VERIFIED",
+    "similarity_id_order": "NOT VERIFIED",
+    "checkpoint_source": "NOT VERIFIED",
+    "checkpoint_item_count": "NOT VERIFIED",
+    "unirec_compatibility": "NOT VERIFIED"
+  },
+  "local_network_probes": [
+    {
+      "name": "GoogleDrive",
+      "url": "https://drive.google.com/file/d/1nSw2cuoi_WEOnHRg_eIyLWGBAjHdelsg/view?usp=drive_link",
+      "checked_at": "2026-10-01T16:42:16.769023+08:00",
+      "timeout_seconds": 20,
+      "body_limit_bytes": 65536,
+      "http_status": 200,
+      "archive_downloaded": false,
+      "resource_integrity": "NOT VERIFIED",
+      "final_url": "https://drive.google.com/file/d/1nSw2cuoi_WEOnHRg_eIyLWGBAjHdelsg/view?usp=drive_link",
+      "content_type": "text/html; charset=utf-8",
+      "content_length": null,
+      "body_sha256": "7c7870542f10ed52fac9ea350c0dfa3a13ba1fdeae21d4503a6426138e2f7880",
+      "body_bytes": 65536,
+      "body_path": "reproduction/logs/g0/network/GoogleDrive.response.txt",
+      "transport_status": "completed"
+    },
+    {
+      "name": "RecDrive",
+      "url": "https://rec.ustc.edu.cn/share/baa4d930-48e1-11ee-b20c-3fee0ba82bbd",
+      "checked_at": "2026-10-01T16:42:19.209417+08:00",
+      "timeout_seconds": 20,
+      "body_limit_bytes": 65536,
+      "http_status": 200,
+      "archive_downloaded": false,
+      "resource_integrity": "NOT VERIFIED",
+      "final_url": "https://rec.ustc.edu.cn/share/baa4d930-48e1-11ee-b20c-3fee0ba82bbd",
+      "content_type": "text/html",
+      "content_length": "11683",
+      "body_sha256": "b162676fa754e39bc67f40e772c0e21249f4e07ab0154ff51ada79d8c95575d7",
+      "body_bytes": 11683,
+      "body_path": "reproduction/logs/g0/network/RecDrive.response.txt",
+      "transport_status": "completed"
+    },
+    {
+      "name": "MovieLensTerms",
+      "url": "https://files.grouplens.org/datasets/movielens/ml-1m-README.txt",
+      "checked_at": "2026-10-01T16:42:19.579155+08:00",
+      "timeout_seconds": 20,
+      "body_limit_bytes": 65536,
+      "http_status": null,
+      "archive_downloaded": false,
+      "resource_integrity": "NOT VERIFIED",
+      "transport_status": "failed",
+      "error_type": "URLError",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)>"
+    },
+    {
+      "name": "Issue110",
+      "url": "https://api.github.com/repos/microsoft/RecAI/issues/110",
+      "checked_at": "2026-10-01T16:42:20.744265+08:00",
+      "timeout_seconds": 20,
+      "body_limit_bytes": 65536,
+      "http_status": 200,
+      "archive_downloaded": false,
+      "resource_integrity": "NOT VERIFIED",
+      "final_url": "https://api.github.com/repos/microsoft/RecAI/issues/110",
+      "content_type": "application/json; charset=utf-8",
+      "content_length": "2639",
+      "body_sha256": "36a0683de8d8ab5e49cf16a87770800ba12b2afef2ca2aa6a214754e267e1d0e",
+      "body_bytes": 2639,
+      "body_path": "reproduction/logs/g0/network/Issue110.response.txt",
+      "transport_status": "completed"
+    },
+    {
+      "name": "GoogleDriveDownload",
+      "url": "https://drive.google.com/uc?export=download&id=1nSw2cuoi_WEOnHRg_eIyLWGBAjHdelsg",
+      "checked_at": "2026-10-01T16:43:29.501406+08:00",
+      "timeout_seconds": 20,
+      "body_limit_bytes": 65536,
+      "http_status": 200,
+      "archive_downloaded": false,
+      "resource_integrity": "NOT VERIFIED",
+      "final_url": "https://drive.usercontent.google.com/download?id=1nSw2cuoi_WEOnHRg_eIyLWGBAjHdelsg&export=download",
+      "content_type": "text/html; charset=utf-8",
+      "content_length": "2434",
+      "body_sha256": "bc7f4cd2b92e565a24daec5213041ea86eec43aaaf12254ab881c10041c1ea5b",
+      "body_bytes": 2434,
+      "body_path": "reproduction/logs/g0/download/GoogleDriveDownload.response.txt",
+      "transport_status": "completed"
+    }
+  ],
+  "interpretation": {
+    "GoogleDrive": "preview reachable; download endpoint is HTML virus-scan confirmation for 474M file, not archive",
+    "RecDrive": "HTML SPA only; actual share availability unverified"
+  },
+  "issue_report": {
+    "url": "https://github.com/microsoft/RecAI/issues/110",
+    "created_at": "2026-04-27T03:21:02Z",
+    "state": "open",
+    "classification": "third-party report, not local verification",
+    "local_response": "reproduction/logs/g0/network/Issue110.response.txt"
+  },
+  "web_verification": {
+    "issue_url": "https://github.com/microsoft/RecAI/issues/110",
+    "movielens_terms_url": "https://files.grouplens.org/datasets/movielens/ml-1m-README.txt",
+    "movielens_terms_read": true,
+    "movielens_downloaded": false,
+    "conditions": [
+      "Research use with acknowledgment",
+      "Separate permission for redistribution",
+      "Prior permission for commercial use"
+    ],
+    "archive_data_license": "NOT VERIFIED"
+  },
+  "allow_paid_api": false,
+  "api_request_cap": 0,
+  "runtime_metrics": {
+    "status": "not_run",
+    "recall_at_k": null,
+    "ndcg_at_k": null,
+    "task_success_rate": null,
+    "latency": null,
+    "token_usage": null
+  },
+  "next_checks": [
+    "Original archive license and file inventory",
+    "Settings and resource integrity",
+    "Trusted checkpoint and isolated UniRec compatibility",
+    "Freeze A1 or evidence-based B route"
+  ]
+}
