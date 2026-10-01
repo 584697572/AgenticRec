@@ -1,5 +1,7 @@
 # 固定版本源码走读（T01）
 
+最新复核：ADR-005 撤回下段冻结 B 的决定。维度不等不阻止合法子集索引；源码实际没有目录→checkpoint 的自动 remap。保存 notebook 与原资源表的三项电影映射不同，仅提示风险，不冒充 checkpoint 权威标签。T03 恢复调查，原权重/legacy 运行 NOT VERIFIED。
+
 后续 T03 补充：以真实 movies.ftr 和原 CandidateBuffer 初始化复核发现遗漏合法 ID 9888；目录/矩阵 9889 个位置与 checkpoint 36255 行无法核验共同映射。原资源运行仍 NOT VERIFIED，路线 B；细节与可比性见 `reproduction/route_decision.md`。以下为首轮源码走读的原始范围，保留历史上下文。
 
 核验日期：2026-10-01。源码：`RecAI/`，commit `0959ecb05b0794748426e73e6efc1b6b35ec433d`。以下行号均相对固定版本 `InteRecAgent/`；文件哈希及 Git blob 见 `reproduction/upstream_lock.json`。

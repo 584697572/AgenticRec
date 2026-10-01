@@ -1,6 +1,20 @@
 # 重大决策
 
+## ADR-005：撤回冻结 B，恢复 A1 优先核查
+
+- 日期：2026-10-01；状态：采用；取代 ADR-004 的最终路线决定，旧条目保留历史。
+- 原要求：规范 §0 默认先尝试 A1；资源或历史模型无法获得时才按证据使用 B。§5.2 要求核验 ID 语义，不要求候选表覆盖模型的全部 embedding。
+- 复核发现：UniRec 0.0.1a4 的 predict/forward_item_emb 直接用候选 ID 查 embedding；只要 ID 有效，较大模型允许目录子集。执行原函数体的 CPU fixture 成功对目录 9888 项打分，原 RecModelTool.run 把 Toy Story 的目录 ID 1062 原样传入。没有加载真实 checkpoint，fixture 分数不是推荐实验。
+- 上轮错误：把 9889 与 36255 不相等的严格维度断言当作转 B 的充分依据，结论过早。保留原退出 1 的历史证据，明确其只证明行数不相等。
+- 新证据：固定 upstream notebook 的保存输出映射 Toy Story→17、Jumanji→105、Grumpier Old Men→232；真实目录分别为1062、1023、1325，且目录 ID17 是 Hot Shots! Part Deux。notebook 保存的 users/items=298073/36254 与 checkpoint 配置加 padding 后相同。这提示资源映射来源可能不同，但保存输出可能陈旧，仍不能等同 checkpoint 的权威行标签。
+- 决定：T03 重新 IN_PROGRESS；route_candidate=A1，route_final=NOT VERIFIED，B 冻结撤回。先核查原权重加载、可信训练映射和 legacy 环境，再判断原版可用性；不推进 MovieLens 重建或模型训练。T04 仍 BLOCKED，因为完整资源/环境/语义验证尚未就绪。
+- 下载：本轮新增 136478 bytes 响应正文，包含官方 PyPI 固定 wheel 121607 bytes 和 metadata；SHA 校验通过，仅检查代码、未安装。没有下载完整电影 checkpoint 或大矩阵，因为权重数值本身不能给出缺失的电影标签。
+- 可比性：本轮无模型或评测变更；U0/A1 运行 NOT VERIFIED，所有指标 NOT EVALUATED。后续原版运行若能执行，仍需区分“工具可运行”与“共享 ID 语义正确”。
+- 证据：`reproduction/id_mapping_recheck.json`、`unirec_source_manifest.json`、`reports/t03_id_recheck.md`、原始日志与本轮 hash index。固定 RecAI 未修改；UniRec 版本只是 requirements 允许的最低版本，不宣称 checkpoint 训练时使用该版本。
+
 ## ADR-004：原资源共享 ID 契约无法核验，采用规范 B 路线
+
+历史记录：本条的最终路线决定已由 ADR-005 撤回；维度不同不构成不能执行的充分证据。
 
 - 日期：2026-10-01；状态：采用；替代 ADR-002 的待定路线。
 - 原要求：A1 优先；T03 核验目录、矩阵和 checkpoint 共享 ID、来源、授权与兼容性；真实阻塞时记录原因，使用 B 方法级重建。

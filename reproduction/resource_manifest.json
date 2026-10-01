@@ -4,8 +4,8 @@
   "upstream_commit": "0959ecb05b0794748426e73e6efc1b6b35ec433d",
   "original_resource_integrity": "NOT VERIFIED",
   "archive_downloaded": false,
-  "route_candidate": "B",
-  "route_final": "B",
+  "route_candidate": "A1",
+  "route_final": "NOT VERIFIED",
   "local_resources_directory_exists": false,
   "required_settings_keys": [
     "GAME_INFO_FILE",
@@ -72,8 +72,8 @@
     "categorical_values": "tags list<string>; no null; metadata semantics NOT VERIFIED",
     "similarity_shape": "PASS: header (9889,9889), full matrix NOT VERIFIED",
     "similarity_id_order": "NOT VERIFIED",
-    "checkpoint_source": "metadata says SASRec / ml-10m; training provenance NOT VERIFIED",
-    "checkpoint_item_count": "FAIL: 36255 vs catalog/matrix vocabulary 9889",
+    "checkpoint_source": "metadata SASRec/ml-10m; counts match saved notebook plus padding, but authoritative training title mapping NOT VERIFIED",
+    "checkpoint_item_count": "WARN: 36255 embedding rows cover catalog ID range 1..9888; unequal totals alone do not prove runtime incompatibility",
     "unirec_compatibility": "NOT VERIFIED"
   },
   "local_network_probes": [
@@ -195,11 +195,11 @@
     "token_usage": null
   },
   "next_checks": [
-    "T05 modern isolated development environment, config contracts and offline CLI",
-    "T06 official MovieLens 1M acquisition and independent temporal/ID contracts after T05",
-    "A1 recovery requires authoritative shared ID mapping, resource provenance, full checksums and legacy runtime evidence"
+    "T02 isolated legacy environment and actual compatibility checks",
+    "Authoritative checkpoint training mapping and provenance; existing cached notebook mapping conflicts with catalog",
+    "Safe original checkpoint/tool smoke test when prerequisites permit; final A/B route remains NOT VERIFIED"
   ],
-  "a1_status": "BLOCKED",
+  "a1_status": "IN_PROGRESS",
   "archive_bytes": 497403134,
   "archive_entry_count": 15,
   "this_round_received_body_bytes": 471747,
@@ -255,5 +255,10 @@
     }
   ],
   "resource_contract_evidence": "reproduction/logs/t03_20261001/resource_contract_audit.json",
-  "archive_entries_evidence": "reproduction/logs/t03_20261001/archive_entries.json"
+  "archive_entries_evidence": "reproduction/logs/t03_20261001/archive_entries.json",
+  "route_recheck": "reproduction/id_mapping_recheck.json",
+  "id_recheck_received_body_bytes": 136478,
+  "cumulative_audit_received_body_bytes": 608225,
+  "route_decision_status": "ADR-005 withdraws premature B freeze; shared-ID semantics and native runtime still NOT VERIFIED",
+  "response_accounting_scope": "this_round_received_body_bytes=initial resource Range audit; id_recheck_received_body_bytes=additional fixed wheel/metadata source inspection"
 }

@@ -1,0 +1,91 @@
+{
+  "upstream_commit": "0959ecb05b0794748426e73e6efc1b6b35ec433d",
+  "notebook_sha256": "0025cedb37704f9de27c2942ec1d05f2dc3b59d780d5c820f1bbb57fa031fe5e",
+  "notebook_executed": false,
+  "notebook_saved_counts": {
+    "users": 298073,
+    "items": 36254
+  },
+  "checkpoint_counts_equal_notebook_plus_padding": true,
+  "title_id_comparison": [
+    {
+      "title": "Toy Story",
+      "notebook_saved_id": 17,
+      "catalog_id": 1062,
+      "catalog_year": 1995,
+      "catalog_title_at_notebook_id": "Hot Shots! Part Deux"
+    },
+    {
+      "title": "Jumanji",
+      "notebook_saved_id": 105,
+      "catalog_id": 1023,
+      "catalog_year": 1995,
+      "catalog_title_at_notebook_id": "Beautiful Thing"
+    },
+    {
+      "title": "Grumpier Old Men",
+      "notebook_saved_id": 232,
+      "catalog_id": 1325,
+      "catalog_year": 1995,
+      "catalog_title_at_notebook_id": "Big Heat, The"
+    }
+  ],
+  "unirec_version_examined": "0.0.1a4",
+  "checkpoint_training_unirec_version": "NOT VERIFIED",
+  "source_records": [
+    {
+      "member": "unirec/utils/general.py",
+      "sha256": "612d83b9479d068c341e489184d7ee119b38c833742c33fd028314f2b7ff72e3",
+      "symbols": {
+        "load_model_freely": [
+          208,
+          230
+        ]
+      }
+    },
+    {
+      "member": "unirec/model/base/recommender.py",
+      "sha256": "4596430a8c343bbed71ba113bfc1dc4ff0f8d950545829b46c6ff060bd168d13",
+      "symbols": {
+        "forward_item_emb": [
+          66,
+          74
+        ],
+        "predict": [
+          99,
+          106
+        ],
+        "item_embedding_for_user": [
+          136,
+          147
+        ]
+      }
+    },
+    {
+      "member": "unirec/model/base/reco_abc.py",
+      "sha256": "72c5312347849ae26248a53fe499d76d616b58d4b31487885a8f57289a23e339",
+      "symbols": {
+        "_init_modules": [
+          159,
+          208
+        ]
+      }
+    },
+    {
+      "member": "unirec/model/sequential/sasrec.py",
+      "sha256": "9792b1038e0f1ee15c4a26d5139d0ecea01f333f606bfb57525c8ba92529f27b",
+      "symbols": {
+        "forward_user_emb": [
+          59,
+          76
+        ]
+      }
+    }
+  ],
+  "lookup_contract": "Direct item_seq/item_id embedding lookup; extra unused embedding rows are allowed",
+  "authoritative_checkpoint_title_mapping": "NOT VERIFIED",
+  "inference": "Saved notebook outputs and checkpoint counts suggest different catalog mappings; not proof of checkpoint row labels",
+  "checkpoint_loaded": false,
+  "native_runtime": "NOT VERIFIED",
+  "metrics": "NOT EVALUATED"
+}

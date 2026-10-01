@@ -1,5 +1,13 @@
 # 固定源码风险复核（T01）
 
+## T03 ID 契约复核更新
+
+ADR-005 已撤回下方 T03 补充中的最终 B 决定。原 UniRec predict/forward_item_emb 与 SASRec item_embedding_for_user 直接使用传入整数 ID；目录子集小于模型词表可以执行。6 项离线测试通过，包含原函数体的 CPU fixture，未加载真实 checkpoint。
+
+固定 movies.ipynb 的保存输出中，Toy Story→17、Jumanji→105、Grumpier Old Men→232；真实表分别为1062、1023、1325。notebook 物品/用户数加 padding 与 checkpoint 相同，提示映射来源不同，但不能把缓存输出当作 checkpoint 权威训练映射。完整运行与语义一致性仍 NOT VERIFIED；详见 `reports/t03_id_recheck.md`。
+
+UniRec 0.0.1a4 的 load_model_freely 使用 checkpoint config 构建模型并 load_state_dict(strict=False)，没有目录输入、映射转换或 eval 调用。原 RecModelTool.__init__ 也未调用 eval。训练库版本及实际运行影响待验证，未补丁修复。
+
 ## T03 实际资源证据补充（2026-10-01）
 
 下表及旧静态推断为上一轮记录；最新证据见 `reproduction/logs/t03_20261001/resource_contract_audit.json` 与本轮 index。

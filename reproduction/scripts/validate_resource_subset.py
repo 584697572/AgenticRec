@@ -1,4 +1,8 @@
-"""Audit downloaded resource metadata without unpickling or loading model weights."""
+"""Audit downloaded metadata without unpickling or loading model weights.
+
+Exact dimension equality is a historical diagnostic, not a necessary condition
+for subset inference. It cannot establish or disprove semantic ID alignment.
+"""
 import argparse
 import ast
 import hashlib
@@ -124,9 +128,9 @@ def audit():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--require-alignment", action="store_true", help="Fail if the original package dimensions cannot align.")
+    parser.add_argument("--require-alignment", action="store_true", help="Historical exact-dimension diagnostic; unequal counts do not prove runtime incompatibility.")
     args = parser.parse_args()
     result = audit()
     print(json.dumps(result, indent=2))
     if args.require_alignment:
-        assert result["checkpoint_catalog_dimensions_match"], "Catalog/matrix vocabulary 9889 differs from checkpoint embedding/config vocabulary 36255; no mapping provided"
+        assert result["checkpoint_catalog_dimensions_match"], "Exact dimension equality fails; this alone does not disprove subset inference or establish semantic mapping"

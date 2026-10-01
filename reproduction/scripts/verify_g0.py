@@ -80,8 +80,7 @@ def verify():
     assert not manifest["archive_downloaded"]
     assert manifest["runtime_metrics"]["status"] == "not_run"
     assert all(value is None for key, value in manifest["runtime_metrics"].items() if key != "status")
-    if by_id["T03"]["status"] == "DONE":
-        assert manifest["route_final"] == "B" and manifest["a1_status"] == "BLOCKED"
+    if "this_round_received_body_bytes" in manifest:
         logs = ROOT / "reproduction/logs/t03_20261001"
         audit = json.loads((logs / "resource_contract_audit.json").read_text(encoding="utf-8"))
         assert audit == json.loads((ROOT / "reproduction/resource_contract_summary.json").read_text(encoding="utf-8"))
@@ -101,6 +100,22 @@ def verify():
             for selected in inspection["selected"]:
                 assert digest(ROOT / selected["local_path"]) == selected["sha256"]
         assert received == manifest["this_round_received_body_bytes"]
+    if manifest.get("route_recheck"):
+        assert by_id["T03"]["status"] == "IN_PROGRESS"
+        assert manifest["route_candidate"] == "A1" and manifest["route_final"] == "NOT VERIFIED"
+        recheck_logs = ROOT / "reproduction/logs/t03_recheck_20261001"
+        recheck = json.loads((ROOT / manifest["route_recheck"]).read_text(encoding="utf-8"))
+        assert recheck == json.loads((recheck_logs / "id_mapping_recheck.json").read_text(encoding="utf-8"))
+        assert recheck["notebook_sha256"] == digest(ROOT / "RecAI/InteRecAgent/preprocess/movies.ipynb")
+        assert not recheck["checkpoint_loaded"] and not recheck["notebook_executed"]
+        assert recheck["authoritative_checkpoint_title_mapping"] == "NOT VERIFIED"
+        assert all(row["notebook_saved_id"] != row["catalog_id"] for row in recheck["title_id_comparison"])
+        acquisition = json.loads((ROOT / "reproduction/unirec_source_manifest.json").read_text(encoding="utf-8"))
+        assert not acquisition["installed"]
+        assert digest(ROOT / "data/raw/upstream_audit" / acquisition["filename"]) == acquisition["sha256"]
+        assert acquisition["received_body_bytes"] == manifest["id_recheck_received_body_bytes"]
+        assert (recheck_logs / "lookup_tests_v2.exitcode.txt").read_text().strip() == "0"
+        assert manifest["cumulative_audit_received_body_bytes"] == manifest["this_round_received_body_bytes"] + acquisition["received_body_bytes"]
     print("PASS: unchanged spec, pinned pristine upstream, license, 25 task dependencies, source symbols, audit results, honest resource status")
 
 

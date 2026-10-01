@@ -1,32 +1,35 @@
-# T03 路线决定：B 方法级重建
+# T03 路线复核：恢复 A1 调查
 
-2026-10-01；T03 资源调查及路线决定 **DONE**。原资源运行 A1 **BLOCKED**；A2/U0 `not_run`；B **NOT EVALUATED**。这不是原系统运行验收。
+2026-10-01，T03 **IN_PROGRESS**；候选路线 **A1**，最终路线 **NOT VERIFIED**。ADR-005 撤回上轮冻结 B 的决定。A1/U0 原版运行尚未验收；U0/A2 `not_run`，所有指标 **NOT EVALUATED**。
 
-## 原要求与实测
+## 已确认事实
 
-按规范先调查 A1，核验资源共享 ID 契约。README 的 GoogleDrive 原包可访问；正常提交公开下载确认表单后，服务支持 HTTP 206 Range。原 ZIP 共 497,403,134 bytes、15 个条目。两次有上限的读取累计收到 471,747 bytes（约 461 KiB，含确认页和重复目录），完整 ZIP 未下载。目录清单及响应记录见 `reproduction/logs/t03_20261001/`，提取子集在忽略目录 `data/raw/upstream_audit/`。
+- 固定 RecAI 源码完整保留于 `RecAI/`，HEAD `0959ecb05b0794748426e73e6efc1b6b35ec433d`，无 upstream patch。
+- Google 原资源 ZIP 可用，497403134 bytes、15 条目；之前两次小范围读取471747 bytes。原电影表9888项，ID=1..9888，矩阵头部(9889,9889)，checkpoint 静态配置和 embedding 行数36255。完整 ZIP/矩阵/权重未下载。
+- 本轮从 [官方 PyPI 固定发布](https://pypi.org/project/unirec/0.0.1a4/)取得 UniRec wheel121607 bytes，核验发布 SHA256；包含 metadata 的新增响应正文136478 bytes。未安装依赖。版本仅是 upstream requirements 允许的最低版本，不能宣称是权重训练版本。
+- UniRec `load_model_freely` 根据 checkpoint config 建模；`predict/forward_item_emb` 和 SASRec 序列路径按输入整数直接查 embedding，无电影标签 remap。原 RecModelTool 直接把目录 ID 用作 `item_seq/item_id`。
+- 执行原函数体的 CPU fixture 能对9888项目录子集产生合法形状，原排名工具把 Toy Story 的目录 ID1062传入。这里只验证索引与调用路径，encoder 和权重是明确自造 fixture，不能当作原模型运行或推荐质量结果。
 
-| 资源 | 真实核验 | 限制 |
-|---|---|---|
-| movie/settings.json、columns.json | 完整成员 CRC、SHA256；所需键和指向成员存在 | 未安装到 upstream/resources |
-| movies.ftr | 完整 CRC、SHA256；9,888 行，ID 唯一连续 1..9888；无 padding 行，各列无 null；257 个重复标题 | Feather，不是 CSV；无电影年份/价格补造 |
-| movie_sim.npy | 仅头部：float64、shape=(9889,9889)，包含 ID 0 的位置；按头部计算大小与目录一致 | 矩阵值、完整 CRC、行 ID 语义 NOT VERIFIED |
-| SASRec-SASRec.pth | 仅 64 KiB 前缀；静态解析完整 metadata pickle 的指令，配置 n_items=36255、embedding shape=(36255,32)、dataset=ml-10m | 未反序列化、未加载权重；完整 CRC、训练来源和 UniRec 兼容性 NOT VERIFIED |
+## 上轮结论修正
 
-**目录/矩阵 9,889 个位置与 checkpoint 36,255 行不一致，原包没有映射文件。** 更多 embedding 行本身不能证明每个分数错误，但不足以验证同一 ID 指向同一电影；前提契约无法验收。`validate_resource_subset.py --require-alignment` 实际退出 1。不得裁剪 embedding、猜测映射或用补造数据掩盖。
+要求词表总行数完全相等过严。目录子集只要 ID 在模型范围内即可被查表；历史 `--require-alignment` 退出1只是行数比较，不足以证明原版不可用。因此撤回最终 B，按规范 A1 优先调查，不开始 B 数据重建。
 
-另执行原 CandidateBuffer.__init__，以真实目录长度验证：候选仅 9,887 项，漏掉合法 ID 9888。原方法未修改；修复留在规范的后续回归阶段。
+## 剩余语义风险
 
-## 决定与可比性
+| 电影 | 固定 notebook 保存的映射 ID | 实际原包目录 ID | 目录旧 ID 对应电影 |
+|---|---:|---:|---|
+| Toy Story | 17 | 1062 | Hot Shots! Part Deux |
+| Jumanji | 105 | 1023 | Beautiful Thing |
+| Grumpier Old Men | 232 | 1325 | Big Heat, The |
 
-采用规范 B 路线，后续完成 T05 再推进 T06 的 MovieLens 1M 数据契约；保留固定 upstream 原始代码，重建 U1 upstream_rebuilt 的方法与工具对照。停止下载原包约 385.6 MB 的压缩矩阵和约 13.8 MB 的压缩 checkpoint：现有证据已足以确定当前无法核验资源对齐，完整下载不能补出缺失映射。重大决定见 ADR-004。
+notebook 缓存 users/items=298073/36254，checkpoint 配置加 padding=298074/36255，提示二者可能来自同一映射规模。**这是由保存输出及配置作出的推断，notebook 未执行，输出可能陈旧；不能当作 checkpoint 的权威训练行标签。** 原包没有独立 mapping 文件，ID 语义仍 NOT VERIFIED。
 
-不能宣称复现论文数字，也不能把未来 U1 当 U0。恢复 A1 须取得可信共同 ID 映射、完整资源校验和 legacy 运行证据，本轮不尝试推测修复。
+## 当前缺项与下一步
 
-## 授权与记录
+1. 先建立规范 T02 的隔离 legacy 环境，保存真实 import/兼容性日志；不把现有 Python3.13 的 fixture 当作 legacy 复现。
+2. 取得 checkpoint 权威训练映射/来源；必要时仅下载电影 checkpoint 做安全加载和原工具冒烟。下载权重本身不能提供缺失电影标签，当前不为此额外下载。
+3. 只有 A1 前置验收后才进行 T04；按规范资源不可用/无法建立有效基线的事实重新评估 B，记录最小替代及可比性。原系统即使能输出分数，也不自动代表 ID 语义正确。
 
-原包清单无 LICENSE/README/terms；预制资源及 checkpoint 的独立许可、训练来源 **NOT VERIFIED**。仅本地检查子集，不提交或重新分发。代码 MIT 不等于数据 MIT。官方 [MovieLens 10M 条款](https://files.grouplens.org/datasets/movielens/ml-10m-README.html)要求研究使用注明来源，再分发另获许可，商业使用事先取得许可；不能据此推定整个上游预制包获得授权。B 路线将单独按 [MovieLens 1M 条款](https://files.grouplens.org/datasets/movielens/ml-1m-README.txt)记录数据来源；本轮未下载 MovieLens。
+原包独立数据/权重许可仍 NOT VERIFIED；本地子集与 wheel 不提交或再分发，代码 MIT 不替代数据许可。矩阵完整 CRC/数值、checkpoint 完整 CRC/权重加载/实际库版本均 NOT VERIFIED。无真实 LLM 调用，allow_paid_api=false，api_request_cap=0。
 
-原 Google/RecDrive 页面与 Issue #110 调查保留为上一轮历史，不将第三方失效报告当作本轮本机结论。实际 blocker 是未验证的共享 ID 契约及资源来源，不是 Google 链接失效。
-
-本轮没有依赖安装、模型训练、真实 LLM、付费 API 或指标实验。`allow_paid_api=false`、`api_request_cap=0`，运行指标全部 null / NOT EVALUATED。
+历史事实及纠正见 `reports/t03_resource_audit.md`（旧快照）、`reports/t03_id_recheck.md`（本轮）、`reproduction/id_mapping_recheck.json`、`DECISIONS.md` 和两个分开的证据索引。

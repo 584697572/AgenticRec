@@ -1,0 +1,41 @@
+{
+  "metadata_url": "https://pypi.org/pypi/unirec/0.0.1a4/json",
+  "wheel_url": "https://files.pythonhosted.org/packages/9a/fb/0a3cd72166c14bd51d0100d7ab3197d46c921daa99807d8b65ec5fdd41d4/unirec-0.0.1a4-py3-none-any.whl",
+  "version": "0.0.1a4",
+  "filename": "unirec-0.0.1a4-py3-none-any.whl",
+  "bytes": 121607,
+  "sha256": "be3ac404297b74d7799064c8142566401f6cfbebae4d76c75b25184bb0cb9ce4",
+  "received_body_bytes": 136478,
+  "installed": false,
+  "sources": [
+    {
+      "member": "unirec/utils/general.py",
+      "local_path": "reproduction/logs/t03_recheck_20261001/unirec_source/unirec/utils/general.py",
+      "sha256": "612d83b9479d068c341e489184d7ee119b38c833742c33fd028314f2b7ff72e3",
+      "status": "read_crc_verified"
+    },
+    {
+      "member": "unirec/model/base/recommender.py",
+      "local_path": "reproduction/logs/t03_recheck_20261001/unirec_source/unirec/model/base/recommender.py",
+      "sha256": "4596430a8c343bbed71ba113bfc1dc4ff0f8d950545829b46c6ff060bd168d13",
+      "status": "read_crc_verified"
+    },
+    {
+      "member": "unirec/model/base/seq_rec_base.py",
+      "status": "absent"
+    },
+    {
+      "member": "unirec/model/sequential/sasrec.py",
+      "local_path": "reproduction/logs/t03_recheck_20261001/unirec_source/unirec/model/sequential/sasrec.py",
+      "sha256": "9792b1038e0f1ee15c4a26d5139d0ecea01f333f606bfb57525c8ba92529f27b",
+      "status": "read_crc_verified"
+    },
+    {
+      "member": "unirec/model/modules.py",
+      "local_path": "reproduction/logs/t03_recheck_20261001/unirec_source/unirec/model/modules.py",
+      "sha256": "b7f6d45d400089e95cfec0a41a14e562f54feae0f07de35050d793fe4da7c7c5",
+      "status": "read_crc_verified"
+    }
+  ],
+  "version_scope": "Upstream permitted minimum; checkpoint training library version NOT VERIFIED"
+}
