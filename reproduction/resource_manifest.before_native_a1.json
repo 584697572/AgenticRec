@@ -2,11 +2,11 @@
   "checked_date": "2026-10-01",
   "timezone": "Asia/Shanghai",
   "upstream_commit": "0959ecb05b0794748426e73e6efc1b6b35ec433d",
-  "original_resource_integrity": "PASS",
+  "original_resource_integrity": "NOT VERIFIED",
   "archive_downloaded": false,
   "route_candidate": "A1",
-  "route_final": "A1",
-  "local_resources_directory_exists": true,
+  "route_final": "NOT VERIFIED",
+  "local_resources_directory_exists": false,
   "required_settings_keys": [
     "GAME_INFO_FILE",
     "TABLE_COL_DESC_FILE",
@@ -15,72 +15,45 @@
     "USE_COLS",
     "CATEGORICAL_COLS"
   ],
-  "local_settings": "data/raw/upstream_movie/settings.json",
+  "local_settings": "audit copy: data/raw/upstream_audit/03_settings.json",
   "resources": [
     {
-      "name": "settings.json",
-      "path": "data/raw/upstream_movie/settings.json",
-      "bytes": 269,
-      "sha256": "22f83b97705cd891d84efb37c27b405c10b4ecbdef25ac5c1141ce219c149dc9",
-      "crc32": "1940949f",
-      "status": "PASS",
-      "key": "settings",
-      "local_path": "data/raw/upstream_movie/settings.json",
-      "source": "Fixed upstream README public volunteer-provided all_resources.zip",
-      "license": "NOT VERIFIED",
-      "id_integrity": "NOT VERIFIED"
-    },
-    {
-      "name": "columns.json",
-      "path": "data/raw/upstream_movie/columns.json",
-      "bytes": 392,
-      "sha256": "5e063787c0f141956023300b41b88520eb6062c6556baef0170e94d8aa9ac0d0",
-      "crc32": "1a22559c",
-      "status": "PASS",
-      "key": "TABLE_COL_DESC_FILE",
-      "local_path": "data/raw/upstream_movie/columns.json",
-      "source": "Fixed upstream README public volunteer-provided all_resources.zip",
-      "license": "NOT VERIFIED",
-      "id_integrity": "NOT VERIFIED"
-    },
-    {
-      "name": "movies.ftr",
-      "path": "data/raw/upstream_movie/movies.ftr",
-      "bytes": 452706,
-      "sha256": "1a0e8687ba0c366cf4ab7837c591542f9bbb3b445ec4f4155fe1e932b58bb8c9",
-      "crc32": "eb7c4328",
-      "status": "PASS",
       "key": "GAME_INFO_FILE",
-      "local_path": "data/raw/upstream_movie/movies.ftr",
-      "source": "Fixed upstream README public volunteer-provided all_resources.zip",
+      "local_path": "data/raw/upstream_audit/movies.ftr",
+      "status": "read_crc_verified",
+      "sha256": "1a0e8687ba0c366cf4ab7837c591542f9bbb3b445ec4f4155fe1e932b58bb8c9",
+      "source": "Pinned upstream README public all_resources.zip; bounded HTTP Range",
       "license": "NOT VERIFIED",
       "id_integrity": "NOT VERIFIED"
     },
     {
-      "name": "movie_sim.npy",
-      "path": "data/raw/upstream_movie/movie_sim.npy",
-      "bytes": 782338696,
-      "sha256": "b9fca7ef4738e1a25a821151d3d17afe1b55908423a7293a3fd477034eae0ef3",
-      "crc32": "7e57aff2",
-      "status": "PASS",
-      "key": "ITEM_SIM_FILE",
-      "local_path": "data/raw/upstream_movie/movie_sim.npy",
-      "source": "Fixed upstream README public volunteer-provided all_resources.zip",
+      "key": "TABLE_COL_DESC_FILE",
+      "local_path": "data/raw/upstream_audit/02_columns.json",
+      "status": "read_crc_verified",
+      "sha256": "5e063787c0f141956023300b41b88520eb6062c6556baef0170e94d8aa9ac0d0",
+      "source": "Pinned upstream README public all_resources.zip; bounded HTTP Range",
       "license": "NOT VERIFIED",
       "id_integrity": "NOT VERIFIED"
     },
     {
-      "name": "SASRec-SASRec.pth",
-      "path": "data/raw/upstream_movie/SASRec-SASRec.pth",
-      "bytes": 14909665,
-      "sha256": "814430acd5602e666b237c46c92ed48f56f2dce356da399af003a4b68ce1f678",
-      "crc32": "4ae78772",
-      "status": "PASS",
       "key": "MODEL_CKPT_FILE",
-      "local_path": "data/raw/upstream_movie/SASRec-SASRec.pth",
-      "source": "Fixed upstream README public volunteer-provided all_resources.zip",
+      "local_path": "data/raw/upstream_audit/checkpoint.prefix.bin",
+      "status": "prefix_only_crc_not_verified",
+      "sha256": null,
+      "source": "Pinned upstream README public all_resources.zip; bounded HTTP Range",
       "license": "NOT VERIFIED",
-      "id_integrity": "NOT VERIFIED"
+      "id_integrity": "NOT VERIFIED",
+      "prefix_sha256": "acccbbe291c44302de6aa59d2dc216734f37bd51c7ff66b8a6a3f1cbfc272652"
+    },
+    {
+      "key": "ITEM_SIM_FILE",
+      "local_path": "data/raw/upstream_audit/movie_sim.header.bin",
+      "status": "prefix_only_crc_not_verified",
+      "sha256": null,
+      "source": "Pinned upstream README public all_resources.zip; bounded HTTP Range",
+      "license": "NOT VERIFIED",
+      "id_integrity": "NOT VERIFIED",
+      "prefix_sha256": "3097d53c726f9dfbb1e13c6bc0095bd305baf9298fb3378fd598b7e1edc439c3"
     }
   ],
   "checks": {
@@ -97,13 +70,11 @@
     },
     "required_columns": "PASS",
     "categorical_values": "tags list<string>; no null; metadata semantics NOT VERIFIED",
-    "similarity_shape": "PASS: full (9889,9889), float64, all values finite",
+    "similarity_shape": "PASS: header (9889,9889), full matrix NOT VERIFIED",
     "similarity_id_order": "NOT VERIFIED",
     "checkpoint_source": "metadata SASRec/ml-10m; counts match saved notebook plus padding, but authoritative training title mapping NOT VERIFIED",
     "checkpoint_item_count": "WARN: 36255 embedding rows cover catalog ID range 1..9888; unequal totals alone do not prove runtime incompatibility",
-    "unirec_compatibility": "PASS: native loader/predict; all 36 state keys and weights equal original checkpoint",
-    "checkpoint_full_integrity": "PASS",
-    "original_gallery": "PASS: real gte-base and 9888 catalog rows"
+    "unirec_compatibility": "NOT VERIFIED"
   },
   "local_network_probes": [
     {
@@ -219,21 +190,16 @@
     "status": "not_run",
     "recall_at_k": null,
     "ndcg_at_k": null,
-    "mrr": null,
-    "hit_rate": null,
     "task_success_rate": null,
-    "constraint_satisfaction_rate": null,
     "latency": null,
-    "token_usage": null,
-    "tool_calls": null,
-    "replan_rate": null
+    "token_usage": null
   },
   "next_checks": [
     "T02 isolated legacy environment and actual compatibility checks",
     "Authoritative checkpoint training mapping and provenance; existing cached notebook mapping conflicts with catalog",
     "Safe original checkpoint/tool smoke test when prerequisites permit; final A/B route remains NOT VERIFIED"
   ],
-  "a1_status": "OFFLINE_PREFLIGHT_PASS_LIVE_BLOCKED",
+  "a1_status": "IN_PROGRESS",
   "archive_bytes": 497403134,
   "archive_entry_count": 15,
   "this_round_received_body_bytes": 471747,
@@ -293,27 +259,6 @@
   "route_recheck": "reproduction/id_mapping_recheck.json",
   "id_recheck_received_body_bytes": 136478,
   "cumulative_audit_received_body_bytes": 608225,
-  "route_decision_status": "A1 original-resource compatibility path retained; shared-ID semantics, live LLM and evaluation unresolved",
-  "response_accounting_scope": "this_round_received_body_bytes=initial resource Range audit; id_recheck_received_body_bytes=additional fixed wheel/metadata source inspection",
-  "integrity_scope": "complete movie member byte integrity, not shared-ID semantics or permission to redistribute",
-  "native_a1_evidence": "reproduction/native_runs/20261001/native_app_result.json",
-  "download_scope": {
-    "domains": [
-      "movie"
-    ],
-    "full_zip_downloaded": false,
-    "matrix_resume_cache": true,
-    "tls_validation_disabled": false,
-    "completed_initial_response_body_bytes": 63006266,
-    "completed_resume_response_body_bytes": 385634205,
-    "failed_partial_response_byte_count": "unknown; not included in completed-body accounting",
-    "dependencies_total_download_bytes": "not fully metered; do not report as known total"
-  },
-  "remaining_blockers": [
-    "live provider/model and budget authorization missing",
-    "original evaluation data missing",
-    "authoritative checkpoint title mapping and matrix ID order NOT VERIFIED",
-    "independent prebuilt-resource redistribution license NOT VERIFIED"
-  ],
-  "next_dependency": "Resolve T03 mapping/provenance and T04 live API/evaluation prerequisites; do not start rebuilt models"
+  "route_decision_status": "ADR-005 withdraws premature B freeze; shared-ID semantics and native runtime still NOT VERIFIED",
+  "response_accounting_scope": "this_round_received_body_bytes=initial resource Range audit; id_recheck_received_body_bytes=additional fixed wheel/metadata source inspection"
 }

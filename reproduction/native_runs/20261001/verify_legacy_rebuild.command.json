@@ -1,0 +1,9 @@
+{
+  "command": [
+    "python",
+    "reproduction/scripts/verify_legacy_rebuild.py"
+  ],
+  "started_at": "2026-10-01T14:54:33.262881+00:00",
+  "exit_code": 0,
+  "finished_at": "2026-10-01T14:54:35.032560+00:00"
+}

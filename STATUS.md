@@ -2,4 +2,8 @@
 
 唯一详细状态见 [AgenticRec/docs/STATUS.md](AgenticRec/docs/STATUS.md)。
 
-T00/T01 DONE；T03 已重开 IN_PROGRESS，撤回过早冻结 B 的决定，恢复 A1 优先核查。T04 BLOCKED，原权重/legacy运行 NOT VERIFIED；最终 A/B 路线 NOT VERIFIED。下一任务 T02 环境与 T03 映射来源检查。任务表 `TASKS.yaml`、决定 ADR-005、本轮报告 [reports/t03_id_recheck.md](reports/t03_id_recheck.md)。
+T00/T01/T02 DONE；T03 IN_PROGRESS；T04 BLOCKED。保留A1原资源兼容功能路线。
+原资源、真实SASRec权重、完整工具链以及原app.py的本地启动/两轮mock-LLM回调已验证通过。
+真实LLM对话NOT VERIFIED，原评测NOT EVALUATED；缺provider/model/预算授权、原eval数据及权威共享ID语义证据。
+规范和固定upstream均未改；仅独立运行副本的requirements有兼容patch。T05—T24未启动。
+最新报告见[reproduction/UPSTREAM_REPRODUCTION.md](reproduction/UPSTREAM_REPRODUCTION.md)。

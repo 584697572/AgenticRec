@@ -1,0 +1,12 @@
+{
+  "command": [
+    "python",
+    "reproduction/scripts/run_isolated.py",
+    "--",
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "reproduction/scripts/native_checkpoint_contract.py"
+  ],
+  "started_at": "2026-10-01T14:58:24.401537+00:00",
+  "exit_code": 0,
+  "finished_at": "2026-10-01T14:58:28.843586+00:00"
+}

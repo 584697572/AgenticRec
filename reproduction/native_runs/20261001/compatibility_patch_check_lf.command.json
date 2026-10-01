@@ -1,0 +1,15 @@
+{
+  "command": [
+    "git",
+    "-c",
+    "safe.directory=D:/AgenticRec/RecAI",
+    "-C",
+    "RecAI",
+    "apply",
+    "--check",
+    "../reproduction/legacy_compat.patch"
+  ],
+  "started_at": "2026-10-01T15:13:54.948887+00:00",
+  "exit_code": 0,
+  "finished_at": "2026-10-01T15:13:55.042211+00:00"
+}

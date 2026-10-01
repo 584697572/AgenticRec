@@ -76,7 +76,10 @@ def verify():
         locations[path] = {symbol: symbols[symbol] for symbol in required}
     (ROOT / "reproduction/logs/g0/verified_source_symbols.json").write_text(json.dumps(locations, indent=2) + "\n", encoding="utf-8")
     manifest = json.loads((ROOT / "reproduction/resource_manifest.json").read_text(encoding="utf-8"))
-    assert manifest["original_resource_integrity"] == "NOT VERIFIED"
+    assert manifest["original_resource_integrity"] in ("NOT VERIFIED", "PASS")
+    if manifest["original_resource_integrity"] == "PASS":
+        assert manifest.get("native_a1_evidence")
+        assert manifest["checks"]["similarity_id_order"] == "NOT VERIFIED"
     assert not manifest["archive_downloaded"]
     assert manifest["runtime_metrics"]["status"] == "not_run"
     assert all(value is None for key, value in manifest["runtime_metrics"].items() if key != "status")
@@ -102,8 +105,12 @@ def verify():
         assert received == manifest["this_round_received_body_bytes"]
     if manifest.get("route_recheck"):
         assert by_id["T03"]["status"] == "IN_PROGRESS"
-        assert manifest["route_candidate"] == "A1" and manifest["route_final"] == "NOT VERIFIED"
+        assert manifest["route_candidate"] == "A1" and manifest["route_final"] in ("NOT VERIFIED", "A1")
+        if manifest["route_final"] == "A1":
+            assert manifest.get("native_a1_evidence"), "A1 selection requires native evidence"
         recheck_logs = ROOT / "reproduction/logs/t03_recheck_20261001"
+        # These assertions validate the retained source-inspection event before native
+        # installation/loading; current installed/runtime evidence is checked by verify_a1.
         recheck = json.loads((ROOT / manifest["route_recheck"]).read_text(encoding="utf-8"))
         assert recheck == json.loads((recheck_logs / "id_mapping_recheck.json").read_text(encoding="utf-8"))
         assert recheck["notebook_sha256"] == digest(ROOT / "RecAI/InteRecAgent/preprocess/movies.ipynb")

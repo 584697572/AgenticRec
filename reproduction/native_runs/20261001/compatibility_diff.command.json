@@ -1,0 +1,9 @@
+{
+  "command": [
+    "python",
+    "reproduction/scripts/record_compat_diff.py"
+  ],
+  "started_at": "2026-10-01T14:47:49.293528+00:00",
+  "exit_code": 0,
+  "finished_at": "2026-10-01T14:47:50.285561+00:00"
+}

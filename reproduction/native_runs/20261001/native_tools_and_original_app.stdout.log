@@ -1,0 +1,62 @@
+Loading original gallery and cached thenlper/gte-base...
+Columns in item corups: Index(['id', 'title', 'tags', 'release_date', 'visited_num'], dtype='object').
+{"stage": "original_gallery", "status": "PASS", "catalog_rows": 9888, "fuzzy_query": "Toy Stroy", "fuzzy_result": "Toys"}
+{"stage": "original_matrix_loaded", "status": "PASS", "shape": [9889, 9889], "dtype": "float64", "all_finite": true}
+{"stage": "original_sasrec_loaded", "status": "PASS", "class_name": "SASRec", "embedding_shape": [36255, 32], "training_mode": true}
+{"stage": "original_query", "status": "PASS", "sql": "SELECT id, title, release_date FROM movie_information WHERE title = 'Toy Story'", "output": [{"id": 1062, "title": "Toy Story", "release_date": 1995}]}
+{"stage": "original_buffer_store", "status": "PASS", "output": "2 candidate games are given by human in conversation and stored in buffer. Those games are visible to other tools to be further filtered and ranked.", "ids": [1062, 1023]}
+{"stage": "original_sql_filter", "status": "PASS", "sql": "SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30", "output": "Before Movie Properties Filtering Tool: There are 9887 candidates in buffer. \nMovie Properties Filtering Tool: The input SQL is rewritten as SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30 because some ['tags'] are not existing. \nAfter Movie Properties Filtering Tool: There are 30 eligible items. ", "ids": [988, 7, 1062, 96, 69, 1, 78, 84, 81, 200, 724, 79, 782, 555, 13, 83, 70, 700, 82, 85, 175, 1271, 335, 2, 558, 92, 895, 14, 482, 87]}
+{"stage": "original_popularity_rank", "status": "PASS", "output": "Before Movie Candidates Ranking Tool: There are 30 candidates in buffer. \nMovie Candidates Ranking Tool: Items are ranked according to their popularities. The ranked game ids are stored in buffer and are visible to all tools. \n"}
+{"stage": "original_similar_retrieval", "status": "PASS", "output": "Before Movie Similarity Filtering Tool: There are 9887 candidate in buffer. \nAfter Movie Similarity Filtering Tool: 493 items similar to ['Toy Story'] are selected and stored because their similarity scores are above the threshold. Those items are not sorted by similarity now. ", "candidate_count": 493}
+{"stage": "original_similarity_rank", "status": "PASS", "output": "Before Movie Candidates Ranking Tool: There are 493 candidates in buffer. \nMovie Candidates Ranking Tool: Items are ranked according to the similarity with seed items. The ranked game ids are stored in buffer and are visible to all tools. \n"}
+{"stage": "real_checkpoint_predict", "status": "PASS", "scores_shape": [1, 100], "all_finite": true}
+{"stage": "original_preference_rank", "status": "PASS", "output": "Before Movie Candidates Ranking Tool: There are 100 candidates in buffer. \nMovie Candidates Ranking Tool: ranking schema switch to 'preference' because 'prefer' info is given. \n{self.name}: Items are ranked according to the preference. The ranked game ids are stored in buffer and are visible to all tools. \n", "ranked_ids": [26, 29, 1, 8, 9, 73, 23, 31, 908, 700, 30, 68, 334, 91, 136, 28, 93, 7, 78, 180, 67, 155, 200, 170, 125, 27, 1365, 32, 1141, 346, 1157, 205, 92, 69, 81, 885, 184, 621, 199, 265, 777, 176, 79, 734, 106, 178, 10, 887, 721, 186, 656, 1160, 659, 710, 261, 332, 24, 988, 179, 1159, 487, 899, 960, 39, 724, 11, 177, 175, 40, 1161, 333, 260, 96, 482, 971, 436, 85, 242, 715, 630, 728, 135, 1003, 51, 620, 1193, 438, 624, 50, 254, 800, 131, 116, 979, 238, 558, 226, 723, 419, 486]}
+{"stage": "original_map", "status": "PASS", "output": "There is 100 candidates in buffer, select the first 3 as recommendation. Here are recommendations: Willy Wonka & the Chocolate Factory; Independence Day (a.k.a. ID4); Aladdin", "ids": [26, 29, 1], "titles": ["Willy Wonka & the Chocolate Factory", "Independence Day (a.k.a. ID4)", "Aladdin"]}
+{"stage": "original_agent_two_turn_scripted_replay", "status": "PASS", "memory_messages": 4, "remote_requests": 0}
+[96m[2026-10-01 22:55:33 DEBUG] [1mMode changed to accuracy.[0m[96m[0m
+Running on local URL:  http://127.0.0.1:52433
+[96m[2026-10-01 22:55:34 DEBUG] [1m
+Processing run_text, Input text: Recommend three comedy movies released since 1990.
+Current state: [[None, "Hello, I'm a conversational movie recommendation assistant. I'm here to help you discover your interested movies."], ['Recommend three comedy movies released since 1990.', None]]
+Current Memory: 
+
+[0m[96m[0m
+[96m[2026-10-01 22:55:41 DEBUG] [1mPlan: [{"tool_name": "Movie Properties Filtering Tool", "input": "SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30"}, {"tool_name": "Movie Candidates Ranking Tool", "input": "{\"schema\":\"popularity\"}"}, {"tool_name": "Mapping Tool", "input": "3"}][0m[96m[0m
+[96m[2026-10-01 22:55:41 DEBUG] [1m
+SQL from AGI: SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30[0m[96m[0m
+[96m[2026-10-01 22:55:41 DEBUG] [1mRewrite SQL: SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30[0m[96m[0m
+[96m[2026-10-01 22:55:41 DEBUG] [1mBefore Movie Properties Filtering Tool: There are 9887 candidates in buffer. 
+Movie Properties Filtering Tool: The input SQL is rewritten as SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30 because some ['tags'] are not existing. 
+After Movie Properties Filtering Tool: There are 30 eligible items. [0m[96m[0m
+[96m[2026-10-01 22:55:41 DEBUG] [1mExecution Result: 
+ There is 30 candidates in buffer, select the first 3 as recommendation. Here are recommendations: Pulp Fiction; Forrest Gump; Toy Story[0m[96m[0m
+[96m[2026-10-01 22:55:41 DEBUG] [1mResponse:
+ There is 30 candidates in buffer, select the first 3 as recommendation. Here are recommendations: Pulp Fiction; Forrest Gump; Toy Story
+[0m[96m[0m
+[96m[2026-10-01 22:55:41 DEBUG] [1m{'completion_tokens': 0, 'prompt_tokens': 0, 'total_tokens': 0, 'OAI': 2}[0m[96m[0m
+[96m[2026-10-01 22:55:41 DEBUG] [1mTime collapsed: 6.975927829742432 s.[0m[96m[0m
+[96m[2026-10-01 22:55:41 DEBUG] [1m
+Processing run_text, Input text: Give me three comedy movies again.
+Current state: [[None, "Hello, I'm a conversational movie recommendation assistant. I'm here to help you discover your interested movies."], ['Recommend three comedy movies released since 1990.', 'There is 30 candidates in buffer, select the first 3 as recommendation. Here are recommendations: Pulp Fiction; Forrest Gump; Toy Story'], ['Give me three comedy movies again.', None]]
+Current Memory: 
+
+Human: Recommend three comedy movies released since 1990. 
+Assistent: There is 30 candidates in buffer, select the first 3 as recommendation. Here are recommendations: Pulp Fiction; Forrest Gump; Toy Story 
+[0m[96m[0m
+[96m[2026-10-01 22:55:41 DEBUG] [1mPlan: [{"tool_name": "Movie Properties Filtering Tool", "input": "SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30"}, {"tool_name": "Movie Candidates Ranking Tool", "input": "{\"schema\":\"popularity\"}"}, {"tool_name": "Mapping Tool", "input": "3"}][0m[96m[0m
+[96m[2026-10-01 22:55:41 DEBUG] [1m
+SQL from AGI: SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30[0m[96m[0m
+[96m[2026-10-01 22:55:41 DEBUG] [1mRewrite SQL: SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30[0m[96m[0m
+[96m[2026-10-01 22:55:41 DEBUG] [1mBefore Movie Properties Filtering Tool: There are 9887 candidates in buffer. 
+Movie Properties Filtering Tool: The input SQL is rewritten as SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30 because some ['tags'] are not existing. 
+After Movie Properties Filtering Tool: There are 30 eligible items. [0m[96m[0m
+[96m[2026-10-01 22:55:41 DEBUG] [1mExecution Result: 
+ There is 30 candidates in buffer, select the first 3 as recommendation. Here are recommendations: Pulp Fiction; Forrest Gump; Toy Story[0m[96m[0m
+[96m[2026-10-01 22:55:41 DEBUG] [1mResponse:
+ There is 30 candidates in buffer, select the first 3 as recommendation. Here are recommendations: Pulp Fiction; Forrest Gump; Toy Story
+[0m[96m[0m
+[96m[2026-10-01 22:55:41 DEBUG] [1m{'completion_tokens': 0, 'prompt_tokens': 0, 'total_tokens': 0, 'OAI': 2}[0m[96m[0m
+[96m[2026-10-01 22:55:41 DEBUG] [1mTime collapsed: 0.1529710292816162 s.[0m[96m[0m
+Closing server running on port: 52433
+{"stage": "original_app_started_and_two_turn_callbacks", "status": "PASS", "http_status": 200, "turns": 2, "remote_api_requests": 0, "llm": "mock_transport_only"}
+{"success": true, "evidence_file": "native_app_result.json"}

@@ -1,0 +1,7 @@
+{
+  "source": "https://openaipublic.blob.core.windows.net/encodings/r50k_base.tiktoken",
+  "bytes": 835554,
+  "sha256": "306cd27f03c1a714eca7108e03d66b7dc042abe8c258b44c199a7ed9838dd930",
+  "downloaded_response_body_bytes": 835554,
+  "path": "reproduction/.runtime/isolated_profile/tiktoken/0ea1e91bbb3a60f729a8dc8f777fd2fc07cd8df4"
+}

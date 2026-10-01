@@ -1,0 +1,48 @@
+usage: Evaluator [-h] [--data DATA] [--max_turns MAX_TURNS] [--save SAVE]
+                 [--engine ENGINE] [--timeout TIMEOUT] [--agent AGENT]
+                 [--num_rec NUM_REC] [--max_candidate_num MAX_CANDIDATE_NUM]
+                 [--similar_ratio SIMILAR_RATIO] [--rank_num RANK_NUM]
+                 [--max_output_tokens MAX_OUTPUT_TOKENS]
+                 [--bot_type {chat,completion}] [--enable_shorten {0,1}]
+                 [--demo_mode {zero,fixed,dynamic}]
+                 [--demo_dir_or_file DEMO_DIR_OR_FILE] [--num_demos NUM_DEMOS]
+                 [--enable_reflection {0,1}]
+                 [--reflection_limits REFLECTION_LIMITS] [--plan_first {0,1}]
+                 [--langchain {0,1}]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --data DATA
+  --max_turns MAX_TURNS
+                        max turns limit for evaluation
+  --save SAVE           path to save conversation text
+  --engine ENGINE       Engine of OpenAI API to use as user simulator. The
+                        default is text-davinci-003
+  --timeout TIMEOUT     Timeout threshold when calling OAI. (seconds)
+  --agent AGENT         agent type, "recbot" is our method and others are
+                        baselines
+  --num_rec NUM_REC     number of items to be recommended
+  --max_candidate_num MAX_CANDIDATE_NUM
+                        Number of max candidate number of buffer
+  --similar_ratio SIMILAR_RATIO
+                        Ratio of returned similar items / total games
+  --rank_num RANK_NUM   Number of games given by ranking tool
+  --max_output_tokens MAX_OUTPUT_TOKENS
+                        Max number of tokens in LLM output
+  --bot_type {chat,completion}
+                        Type OpenAI models. The default is completion. Options
+                        [completion, chat]
+  --enable_shorten {0,1}
+                        Whether to enable shorten chat history with LLM
+  --demo_mode {zero,fixed,dynamic}
+                        Directory path of demonstrations
+  --demo_dir_or_file DEMO_DIR_OR_FILE
+                        Directory or file path of demonstrations
+  --num_demos NUM_DEMOS
+                        number of demos for in-context learning
+  --enable_reflection {0,1}
+                        Whether to enable reflection
+  --reflection_limits REFLECTION_LIMITS
+                        limits of reflection times
+  --plan_first {0,1}    Whether to use plan first agent
+  --langchain {0,1}     Whether to use langchain in plan-first agent

@@ -1,0 +1,13 @@
+test_index_outside_embedding_is_rejected (test_id_lookup.OriginalLookupTests.test_index_outside_embedding_is_rejected) ... ok
+test_larger_embedding_accepts_catalog_subset (test_id_lookup.OriginalLookupTests.test_larger_embedding_accepts_catalog_subset) ... ok
+test_original_ranker_passes_catalog_ids_without_remapping (test_id_lookup.OriginalLookupTests.test_original_ranker_passes_catalog_ids_without_remapping) ... ok
+test_transient_retry_and_cached_block_reuse (test_matrix_resume.MatrixResumeTests.test_transient_retry_and_cached_block_reuse) ... ok
+test_wrong_bounds_or_changed_cache_is_rejected (test_matrix_resume.MatrixResumeTests.test_wrong_bounds_or_changed_cache_is_rejected) ... ok
+test_directory_and_selected_member_read (test_remote_zip.RemoteZipTests.test_directory_and_selected_member_read) ... ok
+test_public_confirmation_form_scope (test_remote_zip.RemoteZipTests.test_public_confirmation_form_scope) ... ok
+test_wrong_or_unbounded_range_is_rejected (test_remote_zip.RemoteZipTests.test_wrong_or_unbounded_range_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 7.218s
+
+OK

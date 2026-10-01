@@ -1,0 +1,51 @@
+{
+  "success": true,
+  "full_movie_members": [
+    {
+      "name": "settings.json",
+      "path": "data/raw/upstream_movie/settings.json",
+      "bytes": 269,
+      "sha256": "22f83b97705cd891d84efb37c27b405c10b4ecbdef25ac5c1141ce219c149dc9",
+      "crc32": "1940949f",
+      "status": "PASS"
+    },
+    {
+      "name": "columns.json",
+      "path": "data/raw/upstream_movie/columns.json",
+      "bytes": 392,
+      "sha256": "5e063787c0f141956023300b41b88520eb6062c6556baef0170e94d8aa9ac0d0",
+      "crc32": "1a22559c",
+      "status": "PASS"
+    },
+    {
+      "name": "movies.ftr",
+      "path": "data/raw/upstream_movie/movies.ftr",
+      "bytes": 452706,
+      "sha256": "1a0e8687ba0c366cf4ab7837c591542f9bbb3b445ec4f4155fe1e932b58bb8c9",
+      "crc32": "eb7c4328",
+      "status": "PASS"
+    },
+    {
+      "name": "movie_sim.npy",
+      "path": "data/raw/upstream_movie/movie_sim.npy",
+      "bytes": 782338696,
+      "sha256": "b9fca7ef4738e1a25a821151d3d17afe1b55908423a7293a3fd477034eae0ef3",
+      "crc32": "7e57aff2",
+      "status": "PASS"
+    },
+    {
+      "name": "SASRec-SASRec.pth",
+      "path": "data/raw/upstream_movie/SASRec-SASRec.pth",
+      "bytes": 14909665,
+      "sha256": "814430acd5602e666b237c46c92ed48f56f2dce356da399af003a4b68ce1f678",
+      "crc32": "4ae78772",
+      "status": "PASS"
+    }
+  ],
+  "archive_downloaded": false,
+  "shared_id_semantics": "NOT VERIFIED",
+  "redistribution_license": "NOT VERIFIED",
+  "source": "Fixed upstream README public volunteer-provided all_resources.zip",
+  "local_download_authorized_by_user": true,
+  "redistributed": false
+}

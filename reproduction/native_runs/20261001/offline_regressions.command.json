@@ -1,0 +1,14 @@
+{
+  "command": [
+    "python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "reproduction/tests",
+    "-v"
+  ],
+  "started_at": "2026-10-01T14:53:16.310489+00:00",
+  "exit_code": 0,
+  "finished_at": "2026-10-01T14:53:24.766155+00:00"
+}

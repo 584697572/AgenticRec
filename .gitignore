@@ -12,3 +12,5 @@ artifacts/
 .env
 .env.*
 reproduction/logs/
+reproduction/.runtime/
+reproduction/.uv-cache/

@@ -1,0 +1,39 @@
+2026-10-01 22:55:28.584 | DEBUG    | llm4crs.query.query_tool:run:28 - 
+SQL from AGI: SELECT id, title, release_date FROM movie_information WHERE title = 'Toy Story'
+2026-10-01 22:55:28.585 | DEBUG    | llm4crs.query.query_tool:run:33 - Rewrite SQL: SELECT id, title, release_date FROM movie_information WHERE title = 'Toy Story'
+2026-10-01 22:55:29.126 | DEBUG    | llm4crs.query.query_tool:run:109 - Movie Information Look Up Tool: The input SQL is rewritten as SELECT id, title, release_date FROM movie_information WHERE title = 'Toy Story' because some dict_keys(['tags']) are not existing. 
+Movie Information Look Up Tool search result: [{"id": 1062, "title": "Toy Story", "release_date": 1995}]
+2026-10-01 22:55:29.195 | DEBUG    | llm4crs.retrieval.sql_tool:run:36 - 
+SQL from AGI: SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30
+2026-10-01 22:55:29.231 | DEBUG    | llm4crs.retrieval.sql_tool:run:39 - Rewrite SQL: SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30
+2026-10-01 22:55:29.287 | DEBUG    | llm4crs.retrieval.sql_tool:run:74 - Before Movie Properties Filtering Tool: There are 9887 candidates in buffer. 
+Movie Properties Filtering Tool: The input SQL is rewritten as SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30 because some ['tags'] are not existing. 
+After Movie Properties Filtering Tool: There are 30 eligible items. 
+2026-10-01 22:55:29.292 | DEBUG    | llm4crs.retrieval.itemcf_tool:run:27 - 
+Movie Similarity Filtering Tool input: ["Toy Story"]
+2026-10-01 22:55:29.338 | DEBUG    | llm4crs.retrieval.itemcf_tool:run:51 - Seed items: ['Toy Story']
+2026-10-01 22:55:29.426 | DEBUG    | llm4crs.ranking.reco_model_tool:run:119 - 'prefer' info is given, change the ranking schema to 'preference'.
+2026-10-01 22:55:29.689 | DEBUG    | llm4crs.agent_plan_first_openai:plan_and_exe:508 - Plan: [{"tool_name": "Movie Properties Filtering Tool", "input": "SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30"}, {"tool_name": "Movie Candidates Ranking Tool", "input": "{\"schema\":\"popularity\"}"}, {"tool_name": "Mapping Tool", "input": "3"}]
+2026-10-01 22:55:29.691 | DEBUG    | llm4crs.retrieval.sql_tool:run:36 - 
+SQL from AGI: SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30
+2026-10-01 22:55:29.725 | DEBUG    | llm4crs.retrieval.sql_tool:run:39 - Rewrite SQL: SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30
+2026-10-01 22:55:29.785 | DEBUG    | llm4crs.retrieval.sql_tool:run:74 - Before Movie Properties Filtering Tool: There are 9887 candidates in buffer. 
+Movie Properties Filtering Tool: The input SQL is rewritten as SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30 because some ['tags'] are not existing. 
+After Movie Properties Filtering Tool: There are 30 eligible items. 
+2026-10-01 22:55:29.788 | DEBUG    | llm4crs.agent_plan_first_openai:plan_and_exe:510 - Execution Result: 
+ There is 30 candidates in buffer, select the first 3 as recommendation. Here are recommendations: Pulp Fiction; Forrest Gump; Toy Story
+2026-10-01 22:55:29.788 | DEBUG    | llm4crs.agent_plan_first_openai:run:480 - Response:
+ There is 30 candidates in buffer, select the first 3 as recommendation. Here are recommendations: Pulp Fiction; Forrest Gump; Toy Story
+
+2026-10-01 22:55:29.837 | DEBUG    | llm4crs.agent_plan_first_openai:plan_and_exe:508 - Plan: [{"tool_name": "Movie Properties Filtering Tool", "input": "SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30"}, {"tool_name": "Movie Candidates Ranking Tool", "input": "{\"schema\":\"popularity\"}"}, {"tool_name": "Mapping Tool", "input": "3"}]
+2026-10-01 22:55:29.840 | DEBUG    | llm4crs.retrieval.sql_tool:run:36 - 
+SQL from AGI: SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30
+2026-10-01 22:55:29.870 | DEBUG    | llm4crs.retrieval.sql_tool:run:39 - Rewrite SQL: SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30
+2026-10-01 22:55:29.920 | DEBUG    | llm4crs.retrieval.sql_tool:run:74 - Before Movie Properties Filtering Tool: There are 9887 candidates in buffer. 
+Movie Properties Filtering Tool: The input SQL is rewritten as SELECT id FROM movie_information WHERE tags LIKE '%Comedy%' AND release_date >= 1990 ORDER BY visited_num DESC LIMIT 30 because some ['tags'] are not existing. 
+After Movie Properties Filtering Tool: There are 30 eligible items. 
+2026-10-01 22:55:29.924 | DEBUG    | llm4crs.agent_plan_first_openai:plan_and_exe:510 - Execution Result: 
+ There is 30 candidates in buffer, select the first 3 as recommendation. Here are recommendations: Pulp Fiction; Forrest Gump; Toy Story
+2026-10-01 22:55:29.924 | DEBUG    | llm4crs.agent_plan_first_openai:run:480 - Response:
+ There is 30 candidates in buffer, select the first 3 as recommendation. Here are recommendations: Pulp Fiction; Forrest Gump; Toy Story
+

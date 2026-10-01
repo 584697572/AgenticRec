@@ -1,5 +1,19 @@
 # 重大决策
 
+## ADR-006：A1 采用工作区内 Python3.9、CPU构建与 zero-demo 兼容环境
+
+- 最终验证（2026-10-01）：采用，T02 DONE。174个实际包版本在第二个离线环境逐项一致；pip check、完整native导入、原SDK本地HTTP mock通过。发生HfFolder/cached_download和Bert调用split_torch_state_dict_into_shards兼容错误后，固定Hub0.16.4、Transformers4.33.2、Tokenizers0.13.3、Accelerate0.23.0；没有全局降级SDK。
+- 实际运行：5个完整电影成员CRC/SHA通过；原Gallery以真实gte-base编码9888标题；原SASRec的36个state key和数值全部与checkpoint一致，并对9888目录项产生有限分数。原查询、过滤、相似召回及三个排序schema通过。原app.py在loopback返回HTTP200，两轮回调通过，但LLM HTTP响应明确是fixture。正式性能指标均NOT EVALUATED。
+- 当前路线：保留A1原资源兼容功能路线，原始Python源码完全未改，仅副本requirements发生兼容差异，diff已导出。T03仍IN_PROGRESS（ID语义/来源/独立授权待核验），T04仍BLOCKED（真实LLM授权与原eval数据缺失）。没有转B、没有提前训练或Agent增强。以下记录保留安装过程；最终事实以上述native证据为准。
+
+- 原要求：README Python3.9 + 原 requirements；隔离 legacy/dev，不改系统CUDA，先关闭demo/reflection/shortening缩小复现面。
+- 实测：系统无3.9/Conda。下载固定uv0.9.2及托管CPython3.9.24到工作区，禁止系统命令和注册表写入；创建独立venv。原requirements解析成功，安装先因greenlet需要C++编译器失败；固定兼容wheel2.0.2后又因chroma-hnswlib0.7.2缺Windows编译环境失败，原始日志保留。
+- 最小替代：PyTorch1.13.1+cpu处于原版允许范围，减少下载并不改系统驱动；UniRec固定0.0.1a4。zero-demo入口不实例化Chroma，仅从本地兼容依赖清单排除chromadb固定项；其他原版固定包保留。动态demo暂NOT VERIFIED，不安装系统级编译工具，不偷偷升级Chroma算法。成功依赖组合须实测后锁定，不能将当前input文件视作成功lock。
+- 源码隔离：原RecAI保持pristine，在忽略目录复制固定InteRecAgent；最小兼容改动先保留失败测试、再改copy，最终导出独立patch。原表/矩阵/权重来自README原包，已下载小文件复用，不创建替代矩阵。
+- 资源网络：完整电影checkpoint CRC/SHA通过，使用当前已安装Torch的weights_only读取真实参数，明确不是legacy模型运行。矩阵下载曾TLS中断，保留失败证据并使用经测试的分块缓存/有限重试，TLS始终校验。
+- 比较影响：CPU环境与zero-demo/固定依赖仅用于A1兼容功能验证，不能当A2论文设置或GPU性能结果。共同ID语义风险独立标注，不能因工具输出就宣称准确率提升。
+- 真实LLM：规范§3.3默认预算0，已异步请求提供商/model/限额与安全密钥配置；收到前继续全部离线工作，不擅自付费。
+
 ## ADR-005：撤回冻结 B，恢复 A1 优先核查
 
 - 日期：2026-10-01；状态：采用；取代 ADR-004 的最终路线决定，旧条目保留历史。

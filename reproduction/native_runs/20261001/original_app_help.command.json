@@ -1,0 +1,15 @@
+{
+  "command": [
+    "python",
+    "reproduction/scripts/run_isolated.py",
+    "--cwd",
+    "D:/AgenticRec/reproduction/.runtime/InteRecAgent-compat",
+    "--",
+    "D:/AgenticRec/reproduction/.venv-legacy/Scripts/python.exe",
+    "app.py",
+    "--help"
+  ],
+  "started_at": "2026-10-01T14:37:31.989276+00:00",
+  "exit_code": 0,
+  "finished_at": "2026-10-01T14:37:48.847437+00:00"
+}

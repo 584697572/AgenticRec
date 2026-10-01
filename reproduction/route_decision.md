@@ -1,4 +1,8 @@
-# T03 路线复核：恢复 A1 调查
+# T03 路线：A1 原资源兼容功能，完整验收仍待前置
+
+2026-10-01最新结论：继续A1，不启用B。T02 DONE；完整原movie资源、真实原SASRec加载/推理及原工具链已通过，原app.py的loopback启动和两轮mock-LLM回调也通过。权威ID语义、预制包来源/独立授权未全部闭合，T03 IN_PROGRESS；真实LLM授权和原eval数据缺失，T04 BLOCKED。完整A1仍NOT VERIFIED，A2 not_run，正式指标NOT EVALUATED。
+
+证据：`native_runs/20261001/`、`environment_legacy.json`、`resource_manifest.json`和`UPSTREAM_REPRODUCTION.md`。兼容diff仅requirements；固定upstream原Python源码不变。以下是ADR-005重开调查时的历史快照，其中“完整权重未下载/未安装”描述已被本轮真实执行取代。
 
 2026-10-01，T03 **IN_PROGRESS**；候选路线 **A1**，最终路线 **NOT VERIFIED**。ADR-005 撤回上轮冻结 B 的决定。A1/U0 原版运行尚未验收；U0/A2 `not_run`，所有指标 **NOT EVALUATED**。
 

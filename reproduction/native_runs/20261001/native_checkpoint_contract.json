@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "checkpoint_sha256": "814430acd5602e666b237c46c92ed48f56f2dce356da399af003a4b68ce1f678",
+  "original_loader": "unirec.utils.general.load_model_freely",
+  "torch": "1.13.1+cpu",
+  "state_key_count": 36,
+  "all_keys_and_weights_exactly_equal": true,
+  "missing_keys": [],
+  "unexpected_keys": [],
+  "scores_shape": [
+    1,
+    9888
+  ],
+  "all_scores_finite": true,
+  "training_mode_preserved": true,
+  "title_mapping": "NOT VERIFIED",
+  "recommendation_quality": "NOT EVALUATED"
+}

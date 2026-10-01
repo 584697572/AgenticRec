@@ -1,0 +1,28 @@
+{
+  "scope": "original_wrapper_real_sdk_mock_transport",
+  "success": true,
+  "remote_api_requests": 0,
+  "live_connection": "NOT VERIFIED",
+  "usage_is_fixture_not_measurement": true,
+  "requests": [
+    {
+      "path": "/v1/chat/completions",
+      "body": {
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a helpful assistent."
+          },
+          {
+            "role": "user",
+            "content": "test original SDK path"
+          }
+        ],
+        "model": "offline-sdk-fixture",
+        "max_tokens": 16,
+        "temperature": 0.0
+      }
+    }
+  ],
+  "output": "SDK fixture response"
+}

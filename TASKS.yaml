@@ -40,12 +40,14 @@
         "T00",
         "T01"
       ],
-      "status": "TODO",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T02",
       "condition": "原环境可获得；失败可阻塞 A 路径但不能假装完成，也不阻塞独立 B 路径。",
       "deliverables": "`reproduction/environment_legacy.json`；`reproduction/legacy_compat.patch`；`reproduction/requirements.legacy.lock.txt`。",
       "acceptance": "环境可重建；或存在具体 BLOCKED 日志和 B 路径决定。 兼容补丁没有混入推荐增强。",
-      "checks": "`python -m pip check`；`仅运行已验证不会自动调 API 的 import/adapter mock 测试`。"
+      "checks": "`python -m pip check`；`仅运行已验证不会自动调 API 的 import/adapter mock 测试`。",
+      "evidence": "reproduction/environment_legacy.json; reproduction/native_runs/20261001/",
+      "verification": "pip check, actual native imports, original SDK mock and offline rebuild with all 174 package versions identical PASS"
     },
     {
       "id": "T03",
@@ -61,9 +63,9 @@
       "deliverables": "`reproduction/resource_manifest.json`；`reproduction/route_decision.md`。",
       "acceptance": "访问状态与报告来源区分清楚。 A/B 路线、原因、缺失资源和数据合规记录齐全。",
       "checks": "`静态验证资源清单；下载/加载前按权限门禁执行`。",
-      "evidence": "reproduction/t03_recheck_evidence_index.json",
-      "verification": "Six offline source/fixture tests pass; extra embedding rows accepted. Original checkpoint and authoritative shared ID semantics NOT VERIFIED.",
-      "remaining": "Final A/B route reopened by ADR-005; original checkpoint loading, training mapping/provenance and legacy compatibility pending."
+      "evidence": "reproduction/resource_manifest.json; reproduction/native_runs/20261001/",
+      "verification": "All five movie member CRC/SHA checks, original gallery/matrix and exact real checkpoint state loading PASS",
+      "remaining": "Authoritative checkpoint title mapping, matrix row semantics and prebuilt resource license unresolved; A1 functional route retained"
     },
     {
       "id": "T04",
@@ -80,7 +82,8 @@
       "deliverables": "`reproduction/UPSTREAM_REPRODUCTION.md`；`reproduction/native_runs/`。",
       "acceptance": "原始输出、配置和数据哈希可追溯；未运行项为 not_run。 原文模糊命中不标为 ID NDCG。",
       "checks": "`规范5.3的原 app.py 与 one_turn_eval.py 命令（前置完成后）`。",
-      "reason": "Original runtime not_run: complete resources, legacy environment and authoritative shared ID semantics NOT VERIFIED. Dimension inequality alone is not a runtime blocker."
+      "reason": "Offline native preflight PASS, including original app loopback HTTP200 and two mock-LLM turns. Live budget/provider/model, original evaluation data and T03 semantics/provenance prerequisites remain unresolved",
+      "evidence": "reproduction/UPSTREAM_REPRODUCTION.md; reproduction/native_runs/20261001/"
     },
     {
       "id": "T05",

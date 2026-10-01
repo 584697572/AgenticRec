@@ -3,3 +3,5 @@
 # Preserve imported baseline files byte-for-byte on future checkouts.
 AgenticRec_完整复现与优化执行规范.md -text
 LICENSE.txt -text
+# Native outputs/configs are evidence; preserve their actual recorded bytes.
+reproduction/native_runs/** -text

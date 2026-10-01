@@ -1,0 +1,9 @@
+{
+  "command": [
+    "python",
+    "reproduction/scripts/verify_a1.py"
+  ],
+  "started_at": "2026-10-01T15:15:28.806308+00:00",
+  "exit_code": 0,
+  "finished_at": "2026-10-01T15:15:30.517848+00:00"
+}

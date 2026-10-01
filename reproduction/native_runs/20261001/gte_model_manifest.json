@@ -1,0 +1,61 @@
+{
+  "model": "thenlper/gte-base",
+  "revision": "c078288308d8dee004ab72c6191778064285ec0c",
+  "files": [
+    {
+      "name": "1_Pooling/config.json",
+      "bytes": 190,
+      "sha256": "a37f83ada23e7887be6b88f4998927dbeac0038af301553c7cd5461413bf1a56",
+      "lfs_sha256_verified": false
+    },
+    {
+      "name": "config.json",
+      "bytes": 618,
+      "sha256": "88bed05d7640945dd2de4b4e81fbe4dd962289c32fc1c0aacfd13deb7ea90155",
+      "lfs_sha256_verified": false
+    },
+    {
+      "name": "modules.json",
+      "bytes": 385,
+      "sha256": "73348a3d8f8ae4cc5f851dc6b98be3ea819390b814e83656d5eebbadf75fe43e",
+      "lfs_sha256_verified": false
+    },
+    {
+      "name": "pytorch_model.bin",
+      "bytes": 218995711,
+      "sha256": "0e9f33b61f645b1ea2c8bf328601259473dd7e9d837b67c1a1eabb28abe1c5be",
+      "lfs_sha256_verified": true
+    },
+    {
+      "name": "sentence_bert_config.json",
+      "bytes": 57,
+      "sha256": "948201d8329907aae938fa62f9ceeed53f5694dacc2b87b9f3b78b37ee986529",
+      "lfs_sha256_verified": false
+    },
+    {
+      "name": "special_tokens_map.json",
+      "bytes": 125,
+      "sha256": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+      "lfs_sha256_verified": false
+    },
+    {
+      "name": "tokenizer.json",
+      "bytes": 711661,
+      "sha256": "da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0",
+      "lfs_sha256_verified": false
+    },
+    {
+      "name": "tokenizer_config.json",
+      "bytes": 314,
+      "sha256": "ae83fa6ca0333117ff12606020af925d648667ef70d92ff7f27d781ba0ca4544",
+      "lfs_sha256_verified": false
+    },
+    {
+      "name": "vocab.txt",
+      "bytes": 231508,
+      "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+      "lfs_sha256_verified": false
+    }
+  ],
+  "unnecessary_onnx_safetensors_tf_downloaded": false
+}

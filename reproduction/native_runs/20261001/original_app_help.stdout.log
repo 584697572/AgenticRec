@@ -1,0 +1,43 @@
+usage: app.py [-h] [--port PORT] [--max_candidate_num MAX_CANDIDATE_NUM]
+              [--similar_ratio SIMILAR_RATIO] [--rank_num RANK_NUM]
+              [--max_output_tokens MAX_OUTPUT_TOKENS] [--engine ENGINE]
+              [--bot_type {chat,completion}] [--enable_shorten {0,1}]
+              [--demo_mode {zero,fixed,dynamic}]
+              [--demo_dir_or_file DEMO_DIR_OR_FILE] [--num_demos NUM_DEMOS]
+              [--enable_reflection {0,1}]
+              [--reflection_limits REFLECTION_LIMITS] [--plan_first {0,1}]
+              [--langchain {0,1}] [--reply_style {concise,detailed}]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --port PORT
+  --max_candidate_num MAX_CANDIDATE_NUM
+                        Number of max candidate number of buffer
+  --similar_ratio SIMILAR_RATIO
+                        Ratio of returned similar items / total games
+  --rank_num RANK_NUM   Number of games given by ranking tool
+  --max_output_tokens MAX_OUTPUT_TOKENS
+                        Max number of tokens in LLM output
+  --engine ENGINE       Engine of OpenAI API to use. The default is text-
+                        davinci-003
+  --bot_type {chat,completion}
+                        Type OpenAI models. The default is completion. Options
+                        [completion, chat]
+  --enable_shorten {0,1}
+                        Whether to enable shorten chat history with LLM
+  --demo_mode {zero,fixed,dynamic}
+                        Directory path of demonstrations
+  --demo_dir_or_file DEMO_DIR_OR_FILE
+                        Directory or file path of demonstrations
+  --num_demos NUM_DEMOS
+                        number of demos for in-context learning
+  --enable_reflection {0,1}
+                        Whether to enable reflection
+  --reflection_limits REFLECTION_LIMITS
+                        limits of reflection times
+  --plan_first {0,1}    Whether to use plan first agent
+  --langchain {0,1}     Whether to use langchain in plan-first agent
+  --reply_style {concise,detailed}
+                        Reply style of the assistent. If detailed, details
+                        about the recommendation would be give. Otherwise,
+                        only item names would be given.
