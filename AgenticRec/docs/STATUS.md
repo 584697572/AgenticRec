@@ -1,5 +1,10 @@
 # 项目状态
 
+## 2026-10-02 真实LLM配置指导
+
+用户请求开始指导真实LLM运行。已提供LIVE_LLM_GUIDE、默认禁用的公开参数模板和不调用网络的preflight。配置/budget门禁3项测试通过；provider/model/Base URL/请求及token限额/金额预算等待用户答复，真实请求0，连接NOT VERIFIED。T04保持BLOCKED，其他资源/原评测前置未改变。当前操作先同终端注入Key→公开profile→preflight，再在授权齐备后准备单次连接；不把CONFIG_READY当连接成功。
+以下为已验证的原资源离线运行快照；旧a1_evidence_index对应commit74c4fb5及当时文件内容，不用于新文档的当前hash。
+
 最后验证：2026-10-01（Asia/Shanghai）。阶段G0收尾/A1原版运行前置检查；G1完整复现尚未验收。
 规范完整读取且SHA不变；固定upstream保持pristine。本轮已跑通原资源离线工具链及原app的受控回调；真实LLM与评测仍有外部前置。
 

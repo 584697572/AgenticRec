@@ -1,5 +1,7 @@
 # 原版运行检查
 
+2026-10-02真实LLM接入指导见[LIVE_LLM_GUIDE.md](LIVE_LLM_GUIDE.md)：先本机安全配置和零请求preflight，再按授权额度做单次真实连接。CONFIG_READY不等于连接验证通过。
+
 规范和固定upstream不变；先读`UPSTREAM_REPRODUCTION.md`确认已验证范围及未完成事项。
 数据、checkpoint、解释器、模型cache及原始日志都留在本地忽略目录。资源获取脚本不会下载其他两个domain或完整ZIP；不得以fixture结果填写正式指标。
 

@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-02",
+  "tests": {
+    "preflight_tests": {
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reproduction/tests",
+        "-p",
+        "test_live_llm_preflight.py",
+        "-v"
+      ],
+      "exit_code": 0
+    },
+    "default_denied": {
+      "command": [
+        "python",
+        "reproduction/scripts/live_llm_preflight.py",
+        "--profile",
+        "reproduction/live_llm.example.json"
+      ],
+      "exit_code": 2
+    },
+    "unknown_flag_denied": {
+      "command": [
+        "python",
+        "reproduction/scripts/live_llm_preflight.py",
+        "--wrong-flag"
+      ],
+      "exit_code": 2
+    }
+  },
+  "remote_api_requests": 0,
+  "live_connection": "NOT VERIFIED",
+  "files": [
+    {
+      "path": "STATUS.md",
+      "sha256": "12be29162a2cbede08a5f9e40b230167e514e78175f4cfe8a79a0287f3180f65"
+    },
+    {
+      "path": "AgenticRec/docs/STATUS.md",
+      "sha256": "4527b8d71b23dabb0855a32722806b1e160fa63c098eb6d529387d2b3060e414"
+    },
+    {
+      "path": "reproduction/README.md",
+      "sha256": "6c89f306448f04802801fe531c005aec9bc97b5681fe06ece4b456c82890c2ed"
+    },
+    {
+      "path": "reproduction/LIVE_LLM_GUIDE.md",
+      "sha256": "ed1741c37095984fc55b61114a6dc5b7556b42c8e1813a7f81a63e44f3548832"
+    },
+    {
+      "path": "reproduction/live_llm.example.json",
+      "sha256": "4212d5a5bc6cefbe27c952cc81b94c50fdd983f4b93f14191274b3d443e6dd0f"
+    },
+    {
+      "path": "reproduction/scripts/live_llm_preflight.py",
+      "sha256": "9bf545945f91452b6e90e8f82d49858267d914ac1f9f400999f48f83c7ac6e1d"
+    },
+    {
+      "path": "reproduction/tests/test_live_llm_preflight.py",
+      "sha256": "eb329bc4775c2b64c2d97d1e4291c4c1fcbae04eb60923e4e7b892f988d9dbf6"
+    },
+    {
+      "path": "reports/live_llm_setup_20261002.md",
+      "sha256": "9a599b72aad266d76eb4df75036e3bc535ff9b6ea603964b0c1c92f2778cf90f"
+    }
+  ],
+  "interpreter": "Python 3.13.7; executable path omitted from public evidence",
+  "hash_scope": "workspace file bytes at verification time",
+  "additional_checks": {
+    "all_offline_tests": {
+      "exit_code": 0,
+      "tests_run": 11,
+      "command": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "reproduction/tests",
+        "-v"
+      ],
+      "raw_output_scope": "verified tool output; archived new-test logs listed separately"
+    },
+    "legacy_new_tests": {
+      "exit_code": 0,
+      "tests_run": 3,
+      "interpreter": "reproduction/.venv-legacy/Scripts/python.exe"
+    },
+    "source_docs_diff_check": {
+      "exit_code": 0,
+      "excludes": "unaltered native raw outputs"
+    }
+  }
+}

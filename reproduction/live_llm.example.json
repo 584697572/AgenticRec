@@ -1,0 +1,12 @@
+{
+  "provider": null,
+  "api_type": "open_ai",
+  "api_base": null,
+  "api_version": null,
+  "model_id": null,
+  "allow_paid_api": false,
+  "api_request_cap": 0,
+  "max_output_tokens": null,
+  "money_budget": null,
+  "budget_unit": null
+}
