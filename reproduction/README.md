@@ -2,6 +2,8 @@
 
 2026-10-02真实LLM接入指导见[LIVE_LLM_GUIDE.md](LIVE_LLM_GUIDE.md)：先本机安全配置和零请求preflight，再按授权额度做单次真实连接。CONFIG_READY不等于连接验证通过。
 
+2026-10-04：原OpenAICall经现有SDK真实连接DeepSeek通过，HTTP200、OK、usage=12+1=13；原app真实单轮/多轮尚未验证。唯一授权尝试已消耗；不要删除额度记录来重复运行。见[连接报告](../reports/live_connection_20261004.md)和[native_runs/20261004](native_runs/20261004/)。16项离线回归通过；SDK/HTTP新增测试使用现有legacy解释器运行：`reproduction/.venv-legacy/Scripts/python.exe -m unittest discover -s reproduction/tests -v`。
+
 规范和固定upstream不变；先读`UPSTREAM_REPRODUCTION.md`确认已验证范围及未完成事项。
 数据、checkpoint、解释器、模型cache及原始日志都留在本地忽略目录。资源获取脚本不会下载其他两个domain或完整ZIP；不得以fixture结果填写正式指标。
 
@@ -42,5 +44,5 @@ python reproduction/scripts/run_isolated.py -- reproduction/.venv-legacy/Scripts
 
 规范§3.3/§5.3规定默认`allow_paid_api=false`、`api_request_cap=0`。
 必须由用户明确提供/授权provider、model ID、请求上限、token上限、金额预算及单位，并在本机安全配置密钥；不要写入Git或聊天。
-原app与原eval调用模板按规范§5.3执行。当前未授权真实调用；原eval数据文件也未获得，不把自造smoke样例当原数据。
+原app与原eval调用模板按规范§5.3执行。首次真实连接授权已消耗1/1；原app/评测新请求另需额度授权。原eval数据文件仍未获得，不把自造smoke样例当原数据。
 完整资源可加载不证明checkpoint共享ID语义正确；正式评测还需权威训练映射、来源与资源授权核验。

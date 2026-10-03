@@ -82,8 +82,8 @@
       "deliverables": "`reproduction/UPSTREAM_REPRODUCTION.md`；`reproduction/native_runs/`。",
       "acceptance": "原始输出、配置和数据哈希可追溯；未运行项为 not_run。 原文模糊命中不标为 ID NDCG。",
       "checks": "`规范5.3的原 app.py 与 one_turn_eval.py 命令（前置完成后）`。",
-      "reason": "Offline native preflight PASS, including original app loopback HTTP200 and two mock-LLM turns. Live budget/provider/model, original evaluation data and T03 semantics/provenance prerequisites remain unresolved",
-      "evidence": "reproduction/UPSTREAM_REPRODUCTION.md; reproduction/native_runs/20261001/"
+      "reason": "Original tools/app mock PASS; original OpenAICall live DeepSeek connection VERIFIED on 2026-10-04 (HTTP200, 13 tokens, 1/1 authorized attempt consumed). Live original-app single/multiple turns and their additional API authorization, original evaluation data, and T03 semantics/provenance remain unresolved",
+      "evidence": "reproduction/UPSTREAM_REPRODUCTION.md; reproduction/native_runs/20261001/; reproduction/native_runs/20261004/; reports/live_connection_20261004.md"
     },
     {
       "id": "T05",

@@ -1,0 +1,10 @@
+{
+  "status": "BLOCKED",
+  "api_requests": 0,
+  "key_present": false,
+  "missing_or_invalid": [
+    "OPENAI_API_KEY in this terminal"
+  ],
+  "live_connection": "NOT VERIFIED",
+  "paid_calls_authorized_by_this_check": false
+}

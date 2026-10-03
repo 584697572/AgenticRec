@@ -1,0 +1,7 @@
+{
+  "status": "BLOCKED",
+  "reason": "configuration_or_key_missing",
+  "authorization_id": "deepseek-connection-20261004",
+  "http_attempts": 0,
+  "live_connection": "NOT VERIFIED"
+}

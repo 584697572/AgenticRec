@@ -1,0 +1,31 @@
+[
+  {
+    "name": "offline_tests",
+    "command": [
+      "legacy-python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "reproduction/tests",
+      "-v"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "connection_no_agent_key",
+    "command": [
+      "legacy-python",
+      "reproduction/scripts/live_llm_connection.py"
+    ],
+    "exit_code": 2
+  },
+  {
+    "name": "preflight_no_agent_key",
+    "command": [
+      "python",
+      "reproduction/scripts/live_llm_preflight.py"
+    ],
+    "exit_code": 2
+  }
+]

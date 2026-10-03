@@ -1,5 +1,15 @@
 # 重大决策
 
+## ADR-007：授权的单次 DeepSeek 连接由独立测试层限制
+
+- 日期：2026-10-04；状态：采用；单次真实连接VERIFIED，原app仍NOT VERIFIED。
+- 原要求：规范§3.3/§5.3，在真实工具冒烟后先单次LLM连接；明确provider/model/请求/token/金额限额，统一重试控制，不把Key写入文件、不改原baseline。
+- 发现：用户已授权一次连接、输出128 token、1 CNY，并在自己的PowerShell配置Key；Codex执行终端没有Key。原OpenAICall默认外层重试5次、SDK还有默认重试，且未显式选择DeepSeek非思考模式。
+- 最小实现：单独脚本直接加载固定upstream且校验原文件SHA，不改任何原方法体；测试层OpenAI工厂设置SDK max_retries=0、原wrapper retry_limits=1、HTTP retries=0、不跟随重定向，仅对固定短提示额外配置thinking disabled。独占、fsync的固定额度记录在发送前创建，跨进程重复调用、失败和超时均不自动返还额度。不进行额外余额/model-list API查询。
+- 依据：[DeepSeek官方Chat Completions](https://api-docs.deepseek.com/api/create-chat-completion/)及[人民币价格](https://api-docs.deepseek.com/zh-cn/quick_start/pricing/)，2026-10-04核对。固定提示的1024输入token规划额度不是tokenizer认证上限；输出限制128。费用上界估计按公开高峰率，实际扣费未查询则null；未实现供应商账单硬限额。
+- 可比性：这是A1兼容功能的单次原SDK连接证据，改变服务模型和非思考选项须公开，不能算A2论文设置或完整原app复现。受限脚本不授权原UI/单轮/多轮/评测的新请求。原算法、prompt模板和源码保持原样，无新训练或Agent增强。
+- 验证：用户同终端完成真实HTTP200/OK，actual usage=12输入+1输出=13，唯一尝试已消耗；原始结果/额度已核对。16项离线测试通过，包括真实SDK+mock HTTP成功、500、超时、重定向及额度/配置门禁。fixture usage明确标注，不写入正式实验指标；已消耗真实额度的门禁验证不新增调用且保留原结果。原app单轮/多轮需另行明确限额，未传输Key。
+
 ## ADR-006：A1 采用工作区内 Python3.9、CPU构建与 zero-demo 兼容环境
 
 - 最终验证（2026-10-01）：采用，T02 DONE。174个实际包版本在第二个离线环境逐项一致；pip check、完整native导入、原SDK本地HTTP mock通过。发生HfFolder/cached_download和Bert调用split_torch_state_dict_into_shards兼容错误后，固定Hub0.16.4、Transformers4.33.2、Tokenizers0.13.3、Accelerate0.23.0；没有全局降级SDK。

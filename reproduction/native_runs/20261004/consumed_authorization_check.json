@@ -1,0 +1,13 @@
+{
+  "scope": "offline_fixture_check_of_consumed_live_ledger",
+  "result": {
+    "status": "BLOCKED",
+    "reason": "authorized_attempt_already_reserved",
+    "authorization_id": "deepseek-connection-20261004",
+    "http_attempts": 0,
+    "live_connection": "NOT VERIFIED"
+  },
+  "fixture_http_calls": 0,
+  "new_real_requests": 0,
+  "old_evidence_bytes_unchanged": true
+}

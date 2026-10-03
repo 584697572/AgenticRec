@@ -1,0 +1,21 @@
+test_index_outside_embedding_is_rejected (test_id_lookup.OriginalLookupTests) ... ok
+test_larger_embedding_accepts_catalog_subset (test_id_lookup.OriginalLookupTests) ... ok
+test_original_ranker_passes_catalog_ids_without_remapping (test_id_lookup.OriginalLookupTests) ... ok
+test_invalid_authorization_or_missing_key_has_no_attempt (test_live_llm_connection.ConnectionTests) ... ok
+test_redirect_is_not_followed (test_live_llm_connection.ConnectionTests) ... ok
+test_server_error_no_retry_and_no_secret_in_report (test_live_llm_connection.ConnectionTests) ... ok
+test_success_original_sdk_payload_and_repeat_denied (test_live_llm_connection.ConnectionTests) ... ok
+test_timeout_consumes_attempt_without_retry (test_live_llm_connection.ConnectionTests) ... ok
+test_default_profile_never_authorizes_calls (test_live_llm_preflight.LivePreflightTests) ... ok
+test_ready_is_configuration_only_and_has_no_secret (test_live_llm_preflight.LivePreflightTests) ... ok
+test_rejects_zero_budget_boolean_integer_and_embedded_secret (test_live_llm_preflight.LivePreflightTests) ... ok
+test_transient_retry_and_cached_block_reuse (test_matrix_resume.MatrixResumeTests) ... ok
+test_wrong_bounds_or_changed_cache_is_rejected (test_matrix_resume.MatrixResumeTests) ... ok
+test_directory_and_selected_member_read (test_remote_zip.RemoteZipTests) ... ok
+test_public_confirmation_form_scope (test_remote_zip.RemoteZipTests) ... ok
+test_wrong_or_unbounded_range_is_rejected (test_remote_zip.RemoteZipTests) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 25.200s
+
+OK

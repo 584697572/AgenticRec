@@ -1,6 +1,6 @@
-# 原版复现阶段报告（2026-10-01）
+# 原版复现阶段报告（2026-10-04更新）
 
-原版**离线工具链和受控应用运行已通过**：固定InteRecAgent、原电影目录/矩阵、原SASRec权重、原gte-base，没有方法级重建或新增模型。原app.py真实启动HTTP200，两轮回调使用mock LLM响应。**真实LLM对话NOT VERIFIED；原评测NOT EVALUATED；完整A1尚未验收，A2 not_run。**
+原版**离线工具链和受控应用运行已通过**：固定InteRecAgent、原电影目录/矩阵、原SASRec权重、原gte-base，没有方法级重建或新增模型。原app.py真实启动HTTP200，两轮回调使用mock LLM响应。2026-10-04原OpenAICall真实DeepSeek连接通过，HTTP200、OK、usage=12+1=13，唯一授权尝试已消耗。**原app真实单轮/多轮NOT VERIFIED；原评测NOT EVALUATED；完整A1尚未验收，A2 not_run。** 连接结果详见[本轮报告](../reports/live_connection_20261004.md)与[native_runs/20261004](native_runs/20261004/)；其余2026-10-01历史运行证据保持原样。
 
 ## Completed
 
@@ -50,7 +50,8 @@ python -m unittest discover -s reproduction/tests -v
 | 原SDK | PASS（mock HTTP） | 真实SDK序列化及响应解析；不是连接证明 |
 | 离线回归 | PASS | 8项 |
 | checkpoint标题语义/矩阵ID顺序 | NOT VERIFIED | 没有权威mapping；运行成功不能替代语义核验 |
-| 真实LLM连接/单轮/多轮 | not_run / NOT VERIFIED | 无provider/model与预算授权 |
+| 原wrapper真实LLM单次连接 | PASS / VERIFIED（2026-10-04） | DeepSeek，HTTP200/OK，13 token；本地原始记录已核对 |
+| 原app真实单轮/多轮 | not_run / NOT VERIFIED | 本次连接授权1/1已消耗，后续调用额度另需确认 |
 | 原数据/原指标评测 | not_run / NOT EVALUATED | 原eval数据未获得 |
 | 论文设置A2 | not_run | 没有原模型/数据/完整实验条件 |
 
@@ -68,7 +69,7 @@ python -m unittest discover -s reproduction/tests -v
 
 ## Blockers
 
-1. 规范§3.3/§5.3明确要求真实API调用先授权provider、model ID、请求/token上限、预算金额与单位，并安全配置密钥。目前allow_paid_api=false、api_request_cap=0。
+1. 原wrapper单次真实连接已通过（deepseek-flash，128输出上限，1 CNY预算，1/1尝试已消耗）；原app单轮/多轮和其新增调用额度尚未完成。通用模板仍默认禁用，不重置已消耗记录。
 2. 原评测JSONL不在固定仓库/原资源包内；preprocess_redial.ipynb依赖外部UniCRS文件和原有选择过程。不能自造两条样例冒充原评测。
 3. 权威训练mapping、矩阵ID语义、预制包独立授权仍NOT VERIFIED。notebook保存映射冲突是风险线索，不能直接证明checkpoint标签；未开展公平推荐质量评测。
 
@@ -83,4 +84,4 @@ T00/T01/T02 DONE，T03 IN_PROGRESS，T04 BLOCKED。选择A1原资源兼容功能
 
 ## Next Tasks
 
-完成T03映射/来源核查。获得真实LLM配置与明确预算后，按§5.3顺序执行单次连接→原app单轮→多轮→校验原eval数据与原评测。保留每次真实输出与失败，不提前进入模型训练、Agent增强、新UI或A2指标宣称。
+完成T03映射/来源核查。单次连接已完成，按§5.3下一步原app单轮→多轮→校验原eval数据与原评测，后续请求另需明确额度。单轮方案见[可审阅计划](../reports/live_app_single_turn_plan.md)。保留每次真实输出与失败，不提前进入模型训练、Agent增强、新UI或A2指标宣称。

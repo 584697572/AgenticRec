@@ -1,0 +1,11 @@
+{
+  "scope": "post_live_offline_integrity_checks",
+  "date_client": "2026-10-04",
+  "new_real_requests": 0,
+  "verify_g0": "PASS",
+  "verify_a1_historical_20261001_evidence": "PASS",
+  "source_docs_git_diff_check": "PASS",
+  "upstream_pristine": "PASS",
+  "runtime_profile_authorization_and_full_logs_ignored_by_git": true,
+  "upstream_commit": "0959ecb05b0794748426e73e6efc1b6b35ec433d"
+}

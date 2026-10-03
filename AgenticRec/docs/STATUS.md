@@ -1,8 +1,13 @@
 # 项目状态
 
+## 2026-10-04 单次真实连接通过
+
+用户在已注入Key的PowerShell执行受限脚本，原OpenAICall真实连接SUCCESS/HTTP200，返回OK。实际prompt_tokens=12、completion_tokens=1、total_tokens=13，单次elapsed=2.1585443秒（非benchmark）；供应商账单未查询，actual_cost_cny=null，按当次公开高峰率估算上界0.000032 CNY。原始结果、额度记录及原源码SHA已在本地核对，唯一授权尝试已消耗，重复调用门禁验证不再发送HTTP且不改证据。新增5项SDK/HTTP离线测试、全16项离线测试通过；fixture不算真实连接。Key不进入项目文件；原app真实单轮/多轮仍NOT VERIFIED，原评测NOT EVALUATED，T04整体BLOCKED。报告见reports/live_connection_20261004.md，原始证据见reproduction/native_runs/20261004/。
+
 ## 2026-10-02 真实LLM配置指导
 
 用户请求开始指导真实LLM运行。已提供LIVE_LLM_GUIDE、默认禁用的公开参数模板和不调用网络的preflight。配置/budget门禁3项测试通过；provider/model/Base URL/请求及token限额/金额预算等待用户答复，真实请求0，连接NOT VERIFIED。T04保持BLOCKED，其他资源/原评测前置未改变。当前操作先同终端注入Key→公开profile→preflight，再在授权齐备后准备单次连接；不把CONFIG_READY当连接成功。
+同日更新：用户选择DeepSeek。已核对官方地址https://api.deepseek.com与建议模型deepseek-flash，并提供禁用的专用模板；不再要求用户自行寻找地址/model。首次拟议1次HTTP尝试、输出最多128 token、1 CNY预算，尚未授权；Key须在用户终端输入。真实连接仍NOT VERIFIED，T04仍BLOCKED。
 以下为已验证的原资源离线运行快照；旧a1_evidence_index对应commit74c4fb5及当时文件内容，不用于新文档的当前hash。
 
 最后验证：2026-10-01（Asia/Shanghai）。阶段G0收尾/A1原版运行前置检查；G1完整复现尚未验收。
@@ -14,7 +19,7 @@
 | T01 源码走读/风险复核 | DONE | 源码hash与原失败证据保留 | 后续按依赖修复 |
 | T02 隔离legacy | DONE | Python3.9.24、pip check、原模块import、SDK mock、174包版本离线重建一致 | dynamic demo未验证；CPU不是GPU性能 |
 | T03 资源契约/路线 | IN_PROGRESS | 5完整电影成员CRC/SHA、矩阵有限值、36项原模型参数完全一致 | 权威映射、矩阵ID语义、预制包独立授权 |
-| T04 原资源复现 | BLOCKED | 真实工具前置通过；原app HTTP200，两轮原回调+mock LLM通过 | 真实provider/model/预算、原eval数据及T03剩余前置 |
+| T04 原资源复现 | BLOCKED | 真实工具前置/原app mock通过；原SDK单次DeepSeek真实连接HTTP200 | 原app单轮/多轮及新增调用授权、原eval数据及T03剩余前置 |
 | T05—T24 | TODO | 未启动 | 不跳阶段训练、增强Agent或制作新UI |
 
 ## 已验证证据
@@ -30,13 +35,13 @@
 
 ## Blocker
 
-1. 规范§3.3/§5.3要求真实API调用先明确provider、model ID、请求/token限额、预算金额及单位、安全配置密钥。默认allow_paid_api=false、api_request_cap=0；真实请求0。
+1. 2026-10-04单次DeepSeek真实连接已通过，1/1尝试已使用；原app单轮/多轮及其新增调用授权尚未完成。原app/批量评测不在本次连接授权范围内；通用模板保持默认禁用，不重置已消耗额度。
 2. 原eval数据缺失；不把自造context/target或notebook保存输出当已校验原评测集。
 3. checkpoint权威标题映射与矩阵ID语义NOT VERIFIED。notebook保存Toy Story→17、原目录→1062，保存输出不是checkpoint行标签。预制包再分发许可NOT VERIFIED；用户授权本地下载/检查，未再分发资源。
 
 ## 下一任务
 
-继续T03取得权威mapping/provenance及授权信息；补齐真实LLM配置与预算后，按规范§5.3先单次连接，再原app单轮/多轮，最后校验原eval数据并运行原指标。T04完整验收前不标DONE，A2和正式指标仍not_run / NOT EVALUATED。
+继续T03取得权威mapping/provenance及授权信息；单次连接已完成，按规范§5.3下一步原app单轮，再多轮，最后校验原eval数据并运行原指标。每一步新增调用另按明确额度授权，不复用本次1/1已消耗记录。T04完整验收前不标DONE，A2和正式指标仍not_run / NOT EVALUATED。
 
 路线A1（原资源兼容功能）；B未启用。旧报告/index保留历史快照身份，最新证据索引为reproduction/a1_evidence_index.json。
 报告：[UPSTREAM_REPRODUCTION.md](../../reproduction/UPSTREAM_REPRODUCTION.md)。
