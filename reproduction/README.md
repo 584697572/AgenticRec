@@ -1,5 +1,7 @@
 # 原版运行检查
 
+2026-10-05 当前入口：[受限原 App 单轮](LIVE_LLM_GUIDE.md)，新授权已具备，最多 2 次尝试/每次 512 输出 token/1 CNY；在用户已有 Key 的终端运行 `reproduction/.venv-legacy/Scripts/python.exe reproduction/scripts/live_app_single_turn.py`。本轮 offline 联调通过，live 仍 NOT VERIFIED。T05 已完成，见 [现代开发包](../AgenticRec/README.md)。ReDial raw test 已取得，45 条 A1 派生评测输入已准备且重复运行哈希一致；canonical 作者子集仍 NOT VERIFIED。其余下文日期保留为历史记录。
+
 2026-10-02真实LLM接入指导见[LIVE_LLM_GUIDE.md](LIVE_LLM_GUIDE.md)：先本机安全配置和零请求preflight，再按授权额度做单次真实连接。CONFIG_READY不等于连接验证通过。
 
 2026-10-04：原OpenAICall经现有SDK真实连接DeepSeek通过，HTTP200、OK、usage=12+1=13；原app真实单轮/多轮尚未验证。唯一授权尝试已消耗；不要删除额度记录来重复运行。见[连接报告](../reports/live_connection_20261004.md)和[native_runs/20261004](native_runs/20261004/)。16项离线回归通过；SDK/HTTP新增测试使用现有legacy解释器运行：`reproduction/.venv-legacy/Scripts/python.exe -m unittest discover -s reproduction/tests -v`。

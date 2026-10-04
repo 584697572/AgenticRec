@@ -1,0 +1,6 @@
+test_integer_years_match_original_datetime_contract_without_mutation (test_redial_preprocess.RedialPreprocessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 1.203s
+
+OK

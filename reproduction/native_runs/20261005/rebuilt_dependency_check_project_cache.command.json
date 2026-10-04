@@ -1,0 +1,10 @@
+{
+  "command": [
+    "reproduction/.runtime/uv.exe",
+    "pip",
+    "check",
+    "--python",
+    "AgenticRec/.venv-dev-rebuild/Scripts/python.exe"
+  ],
+  "project_uv_cache": true
+}

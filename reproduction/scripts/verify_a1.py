@@ -55,7 +55,15 @@ def main():
     assert environment["rebuild"]["status"] == "PASS" and environment["rebuild"]["package_versions_identical"]
     tasks = {entry["id"]: entry for entry in read(ROOT / "TASKS.yaml")["tasks"]}
     assert tasks["T02"]["status"] == "DONE" and tasks["T03"]["status"] == "IN_PROGRESS" and tasks["T04"]["status"] == "BLOCKED"
-    assert all(tasks["T%02d" % i]["status"] == "TODO" for i in range(5, 25))
+    # The historical A1 snapshot must not force independent, later tasks to stay TODO.
+    # verify_g0 checks the unchanged task dependency graph and completed prerequisites.
+    if tasks["T05"]["status"] == "DONE":
+        dev = read(ROOT / "reproduction/environment_dev.json")
+        assert dev["rebuild"]["status"] == "PASS" and dev["rebuild"]["package_versions_identical"]
+        assert sha(ROOT / "AgenticRec/requirements.dev.lock.txt") == dev["lock_sha256"]
+        checks = read(ROOT / dev["checks"])
+        assert {"dev_unit", "rebuilt_unit", "rebuilt_doctor", "rebuilt_fixture"} <= {c["name"] for c in checks}
+        assert all(c["exit_code"] == 0 for c in checks)
     manifest = read(ROOT / "reproduction/resource_manifest.json")
     assert manifest["original_resource_integrity"] == "PASS" and not manifest["archive_downloaded"]
     assert manifest["route_final"] == "A1" and manifest["checks"]["similarity_id_order"] == "NOT VERIFIED"

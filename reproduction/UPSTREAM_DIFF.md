@@ -1,5 +1,7 @@
 # 原版与兼容环境差异
 
+2026-10-05 新增差异（不改原仓库或兼容副本 Python）：受限 App 测试层以 stdio 将真实 HTTP 与加载原资源的无真实 Key 进程分开；原 SDK/原方法继续执行，限制 retry/max_tokens/thinking；原 app launch 被抑制，仅调用其实际回调，明确 ui_served=false。ReDial 预处理单独把本地表副本的整数年份转成该年 1 月 1 日供原 movie_map 比较，保留带符号日期差与 set 选择逻辑；测试 seed=42，canonical 作者子集不明。先失败回归后适配，详见 DECISIONS ADR-008/009 和 reports/progress_20261005.md。现代 T05 包是新增实现，与 legacy 分开，尚无算法改进。
+
 固定上游：Microsoft RecAI，commit `0959ecb05b0794748426e73e6efc1b6b35ec433d`。
 `RecAI/` 保持 pristine；运行副本位于 `reproduction/.runtime/InteRecAgent-compat/`。
 所有 Python 源文件与固定上游逐文件 hash 一致，未改变 planner、toolbox、buffer、prompt、推荐模型或评测指标。

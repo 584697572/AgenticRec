@@ -1,0 +1,28 @@
+{
+  "stop_guard_initial": {
+    "status": "FAILED",
+    "http_attempts": 0,
+    "remote_api_requests": 0,
+    "fix": "preserve original stop list in HTTP allowlist"
+  },
+  "audit_initial_serializer": {
+    "status": "FAILED",
+    "error": "NumPy int32 is not JSON serializable",
+    "fix": "convert computed counts to native int before JSON serialization"
+  },
+  "first_raw_test_download": {
+    "status": "FAILED",
+    "error": "pinned_test_size_mismatch",
+    "received_bytes": "NOT RECORDED",
+    "fix": "explicit Range and stream read; Git blob and size verified"
+  },
+  "user_uv_cache": {
+    "status": "FAILED",
+    "fix": "project-local UV_CACHE_DIR; no global permission changes"
+  },
+  "dtype_before": {
+    "status": "FAILED",
+    "error": "int64 year minus Timestamp",
+    "after": "PASS; independent input dtype adapter"
+  }
+}

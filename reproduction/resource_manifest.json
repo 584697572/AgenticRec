@@ -315,5 +315,12 @@
     "authoritative checkpoint title mapping and matrix ID order NOT VERIFIED",
     "independent prebuilt-resource redistribution license NOT VERIFIED"
   ],
-  "next_dependency": "Resolve T03 mapping/provenance and T04 live API/evaluation prerequisites; do not start rebuilt models"
+  "next_dependency": "Resolve T03 mapping/provenance and T04 live API/evaluation prerequisites; do not start rebuilt models",
+  "evaluation_input_recheck_20261005": {
+    "summary": "reproduction/redial_eval_preparation_20261005.json",
+    "raw_test_status": "VERIFIED",
+    "derived_input_status": "A1_RECONSTRUCTED",
+    "canonical_author_subset_equivalence": "NOT VERIFIED",
+    "evaluation": "NOT EVALUATED"
+  }
 }

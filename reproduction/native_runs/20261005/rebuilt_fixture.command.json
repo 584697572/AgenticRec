@@ -1,0 +1,8 @@
+{
+  "command": [
+    "AgenticRec\\.venv-dev-rebuild\\Scripts\\python.exe",
+    "-m",
+    "agenticrec.cli",
+    "fixture"
+  ]
+}

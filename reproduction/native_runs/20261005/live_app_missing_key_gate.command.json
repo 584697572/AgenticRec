@@ -1,0 +1,8 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "reproduction/scripts/live_app_single_turn.py"
+  ],
+  "key_removed_for_offline_gate_test": true,
+  "expected_exit_code": 2
+}

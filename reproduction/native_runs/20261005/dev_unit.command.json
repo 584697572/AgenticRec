@@ -1,0 +1,9 @@
+{
+  "command": [
+    "AgenticRec\\.venv-dev\\Scripts\\python.exe",
+    "-m",
+    "pytest",
+    "AgenticRec/tests/unit/test_config.py",
+    "-q"
+  ]
+}

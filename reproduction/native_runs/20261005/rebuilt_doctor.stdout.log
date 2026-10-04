@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "scope": "T05_offline_foundation",
+  "python": "3.11.14",
+  "system": "Windows",
+  "torch_installed": false,
+  "gpu_runtime": "NOT CHECKED",
+  "data_training_evaluation": "NOT VERIFIED",
+  "config": {
+    "schema_version": 1,
+    "seed": 42,
+    "domain": "movie",
+    "llm": {
+      "allow_paid_api": false,
+      "provider": null,
+      "model_id": null,
+      "api_request_cap": 0,
+      "max_output_tokens": 0,
+      "money_budget": 0,
+      "budget_unit": "CNY"
+    }
+  },
+  "remote_api_requests": 0,
+  "note": "offline check never grants live API authorization"
+}

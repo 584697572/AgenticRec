@@ -1,0 +1,29 @@
+{
+  "status": "SUCCESS",
+  "entry": "InteRecAgent/app.py",
+  "real_key_in_worker": false,
+  "ui_served": false,
+  "query": "Recommend three comedy movies released since 1990.",
+  "validation": {
+    "passed": true,
+    "checks": {
+      "three_unique_catalog_items": true,
+      "all_comedy": true,
+      "all_since_1990": true,
+      "mapped_titles_in_answer": true,
+      "filter_rank_map_executed": true
+    }
+  },
+  "worker_exit_code": 0,
+  "authorization_id": "deepseek-original-app-single-turn-20261005",
+  "scope": "offline_fixture",
+  "live_original_app": "NOT VERIFIED",
+  "http_attempts": 2,
+  "remote_api_requests": 0,
+  "usage_is_fixture": true,
+  "shared_checkpoint_id_semantics": "NOT VERIFIED",
+  "original_evaluation": "NOT EVALUATED",
+  "mapped_item_count": 3,
+  "runtime_metrics": "NOT EVALUATED; fixture timing is not a benchmark",
+  "private_result_sha256": "64505a898c636bb37bfea6063fd81f55831d1836547559d1e99d726b9e2d5774"
+}

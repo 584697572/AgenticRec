@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "scope": "FakeLLM_fixture_only",
+  "reply": {
+    "content": "fixture response",
+    "usage": null,
+    "is_fixture": true,
+    "remote_api_requests": 0
+  },
+  "recommendation_pipeline": "NOT IMPLEMENTED"
+}

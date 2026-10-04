@@ -1,3 +1,23 @@
+# 2026-10-05：已授权的原 App 单轮
+
+连接测试已通过，无需重复。用户已允许继续请求；本轮采用此前提出的具体额度：DeepSeek `deepseek-flash`、非思考、最多 2 次 HTTP 尝试、每次最多 512 输出 token、1 CNY，无重试。当前工作区的专用授权 profile 已写入忽略目录，不包含 Key。
+
+在已配置 Key 的同一个 PowerShell 执行：
+
+```powershell
+& .\reproduction\.venv-legacy\Scripts\python.exe .\reproduction\scripts\live_app_single_turn.py
+```
+
+先校验原资源 SHA 和 Python 源码，再初始化原 app，CPU 本地编码约需 5 分钟。原 app 的过滤/排序/映射及回调实际运行；此次以受控 CLI 调用，不开放交互 UI。原算法和 prompt 模板不改，测试层仅限制 API 和观察 Map ID。加载资源的子进程只有占位 Key，真实 Key 只在负责 HTTPS 的父进程内存中。
+
+末尾 `SUCCESS` 还要求真实目录验证通过：3 个不同 ID、Comedy、年份≥1990、原工具实际执行、回答包含映射标题。它只验收这一个场景，不代表多轮、严格文本无幻觉或原评测通过。返回 `BLOCKED` / `FAILED` 时保留完整目录，把末尾 JSON 发回即可；不要删除额度文件或盲目重试。失败和超时也占用尝试。
+
+专用证据在 `reproduction/logs/live_app_single_turn_20261005/`。计划/摘要原始响应、实际 usage、工具 trace 和错误均保存在忽略目录，终端仅显示可分享摘要。账单未查询则 actual_cost_cny=null；客户端未实现供应商账单硬限额。全新 checkout 没有本机授权文件时会以 0 请求拒绝，不会自动开启付费。
+
+2026-10-05 离线联调 SUCCESS（原资源+原 App，2 次 mock HTTP、真实请求 0）；这不是 live 成功。以下保留早期配置指导，当前步骤以上述单轮命令为准。
+
+## 历史配置指导（以下授权状态为当时快照）
+
 # 真实LLM运行：第一步，本机配置检查
 
 2026-10-04最新状态：单次真实连接VERIFIED，已消耗1/1授权尝试；原app真实对话NOT VERIFIED，原评测NOT EVALUATED。2026-10-02配置准备说明保留在后文。

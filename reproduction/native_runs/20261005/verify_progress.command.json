@@ -1,0 +1,6 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "reproduction/scripts/verify_progress_20261005.py"
+  ]
+}

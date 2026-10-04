@@ -75,3 +75,22 @@
 - 发现：没有3.9/3.11/Conda；只见3.13.7。真实资源未就绪，原app有import与模型初始化副作用。
 - 决定：用标准库AST加载固定源码选定class并延迟类型注解，原方法体不改；使用明确fixture替代LLM、Gallery、过滤和排序。保留真实原Map/Buffer/Agent控制流；不导入原app、不安装旧依赖。
 - 影响：只能验证控制流和F04重复覆盖，不属于原资源功能复现；SQL、推荐分数、embedding与真实LLM全部NOT VERIFIED/NOT EVALUATED。不是后续FakeLLM产品实现，T05仍TODO。
+
+## ADR-008：已授权的受限原 App 单轮与独立 T05
+
+- 日期：2026-10-05；采用。用户明确允许请求及输出，执行此前已提出的单轮具体范围：DeepSeek deepseek-flash、thinking disabled、2 次 HTTP 尝试、512 输出 token/次、1 CNY、零重试。旧的 1 次连接授权不重置；后续批量实验尚无具体可执行配额配置。
+- 原要求：§5.3 单次连接后先原 App 单轮；§5.2 不向加载未获完全信任 checkpoint 的进程提供真实 Key；保留原算法/prompt、按预算记录每次尝试。
+- 发现：Key 在用户 PowerShell，执行端不继承；原 App 初始化加载 checkpoint。原外层/SDK 重试会放大请求，摘要 token 配置也需在统一边界控制。
+- 实现：无真实 Key 的原 App 子进程继续调用原 SDK，通过 stdio 交给父进程限额发送 HTTPS；父进程在发送前原子登记尝试、fsync、禁止重试/重定向，不重置失败额度。原源码及原提示不变，原 UI launch 在本次 batch harness 中被抑制。代码不把这个进程隔离称作 OS 安全沙箱或供应商账单硬限额。
+- 验证：完整原资源/原 app 离线单轮 SUCCESS；原 Filter/Ranking/Map 和目录约束通过；2 次 mock HTTP、真实 0。门禁最初遗漏原 stop 参数，保留失败，回归先失败再修复。真实 App 当前 NOT VERIFIED。
+- T05：任务卡依赖 T00/T01，不依赖 T04，因此现代包/环境独立验收符合原规范。Python 3.11.14 + 7 锁定依赖，不污染 legacy；第二环境离线重建及15测试通过。T06 仍依赖 T03/T05，未越过数据/指标前置训练。
+- 可比性：只是 A1 兼容运行准备和 T05 基础，DeepSeek/zero-demo/CPU 等差异仍在；不能声明 A2、算法提升或完整 Agent 可靠性完成。
+
+## ADR-009：原 ReDial 预处理仅适配整数年份，冻结派生输入
+
+- 日期：2026-10-05；采用。原要求：使用真实原始对话和原指标，输入/选择过程可追溯；类型不兼容时最小适配，先失败回归再修改。
+- 发现：固定 UniCRS f7d8f95104d6eba5371cfa845b243057a632079e 仍有 test_data_dbpedia_raw.jsonl；8,751,948 bytes/1,342条，Git blob 与 SHA 校验通过。原 notebook movie_map 在42个 title/year 上因 int64年份减Timestamp失败。作者canonical50条文件和原hash seed不在固定资源中。
+- 最小适配：保持原 notebook 函数体，将局部 DataFrame 年份转为当年1月1日 Timestamp，只为兼容比较类型，不新增真实月日事实；原表和 app 输入不变。测试确认等价于原函数的datetime输入，并保留其带符号差最小值选更早电影的原行为。
+- 最小下载：映射由各title/year及固定catalog独立决定，故仅下载test，不需要train/valid映射来确定test保留条件。严格保留原test顺序、至少2个已映射正反馈、前50个再process_conv的规则，得到45条（5条按原逻辑丢弃）；不新增样本。原set逻辑有5个并列target对话，固定PYTHONHASHSEED=42。再次独立进程执行，输出SHA256完全一致。
+- 可比性：允许命名“A1原notebook派生评测输入”，canonical作者子集等价性NOT VERIFIED、原论文A2 NOT VERIFIED。不能把新 seed 或整数年代表日期隐瞒成原作者设置；此次无LLM评测、所有指标NOT EVALUATED。后续如修正重名/并列策略，必须作为单独方法变更比较，不能覆盖此次输入。
+- 合规：ReDial官方数据声明CC BY4.0并要求归属引用；UniCRS代码MIT独立记录；两者都不能授予MovieLens预制包/权重许可。数据与target保留本地忽略目录，不推送或再分发。

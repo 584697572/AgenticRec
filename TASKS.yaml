@@ -63,9 +63,9 @@
       "deliverables": "`reproduction/resource_manifest.json`；`reproduction/route_decision.md`。",
       "acceptance": "访问状态与报告来源区分清楚。 A/B 路线、原因、缺失资源和数据合规记录齐全。",
       "checks": "`静态验证资源清单；下载/加载前按权限门禁执行`。",
-      "evidence": "reproduction/resource_manifest.json; reproduction/native_runs/20261001/",
+      "evidence": "reproduction/resource_manifest.json; reproduction/native_runs/20261001/; reports/progress_20261005.md; reproduction/redial_eval_preparation_20261005.json",
       "verification": "All five movie member CRC/SHA checks, original gallery/matrix and exact real checkpoint state loading PASS",
-      "remaining": "Authoritative checkpoint title mapping, matrix row semantics and prebuilt resource license unresolved; A1 functional route retained"
+      "remaining": "Authoritative checkpoint title mapping, matrix row semantics, original resource redistribution license and canonical author evaluation subset remain NOT VERIFIED; real UniCRS raw test fetched and A1 notebook-derived input prepared separately"
     },
     {
       "id": "T04",
@@ -82,8 +82,8 @@
       "deliverables": "`reproduction/UPSTREAM_REPRODUCTION.md`；`reproduction/native_runs/`。",
       "acceptance": "原始输出、配置和数据哈希可追溯；未运行项为 not_run。 原文模糊命中不标为 ID NDCG。",
       "checks": "`规范5.3的原 app.py 与 one_turn_eval.py 命令（前置完成后）`。",
-      "reason": "Original tools/app mock PASS; original OpenAICall live DeepSeek connection VERIFIED on 2026-10-04 (HTTP200, 13 tokens, 1/1 authorized attempt consumed). Live original-app single/multiple turns and their additional API authorization, original evaluation data, and T03 semantics/provenance remain unresolved",
-      "evidence": "reproduction/UPSTREAM_REPRODUCTION.md; reproduction/native_runs/20261001/; reproduction/native_runs/20261004/; reports/live_connection_20261004.md"
+      "reason": "Connection VERIFIED; original resources/app offline single turn PASS. New single-turn API authorization recorded (2 attempts, max512 output each, 1 CNY). Agent terminal has no key; run from user key-bearing terminal. Live app single/multiple turns, original evaluation, demo/reflection restoration and T03 semantics/provenance remain unverified. A1 reconstructed raw-test-derived input is available; canonical author subset equivalence NOT VERIFIED.",
+      "evidence": "reproduction/UPSTREAM_REPRODUCTION.md; reproduction/native_runs/20261001/; reproduction/native_runs/20261004/; reports/live_connection_20261004.md; reports/progress_20261005.md; reproduction/progress_evidence_20261005.json"
     },
     {
       "id": "T05",
@@ -94,11 +94,13 @@
         "T00",
         "T01"
       ],
-      "status": "TODO",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T05",
       "deliverables": "`AgenticRec/pyproject.toml`；`AgenticRec/src/agenticrec/`；`AgenticRec/tests/`；`AgenticRec/requirements.dev.lock.txt`。",
       "acceptance": "无 key、无网络也能加载新包和运行 fixture。 未知配置/参数报错；默认 0 付费请求。",
-      "checks": "`python -m agenticrec.cli doctor --offline`；`python -m pytest tests/unit/test_config.py`。"
+      "checks": "`python -m agenticrec.cli doctor --offline`；`python -m pytest tests/unit/test_config.py`。",
+      "evidence": "reproduction/environment_dev.json; reproduction/progress_evidence_20261005.json; reports/progress_20261005.md",
+      "verification": "Python 3.11.14; 7 locked dependencies plus editable project identical in offline rebuild; both environments 15 tests PASS; doctor/fixture/dependency checks PASS; zero remote API requests"
     },
     {
       "id": "T06",

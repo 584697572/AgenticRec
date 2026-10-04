@@ -1,5 +1,7 @@
 # T03 路线：A1 原资源兼容功能，完整验收仍待前置
 
+2026-10-05 最新：A1 原资源兼容功能路线继续，T03 IN_PROGRESS、T04 BLOCKED；没有转 B。原工具/原 App 离线及单次真实连接通过，原 App 真实对话和原评测未验收。新调用授权已具备，等待用户 Key 终端运行；raw ReDial test 已取得，45 条 notebook 派生 A1 输入已准备，canonical 子集等价性、权威模型 ID 映射/矩阵语义及资源独立许可仍 NOT VERIFIED。T05 按其 T00/T01 依赖已完成；后续训练仍遵循 T03/T06/T07 前置。以下旧日期是历史调查快照，不能当当前阻塞状态。
+
 2026-10-01最新结论：继续A1，不启用B。T02 DONE；完整原movie资源、真实原SASRec加载/推理及原工具链已通过，原app.py的loopback启动和两轮mock-LLM回调也通过。权威ID语义、预制包来源/独立授权未全部闭合，T03 IN_PROGRESS；真实LLM授权和原eval数据缺失，T04 BLOCKED。完整A1仍NOT VERIFIED，A2 not_run，正式指标NOT EVALUATED。
 
 证据：`native_runs/20261001/`、`environment_legacy.json`、`resource_manifest.json`和`UPSTREAM_REPRODUCTION.md`。兼容diff仅requirements；固定upstream原Python源码不变。以下是ADR-005重开调查时的历史快照，其中“完整权重未下载/未安装”描述已被本轮真实执行取代。

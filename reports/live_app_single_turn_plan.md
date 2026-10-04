@@ -1,5 +1,7 @@
 # 下一步：原 app 单轮真实运行（尚未执行）
 
+2026-10-05 状态更新：用户已允许请求和输出，采用下方拟议的 2 次尝试/512 输出 token/1 CNY 额度，已实现并离线验证。运行命令 `& .\reproduction\.venv-legacy\Scripts\python.exe .\reproduction\scripts\live_app_single_turn.py`；在用户 Key 所在终端执行。此次受控 CLI 调用原 app 回调，不启动 UI 服务。真实单轮仍 NOT VERIFIED；下文“待授权”仅指 2026-10-04 历史计划。
+
 2026-10-04。原wrapper真实连接已通过；严格按规范§5.3进入原app单轮，然后才是多轮和原评测。本次1/1连接额度已消耗，以下是待授权的具体范围，当前真实单轮NOT VERIFIED。
 
 - 使用已有原电影目录/矩阵/SASRec/gte-base和legacy环境，不下载新资源、不改原源码、算法或prompt模板。

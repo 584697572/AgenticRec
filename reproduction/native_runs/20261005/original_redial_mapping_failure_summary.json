@@ -1,0 +1,44 @@
+{
+  "scope": "original_notebook_test_mapping_audit",
+  "status": "BLOCKED",
+  "raw_data": {
+    "url": "https://raw.githubusercontent.com/RUCAIBox/UniCRS/f7d8f95104d6eba5371cfa845b243057a632079e/data/redial/test_data_dbpedia_raw.jsonl",
+    "upstream_commit": "f7d8f95104d6eba5371cfa845b243057a632079e",
+    "git_blob_sha1": "e2a2eeab9a41a4fcdb121d3ffe8550e6ef47f1ab",
+    "sha256": "5c1842222899cb378be6f81504bed736471f34e842f067f2051c2a27a840a797",
+    "bytes": 8751948,
+    "conversation_count": 1342,
+    "path": "data/raw/unicrs/f7d8f95104d6eba5371cfa845b243057a632079e/test_data_dbpedia_raw.jsonl",
+    "original_50_sample_file": "NOT VERIFIED",
+    "evaluation": "NOT EVALUATED"
+  },
+  "notebook_sha256": "2bfc48712db3d04b281471b3d822ba6f1f1f2c9141ad6f5aa1d070aeeb795062",
+  "catalog_sha256": "1a0e8687ba0c366cf4ab7837c591542f9bbb3b445ec4f4155fe1e932b58bb8c9",
+  "release_date_dtype": "int64",
+  "original_functions_loaded": [
+    "attach_labels",
+    "extract_numbers",
+    "get_first_time_appear",
+    "merge_conversation",
+    "movie_map",
+    "process_conv",
+    "separate_movie_and_year"
+  ],
+  "original_functions_executed": [
+    "extract_numbers",
+    "separate_movie_and_year",
+    "attach_labels",
+    "movie_map"
+  ],
+  "distinct_positive_title_years": 1722,
+  "mapped": 774,
+  "unmapped": 906,
+  "approximate_mappings": 41,
+  "canonical_eval_data": "NOT VERIFIED",
+  "api_requests": 0,
+  "metrics": "NOT EVALUATED",
+  "mapping_error_count": 42,
+  "error_types": [
+    "TypeError"
+  ]
+}

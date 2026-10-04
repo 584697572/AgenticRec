@@ -1,0 +1,14 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "reproduction/tests",
+    "-p",
+    "test_redial_preprocess.py",
+    "-v"
+  ],
+  "PYTHONHASHSEED": "42"
+}
