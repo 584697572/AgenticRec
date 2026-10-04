@@ -1,5 +1,7 @@
 # 原版复现阶段报告（2026-10-04更新）
 
+2026-10-05 最新：用户选择根目录 `.env` 持久配置，执行端已自动读取并完成原 App 真实单轮 SUCCESS/VERIFIED（2次HTTP200、3880 token、目录约束全部通过）。当前单轮2/2额度已用；多轮/原评测及资源语义限制仍未验收，T04整体BLOCKED。见 [真实单轮报告](../reports/live_original_app_20261005.md)。下文尚未运行/等待Key的描述均为此前历史阶段。
+
 2026-10-05 更新：已准备并离线验证受限原 App 单轮执行器；用户已允许请求，具体单轮额度为 2 次/512 输出 token/1 CNY。执行端没有用户终端的 Key，真实 App 仍 NOT VERIFIED，原评测仍 NOT EVALUATED。ReDial 原始 test 1,342 条已按固定 UniCRS 版本取得，原 notebook 整数年份兼容回归先失败后通过，产出 45 条可重放 A1 输入；不声称与作者 canonical 子集一致。T05 独立现代环境/基础测试已验收，其依赖为 T00/T01。完整结果见 [2026-10-05 报告](../reports/progress_20261005.md)，下文原始阶段记录继续保留。
 
 原版**离线工具链和受控应用运行已通过**：固定InteRecAgent、原电影目录/矩阵、原SASRec权重、原gte-base，没有方法级重建或新增模型。原app.py真实启动HTTP200，两轮回调使用mock LLM响应。2026-10-04原OpenAICall真实DeepSeek连接通过，HTTP200、OK、usage=12+1=13，唯一授权尝试已消耗。**原app真实单轮/多轮NOT VERIFIED；原评测NOT EVALUATED；完整A1尚未验收，A2 not_run。** 连接结果详见[本轮报告](../reports/live_connection_20261004.md)与[native_runs/20261004](native_runs/20261004/)；其余2026-10-01历史运行证据保持原样。

@@ -1,0 +1,88 @@
+{
+  "status": "SUCCESS",
+  "entry": "InteRecAgent/app.py",
+  "real_key_in_worker": false,
+  "ui_served": false,
+  "query": "Recommend three comedy movies released since 1990.",
+  "answer": "Here are three comedy movies released since 1990 that you might enjoy: **Forrest Gump**, **Babe**, and **Pretty Woman**. Enjoy!",
+  "mapped_items": [
+    {
+      "id": 7,
+      "title": "Forrest Gump",
+      "year": 1994,
+      "tags": "Comedy, Drama, Romance, War"
+    },
+    {
+      "id": 78,
+      "title": "Babe",
+      "year": 1995,
+      "tags": "Children, Comedy, Drama, Fantasy"
+    },
+    {
+      "id": 84,
+      "title": "Pretty Woman",
+      "year": 1990,
+      "tags": "Comedy, Romance"
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "checks": {
+      "three_unique_catalog_items": true,
+      "all_comedy": true,
+      "all_since_1990": true,
+      "mapped_titles_in_answer": true,
+      "filter_rank_map_executed": true
+    }
+  },
+  "turn_elapsed_seconds": 2.817823400000009,
+  "worker_exit_code": 0,
+  "authorization_id": "deepseek-original-app-single-turn-20261005",
+  "scope": "live_original_app",
+  "live_original_app": "VERIFIED",
+  "http_attempts": 2,
+  "remote_api_requests": 2,
+  "usage": {
+    "prompt_tokens": 3655,
+    "completion_tokens": 225,
+    "total_tokens": 3880
+  },
+  "usage_is_fixture": false,
+  "actual_cost_cny": null,
+  "actual_cost_reason": "provider_bill_not_queried",
+  "estimated_cost_cny_peak_ceiling": 0.00911,
+  "price_checked_date": "2026-10-05",
+  "price_source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+  "budget": {
+    "provider": "deepseek",
+    "api_type": "open_ai",
+    "api_base": "https://api.deepseek.com",
+    "api_version": null,
+    "model_id": "deepseek-flash",
+    "allow_paid_api": true,
+    "api_request_cap": 2,
+    "max_output_tokens": 512,
+    "money_budget": 1,
+    "budget_unit": "CNY"
+  },
+  "total_elapsed_including_load_seconds": 304.34127090000004,
+  "shared_checkpoint_id_semantics": "NOT VERIFIED",
+  "original_evaluation": "NOT EVALUATED",
+  "http_statuses": [
+    200,
+    200
+  ],
+  "response_models": [
+    "deepseek-flash",
+    "deepseek-flash"
+  ],
+  "raw_result_sha256": "086efeb7c732f62dc6eb5c705cb692a0841cd9326372607f4b452dc1f5493716",
+  "source_commit": "240f53d",
+  "repeated_execution_gate": {
+    "status": "PASS",
+    "new_http_attempts": 0,
+    "existing_evidence_unchanged": true
+  },
+  "credential_scan": "PASS: no actual key in saved run evidence",
+  "timing_scope": "Single functional smoke, including separately reported initialization; not a benchmark"
+}

@@ -1,0 +1,8 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "reproduction/scripts/live_llm_preflight.py",
+    "--profile",
+    "reproduction/.runtime/live_app_single_turn_20261005.json"
+  ]
+}

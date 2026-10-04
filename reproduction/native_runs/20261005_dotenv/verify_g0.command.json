@@ -1,0 +1,6 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "reproduction/scripts/verify_g0.py"
+  ]
+}

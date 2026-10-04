@@ -8,7 +8,7 @@
 | T01 | DONE | 源码走读及原始失败证据保留 |
 | T02 | DONE | Python 3.9.24，174 包离线重建、原资源加载/工具验证通过 |
 | T03 | IN_PROGRESS | 原资源完整性/加载通过；checkpoint 标题映射、矩阵语义和预制资源许可未全部核验 |
-| T04 | BLOCKED | 真实连接已验证；受限原 App 单轮准备就绪，等待用户 Key 终端执行；多轮/原评测未执行 |
+| T04 | BLOCKED | 真实连接已验证；受限原 App 单轮准备就绪，根目录 .env 已配置；真实单轮SUCCESS/VERIFIED，2次HTTP200、3880 token；多轮/原评测未执行 |
 | T05 | DONE | Python 3.11.14，7 锁定依赖及项目离线重建一致；两环境各 15 测试、doctor/fixture/依赖检查通过 |
 | T06—T24 | TODO | T06 依赖 T03/T05；尚未训练新模型或修改 Agent 算法 |
 
@@ -23,7 +23,7 @@
 
 ## 当前阻塞
 
-1. Key 已由用户配置在自己的 PowerShell，但不会自动进入本执行端。授权已具备，尚缺该终端执行真实原 App 单轮后的结果。命令见 [LIVE_LLM_GUIDE](../../reproduction/LIVE_LLM_GUIDE.md)。不要发送 Key。
+1. 原进程 Key 不会自动进入本执行端；用户已明确选择根目录 .env 持久配置。自动读取已通过 9 项新增测试（全部回归 32 项），执行端已自动读取并完成真实原 App 单轮 SUCCESS/VERIFIED：2次HTTP200，输入3655/输出225/总计3880 token，目录约束全部通过。Key/单轮不再阻塞；多轮与原评测仍待验收。命令见 [LIVE_LLM_GUIDE](../../reproduction/LIVE_LLM_GUIDE.md)。不要发送 Key。
 2. checkpoint 权威标题映射、矩阵行标签及原包独立再分发许可 NOT VERIFIED；目录 ID 在模型范围内和分数有限不能替代语义验证。Issue #110 公开评论本轮复查为空。
 3. canonical 原评测子集、作者 hash seed/设置未取得。A1 输入已可重复准备，但原模糊文本 hit 尚未运行；不等同 ID Hit@K 或论文 A2。
 
@@ -36,3 +36,7 @@
 2026-10-01：5 个原 movie 资源完整 CRC/SHA、原 SASRec 36 参数逐项一致、原 app loopback HTTP200 和两轮 mock 回调通过；原文件未改。2026-10-04：用户完成单次真实 DeepSeek 连接，HTTP200/OK，prompt/completion/total=12/1/13，2.1585443 秒（单次连接耗时）；实际账单未查询，费用 null。旧 evidence index 只验证当时快照，不用于新文档当前哈希。
 
 路线 A1 保留，B 未启用；完整 A1、A2 和推荐/Agent 改进尚未完成。
+
+密钥配置和命令代执行的最新证据见 [配置报告](../../reports/local_key_setup_20261005.md)。历史证据索引 progress_evidence_20261005.json 对应 commit 82bbf4e 的文件版本。
+
+最新真实运行报告：[原 App 单轮](../../reports/live_original_app_20261005.md)。实际费用未查询，保守费率估算0.00911CNY；不能当benchmark或算法收益。本次2/2尝试已消耗，重复执行拒绝且证据不变。

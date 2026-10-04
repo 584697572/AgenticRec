@@ -1,0 +1,6 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "reproduction/scripts/verify_live_single_20261005.py"
+  ]
+}

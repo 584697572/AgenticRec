@@ -1,0 +1,11 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "reproduction/tests",
+    "-v"
+  ]
+}

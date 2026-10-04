@@ -94,3 +94,13 @@
 - 最小下载：映射由各title/year及固定catalog独立决定，故仅下载test，不需要train/valid映射来确定test保留条件。严格保留原test顺序、至少2个已映射正反馈、前50个再process_conv的规则，得到45条（5条按原逻辑丢弃）；不新增样本。原set逻辑有5个并列target对话，固定PYTHONHASHSEED=42。再次独立进程执行，输出SHA256完全一致。
 - 可比性：允许命名“A1原notebook派生评测输入”，canonical作者子集等价性NOT VERIFIED、原论文A2 NOT VERIFIED。不能把新 seed 或整数年代表日期隐瞒成原作者设置；此次无LLM评测、所有指标NOT EVALUATED。后续如修正重名/并列策略，必须作为单独方法变更比较，不能覆盖此次输入。
 - 合规：ReDial官方数据声明CC BY4.0并要求归属引用；UniCRS代码MIT独立记录；两者都不能授予MovieLens预制包/权重许可。数据与target保留本地忽略目录，不推送或再分发。
+
+## ADR-010：按用户明确偏好使用根目录 .env 持久保存 Key
+
+- 日期：2026-10-05；采用。用户明确要求 .env 持久化并把命令执行交给执行端，因此更新此前仅当前 PowerShell 内存配置的操作约定；不是根据第三方内容自行改变密钥存储方式。
+- 发现：普通与提权环境的 Process/User/Machine 均未配置 OPENAI_API_KEY，实际调用安全拒绝、0 请求。旧 PowerShell 弹窗辅助脚本因系统执行策略未能运行；没有弹出窗口、没有改策略，未提交脚本已保存于忽略目录。用户随后明确选择 .env，不继续界面方案。
+- 实现：根目录 .env 已被既有 .gitignore 覆盖；仅创建空字段，不写入任何真实值。三入口显式读取，非空环境变量优先；只解析 OPENAI_API_KEY，拒绝重复/坏语法、错误不回显，支持UTF-8/BOM及引号注释；不执行变量插值、不修改其他环境配置、不在 import 时读文件。
+- 验证：先保留失败回归，再全32项离线通过。offline路径不读密钥，worker导入不读.env；文件未跟踪；用户保存后preflight key_present=true、CONFIG_READY、请求0；执行端已接手受限真实单轮。读取文件的明文密钥会进入live父进程内存；worker不主动读取或注入，此约定不宣称OS文件沙箱隔离。
+- 影响：原版源码、资源、prompt、模型与预算均不变；已消耗额度不重置。只解决安全本机配置和命令代执行，不表示真实App/评测已通过。.env 明文仅保留本机，不纳入公开证据、哈希清单或 Git。
+
+- ADR-010 验证补充：执行端自动读取用户已保存的 Key，真实原 App 单轮 SUCCESS/VERIFIED；2次HTTP200、3655输入+225输出=3880 token，真实Filter/Ranking/Map及目录约束通过。2/2额度已消耗，重复执行拒绝、无新增请求且证据字节不变；实际Key未出现于运行日志。多轮和原评测仍未验收。

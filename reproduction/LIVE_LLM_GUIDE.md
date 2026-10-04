@@ -1,20 +1,38 @@
 # 2026-10-05：已授权的原 App 单轮
 
+## 保存一次 Key，交由执行端运行
+
+用户已明确选择项目根目录 `.env` 持久保存。文件位置是 `D:\AgenticRec\.env`，已创建空字段，Git 忽略已核验。用本机编辑器填入并保存：
+
+```dotenv
+OPENAI_API_KEY=你的DeepSeek实际Key
+```
+
+这里使用 `OPENAI_API_KEY` 是为了兼容原接口，填写的是 DeepSeek Key。无需添加 `Bearer`；不要将真实值贴到聊天。`.env` 是本机明文文件，Git 忽略不是加密。
+
+preflight、connection、原 App 单轮三个入口现已支持：非空进程环境变量优先，否则读取固定项目根目录 `.env`。支持 UTF-8/BOM、单双引号、注释；只读取这一个字段，不执行插值/命令，不从文件修改 provider、API 地址或预算。SDK JSON/profile 仍不含 Key。加载器无导入副作用，worker 与 `--offline` 路径不主动读取 `.env`；这不是 OS 文件访问沙箱。
+
+保存后通知执行端即可，由执行端运行和核验，不再要求用户手动执行测试命令。已授权的当前单轮仍为 2 次 HTTP 尝试、512 输出 token/次、1 CNY；保存 Key 不会清空已用额度。缺失、语法错误或重复 Key 赋值以 0 请求拒绝，并只输出不含内容的错误。
+
+本次 9 项新增离线测试、全 32 项通过；用户已保存 Key，零请求检查 CONFIG_READY，真实 App 已由执行端完成：SUCCESS/VERIFIED、2次HTTP200、3880 token，原工具与目录校验全部通过。详情见 [本机 Key 配置报告](../reports/local_key_setup_20261005.md)。以下命令保留作可复现入口，执行责任已由用户交给执行端。
+
 连接测试已通过，无需重复。用户已允许继续请求；本轮采用此前提出的具体额度：DeepSeek `deepseek-flash`、非思考、最多 2 次 HTTP 尝试、每次最多 512 输出 token、1 CNY，无重试。当前工作区的专用授权 profile 已写入忽略目录，不包含 Key。
 
-在已配置 Key 的同一个 PowerShell 执行：
+可复现入口如下；执行端现在直接读取已保存的 `.env` 并负责运行：
 
 ```powershell
 & .\reproduction\.venv-legacy\Scripts\python.exe .\reproduction\scripts\live_app_single_turn.py
 ```
 
-先校验原资源 SHA 和 Python 源码，再初始化原 app，CPU 本地编码约需 5 分钟。原 app 的过滤/排序/映射及回调实际运行；此次以受控 CLI 调用，不开放交互 UI。原算法和 prompt 模板不改，测试层仅限制 API 和观察 Map ID。加载资源的子进程只有占位 Key，真实 Key 只在负责 HTTPS 的父进程内存中。
+本次命令已成功执行，2/2额度已使用，不要重复运行或删除额度记录。详情见 [真实单轮报告](../reports/live_original_app_20261005.md)。
+
+运行过程先校验原资源 SHA 和 Python 源码，再初始化原 app，CPU 本地编码约需 5 分钟。原 app 的过滤/排序/映射及回调实际运行；此次以受控 CLI 调用，不开放交互 UI。原算法和 prompt 模板不改，测试层仅限制 API 和观察 Map ID。加载资源的子进程只有占位 Key，真实 Key 只在负责 HTTPS 的父进程内存中。
 
 末尾 `SUCCESS` 还要求真实目录验证通过：3 个不同 ID、Comedy、年份≥1990、原工具实际执行、回答包含映射标题。它只验收这一个场景，不代表多轮、严格文本无幻觉或原评测通过。返回 `BLOCKED` / `FAILED` 时保留完整目录，把末尾 JSON 发回即可；不要删除额度文件或盲目重试。失败和超时也占用尝试。
 
 专用证据在 `reproduction/logs/live_app_single_turn_20261005/`。计划/摘要原始响应、实际 usage、工具 trace 和错误均保存在忽略目录，终端仅显示可分享摘要。账单未查询则 actual_cost_cny=null；客户端未实现供应商账单硬限额。全新 checkout 没有本机授权文件时会以 0 请求拒绝，不会自动开启付费。
 
-2026-10-05 离线联调 SUCCESS（原资源+原 App，2 次 mock HTTP、真实请求 0）；这不是 live 成功。以下保留早期配置指导，当前步骤以上述单轮命令为准。
+2026-10-05 离线联调 SUCCESS 后已完成真实单轮 SUCCESS。离线证据仍单独保留，不能混用usage或耗时。以下保留早期配置指导，当前步骤以上述单轮命令为准。
 
 ## 历史配置指导（以下授权状态为当时快照）
 

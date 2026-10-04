@@ -1,5 +1,7 @@
 # 原版运行检查
 
+2026-10-05 最新：用户选择根目录 `.env` 持久配置，执行端已自动读取并完成原 App 真实单轮 SUCCESS/VERIFIED（2次HTTP200、3880 token、目录约束全部通过）。当前单轮2/2额度已用；多轮/原评测及资源语义限制仍未验收，T04整体BLOCKED。见 [真实单轮报告](../reports/live_original_app_20261005.md)。下文尚未运行/等待Key的描述均为此前历史阶段。
+
 2026-10-05 当前入口：[受限原 App 单轮](LIVE_LLM_GUIDE.md)，新授权已具备，最多 2 次尝试/每次 512 输出 token/1 CNY；在用户已有 Key 的终端运行 `reproduction/.venv-legacy/Scripts/python.exe reproduction/scripts/live_app_single_turn.py`。本轮 offline 联调通过，live 仍 NOT VERIFIED。T05 已完成，见 [现代开发包](../AgenticRec/README.md)。ReDial raw test 已取得，45 条 A1 派生评测输入已准备且重复运行哈希一致；canonical 作者子集仍 NOT VERIFIED。其余下文日期保留为历史记录。
 
 2026-10-02真实LLM接入指导见[LIVE_LLM_GUIDE.md](LIVE_LLM_GUIDE.md)：先本机安全配置和零请求preflight，再按授权额度做单次真实连接。CONFIG_READY不等于连接验证通过。

@@ -82,8 +82,8 @@
       "deliverables": "`reproduction/UPSTREAM_REPRODUCTION.md`；`reproduction/native_runs/`。",
       "acceptance": "原始输出、配置和数据哈希可追溯；未运行项为 not_run。 原文模糊命中不标为 ID NDCG。",
       "checks": "`规范5.3的原 app.py 与 one_turn_eval.py 命令（前置完成后）`。",
-      "reason": "Connection VERIFIED; original resources/app offline single turn PASS. New single-turn API authorization recorded (2 attempts, max512 output each, 1 CNY). Agent terminal has no key; run from user key-bearing terminal. Live app single/multiple turns, original evaluation, demo/reflection restoration and T03 semantics/provenance remain unverified. A1 reconstructed raw-test-derived input is available; canonical author subset equivalence NOT VERIFIED.",
-      "evidence": "reproduction/UPSTREAM_REPRODUCTION.md; reproduction/native_runs/20261001/; reproduction/native_runs/20261004/; reports/live_connection_20261004.md; reports/progress_20261005.md; reproduction/progress_evidence_20261005.json"
+      "reason": "Live original-app single turn VERIFIED using local .env: 2 HTTP200 responses, actual usage 3655+225=3880, original Filter/Ranking/Map and catalog checks PASS. Authorized 2/2 attempts consumed; repeat gate refuses without changing evidence. Multiple turns, original evaluation, demo/reflection restoration and T03 provenance/ID semantics remain unverified.",
+      "evidence": "reproduction/UPSTREAM_REPRODUCTION.md; reproduction/native_runs/20261001/; reproduction/native_runs/20261004/; reports/live_connection_20261004.md; reports/progress_20261005.md; reproduction/progress_evidence_20261005.json; reports/local_key_setup_20261005.md; reproduction/local_key_evidence_20261005.json; reports/live_original_app_20261005.md; reproduction/native_runs/20261005_live/"
     },
     {
       "id": "T05",
