@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "seed": 42,
+  "domain": "movie",
+  "llm": {
+    "allow_paid_api": false,
+    "provider": null,
+    "model_id": null,
+    "api_request_cap": 0,
+    "max_output_tokens": 0,
+    "money_budget": 0,
+    "budget_unit": "CNY"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "client_date": "2026-10-05",
+  "recorded_at_utc": "2026-10-04T16:57:27.979956+00:00",
+  "environment": "isolated_modern_dev",
+  "python": "3.11.14",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "packages": {
+    "agenticrec": "0.1.0",
+    "colorama": "0.4.6",
+    "iniconfig": "2.3.0",
+    "packaging": "26.3",
+    "pluggy": "1.6.0",
+    "pygments": "2.21.0",
+    "pytest": "8.4.2",
+    "setuptools": "80.9.0"
+  },
+  "rebuild": {
+    "status": "PASS",
+    "package_versions_identical": true,
+    "locked_dependency_count": 7,
+    "editable_project_count": 1,
+    "network_downloads": 0
+  },
+  "legacy_environment_modified": false,
+  "key_required": false,
+  "paid_api_requests": 0,
+  "training": "NOT EVALUATED",
+  "gpu": "NOT CHECKED",
+  "lock_sha256": "741411e8e49eb457d463eac05f2d1f59d44f13442aa11d67568a9aebef553621",
+  "checks": "reproduction/logs/dev_foundation_20261005/summary.json",
+  "installation_lock_before_lf_normalization_sha256": "6adce2aca624d508302db40f210e6e18f601aa7152ca110a95bf39a00cffd6d5",
+  "lockfile_line_endings_normalized": "CRLF to LF only; dependency names and versions unchanged"
+}
