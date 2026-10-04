@@ -1,6 +1,6 @@
 """One authorized DeepSeek connection attempt through the unmodified upstream wrapper.
 
-Run in the user's key-bearing terminal with the existing legacy Python. Repeated
+Run with a key in the environment or workspace .env, using the legacy Python. Repeated
 invocations share an exclusive reservation file and cannot spend another attempt.
 """
 import contextlib
@@ -15,6 +15,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from live_llm_preflight import check
+from local_api_key import LocalKeyError, read_api_key
 
 ROOT = Path(__file__).resolve().parents[2]
 AUTHORIZATION_ID = "deepseek-connection-20261004"
@@ -215,7 +216,12 @@ def main():
     except (OSError, ValueError):
         report = blocked("local_profile_missing_or_invalid")
     else:
-        report = run_once(profile, os.environ.get("OPENAI_API_KEY", ""))
+        try:
+            key = read_api_key()
+        except LocalKeyError:
+            report = blocked("local_key_configuration_invalid")
+        else:
+            report = run_once(profile, key)
     print(json.dumps(report, ensure_ascii=True, indent=2))
     return 0 if report["status"] == "SUCCESS" else (2 if report["status"] == "BLOCKED" else 1)
 

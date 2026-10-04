@@ -2,9 +2,10 @@
 import argparse
 import json
 import math
-import os
 from pathlib import Path
 from urllib.parse import urlsplit
+
+from local_api_key import LocalKeyError, read_api_key
 
 ROOT = Path(__file__).resolve().parents[2]
 FIELDS = {"provider", "api_type", "api_base", "api_version", "model_id", "allow_paid_api",
@@ -39,7 +40,7 @@ def check(profile, key_present):
     if type(budget) not in (int, float) or not math.isfinite(budget) or budget <= 0:
         problems.append("money_budget")
     if not key_present:
-        problems.append("OPENAI_API_KEY in this terminal")
+        problems.append("OPENAI_API_KEY in environment or workspace .env")
     return {"status": "CONFIG_READY" if not problems else "BLOCKED", "api_requests": 0,
             "key_present": bool(key_present), "missing_or_invalid": problems,
             "live_connection": "NOT VERIFIED", "paid_calls_authorized_by_this_check": False}
@@ -63,7 +64,13 @@ def main():
         print(json.dumps({"status": "BLOCKED", "api_requests": 0,
                           "missing_or_invalid": ["profile must be readable valid JSON; its content is not logged"]}))
         return 2
-    result = check(profile, bool(os.environ.get("OPENAI_API_KEY", "").strip()))
+    try:
+        key_present = bool(read_api_key())
+    except LocalKeyError:
+        print(json.dumps({"status": "BLOCKED", "api_requests": 0,
+                          "missing_or_invalid": ["local key configuration invalid; contents are not logged"]}))
+        return 2
+    result = check(profile, key_present)
     print(json.dumps(result, indent=2))
     return 0 if result["status"] == "CONFIG_READY" else 2
 

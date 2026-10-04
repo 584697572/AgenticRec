@@ -13,6 +13,7 @@ from pathlib import Path
 from live_app_http import AUTHORIZATION_ID, PROFILE, QUERY, BoundedHTTP, write_new
 from live_llm_connection import scrub
 from live_llm_preflight import check
+from local_api_key import LocalKeyError, read_api_key
 
 ROOT = Path(__file__).resolve().parents[2]
 LOCAL_PROFILE = ROOT / "reproduction/.runtime/live_app_single_turn_20261005.json"
@@ -179,7 +180,11 @@ def main():
     parser.add_argument("--offline", action="store_true")
     parser.add_argument("--offline-output", type=Path, default=ROOT / "reproduction/logs/app_single_turn_offline_20261005")
     args = parser.parse_args()
-    key = "offline-fixture-placeholder" if args.offline else os.environ.get("OPENAI_API_KEY", "")
+    try:
+        key = "offline-fixture-placeholder" if args.offline else read_api_key()
+    except LocalKeyError:
+        print(json.dumps({"status": "BLOCKED", "reason": "local_key_configuration_invalid", "new_http_attempts": 0}))
+        return 2
     if args.offline:
         directory = args.offline_output.resolve()
         if not directory.is_relative_to(ROOT / "reproduction/logs"):
