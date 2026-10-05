@@ -58,14 +58,14 @@
         "T00",
         "T01"
       ],
-      "status": "IN_PROGRESS",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T03",
       "deliverables": "`reproduction/resource_manifest.json`；`reproduction/route_decision.md`。",
       "acceptance": "访问状态与报告来源区分清楚。 A/B 路线、原因、缺失资源和数据合规记录齐全。",
       "checks": "`静态验证资源清单；下载/加载前按权限门禁执行`。",
-      "evidence": "reproduction/resource_manifest.json; reproduction/native_runs/20261001/; reports/progress_20261005.md; reproduction/redial_eval_preparation_20261005.json; reproduction/source_alignment_review_20261005.json; reproduction/native_runs/20261005_session/failure_diagnostics_summary.json; reports/reproduction_repairs_20261005.md; reproduction/repair_evidence_20261005.json",
-      "verification": "All five movie member CRC/SHA checks, original gallery/matrix and exact real checkpoint state loading PASS",
-      "remaining": "Authoritative checkpoint title mapping, matrix row semantics, original resource license and canonical author subset remain NOT VERIFIED. New static review cannot identify a unique raw release from dataset labels. Coverage audit: 21/45 final targets unmapped and 4 mapped targets have different catalog years; original assets remain unchanged. Opt-in year fix changes 1/45 mapping; 3 approximate/year mismatches remain. Exact title/year contract: 22 unique matches, 17 title absent, 6 year absent. No authoritative training mapping recovered from the 15-entry source archive."
+      "evidence": "reproduction/resource_manifest.json; reproduction/native_runs/20261001/; reports/progress_20261005.md; reproduction/redial_eval_preparation_20261005.json; reproduction/source_alignment_review_20261005.json; reproduction/native_runs/20261005_session/failure_diagnostics_summary.json; reports/reproduction_repairs_20261005.md; reproduction/repair_evidence_20261005.json; reproduction/quality_route_decision_20261005.json; reports/catalog_identity_20261005.md; reproduction/catalog_identity_evidence_20261005.json",
+      "verification": "Resource integrity/runtime evidence retained; official metadata members CRC/SHA PASS; 9883 unique catalog metadata identities, 5 ambiguous; 64 full tests and repeat/range guards PASS; bounded historical mapping search documented; A1 functional evidence retained, B independent quality route chosen under section 5.5. DONE is audit/route acceptance, not legacy model semantic approval.",
+      "legacy_limitations": "Authoritative checkpoint title mapping, matrix row semantics, original resource license and canonical author subset remain NOT VERIFIED. New static review cannot identify a unique raw release from dataset labels. Coverage audit: 21/45 final targets unmapped and 4 mapped targets have different catalog years; original assets remain unchanged. Opt-in year fix changes 1/45 mapping; 3 approximate/year mismatches remain. Exact title/year contract: 22 unique matches, 17 title absent, 6 year absent. No authoritative training mapping recovered from the 15-entry source archive."
     },
     {
       "id": "T04",
@@ -82,7 +82,7 @@
       "deliverables": "`reproduction/UPSTREAM_REPRODUCTION.md`；`reproduction/native_runs/`。",
       "acceptance": "原始输出、配置和数据哈希可追溯；未运行项为 not_run。 原文模糊命中不标为 ID NDCG。",
       "checks": "`规范5.3的原 app.py 与 one_turn_eval.py 命令（前置完成后）`。",
-      "reason": "Real original App single turn and two-turn constraint update VERIFIED; original recbot/random/weighted-popularity evaluators completed all 45 A1 notebook-derived inputs. Actual 93 HTTP200 responses, usage 184724+17220=201944; all formal original text-hit results 0/45. Truncated no-Map sample 37 remains in denominator. Overall blocked by T03 provenance/semantic/license and canonical author/demo/reflection settings, not by key or execution. Existing closed job cannot be rerun or reset; 93/120 authorized attempts consumed. Fixed/seed demo files are available; offline zero/fixed reflection control flow verified with opt-in history patch. Dynamic default model missing in isolated cache; real LLM with demos/reflection and canonical settings still NOT VERIFIED.",
+      "reason": "Real original App single turn and two-turn constraint update VERIFIED; original recbot/random/weighted-popularity evaluators completed all 45 A1 notebook-derived inputs. Actual 93 HTTP200 responses, usage 184724+17220=201944; all formal original text-hit results 0/45. Truncated no-Map sample 37 remains in denominator. Overall blocked by T03 provenance/semantic/license and canonical author/demo/reflection settings, not by key or execution. Existing closed job cannot be rerun or reset; 93/120 authorized attempts consumed. Fixed/seed demo files are available; offline zero/fixed reflection control flow verified with opt-in history patch. Dynamic default model missing in isolated cache; real LLM with demos/reflection and canonical settings still NOT VERIFIED. ADR-015: legacy complete acceptance remains blocked; canonical paper settings do not block independent quality experiments after T03 audit closure.",
       "evidence": "reproduction/UPSTREAM_REPRODUCTION.md; reproduction/native_runs/20261001/; reproduction/native_runs/20261004/; reports/live_connection_20261004.md; reports/progress_20261005.md; reproduction/progress_evidence_20261005.json; reports/local_key_setup_20261005.md; reproduction/local_key_evidence_20261005.json; reports/live_original_app_20261005.md; reproduction/native_runs/20261005_live/; reports/a1_multiturn_eval_20261005.md; reproduction/native_runs/20261005_session/; reproduction/a1_session_evidence_20261005.json; reports/reproduction_repairs_20261005.md; reproduction/repair_evidence_20261005.json",
       "verification": "40 full offline regressions plus 3 original metric tests PASS; complete mock run 94 fixture attempts/0 remote calls; real multi-turn catalog/history checks PASS; original metrics recomputed from saved conversations; persistent quota/repeat gate, key scan and 22 prior evidence files unchanged PASS; 53 full regressions PASS; native fixed-demo/Critic/reflection fixture comparison verifies external-history fix, no new real API request or download"
     },
@@ -116,7 +116,8 @@
       "source": "AgenticRec_完整复现与优化执行规范.md#T06",
       "deliverables": "`data/processed/`；`artifacts/data_manifest.json`；`AgenticRec/configs/data.yaml`。",
       "acceptance": "训练图、热门、映射不读取 holdout。 所有排除数量、ID 和时间边界有记录。 缺失剧情/片长不生成假值。",
-      "checks": "`python -m pytest tests/unit/test_data_contract.py tests/regression/test_no_leakage.py`。"
+      "checks": "`python -m pytest tests/unit/test_data_contract.py tests/regression/test_no_leakage.py`。",
+      "readiness": "T03 audit/route decision and T05 DONE; ready to start official MovieLens1M protocol, not implemented/evaluated yet."
     },
     {
       "id": "T07",

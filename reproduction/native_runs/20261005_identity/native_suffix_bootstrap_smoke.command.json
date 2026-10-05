@@ -1,0 +1,18 @@
+{
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-File",
+    "reproduction/scripts/windows_metadata_range.ps1",
+    "-Url",
+    "https://files.grouplens.org/datasets/movielens/ml-10m.zip",
+    "-SuffixBytes",
+    "22",
+    "-OutputPath",
+    "D:\\AgenticRec\\reproduction\\logs\\catalog_identity_20261005\\ml10m_suffix_smoke_22.bin"
+  ],
+  "started_at_utc": "2026-10-05T15:27:17.015311+00:00",
+  "finished_at_utc": "2026-10-05T15:27:18.583421+00:00",
+  "exit_code": 0
+}

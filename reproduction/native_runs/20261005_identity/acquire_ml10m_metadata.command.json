@@ -1,0 +1,9 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "reproduction/scripts/fetch_ml10m_metadata.py"
+  ],
+  "started_at_utc": "2026-10-05T15:13:53.973315+00:00",
+  "finished_at_utc": "2026-10-05T15:14:08.052590+00:00",
+  "exit_code": 0
+}

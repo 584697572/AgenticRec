@@ -1,0 +1,9 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "reproduction/.runtime/verify_identity_controls.py"
+  ],
+  "started_at_utc": "2026-10-05T15:26:31.720110+00:00",
+  "finished_at_utc": "2026-10-05T15:26:38.622679+00:00",
+  "exit_code": 0
+}

@@ -1,0 +1,8 @@
+{
+  "url": "https://files.grouplens.org/datasets/movielens/ml-10m.zip",
+  "requested_range": "bytes=-65557",
+  "full_archive_downloaded": false,
+  "status": "BLOCKED",
+  "error_type": "URLError",
+  "reason": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1147)>"
+}

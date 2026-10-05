@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "source": "https://files.grouplens.org/datasets/movielens/ml-10m.zip",
+  "archive_bytes": 65566137,
+  "full_archive_downloaded": false,
+  "downloaded_bytes_including_initial_probe": 246440,
+  "byte_cap": 1048576,
+  "members": [
+    {
+      "name": "ml-10M100K/movies.dat",
+      "path": "data/raw/metadata_audit/ml-10m/movies.dat",
+      "bytes": 522197,
+      "sha256": "a9ecf64cdb12d3af6dc32b45711d81c0cfded374bdd9a6d77efd0d3077381c16",
+      "crc32": "250483f3"
+    },
+    {
+      "name": "ml-10M100K/README.html",
+      "path": "data/raw/metadata_audit/ml-10m/README.html",
+      "bytes": 11563,
+      "sha256": "284c3e13d66f25a90ebae058832d2a67fe156476254ecf3915507bb8b1f83495",
+      "crc32": "58cc1488"
+    }
+  ],
+  "requests": [
+    {
+      "tls_verification": "Windows default certificate validation",
+      "status": 206,
+      "url": "https://files.grouplens.org/datasets/movielens/ml-10m.zip",
+      "content_range": "bytes 528-557/65566137",
+      "bytes": 30,
+      "sha256": "c9773eb89c1a4be7288bf219838c138de8610e5ae3e1aa9b18a6cab638eb865b"
+    },
+    {
+      "tls_verification": "Windows default certificate validation",
+      "status": 206,
+      "url": "https://files.grouplens.org/datasets/movielens/ml-10m.zip",
+      "content_range": "bytes 558-578/65566137",
+      "bytes": 21,
+      "sha256": "149391f537f6ca934cae255bd1af068a44be4cbb5453672221d040552e7a7d6a"
+    },
+    {
+      "tls_verification": "Windows default certificate validation",
+      "status": 206,
+      "url": "https://files.grouplens.org/datasets/movielens/ml-10m.zip",
+      "content_range": "bytes 579-606/65566137",
+      "bytes": 28,
+      "sha256": "bc51ff5199e7269094f7f695b693a7c27607a6e68cee760a8bc264e952f9f355"
+    },
+    {
+      "tls_verification": "Windows default certificate validation",
+      "status": 206,
+      "url": "https://files.grouplens.org/datasets/movielens/ml-10m.zip",
+      "content_range": "bytes 607-177236/65566137",
+      "bytes": 176630,
+      "sha256": "adf764d3c516e33ca65e52afeca84c4b999dbea3ab587ccbb52a84df43cc238c"
+    },
+    {
+      "tls_verification": "Windows default certificate validation",
+      "status": 206,
+      "url": "https://files.grouplens.org/datasets/movielens/ml-10m.zip",
+      "content_range": "bytes 64551327-64551356/65566137",
+      "bytes": 30,
+      "sha256": "adfa63d6edc4944985548e0684260a59217a744c49a680c4d4df77456aff1d20"
+    },
+    {
+      "tls_verification": "Windows default certificate validation",
+      "status": 206,
+      "url": "https://files.grouplens.org/datasets/movielens/ml-10m.zip",
+      "content_range": "bytes 64551357-64551378/65566137",
+      "bytes": 22,
+      "sha256": "0f53c7ec6a4f6d9334772bd904a879f5ea24f496d2013b8544221627c1ffaab9"
+    },
+    {
+      "tls_verification": "Windows default certificate validation",
+      "status": 206,
+      "url": "https://files.grouplens.org/datasets/movielens/ml-10m.zip",
+      "content_range": "bytes 64551379-64551406/65566137",
+      "bytes": 28,
+      "sha256": "e080700398e8e4656d0fc38380df0c526614a20dd1cbc1b6242da4e7645ff154"
+    },
+    {
+      "tls_verification": "Windows default certificate validation",
+      "status": 206,
+      "url": "https://files.grouplens.org/datasets/movielens/ml-10m.zip",
+      "content_range": "bytes 64551407-64555500/65566137",
+      "bytes": 4094,
+      "sha256": "f098cec1c4d507a0daadc6dd3ee5f344185f6e92197c6c31878facb8477df039"
+    }
+  ],
+  "ratings_downloaded": false,
+  "tags_downloaded": false,
+  "tls_verification": "Windows default certificate validation; never disabled",
+  "use": "local metadata provenance audit only; not training or benchmark replacement",
+  "license": "MovieLens research terms; no dataset redistribution",
+  "api_requests": 0
+}

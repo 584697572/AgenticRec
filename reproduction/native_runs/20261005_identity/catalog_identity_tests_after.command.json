@@ -1,0 +1,16 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "reproduction/tests",
+    "-p",
+    "test_catalog_identity.py",
+    "-v"
+  ],
+  "started_at_utc": "2026-10-05T15:16:37.060587+00:00",
+  "finished_at_utc": "2026-10-05T15:16:37.322421+00:00",
+  "exit_code": 0
+}

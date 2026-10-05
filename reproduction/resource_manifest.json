@@ -322,5 +322,10 @@
     "derived_input_status": "A1_RECONSTRUCTED",
     "canonical_author_subset_equivalence": "NOT VERIFIED",
     "evaluation": "NOT EVALUATED"
-  }
+  },
+  "quality_route_decision": "reproduction/quality_route_decision_20261005.json",
+  "original_execution_route": "A1 historical functional evidence retained",
+  "quality_experiment_route": "B/upstream_rebuilt; old semantic alignment not assumed",
+  "metadata_identity_audit": "reproduction/native_runs/20261005_identity/catalog_identity_summary.json",
+  "latest_audit_date": "2026-10-05"
 }

@@ -1,0 +1,9 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "reproduction/scripts/freeze_catalog_identity.py"
+  ],
+  "started_at_utc": "2026-10-05T15:22:04.392178+00:00",
+  "finished_at_utc": "2026-10-05T15:22:13.756082+00:00",
+  "exit_code": 0
+}

@@ -1,0 +1,13 @@
+test_alias_is_backed_by_same_source_row (test_catalog_identity.CatalogIdentityTests) ... ok
+test_article_representation_and_year_select_exact_item (test_catalog_identity.CatalogIdentityTests) ... ok
+test_collision_is_ambiguous_not_arbitrarily_chosen (test_catalog_identity.CatalogIdentityTests) ... ok
+test_crosswalk_rejects_genre_conflict_and_many_to_one (test_catalog_identity.CatalogIdentityTests) ... ok
+test_crosswalk_uses_metadata_and_genres_not_model_row_count (test_catalog_identity.CatalogIdentityTests) ... ok
+test_invalid_or_duplicate_raw_id_is_rejected (test_catalog_identity.CatalogIdentityTests) ... ok
+test_missing_year_never_chooses_remake (test_catalog_identity.CatalogIdentityTests) ... ok
+test_unlisted_and_fuzzy_title_are_not_invented_aliases (test_catalog_identity.CatalogIdentityTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+OK

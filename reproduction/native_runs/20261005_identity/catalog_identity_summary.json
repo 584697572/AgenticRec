@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "scope": "catalog provenance and post-hoc target diagnostics, not model evaluation",
+  "catalog_rows": 9888,
+  "official_metadata_rows": 10681,
+  "catalog_crosswalk_status_counts": {
+    "PASS": 9883,
+    "AMBIGUOUS": 5
+  },
+  "approved_source_alias_records": 12189,
+  "saved_diagnostic_samples": 45,
+  "saved_target_resolution_counts": {
+    "PASS": 28,
+    "YEAR_CONFLICT": 6,
+    "TITLE_ABSENT": 11
+  },
+  "direct_matches_preserved": 22,
+  "additional_source_backed_alias_matches": 6,
+  "private_manifest": {
+    "path": "data/metadata_private/catalog_identity_20261005/manifest.json",
+    "bytes": 1589,
+    "sha256": "239ce30003a51f461ef71fc78f5d4b1b4c3010a3c6aa459ac7ec0ebd372aacd1"
+  },
+  "source_url": "https://files.grouplens.org/datasets/movielens/ml-10m.zip",
+  "source_sha256": "a9ecf64cdb12d3af6dc32b45711d81c0cfded374bdd9a6d77efd0d3077381c16",
+  "catalog_sha256": "1a0e8687ba0c366cf4ab7837c591542f9bbb3b445ec4f4155fe1e932b58bb8c9",
+  "input_sha256": "f63630aa236198145e07e3ebae18e9c9d044faff55e21adc961aec7e3980b095",
+  "downloaded_bytes_including_initial_probe": 246440,
+  "ratings_downloaded": false,
+  "new_catalog_rows": 0,
+  "rewritten_years": 0,
+  "changed_upstream_ids": 0,
+  "changed_evaluation_samples": 0,
+  "api_requests": 0,
+  "pretrained_model_id_semantics": "NOT VERIFIED",
+  "similarity_row_semantics": "NOT VERIFIED",
+  "formal_original_metrics": "UNCHANGED: three branches 0/45",
+  "new_quality_metrics": null,
+  "metadata_terms": "https://files.grouplens.org/datasets/movielens/ml-10m-README.html"
+}

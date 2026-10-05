@@ -1,0 +1,10 @@
+{
+  "compile": "PASS",
+  "repeat_gates": "PASS",
+  "range_guards": "PASS",
+  "private_identity_artifacts_unchanged": 4,
+  "prior_private_evidence_unchanged": 431,
+  "original_real_metrics_preserved": true,
+  "api_requests": 0,
+  "download_bytes_in_this_check": 0
+}

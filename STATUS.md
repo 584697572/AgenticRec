@@ -1,18 +1,18 @@
 # 工作区状态入口
 
-最后更新：2026-10-05（Asia/Shanghai）。详细状态见 [AgenticRec/docs/STATUS.md](AgenticRec/docs/STATUS.md)，最新证据见[真实多轮与原评测报告](reports/a1_multiturn_eval_20261005.md)。
+最后更新：2026-10-05（Asia/Shanghai）。详细状态见 [AgenticRec/docs/STATUS.md](AgenticRec/docs/STATUS.md)，最新证据见[目录核查报告](reports/catalog_identity_20261005.md)。
 
-最新检查与修复见[修复报告](reports/reproduction_repairs_20261005.md)：两项可选 `upstream_compat` 行为补丁修正同名电影年份选择和反思丢失外部历史；53 项全量回归通过。真实上游 fixed demo/Critic/反思在 fixture 与 SDK MockTransport 上通过，未作新的真实调用或下载。45 条原输入仅 22 条满足唯一标题/年份目录契约；新增预检拒绝不满足契约的整批新实验，不删除样本。原版输入、预测及三个 0/45 指标原样保留，T03/T04 状态不变。
+此前修复批次见[修复报告](reports/reproduction_repairs_20261005.md)：两项可选 upstream_compat 补丁及当时53项测试通过；原组件 fixed demo/反思完成 fixture 联调。该批未新增请求/下载，原版输入、预测与三个0/45保留。本批来源核查和路线更新见下文。
 
 项目仓库：[584697572/AgenticRec](https://github.com/584697572/AgenticRec)，public；根项目 `origin` 指向该仓库，`master` 跟踪 `origin/master`。创建与首次推送已核验，见 [发布报告](reports/public_repository_20261005.md)。上游 `RecAI/` 保留独立远程与固定版本。
 
-- DONE：T00、T01、T02、T05。现代 Python 3.11 开发环境及离线重建已验收，两个环境各 15 项基础测试通过。
-- T03 IN_PROGRESS：原资源可运行，但 checkpoint/矩阵的权威 ID 语义及预制包独立许可仍 NOT VERIFIED。真实 ReDial raw test 已取得，按原 notebook 加 dtype 适配生成 45 条 A1 输入；作者 canonical 子集等价性 NOT VERIFIED。
+- DONE：T00、T01、T02、T03、T05。T03 完成资源审计/缺失记录/路线选择，未将旧模型语义标为通过；现代开发基础保持原验收。
+- T03 审计结论：官方 MovieLens10M 元数据中 9883 个目录身份唯一对应、5 个歧义；source-backed 别名解析使旧 45 条诊断输入从 22 到 28 个可解析，另 6 个年份冲突、11 个该来源未收录标题。旧 checkpoint/矩阵语义与预制包独立许可仍 NOT VERIFIED，原数据和指标不变。见[目录核查报告](reports/catalog_identity_20261005.md)。
 - T04 BLOCKED（其余验收前置）：真实单轮及两轮条件修改 VERIFIED；45 条 A1 派生输入的原 recbot/random/加权 popularity 评测链已完成，正式原模糊 hit 均为 0/45。新会话实际93次HTTP200、201944 token，高峰费率估算0.507208 CNY；账单未查询。canonical 子集、权威 ID/许可及原 demo/reflection 条件仍未验收。
-- T06—T24 TODO，按 TASKS.yaml 的依赖推进；训练与算法收益 NOT EVALUATED。
+- T06—T24 TODO。T06 的 T03/T05 依赖已满足，下一批建立规范固定的 MovieLens1M 时间划分与训练期 ID 契约；训练与算法收益 NOT EVALUATED。
 
-保持 A1 路线，未转 B。原规范和固定 upstream 未改；旧报告/证据继续保留历史快照身份。不要重复运行已用完额度的连接测试或删除额度记录。
+当前路线：保留 A1 原功能执行证据，质量实验按 ADR-015 采用规范 B/upstream_rebuilt 的独立数据/模型路径。用户要求暂不追论文；作者 canonical 条件不再阻塞独立新实验。原规范和固定 upstream 未改，不把新的 raw_movie_id 套进旧 embedding。旧报告/证据保持历史快照，不重置额度。
 
-本轮40项全量离线回归及3项原指标测试通过；原指标复算、重复执行门禁、Key扫描和22个旧证据字节检查通过。21个target无法映射目录、4个映射年份不同、索引37规划截断且无Map，全部保留在45个分母中。去掉年份的6个诊断模糊命中不替代正式零结果。
+此前真实运行批次的40+3项测试、原指标复算和22个旧证据检查保留。原映射21个target未知、4个年份不同、索引37截断且无Map，全部45个分母不变；年份剥离后的6个模糊诊断不替代正式结果。当前source-backed别名新增6个解析与该旧模糊命中不是同一指标。
 
-Key仍按环境变量优先、根目录`.env`次之；不进入Git或证据哈希清单。旧单轮2/2额度保持原样；新额度已用93/120，现有会话已关闭，不能删除记录重跑。下一步继续T03来源/语义核验和T04原配置恢复，再按T06/T07前置推进模型。
+Key仍按环境变量优先、根目录`.env`次之，不入Git/哈希清单。新额度仍已用93/120，本轮新请求0。官方元数据提取及原生入口校验共下载246462字节，没有提取评分或标签文件；64项全量测试通过。当前优先 T06→T07→T08→T09，不再等待旧论文条件后才做独立协议。

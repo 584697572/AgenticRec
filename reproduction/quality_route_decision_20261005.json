@@ -1,0 +1,52 @@
+{
+  "decision_id": "ADR-015",
+  "date": "2026-10-05",
+  "user_scope": "Prioritize trustworthy IDs/catalog/years, not paper equivalence",
+  "original_functional_route": "A1 retained with original evidence",
+  "quality_experiment_route": "B/upstream_rebuilt per spec section 5.5",
+  "T03_audit": "DONE; audit and route decision, not legacy semantic approval",
+  "T04_original_acceptance": "BLOCKED; source semantics/terms still unknown",
+  "T06": "TODO, audit dependency satisfied",
+  "legacy_checkpoint_mapping": "NOT VERIFIED",
+  "legacy_similarity_mapping": "NOT VERIFIED",
+  "legacy_resource_independent_license": "NOT VERIFIED",
+  "old_canonical_paper_conditions": "not a blocker for the independent new experiment path",
+  "lookup_crosswalk_is_model_mapping": false,
+  "searched": {
+    "resource_archive_members": 15,
+    "local_history_distinct_paths": 70,
+    "movies_notebook_versions": [
+      {
+        "revision": "99251a7dc31bd48debc5645bba89889f63ef20a5",
+        "code_cell_count": 39,
+        "assigns_from_filtered_encounter_order": true,
+        "writes_original_item_map": false
+      },
+      {
+        "revision": "985decff3fc8dca283aee436e4fb611cdd31af84",
+        "code_cell_count": 39,
+        "assigns_from_filtered_encounter_order": true,
+        "writes_original_item_map": false
+      }
+    ],
+    "search_scope": "fixed source, available complete local history, provided archive; not proof of universal absence"
+  },
+  "catalog_crosswalk": {
+    "PASS": 9883,
+    "AMBIGUOUS": 5
+  },
+  "evidence": [
+    "reproduction/native_runs/20261005_identity/catalog_identity_summary.json",
+    "reproduction/native_runs/20261005_identity/runtime_controls_summary.json",
+    "reports/catalog_identity_20261005.md"
+  ],
+  "next_tasks": [
+    "T06 official stable MovieLens1M split/train-only ID contract",
+    "T07 exact hand-calculated metrics fixtures",
+    "T08 Random/Popularity/BPR-MF",
+    "T09 LightGCN"
+  ],
+  "api_requests_added": 0,
+  "download_bytes_this_batch": 246462,
+  "new_quality_metrics": null
+}

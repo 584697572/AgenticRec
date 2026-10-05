@@ -1,0 +1,20 @@
+test_catalog_identity (unittest.loader._FailedTest) ... ERROR
+
+======================================================================
+ERROR: test_catalog_identity (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_catalog_identity
+Traceback (most recent call last):
+  File "D:\AgenticRec\reproduction\.runtime\python\cpython-3.9.24-windows-x86_64-none\lib\unittest\loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "D:\AgenticRec\reproduction\.runtime\python\cpython-3.9.24-windows-x86_64-none\lib\unittest\loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "D:\AgenticRec\reproduction\tests\test_catalog_identity.py", line 7, in <module>
+    from catalog_identity import MetadataIndex, parse_movies_dat, catalog_crosswalk
+ModuleNotFoundError: No module named 'catalog_identity'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)

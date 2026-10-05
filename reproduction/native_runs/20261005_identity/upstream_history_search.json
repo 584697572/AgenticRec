@@ -1,0 +1,22 @@
+{
+  "historical_distinct_paths": 70,
+  "candidate_path_names": [
+    "InteRecAgent/llm4crs/mapper/__init__.py",
+    "InteRecAgent/llm4crs/mapper/map_tool.py"
+  ],
+  "notebook_versions": [
+    {
+      "revision": "99251a7dc31bd48debc5645bba89889f63ef20a5",
+      "code_cell_count": 39,
+      "assigns_from_filtered_encounter_order": true,
+      "writes_original_item_map": false
+    },
+    {
+      "revision": "985decff3fc8dca283aee436e4fb611cdd31af84",
+      "code_cell_count": 39,
+      "assigns_from_filtered_encounter_order": true,
+      "writes_original_item_map": false
+    }
+  ],
+  "complete_local_history": true
+}
