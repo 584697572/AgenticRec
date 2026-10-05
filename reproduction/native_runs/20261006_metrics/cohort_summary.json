@@ -1,0 +1,28 @@
+{
+  "data_manifest_sha256": "01cdaa8d1e39ec197536015aa72e6d2d8b756e5d7aed5feaba3aae6c011fa0be",
+  "id_map_sha256": "19364182e1eccb53a978d10bf38a9d6dcd2f1f63f7ee8510f88aae6076269dac",
+  "model_metrics": null,
+  "protocol": "fixed MovieLens1M warm full-universe cohorts",
+  "splits": {
+    "test": {
+      "candidate_items": 3469,
+      "private_path": "data/eval_private/ml-1m-v1/test.json",
+      "relevant_items": 41499,
+      "sha256": "9035b3f5cf27e55115d986423481fcf8b95eea2b8213d4d23ab1164f9bb20d77",
+      "users_with_relevance": 954,
+      "users_without_relevance": 4397,
+      "warm_users": 5351
+    },
+    "valid": {
+      "candidate_items": 3469,
+      "private_path": "data/eval_private/ml-1m-v1/valid.json",
+      "relevant_items": 12197,
+      "sha256": "51db50cc5cfb3d9c4f060d71a0fa4ada4e74c6555c9dd4015be7f2a6a8bdfc93",
+      "users_with_relevance": 481,
+      "users_without_relevance": 4870,
+      "warm_users": 5351
+    }
+  },
+  "status": "PASS",
+  "test_used_for_training_or_tuning": false
+}

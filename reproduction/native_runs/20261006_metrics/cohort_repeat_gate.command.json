@@ -1,0 +1,9 @@
+{
+  "argv": [
+    "AgenticRec/.venv-dev/Scripts/python.exe",
+    "-m",
+    "agenticrec.evaluation.cohort"
+  ],
+  "cwd": "D:/AgenticRec",
+  "exit_code": 1
+}

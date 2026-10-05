@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "AgenticRec/.venv-dev/Scripts/python.exe",
+    "-m",
+    "pytest",
+    "AgenticRec/tests/unit/test_metrics.py",
+    "-q"
+  ],
+  "cwd": "D:/AgenticRec",
+  "exit_code": 0
+}

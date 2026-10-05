@@ -130,11 +130,13 @@
         "T05",
         "T06"
       ],
-      "status": "TODO",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T07",
       "deliverables": "`AgenticRec/src/agenticrec/evaluation/metrics.py`；`AgenticRec/tests/unit/test_metrics.py`。",
       "acceptance": "手算结果与实现一致。 失败和空返回不会从系统评测分母消失。",
-      "checks": "`python -m pytest tests/unit/test_metrics.py`。"
+      "checks": "`python -m pytest tests/unit/test_metrics.py`。",
+      "evidence": "AgenticRec/src/agenticrec/evaluation/metrics.py; AgenticRec/src/agenticrec/evaluation/cohort.py; AgenticRec/tests/unit/test_metrics.py; reproduction/native_runs/20261006_metrics/; reports/t07_metrics_protocol_20261006.md",
+      "verification": "12 hand-computable metric/cohort tests PASS in both isolated Python 3.11 environments; 32 full modern tests PASS. Valid/test fixed warm cohort has 5351 users and 3469 train-only candidate IDs; 481/954 users have at least one warm relevant item; 4870/4397 are explicitly excluded from main means. Empty/invalid predictions counted as zero failures, no model predictions or scores evaluated yet."
     },
     {
       "id": "T08",

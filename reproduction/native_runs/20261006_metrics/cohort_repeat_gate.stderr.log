@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\AgenticRec\AgenticRec\src\agenticrec\evaluation\cohort.py", line 101, in <module>
+    freeze()
+  File "D:\AgenticRec\AgenticRec\src\agenticrec\evaluation\cohort.py", line 66, in freeze
+    raise FileExistsError('Frozen evaluation cohorts already exist')
+FileExistsError: Frozen evaluation cohorts already exist

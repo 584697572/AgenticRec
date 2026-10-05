@@ -1,0 +1,202 @@
+{
+  "scope": "T07 fixed ID metrics and evaluation cohorts before model training",
+  "base_commit": "853eda9c6dcb385aa18cc97d98031094d921b8e4",
+  "spec_sha256": "d88f02c84855234673514519486e74e73c61ffd4e2ec75594020fdf9b8ebb677",
+  "public_files": [
+    {
+      "path": "AgenticRec/README.md",
+      "bytes": 3636,
+      "sha256": "9d71744ebfba5e713317fc71e06b8f3e74dc22c770116668414d6597abb8c38c",
+      "git_filtered_blob": "9309a60791070e97211c6cd22419cf2f35e45fb1"
+    },
+    {
+      "path": "AgenticRec/docs/STATUS.md",
+      "bytes": 5905,
+      "sha256": "35e58629f644418badc19cb254a462ca6b90e28e7bc189ebec1a31d98eab1f37",
+      "git_filtered_blob": "2f265c6785cb35fab77a2cf2d5161abfc2c7dc6c"
+    },
+    {
+      "path": "AgenticRec/src/agenticrec/evaluation/__init__.py",
+      "bytes": 66,
+      "sha256": "9947c66c0895d3b7ccf97c640ea1092b654efe27522c6b6207c504f57e0aeb2d",
+      "git_filtered_blob": "b9bc925ee40bbb86c8e569cbf053ed0cebe1ba8c"
+    },
+    {
+      "path": "AgenticRec/src/agenticrec/evaluation/cohort.py",
+      "bytes": 4672,
+      "sha256": "d7efee886ac719150c8eeb0155ddd3a95d5f10662fa4ab01f8b42c3fe457d0ab",
+      "git_filtered_blob": "312ddb68eb57cc05432767a2746c0b7447ce53fd"
+    },
+    {
+      "path": "AgenticRec/src/agenticrec/evaluation/metrics.py",
+      "bytes": 4271,
+      "sha256": "fcf1f0d2b1c1c26d43140bb0e697e12f4c7cce6a31f6051c8b6a36d75d11bc9f",
+      "git_filtered_blob": "96cc9d3e8bcc7359fa40dadc07b59c8b20693734"
+    },
+    {
+      "path": "AgenticRec/tests/unit/test_metrics.py",
+      "bytes": 4736,
+      "sha256": "b9060edf06153821ec8510f2a5131595ca2ae82842baacaff4b81b889a7d20da",
+      "git_filtered_blob": "553c4ba70fce7db7e8ad18312b914d8847317bd9"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5390,
+      "sha256": "24415d7e344f910fb286d322aa50c6cf66ceaf2baa61bedbf4560c91b68cefb5",
+      "git_filtered_blob": "f242582cfa038b0045ecb85ac6f20c89251ff70a"
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 3707,
+      "sha256": "5080181c4814ff166465b7de64beb2290197e6e2b2ecd71c3a6484fd666f748e",
+      "git_filtered_blob": "b708c3638761f45b14da97bc2face9bc0a209be8"
+    },
+    {
+      "path": "TASKS.yaml",
+      "bytes": 22317,
+      "sha256": "dce39d48398e0ae745e1baa5756ab55d9c4508b67e3ef063b43a9c7fad2ba087",
+      "git_filtered_blob": "ebf7164988cb980b6458ac91edb0a40321d0151f"
+    },
+    {
+      "path": "reports/t07_metrics_protocol_20261006.md",
+      "bytes": 3977,
+      "sha256": "4443beaaa021598002ef92df19f8d65d4783835908eaa3608eb86ef040cbaa85",
+      "git_filtered_blob": "f94b41d1073a54d2e7b1c604d7e35a89277865fa"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/cohort_repeat_gate.command.json",
+      "bytes": 165,
+      "sha256": "ab5a4e9039aeef9ad1f780c05654aabe0650d6332237a54f0f45c4e844572f92",
+      "git_filtered_blob": "b5289bc9270cd99ad2675b9771086ef02a57e44c"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/cohort_repeat_gate.exitcode.txt",
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "git_filtered_blob": "d00491fd7e5bb6fa28c517a0bb32b8b506539d4d"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/cohort_repeat_gate.stderr.log",
+      "bytes": 470,
+      "sha256": "562ec2b749e65f7999ce24f235467035e2e9757a0fc9f4e5e3a466f5880520ef",
+      "git_filtered_blob": "0b402c0b59a69d9364eb3fa864c6a9eb17b0d5a3"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/cohort_repeat_gate.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_filtered_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/cohort_summary.json",
+      "bytes": 1012,
+      "sha256": "5b6fec0495e8bb1d964a32ac19b137efdbdc6d3663f791459a83ba0b3613a55d",
+      "git_filtered_blob": "be10d55373fda4edf403b952e2dad05629931c38"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/full_modern_dev.command.json",
+      "bytes": 179,
+      "sha256": "345026deaa9f8946d82cdd25f20db4c17ef63e5d125df197354dbb1f6d11199a",
+      "git_filtered_blob": "66c570e9eab0d88eb9c8ad86e9056034fabc83c9"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/full_modern_dev.exitcode.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "git_filtered_blob": "573541ac9702dd3969c9bc859d2b91ec1f7e6e56"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/full_modern_dev.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_filtered_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/full_modern_dev.stdout.log",
+      "bytes": 101,
+      "sha256": "01f1c492494690ab9369bd021a36c9dd6262111c196877c3d39175250f331109",
+      "git_filtered_blob": "59927f2b5097956515d4c62e09a7a400cda56646"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/metric_fixtures_dev.command.json",
+      "bytes": 200,
+      "sha256": "a6917440aa4dc062bb206d54275f27b903f58c71658ab97b0ecb231b46c6452e",
+      "git_filtered_blob": "bed0625b7ac5ae7e20fb3cf5fc254bbb736905b0"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/metric_fixtures_dev.exitcode.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "git_filtered_blob": "573541ac9702dd3969c9bc859d2b91ec1f7e6e56"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/metric_fixtures_dev.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_filtered_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/metric_fixtures_dev.stdout.log",
+      "bytes": 101,
+      "sha256": "401687af55e52e0f9e79fd2c35c2ced68d77677829685fef398782068737bf5a",
+      "git_filtered_blob": "69aab284f7fdedb2e91d387a0205c9d7032e7c2e"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/metric_fixtures_rebuild.command.json",
+      "bytes": 208,
+      "sha256": "a22dd178174697fdc506972d26cb9258d9c2223f8a1e4c7de2765c3de58d239b",
+      "git_filtered_blob": "8d9dd20a72ce8348e4009a94cb7c922c1e9bc0d9"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/metric_fixtures_rebuild.exitcode.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "git_filtered_blob": "573541ac9702dd3969c9bc859d2b91ec1f7e6e56"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/metric_fixtures_rebuild.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_filtered_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/metric_fixtures_rebuild.stdout.log",
+      "bytes": 101,
+      "sha256": "401687af55e52e0f9e79fd2c35c2ced68d77677829685fef398782068737bf5a",
+      "git_filtered_blob": "69aab284f7fdedb2e91d387a0205c9d7032e7c2e"
+    },
+    {
+      "path": "reproduction/native_runs/20261006_metrics/verification.json",
+      "bytes": 211,
+      "sha256": "9e8f80a76af375ffa94e823ead3d6fbb7b483dc2063939ef5253df22e96876e2",
+      "git_filtered_blob": "60f5260e6c1992404df8fe38a3227beea6857599"
+    }
+  ],
+  "private_files": [
+    {
+      "path": "data/eval_private/ml-1m-v1/valid.json",
+      "bytes": 3929968,
+      "sha256": "51db50cc5cfb3d9c4f060d71a0fa4ada4e74c6555c9dd4015be7f2a6a8bdfc93"
+    },
+    {
+      "path": "data/eval_private/ml-1m-v1/test.json",
+      "bytes": 4067218,
+      "sha256": "9035b3f5cf27e55115d986423481fcf8b95eea2b8213d4d23ab1164f9bb20d77"
+    }
+  ],
+  "T06_data_manifest_sha256": "01cdaa8d1e39ec197536015aa72e6d2d8b756e5d7aed5feaba3aae6c011fa0be",
+  "T06_id_map_sha256": "19364182e1eccb53a978d10bf38a9d6dcd2f1f63f7ee8510f88aae6076269dac",
+  "valid_main_users": 481,
+  "test_main_users": 954,
+  "fixed_candidate_items": 3469,
+  "tests": {
+    "metrics_each_environment": 12,
+    "full_modern": 32
+  },
+  "model_metrics": null,
+  "api_requests_added": 0,
+  "actual_key_scan": "PASS; key and key hash never recorded; .env ignored",
+  "T07": "DONE",
+  "T08": "TODO",
+  "T04": "BLOCKED"
+}

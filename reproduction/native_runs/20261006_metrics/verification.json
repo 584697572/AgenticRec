@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "metric_fixture_tests_each_environment": 12,
+  "full_modern_tests": 32,
+  "cohort_repeat_gate": "PASS",
+  "cohort_hashes": "PASS",
+  "api_requests": 0,
+  "model_metrics": null
+}

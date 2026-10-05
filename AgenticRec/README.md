@@ -2,6 +2,8 @@
 
 已验收 T05 与 T06：独立 Python 3.11.14、严格配置、评分协议、FakeLLM，以及官方稳定 MovieLens1M 的全局时间划分和训练期 ID 契约。训练、真实 SDK、推荐流水线和效果 benchmark 尚未实现；不能从数据合同测试推导推荐质量。
 
+T07 已用手算 fixture 验证 ID 排序、Recall/Hit/MRR/NDCG 与失败分母，并冻结本地 valid/test 用户及相关目标。运行 `& AgenticRec/.venv-dev/Scripts/python.exe -m pytest AgenticRec/tests/unit/test_metrics.py -q` 核验。后续所有模型需用同一训练候选、已评分过滤和冻结 cohort，详见[指标报告](../reports/t07_metrics_protocol_20261006.md)。
+
 T06 数据输入从官方 [MovieLens1M](https://grouplens.org/datasets/movielens/1m/) 下载并按官方 MD5 核对，原 ZIP/条款保留在本地忽略目录 `../data/raw/ml-1m/`。在工作区根目录运行 `& AgenticRec/.venv-dev/Scripts/python.exe -m agenticrec.data --config AgenticRec/configs/data.yaml`；首次产出 `../data/processed/ml-1m-v1/` 与 `../artifacts/data_manifest.json`，重复运行拒绝覆盖。用 `& AgenticRec/.venv-dev/Scripts/python.exe -m pytest AgenticRec/tests/unit/test_data_contract.py AgenticRec/tests/regression/test_no_leakage.py -q` 核验。详细规则和计数见[数据协议报告](../reports/t06_movielens_protocol_20261006.md)。
 
 从工作区根目录运行已存在的命令：
