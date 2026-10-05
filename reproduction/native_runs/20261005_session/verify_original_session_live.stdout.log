@@ -1,0 +1,14 @@
+{
+  "status": "VERIFIED",
+  "scope": "A1_original_recbot_evaluation",
+  "http_attempts": 93,
+  "remote_api_requests": 93,
+  "usage": {
+    "prompt_tokens": 184724,
+    "completion_tokens": 17220,
+    "total_tokens": 201944
+  },
+  "estimated_cost_cny_peak_ceiling": 0.507208,
+  "repeat_gate_verified": true,
+  "prior_evidence_files_unchanged": 22
+}

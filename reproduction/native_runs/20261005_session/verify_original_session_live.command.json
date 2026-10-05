@@ -1,0 +1,14 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "reproduction/scripts/verify_a1_session.py",
+    "--directory",
+    "reproduction/logs/live_reproduction_20261005",
+    "--scan-local-key",
+    "--publish",
+    "reproduction/native_runs/20261005_session/live_summary.json"
+  ],
+  "started_at_utc": "2026-10-05T11:51:00.328070+00:00",
+  "finished_at_utc": "2026-10-05T11:51:01.317433+00:00",
+  "exit_code": 0
+}

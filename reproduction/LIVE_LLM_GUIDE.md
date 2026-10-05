@@ -1,3 +1,25 @@
+# 2026-10-05：真实多轮与原评测已执行
+
+原单轮之后，用户明确授权120次请求、最多1024输出token/次、3 CNY。执行端已从本机.env读取Key，运行`live_reproduction.py`完成两轮原App回调和45条A1原评测。实际93次HTTP200、201944 token、高峰费率估算0.507208CNY，真实账单null。三个原分支正式模糊hit均0/45；完整失败、coverage和指标表示限制见[真实报告](../reports/a1_multiturn_eval_20261005.md)。
+
+真实运行入口如下，仅供说明已经执行的命令；当前会话已关闭，不要重复运行或删除其记录：
+
+```powershell
+& .\reproduction\.venv-legacy\Scripts\python.exe reproduction/scripts/live_reproduction.py
+```
+
+本机授权profile为忽略的`reproduction/.runtime/live_reproduction_20261005.json`，公开example保持禁用。新工作区缺profile会0请求拒绝。发送前持久登记每个请求槽，失败/超时占额度，未知usage停止；费用先作保守规划再按实际usage估算，不宣称供应商账单硬限额。旧连接和单轮记录不变；当前93/120，剩余额度不能靠新建目录或删除marker重置。
+
+无需Key的离线入口仅在尚不存在的输出目录运行：
+
+```powershell
+& .\reproduction\.venv-legacy\Scripts\python.exe reproduction/scripts/live_reproduction.py --offline --offline-output reproduction/logs/new_offline_session
+```
+
+目录、模型和原代码继续保持原样。单轮、多轮与该45条评测执行链已验证；论文canonical条件、权威ID对应和原demo/reflection等尚未恢复，不能写成完整论文复现或算法收益。
+
+## 以下为此前单轮配置与历史记录
+
 # 2026-10-05：已授权的原 App 单轮
 
 ## 保存一次 Key，交由执行端运行

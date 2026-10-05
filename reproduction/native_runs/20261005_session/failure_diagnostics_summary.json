@@ -1,0 +1,24 @@
+{
+  "scope": "post_run_diagnostics_only; formal original metrics and frozen data remain unchanged",
+  "dataset_sha256": "f63630aa236198145e07e3ebae18e9c9d044faff55e21adc961aec7e3980b095",
+  "private_case_file_sha256": "1c39b6b7f98f5ebae9aa604b231d138c0a10315879ffde1ad22eb3b419e492e4",
+  "notebook_sha256": "2bfc48712db3d04b281471b3d822ba6f1f1f2c9141ad6f5aa1d070aeeb795062",
+  "catalog_sha256": "1a0e8687ba0c366cf4ab7837c591542f9bbb3b445ec4f4155fe1e932b58bb8c9",
+  "sample_count": 45,
+  "formal_original_recbot_hits": 0,
+  "targets_with_year_suffix": 44,
+  "targets_mapped_by_original_notebook": 24,
+  "targets_unmapped_by_original_notebook": 21,
+  "mapped_targets_with_different_catalog_year": 4,
+  "year_stripped_text_hit_diagnostic_count": 6,
+  "mapped_target_in_recorded_map_ids_diagnostic_count": 0,
+  "no_map_sample_indices": [
+    37
+  ],
+  "truncated_response_sample_indices": [
+    37
+  ],
+  "api_requests": 0,
+  "diagnostic_metrics_are_not_formal_benchmark": true,
+  "limitations": "Notebook title/year mapping retains original approximate and signed-year behavior; it is not authoritative checkpoint row labeling. Stripping a year changes the metric target representation and cannot replace the preserved original result."
+}

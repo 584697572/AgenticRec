@@ -1,0 +1,253 @@
+{"event": "progress", "stage": "loading_original_app_and_cached_models"}
+{"stage": "original_app_ready"}
+{"stage": "multiturn", "attempts": 1, "index": 0}
+{"stage": "multiturn", "attempts": 2, "index": 0}
+{"event": "progress", "stage": "multiturn_completed", "index": 0, "validation_passed": true}
+{"stage": "multiturn", "attempts": 3, "index": 1}
+{"stage": "multiturn", "attempts": 4, "index": 1}
+{"event": "progress", "stage": "multiturn_completed", "index": 1, "validation_passed": true}
+{"stage": "evaluation", "attempts": 5, "index": 0}
+{"stage": "evaluation", "attempts": 6, "index": 0}
+{"event": "sample_completed", "agent": "recbot", "index": 0, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 7, "index": 1}
+{"stage": "evaluation", "attempts": 8, "index": 1}
+{"event": "sample_completed", "agent": "recbot", "index": 1, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 9, "index": 2}
+{"stage": "evaluation", "attempts": 10, "index": 2}
+{"event": "sample_completed", "agent": "recbot", "index": 2, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 11, "index": 3}
+{"stage": "evaluation", "attempts": 12, "index": 3}
+{"event": "sample_completed", "agent": "recbot", "index": 3, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 13, "index": 4}
+{"stage": "evaluation", "attempts": 14, "index": 4}
+{"event": "sample_completed", "agent": "recbot", "index": 4, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 15, "index": 5}
+{"stage": "evaluation", "attempts": 16, "index": 5}
+{"event": "sample_completed", "agent": "recbot", "index": 5, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 17, "index": 6}
+{"stage": "evaluation", "attempts": 18, "index": 6}
+{"event": "sample_completed", "agent": "recbot", "index": 6, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 19, "index": 7}
+{"stage": "evaluation", "attempts": 20, "index": 7}
+{"event": "sample_completed", "agent": "recbot", "index": 7, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 21, "index": 8}
+{"stage": "evaluation", "attempts": 22, "index": 8}
+{"event": "sample_completed", "agent": "recbot", "index": 8, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 23, "index": 9}
+{"stage": "evaluation", "attempts": 24, "index": 9}
+{"event": "sample_completed", "agent": "recbot", "index": 9, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 25, "index": 10}
+{"stage": "evaluation", "attempts": 26, "index": 10}
+{"event": "sample_completed", "agent": "recbot", "index": 10, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 27, "index": 11}
+{"stage": "evaluation", "attempts": 28, "index": 11}
+{"event": "sample_completed", "agent": "recbot", "index": 11, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 29, "index": 12}
+{"stage": "evaluation", "attempts": 30, "index": 12}
+{"event": "sample_completed", "agent": "recbot", "index": 12, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 31, "index": 13}
+{"stage": "evaluation", "attempts": 32, "index": 13}
+{"event": "sample_completed", "agent": "recbot", "index": 13, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 33, "index": 14}
+{"stage": "evaluation", "attempts": 34, "index": 14}
+{"event": "sample_completed", "agent": "recbot", "index": 14, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 35, "index": 15}
+{"stage": "evaluation", "attempts": 36, "index": 15}
+{"event": "sample_completed", "agent": "recbot", "index": 15, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 37, "index": 16}
+{"stage": "evaluation", "attempts": 38, "index": 16}
+{"event": "sample_completed", "agent": "recbot", "index": 16, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 39, "index": 17}
+{"stage": "evaluation", "attempts": 40, "index": 17}
+{"event": "sample_completed", "agent": "recbot", "index": 17, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 41, "index": 18}
+{"stage": "evaluation", "attempts": 42, "index": 18}
+{"event": "sample_completed", "agent": "recbot", "index": 18, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 43, "index": 19}
+{"stage": "evaluation", "attempts": 44, "index": 19}
+{"event": "sample_completed", "agent": "recbot", "index": 19, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 45, "index": 20}
+{"stage": "evaluation", "attempts": 46, "index": 20}
+{"event": "sample_completed", "agent": "recbot", "index": 20, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 47, "index": 21}
+{"stage": "evaluation", "attempts": 48, "index": 21}
+{"event": "sample_completed", "agent": "recbot", "index": 21, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 49, "index": 22}
+{"stage": "evaluation", "attempts": 50, "index": 22}
+{"event": "sample_completed", "agent": "recbot", "index": 22, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 51, "index": 23}
+{"stage": "evaluation", "attempts": 52, "index": 23}
+{"event": "sample_completed", "agent": "recbot", "index": 23, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 53, "index": 24}
+{"stage": "evaluation", "attempts": 54, "index": 24}
+{"event": "sample_completed", "agent": "recbot", "index": 24, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 55, "index": 25}
+{"stage": "evaluation", "attempts": 56, "index": 25}
+{"event": "sample_completed", "agent": "recbot", "index": 25, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 57, "index": 26}
+{"stage": "evaluation", "attempts": 58, "index": 26}
+{"event": "sample_completed", "agent": "recbot", "index": 26, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 59, "index": 27}
+{"stage": "evaluation", "attempts": 60, "index": 27}
+{"event": "sample_completed", "agent": "recbot", "index": 27, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 61, "index": 28}
+{"stage": "evaluation", "attempts": 62, "index": 28}
+{"event": "sample_completed", "agent": "recbot", "index": 28, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 63, "index": 29}
+{"stage": "evaluation", "attempts": 64, "index": 29}
+{"event": "sample_completed", "agent": "recbot", "index": 29, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 65, "index": 30}
+{"stage": "evaluation", "attempts": 66, "index": 30}
+{"event": "sample_completed", "agent": "recbot", "index": 30, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 67, "index": 31}
+{"stage": "evaluation", "attempts": 68, "index": 31}
+{"event": "sample_completed", "agent": "recbot", "index": 31, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 69, "index": 32}
+{"stage": "evaluation", "attempts": 70, "index": 32}
+{"event": "sample_completed", "agent": "recbot", "index": 32, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 71, "index": 33}
+{"stage": "evaluation", "attempts": 72, "index": 33}
+{"event": "sample_completed", "agent": "recbot", "index": 33, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 73, "index": 34}
+{"stage": "evaluation", "attempts": 74, "index": 34}
+{"event": "sample_completed", "agent": "recbot", "index": 34, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 75, "index": 35}
+{"stage": "evaluation", "attempts": 76, "index": 35}
+{"event": "sample_completed", "agent": "recbot", "index": 35, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 77, "index": 36}
+{"stage": "evaluation", "attempts": 78, "index": 36}
+{"event": "sample_completed", "agent": "recbot", "index": 36, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 79, "index": 37}
+{"event": "sample_completed", "agent": "recbot", "index": 37, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 80, "index": 38}
+{"stage": "evaluation", "attempts": 81, "index": 38}
+{"event": "sample_completed", "agent": "recbot", "index": 38, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 82, "index": 39}
+{"stage": "evaluation", "attempts": 83, "index": 39}
+{"event": "sample_completed", "agent": "recbot", "index": 39, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 84, "index": 40}
+{"stage": "evaluation", "attempts": 85, "index": 40}
+{"event": "sample_completed", "agent": "recbot", "index": 40, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 86, "index": 41}
+{"stage": "evaluation", "attempts": 87, "index": 41}
+{"event": "sample_completed", "agent": "recbot", "index": 41, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 88, "index": 42}
+{"stage": "evaluation", "attempts": 89, "index": 42}
+{"event": "sample_completed", "agent": "recbot", "index": 42, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 90, "index": 43}
+{"stage": "evaluation", "attempts": 91, "index": 43}
+{"event": "sample_completed", "agent": "recbot", "index": 43, "hit": false, "error_reply": false}
+{"stage": "evaluation", "attempts": 92, "index": 44}
+{"stage": "evaluation", "attempts": 93, "index": 44}
+{"event": "sample_completed", "agent": "recbot", "index": 44, "hit": false, "error_reply": false}
+{"event": "progress", "stage": "original_evaluation_completed", "agent": "recbot", "samples": 45, "hits": 0}
+{"event": "sample_completed", "agent": "random", "index": 0, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 1, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 2, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 3, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 4, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 5, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 6, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 7, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 8, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 9, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 10, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 11, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 12, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 13, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 14, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 15, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 16, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 17, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 18, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 19, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 20, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 21, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 22, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 23, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 24, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 25, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 26, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 27, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 28, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 29, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 30, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 31, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 32, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 33, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 34, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 35, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 36, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 37, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 38, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 39, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 40, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 41, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 42, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 43, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "random", "index": 44, "hit": false, "error_reply": false}
+{"event": "progress", "stage": "original_evaluation_completed", "agent": "random", "samples": 45, "hits": 0}
+{"event": "sample_completed", "agent": "popularity", "index": 0, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 1, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 2, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 3, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 4, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 5, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 6, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 7, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 8, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 9, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 10, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 11, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 12, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 13, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 14, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 15, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 16, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 17, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 18, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 19, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 20, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 21, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 22, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 23, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 24, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 25, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 26, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 27, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 28, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 29, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 30, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 31, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 32, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 33, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 34, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 35, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 36, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 37, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 38, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 39, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 40, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 41, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 42, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 43, "hit": false, "error_reply": false}
+{"event": "sample_completed", "agent": "popularity", "index": 44, "hit": false, "error_reply": false}
+{"event": "progress", "stage": "original_evaluation_completed", "agent": "popularity", "samples": 45, "hits": 0}
+{
+  "status": "SUCCESS",
+  "scope": "live_A1_reproduction",
+  "http_attempts": 93,
+  "remote_api_requests": 93,
+  "usage": {
+    "prompt_tokens": 184724,
+    "completion_tokens": 17220,
+    "total_tokens": 201944
+  },
+  "usage_is_fixture": false,
+  "actual_cost_cny": null,
+  "estimated_cost_cny_peak_ceiling": 0.507208,
+  "original_evaluation": "A1 COMPLETED",
+  "worker_exit_code": 0,
+  "evidence_directory": "reproduction/logs/live_reproduction_20261005",
+  "multiturn_status": "SUCCESS"
+}

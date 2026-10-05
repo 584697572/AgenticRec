@@ -1,0 +1,40 @@
+{
+  "status": "STATIC REVIEW COMPLETE",
+  "upstream_commit": "0959ecb05b0794748426e73e6efc1b6b35ec433d",
+  "checkpoint_sha256": "814430acd5602e666b237c46c92ed48f56f2dce356da399af003a4b68ce1f678",
+  "checkpoint_dataset_label": "ml-10m",
+  "checkpoint_n_items": 36255,
+  "movies_notebook_sha256": "0025cedb37704f9de27c2942ec1d05f2dc3b59d780d5c820f1bbb57fa031fe5e",
+  "itemcf_notebook_sha256": "86e1a10dffab23759f6bebfaab935d91d321cf007ce34f6dc44cf7ca4a425344",
+  "findings": [
+    {
+      "source": "movies.ipynb",
+      "cells": [
+        1,
+        2,
+        3
+      ],
+      "fact": "Directory label ml-10m is retained while active comma-separated movies/ratings readers and ml-latest comment coexist; these labels do not uniquely identify the raw data release."
+    },
+    {
+      "source": "movies.ipynb",
+      "cells": [
+        7,
+        8
+      ],
+      "fact": "Item IDs are reassigned from the encounter order of filtered rating item IDs, then copied onto movie rows. The original raw ratings and retained filtering/order are needed to recover row labels."
+    },
+    {
+      "source": "ItemCF.ipynb",
+      "cells": [
+        2,
+        8
+      ],
+      "fact": "Similarity dimensions derive from training item IDs; a matrix shape and catalog coverage alone cannot establish its row-title provenance."
+    }
+  ],
+  "authoritative_checkpoint_title_mapping": "NOT VERIFIED",
+  "similarity_row_title_mapping": "NOT VERIFIED",
+  "action": "Keep original assets and IDs unchanged, retain A1 functional evidence, and do not infer authoritative alignment from checkpoint label or cached notebook outputs. No additional raw dataset or model download in this review.",
+  "api_requests": 0
+}

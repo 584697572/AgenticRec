@@ -1,0 +1,14 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "reproduction/scripts/verify_a1_session.py",
+    "--directory",
+    "reproduction/logs/a1_session_offline_20261005",
+    "--offline",
+    "--publish",
+    "reproduction/native_runs/20261005_session/offline_summary.json"
+  ],
+  "started_at_utc": "2026-10-05T11:41:42.752782+00:00",
+  "finished_at_utc": "2026-10-05T11:41:43.890091+00:00",
+  "exit_code": 0
+}

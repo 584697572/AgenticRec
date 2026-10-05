@@ -1,0 +1,20 @@
+{
+  "scope": "post_run_diagnostics_only; formal original metrics and frozen data remain unchanged",
+  "sample_count": 45,
+  "formal_original_recbot_hits": 0,
+  "targets_with_year_suffix": 44,
+  "targets_mapped_by_original_notebook": 24,
+  "targets_unmapped_by_original_notebook": 21,
+  "mapped_targets_with_different_catalog_year": 4,
+  "year_stripped_text_hit_diagnostic_count": 6,
+  "mapped_target_in_recorded_map_ids_diagnostic_count": 0,
+  "no_map_sample_indices": [
+    37
+  ],
+  "truncated_response_sample_indices": [
+    37
+  ],
+  "api_requests": 0,
+  "diagnostic_metrics_are_not_formal_benchmark": true,
+  "limitations": "Notebook title/year mapping retains original approximate and signed-year behavior; it is not authoritative checkpoint row labeling. Stripping a year changes the metric target representation and cannot replace the preserved original result."
+}

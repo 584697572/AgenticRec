@@ -1,0 +1,9 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "reproduction/scripts/audit_a1_eval_failures.py"
+  ],
+  "started_at_utc": "2026-10-05T11:54:35.748940+00:00",
+  "finished_at_utc": "2026-10-05T11:54:39.146416+00:00",
+  "exit_code": 0
+}

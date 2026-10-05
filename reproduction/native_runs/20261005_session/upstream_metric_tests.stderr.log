@@ -1,0 +1,8 @@
+test_normalizes_case_and_punctuation (test_upstream_text_hit.OriginalTextHitTests) ... ok
+test_partial_title_can_hit_a_different_title (test_upstream_text_hit.OriginalTextHitTests) ... ok
+test_threshold_is_strictly_greater_than_eighty (test_upstream_text_hit.OriginalTextHitTests) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.427s
+
+OK

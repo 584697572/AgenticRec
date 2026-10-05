@@ -1,3 +1,18 @@
+# 执行中发现的规范与上游假设限制
+
+## 2026-10-05：A1 派生评测输入的 target 可达性与表示
+
+- 原要求：§5.3/T04 保留原输入语义、原模糊文本指标和真实结果；缺 canonical 作者条件只能记 A1。
+- 实际发现：全部 45 条原 notebook 派生输入已真实执行，三个原分支正式 hit 均为 0/45。原筛选要求对话至少有两个可映射正反馈，但 process_conv 独立选择最后首次出现的正反馈；21 个最终 target 无法映射当前目录，4 个映射对应不同年份。44 个 target 带年份后缀，原 Map 输出只有标题。
+- 不能采用的解释：该 45 条不能直接当作全部 target 可达、作者 canonical 等价或 ID ground truth 已对齐的 benchmark。HTTP200/脚本退出0不能证明推荐质量或每条推荐成功。
+- 最小处理：原始输入、全部样本、原指标与正式零结果继续保留；增加独立 coverage/失败诊断摘要。任何去掉年份/修正 target/按覆盖分层的后续实验须单独命名、记录规模与所有排除原因；不能覆盖旧数据或将事后筛选当成冻结 test。
+- 可比性：不影响本轮原执行链证据。改变评分目标表示或样本集会改变质量评测条件，不能与本轮正式原指标或论文数字直接比较。后续算法/Agent 比较仍按 T06 起的独立冻结协议执行。
+- 证据：`reproduction/native_runs/20261005_session/failure_diagnostics_summary.json`、`reports/a1_multiturn_eval_20261005.md`。
+
+原规范保持不变；以上是事实记录与后续验收建议，没有调整总体项目路线。
+
+## Prior historical records (superseded by current status where noted)
+
 # 执行规范勘误建议
 
 2026-10-05：规范未改。实际原 ReDial 预处理对当前原目录的 int64 年份做 Timestamp 相减，42 个 title/year 映射失败；回归先失败后通过，采用局部输入 dtype 适配，详见 ADR-009。上游还以带符号日期差选重名电影，并以 set 顺序选择同轮 target；本轮保留这些行为，固定 hash seed=42，输出45条 A1 输入而非保证50条。建议后续规范明确“固定预处理实现和 seed、记录派生输入与作者 canonical 子集差异”；目前不改原规范，也不升级成 A2。T05 任务卡依赖 T00/T01，之前等待 T04 是执行调度过严，不是规范缺陷。

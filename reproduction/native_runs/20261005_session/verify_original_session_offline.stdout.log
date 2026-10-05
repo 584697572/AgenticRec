@@ -1,0 +1,10 @@
+{
+  "status": "VERIFIED",
+  "scope": "offline_fixture_only",
+  "http_attempts": 94,
+  "remote_api_requests": 0,
+  "usage": null,
+  "estimated_cost_cny_peak_ceiling": null,
+  "repeat_gate_verified": true,
+  "prior_evidence_files_unchanged": 22
+}

@@ -1,42 +1,36 @@
 # 项目状态
 
-最后更新：2026-10-05（Asia/Shanghai）。当前 G0 的资源语义核验尚未闭合，G1 的原版真实运行与现代基础建设并行推进。
+最后更新：2026-10-05（Asia/Shanghai）。当前 G1 原执行链已跑通，G0 的资源权威语义和原实验条件尚未闭合；保持 A1。
 
 | 任务 | 状态 | 验证与剩余项 |
 |---|---|---|
-| T00 | DONE | 固定 RecAI 0959ecb05b0794748426e73e6efc1b6b35ec433d，原仓库 pristine |
-| T01 | DONE | 源码走读及原始失败证据保留 |
-| T02 | DONE | Python 3.9.24，174 包离线重建、原资源加载/工具验证通过 |
-| T03 | IN_PROGRESS | 原资源完整性/加载通过；checkpoint 标题映射、矩阵语义和预制资源许可未全部核验 |
-| T04 | BLOCKED | 真实连接已验证；受限原 App 单轮准备就绪，根目录 .env 已配置；真实单轮SUCCESS/VERIFIED，2次HTTP200、3880 token；多轮/原评测未执行 |
-| T05 | DONE | Python 3.11.14，7 锁定依赖及项目离线重建一致；两环境各 15 测试、doctor/fixture/依赖检查通过 |
-| T06—T24 | TODO | T06 依赖 T03/T05；尚未训练新模型或修改 Agent 算法 |
+| T00 | DONE | 固定 RecAI 0959ecb05b0794748426e73e6efc1b6b35ec433d，原工作树 pristine |
+| T01 | DONE | 原调用链、静态审计和原始失败证据保留 |
+| T02 | DONE | Python 3.9.24，174 包离线重建及原资源/工具通过 |
+| T03 | IN_PROGRESS | 原资源加载通过；权威训练标题映射、矩阵语义、预制包独立许可未闭合；最终 target 覆盖限制已计算 |
+| T04 | BLOCKED（其余条件） | 真实单轮、两轮年份修改和全部45条A1原评测执行链通过；正式三个分支 hit 均0/45；canonical 子集、ID/许可及原 demo/reflection 条件未验收 |
+| T05 | DONE | Python 3.11.14，两个隔离环境各15项基础测试通过 |
+| T06—T24 | TODO | T06仍依赖T03/T05；新模型训练、完整benchmark和算法收益未完成 |
 
-## 本轮完成的证据
+## 最新证据
 
-- 原 App 完整离线单轮成功：真实资源、原 app.py 和原 Filter/Ranking/Map 执行，三个电影 ID 满足 Comedy、年份≥1990；2 次 mock HTTP，真实请求 0。没有把这个结果写为 live。
-- 用户已授权继续请求。本次保守采用已提出的具体单轮额度：2 次 HTTP 尝试、512 输出 token/次、1 CNY、deepseek-flash、thinking disabled、零重试。新额度与 2026-10-04 已用完的连接额度分开。
-- 真实 UniCRS/ReDial test 固定 commit 和 Git blob/SHA，8,751,948 bytes、1,342 条对话。42 个整数年份/日期异常先保存原失败，再通过独立 dtype 适配运行原 notebook 函数；筛选得到 45 条 A1 输入。未下载 train/valid/DBpedia，未把它宣称为作者原 50 条文件。
-- T05 不依赖 T04；按规范任务卡完成现代基础，没有提前实现推荐训练、复杂 Agent 或 UI。
-
-详细结果、命令、错误与差异见 [本轮阶段报告](../../reports/progress_20261005.md)。环境见 [environment_dev.json](../../reproduction/environment_dev.json)。完整私有日志在 reproduction/logs/；公开摘要和哈希在 reproduction/native_runs/20261005/ 与 reproduction/progress_evidence_20261005.json。
+- [真实多轮与原评测报告](../../reports/a1_multiturn_eval_20261005.md)：93次HTTP200，实际输入184724/输出17220/总计201944 token；高峰估算0.507208CNY，账单null。
+- [公开摘要](../../reproduction/native_runs/20261005_session/live_summary.json)：原保存对话、逐样本命中及原函数指标复算一致，分母全部45。第二轮原prompt带此前输入和回答，原memory为4条。
+- [失败诊断](../../reproduction/native_runs/20261005_session/failure_diagnostics_summary.json)：21个最终target不可映射、4个映射年份不同、44个target带年份后缀；索引37被截断且无Map，仍在分母中。去掉年份的6个模糊命中是诊断，不是正式结果或模型提升。
+- 完整离线联调94次mock、真实0请求；40项全量回归与3项原指标测试分别通过。未知参数退出2、0请求；真实证据Key扫描、重复门禁和22个旧证据的字节检查通过。
 
 ## 当前阻塞
 
-1. 原进程 Key 不会自动进入本执行端；用户已明确选择根目录 .env 持久配置。自动读取已通过 9 项新增测试（全部回归 32 项），执行端已自动读取并完成真实原 App 单轮 SUCCESS/VERIFIED：2次HTTP200，输入3655/输出225/总计3880 token，目录约束全部通过。Key/单轮不再阻塞；多轮与原评测仍待验收。命令见 [LIVE_LLM_GUIDE](../../reproduction/LIVE_LLM_GUIDE.md)。不要发送 Key。
-2. checkpoint 权威标题映射、矩阵行标签及原包独立再分发许可 NOT VERIFIED；目录 ID 在模型范围内和分数有限不能替代语义验证。Issue #110 公开评论本轮复查为空。
-3. canonical 原评测子集、作者 hash seed/设置未取得。A1 输入已可重复准备，但原模糊文本 hit 尚未运行；不等同 ID Hit@K 或论文 A2。
+1. checkpoint权威标题映射、矩阵行标签和原包独立再分发许可 NOT VERIFIED。目录ID在范围内、权重加载和有限分数不等于语义正确；[源码复核](../../reproduction/source_alignment_review_20261005.json)不能独立恢复训练映射。
+2. 作者canonical子集、hash seed、模型/提示及demo/reflection等原实验条件未对齐。该45条是A1派生输入，有覆盖与表示限制，不是论文A2。
+3. 尚未完成T06/T07数据和指标前置，不能先训练新模型再补协议。
 
 ## 下一任务
 
-受限真实原 App 单轮 → 核验 trace/usage → 多轮 → 原评测，保持规范 §5.3 顺序。继续 T03 的来源/语义核验；闭合后执行 T06 数据与时间划分、T07 指标单测，再 T08/T09 算法基线与 LightGCN。没有真实训练/评测的指标保持 NOT EVALUATED。
+继续T03来源/ID/许可核验及T04原配置恢复，保留当前零结果，不事后删除坏样本或修改正式阈值。前置闭合后按T06数据→T07指标→T08 BPR-MF→T09 LightGCN推进。
 
-## 历史事实
+## 本机配置与历史
 
-2026-10-01：5 个原 movie 资源完整 CRC/SHA、原 SASRec 36 参数逐项一致、原 app loopback HTTP200 和两轮 mock 回调通过；原文件未改。2026-10-04：用户完成单次真实 DeepSeek 连接，HTTP200/OK，prompt/completion/total=12/1/13，2.1585443 秒（单次连接耗时）；实际账单未查询，费用 null。旧 evidence index 只验证当时快照，不用于新文档当前哈希。
+Key由非空环境变量优先、根目录.env次之，仅本机保留。执行命令由执行端负责。旧连接1/1与单轮2/2记录不变；新额度已用93/120，现有任务已关闭，不能删除记录重跑。后续使用剩余额度需沿同一授权计数，不能另起台账重置120次。
 
-路线 A1 保留，B 未启用；完整 A1、A2 和推荐/Agent 改进尚未完成。
-
-密钥配置和命令代执行的最新证据见 [配置报告](../../reports/local_key_setup_20261005.md)。历史证据索引 progress_evidence_20261005.json 对应 commit 82bbf4e 的文件版本。
-
-最新真实运行报告：[原 App 单轮](../../reports/live_original_app_20261005.md)。实际费用未查询，保守费率估算0.00911CNY；不能当benchmark或算法收益。本次2/2尝试已消耗，重复执行拒绝且证据不变。
+[单轮报告](../../reports/live_original_app_20261005.md)、[Key配置](../../reports/local_key_setup_20261005.md)、[环境报告](../../reproduction/environment_dev.json)和旧原资源报告保留历史快照身份。A1完整验收/A2尚未完成，B未启用；所有新模型收益为NOT EVALUATED。

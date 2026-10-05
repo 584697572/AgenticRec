@@ -1,0 +1,10 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "reproduction/scripts/live_reproduction.py",
+    "--offline"
+  ],
+  "started_at_utc": "2026-10-05T11:32:36.411074+00:00",
+  "finished_at_utc": "2026-10-05T11:37:34.806765+00:00",
+  "exit_code": 0
+}
