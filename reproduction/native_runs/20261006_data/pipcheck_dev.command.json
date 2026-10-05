@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "reproduction/.runtime/uv.exe",
+    "pip",
+    "check",
+    "--python",
+    "AgenticRec/.venv-dev/Scripts/python.exe"
+  ],
+  "cwd": "D:/AgenticRec",
+  "exit_code": 0
+}

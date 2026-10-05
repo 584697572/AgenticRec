@@ -112,12 +112,14 @@
         "T03",
         "T05"
       ],
-      "status": "TODO",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T06",
       "deliverables": "`data/processed/`；`artifacts/data_manifest.json`；`AgenticRec/configs/data.yaml`。",
       "acceptance": "训练图、热门、映射不读取 holdout。 所有排除数量、ID 和时间边界有记录。 缺失剧情/片长不生成假值。",
       "checks": "`python -m pytest tests/unit/test_data_contract.py tests/regression/test_no_leakage.py`。",
-      "readiness": "T03 audit/route decision and T05 DONE; ready to start official MovieLens1M protocol, not implemented/evaluated yet."
+      "readiness": "T03 audit/route decision and T05 DONE; official MovieLens1M protocol now frozen.",
+      "evidence": "AgenticRec/configs/data.yaml; AgenticRec/src/agenticrec/data.py; artifacts/data_manifest.json (local ignored); data/processed/ml-1m-v1/ (local ignored); reproduction/native_runs/20261006_data/; reports/t06_movielens_protocol_20261006.md",
+      "verification": "Official ZIP MD5/CRC/SHA PASS; 1000209 ratings globally split into 800164/100024/100021 without timestamp ties across windows; 5351 warm users, 3469 train-only candidate items, 462887 train-positive graph edges. Both isolated Python 3.11 environments pass 5 T06 tests and dependency checks. Holdout/cold rows retained, new algorithm metrics NOT EVALUATED."
     },
     {
       "id": "T07",

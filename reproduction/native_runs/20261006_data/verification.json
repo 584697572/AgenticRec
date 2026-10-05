@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "checks": [
+    "data_contract_dev",
+    "full_dev",
+    "data_contract_rebuild",
+    "pipcheck_dev",
+    "pipcheck_rebuild",
+    "repeat_gate"
+  ],
+  "data_contract_tests_each_environment": 5,
+  "full_modern_tests": 20,
+  "official_archive_crc": "PASS",
+  "local_processed_file_hashes": 10,
+  "repeat_gate_no_overwrite": true,
+  "api_requests": 0,
+  "new_quality_metrics": null
+}

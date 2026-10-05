@@ -1,0 +1,41 @@
+{
+  "api_requests": 0,
+  "archive_crc": "PASS",
+  "checksum_sha256": "f5671acb4048387cefe96e1b0db3e3f18bdf1d1de7230d6ee76e9c249013cc40",
+  "checksum_url": "https://files.grouplens.org/datasets/movielens/ml-1m.zip.md5",
+  "members": [
+    {
+      "bytes": 0,
+      "crc32": "00000000",
+      "name": "ml-1m/"
+    },
+    {
+      "bytes": 171308,
+      "crc32": "7b5ffa78",
+      "name": "ml-1m/movies.dat"
+    },
+    {
+      "bytes": 24594131,
+      "crc32": "f911bf4d",
+      "name": "ml-1m/ratings.dat"
+    },
+    {
+      "bytes": 5577,
+      "crc32": "18596426",
+      "name": "ml-1m/README"
+    },
+    {
+      "bytes": 134368,
+      "crc32": "caffd6af",
+      "name": "ml-1m/users.dat"
+    }
+  ],
+  "official_md5": "c4d9eecfca2ab87c1945afe126590906",
+  "readme_sha256": "908ee4aa21a8d37aec0cb6c1cdcc41f9bba3c5d2fef3d9250a8073b8e460027e",
+  "readme_url": "https://files.grouplens.org/datasets/movielens/ml-1m-README.txt",
+  "source": "https://files.grouplens.org/datasets/movielens/ml-1m.zip",
+  "source_bytes": 5917549,
+  "source_sha256": "a6898adb50b9ca05aa231689da44c217cb524e7ebd39d264c56e2832f2c54e20",
+  "status": "PASS",
+  "use": "local research only; no source rows or binaries committed"
+}

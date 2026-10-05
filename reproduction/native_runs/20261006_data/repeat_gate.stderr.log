@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\AgenticRec\AgenticRec\src\agenticrec\data.py", line 319, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "D:\AgenticRec\AgenticRec\src\agenticrec\data.py", line 314, in main
+    prepare(args.config)
+  File "D:\AgenticRec\AgenticRec\src\agenticrec\data.py", line 167, in prepare
+    raise FileExistsError('Frozen data outputs exist; refusing overwrite')
+FileExistsError: Frozen data outputs exist; refusing overwrite

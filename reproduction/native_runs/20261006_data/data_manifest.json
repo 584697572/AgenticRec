@@ -1,0 +1,200 @@
+{
+  "all_train_only": [
+    "model IDs",
+    "training graph",
+    "observed history",
+    "candidate items",
+    "popularity counts",
+    "sampling eligibility"
+  ],
+  "candidate_items": 3469,
+  "config_sha256": "589cc40faf77e46dbaf8fca3ef8cd4b1cc8bb81399827725cac8476df2eed1e1",
+  "dataset_redistributed": false,
+  "encoding": {
+    "movies.dat": "iso-8859-1",
+    "ratings.dat": "ascii",
+    "users.dat": "ascii"
+  },
+  "evaluation": "NOT EVALUATED",
+  "files": {
+    "eval_test.parquet": {
+      "bytes": 764347,
+      "rows": 100021,
+      "sha256": "d4fa87dfcb0eddc002f666b3c9e4ece69a245ec6633eac7bb2fe338a3b1071f8"
+    },
+    "eval_valid.parquet": {
+      "bytes": 670981,
+      "rows": 100024,
+      "sha256": "bc85e52f39380c231cecb31d701f65e32143aa48d67ca5f04a68db57f6f6aad5"
+    },
+    "id_map.json": {
+      "bytes": 310821,
+      "sha256": "19364182e1eccb53a978d10bf38a9d6dcd2f1f63f7ee8510f88aae6076269dac"
+    },
+    "interactions.parquet": {
+      "bytes": 4512952,
+      "rows": 1000209,
+      "sha256": "733c1298f8b3e7d4b9130effd16b09f12ec143c9682073490da29b98d30ef47d"
+    },
+    "items.parquet": {
+      "bytes": 94605,
+      "rows": 3883,
+      "sha256": "2cb02e99c5567a0e5c75405292dc5c61f36a951415e6eb72f815c109065aad25"
+    },
+    "split_manifest.json": {
+      "bytes": 2305,
+      "sha256": "182b931caf74ea26e3dab1931896e33fb5541e14e0df13dbf7c160a8e4307a17"
+    },
+    "test.parquet": {
+      "bytes": 588953,
+      "rows": 100021,
+      "sha256": "78ad6c7c9145739a587d92c47ea6c2d95aec0222c764b7445638227fe97b0ae0"
+    },
+    "train.parquet": {
+      "bytes": 3563192,
+      "rows": 800164,
+      "sha256": "d79737745064a3d43b3df42e34c3702bdce83ce84b9dddd349b2ec66f9be4f75"
+    },
+    "train_positive.parquet": {
+      "bytes": 2838160,
+      "rows": 462887,
+      "sha256": "9157734924c399a6b3c94c8a436775881b92a5285d4b0e4a42c8a342eda95051"
+    },
+    "valid.parquet": {
+      "bytes": 500790,
+      "rows": 100024,
+      "sha256": "933c0535c57eec24196264eba3e80a39ad778b2db5eaa5d154af8dc93509f5bf"
+    }
+  },
+  "id_map_sha256": "19364182e1eccb53a978d10bf38a9d6dcd2f1f63f7ee8510f88aae6076269dac",
+  "min_warm_train_positives": 5,
+  "protocol": "T06 independent MovieLens1M global-time",
+  "raw_counts": {
+    "archive_members": {
+      "README": 5577,
+      "movies.dat": 171308,
+      "ratings.dat": 24594131,
+      "users": 6040,
+      "users.dat": 134368
+    },
+    "movies": 3883,
+    "ratings": 1000209,
+    "users": 6040
+  },
+  "schema_version": 1,
+  "seed": 42,
+  "source_official_md5": "c4d9eecfca2ab87c1945afe126590906",
+  "source_sha256": "a6898adb50b9ca05aa231689da44c217cb524e7ebd39d264c56e2832f2c54e20",
+  "source_url": "https://files.grouplens.org/datasets/movielens/ml-1m.zip",
+  "split": {
+    "actual_counts": {
+      "test": 100021,
+      "train": 800164,
+      "valid": 100024
+    },
+    "actual_fractions": {
+      "test": 0.10000009997910436,
+      "train": 0.7999968006686603,
+      "valid": 0.10000309935223538
+    },
+    "candidate_rule": "at least one positive in train only",
+    "config_sha256": "589cc40faf77e46dbaf8fca3ef8cd4b1cc8bb81399827725cac8476df2eed1e1",
+    "holdout_coverage": {
+      "test": {
+        "all_observed": 100021,
+        "excluded_nonpositive": 45569,
+        "main_warm_positive": 41499,
+        "positive": 54452,
+        "positive_segments": {
+          "COLD_BOTH": 18,
+          "COLD_ITEM": 100,
+          "COLD_USER": 12835,
+          "WARM": 41499
+        }
+      },
+      "valid": {
+        "all_observed": 100024,
+        "excluded_nonpositive": 42212,
+        "main_warm_positive": 12197,
+        "positive": 57812,
+        "positive_segments": {
+          "COLD_BOTH": 14,
+          "COLD_ITEM": 10,
+          "COLD_USER": 45591,
+          "WARM": 12197
+        }
+      }
+    },
+    "id_map_sha256": "19364182e1eccb53a978d10bf38a9d6dcd2f1f63f7ee8510f88aae6076269dac",
+    "min_train_positives_for_warm_user": 5,
+    "official_md5": "c4d9eecfca2ab87c1945afe126590906",
+    "rating_positive_at_least": 4,
+    "raw_counts": {
+      "movies": 3883,
+      "ratings": 1000209,
+      "users": 6040
+    },
+    "retrain_with_valid": false,
+    "schema_version": 1,
+    "seed": 42,
+    "source_readme_sha256": "908ee4aa21a8d37aec0cb6c1cdcc41f9bba3c5d2fef3d9250a8073b8e460027e",
+    "source_zip_sha256": "a6898adb50b9ca05aa231689da44c217cb524e7ebd39d264c56e2832f2c54e20",
+    "test_fraction_requested": 0.1,
+    "test_max_timestamp": 1046454590,
+    "test_start_timestamp": 978133414,
+    "tie_policy": "timestamp equal to cutoff enters later window",
+    "train_counts": {
+      "candidate_items": 3469,
+      "cold_users_with_train_positive": 45,
+      "graph_edges": 462887,
+      "nonpositive_observed": 337147,
+      "warm_users": 5351
+    },
+    "train_fraction_requested": 0.8,
+    "train_history_rule": "all train rated items, including ratings below positive threshold",
+    "train_max_timestamp": 975768719,
+    "train_parquet_sha256": "d79737745064a3d43b3df42e34c3702bdce83ce84b9dddd349b2ec66f9be4f75",
+    "training_graph_rule": "warm user positive rows in train only",
+    "valid_fraction_requested": 0.1,
+    "valid_max_timestamp": 978133367,
+    "valid_start_timestamp": 975768738
+  },
+  "status": "PASS",
+  "terms_sha256": "908ee4aa21a8d37aec0cb6c1cdcc41f9bba3c5d2fef3d9250a8073b8e460027e",
+  "test": {
+    "all_observed": 100021,
+    "excluded_nonpositive": 45569,
+    "main_warm_positive": 41499,
+    "positive": 54452,
+    "positive_segments": {
+      "COLD_BOTH": 18,
+      "COLD_ITEM": 100,
+      "COLD_USER": 12835,
+      "WARM": 41499
+    }
+  },
+  "train_nonpositive_observed": 337147,
+  "train_positive_threshold": 4,
+  "train_users_with_any_positive": 5396,
+  "training_graph_edges": 462887,
+  "training_observed_rows": 800164,
+  "unknown_attributes": [
+    "plot",
+    "duration",
+    "price",
+    "emotion"
+  ],
+  "valid": {
+    "all_observed": 100024,
+    "excluded_nonpositive": 42212,
+    "main_warm_positive": 12197,
+    "positive": 57812,
+    "positive_segments": {
+      "COLD_BOTH": 14,
+      "COLD_ITEM": 10,
+      "COLD_USER": 45591,
+      "WARM": 12197
+    }
+  },
+  "warm_train_users": 5351
+}

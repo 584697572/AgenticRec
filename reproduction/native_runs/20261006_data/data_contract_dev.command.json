@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "AgenticRec/.venv-dev/Scripts/python.exe",
+    "-m",
+    "pytest",
+    "AgenticRec/tests/unit/test_data_contract.py",
+    "AgenticRec/tests/regression/test_no_leakage.py",
+    "-q"
+  ],
+  "cwd": "D:/AgenticRec",
+  "exit_code": 0
+}

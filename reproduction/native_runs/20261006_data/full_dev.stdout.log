@@ -1,0 +1,8 @@
+....................                                                     [100%]
+============================== warnings summary ===============================
+AgenticRec\.venv-dev\Lib\site-packages\_pytest\cacheprovider.py:475
+  D:\AgenticRec\AgenticRec\.venv-dev\Lib\site-packages\_pytest\cacheprovider.py:475: PytestCacheWarning: could not create cache path D:\AgenticRec\AgenticRec\.pytest_cache\v\cache\nodeids: [WinError 5] ¾Ü¾ø·ÃÎÊ¡£: 'D:\\AgenticRec\\AgenticRec\\.pytest_cache\\v\\cache'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+20 passed, 1 warning in 6.19s

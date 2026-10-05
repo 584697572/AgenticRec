@@ -1,0 +1,73 @@
+{
+  "actual_counts": {
+    "test": 100021,
+    "train": 800164,
+    "valid": 100024
+  },
+  "actual_fractions": {
+    "test": 0.10000009997910436,
+    "train": 0.7999968006686603,
+    "valid": 0.10000309935223538
+  },
+  "candidate_rule": "at least one positive in train only",
+  "config_sha256": "589cc40faf77e46dbaf8fca3ef8cd4b1cc8bb81399827725cac8476df2eed1e1",
+  "holdout_coverage": {
+    "test": {
+      "all_observed": 100021,
+      "excluded_nonpositive": 45569,
+      "main_warm_positive": 41499,
+      "positive": 54452,
+      "positive_segments": {
+        "COLD_BOTH": 18,
+        "COLD_ITEM": 100,
+        "COLD_USER": 12835,
+        "WARM": 41499
+      }
+    },
+    "valid": {
+      "all_observed": 100024,
+      "excluded_nonpositive": 42212,
+      "main_warm_positive": 12197,
+      "positive": 57812,
+      "positive_segments": {
+        "COLD_BOTH": 14,
+        "COLD_ITEM": 10,
+        "COLD_USER": 45591,
+        "WARM": 12197
+      }
+    }
+  },
+  "id_map_sha256": "19364182e1eccb53a978d10bf38a9d6dcd2f1f63f7ee8510f88aae6076269dac",
+  "min_train_positives_for_warm_user": 5,
+  "official_md5": "c4d9eecfca2ab87c1945afe126590906",
+  "rating_positive_at_least": 4,
+  "raw_counts": {
+    "movies": 3883,
+    "ratings": 1000209,
+    "users": 6040
+  },
+  "retrain_with_valid": false,
+  "schema_version": 1,
+  "seed": 42,
+  "source_readme_sha256": "908ee4aa21a8d37aec0cb6c1cdcc41f9bba3c5d2fef3d9250a8073b8e460027e",
+  "source_zip_sha256": "a6898adb50b9ca05aa231689da44c217cb524e7ebd39d264c56e2832f2c54e20",
+  "test_fraction_requested": 0.1,
+  "test_max_timestamp": 1046454590,
+  "test_start_timestamp": 978133414,
+  "tie_policy": "timestamp equal to cutoff enters later window",
+  "train_counts": {
+    "candidate_items": 3469,
+    "cold_users_with_train_positive": 45,
+    "graph_edges": 462887,
+    "nonpositive_observed": 337147,
+    "warm_users": 5351
+  },
+  "train_fraction_requested": 0.8,
+  "train_history_rule": "all train rated items, including ratings below positive threshold",
+  "train_max_timestamp": 975768719,
+  "train_parquet_sha256": "d79737745064a3d43b3df42e34c3702bdce83ce84b9dddd349b2ec66f9be4f75",
+  "training_graph_rule": "warm user positive rows in train only",
+  "valid_fraction_requested": 0.1,
+  "valid_max_timestamp": 978133367,
+  "valid_start_timestamp": 975768738
+}
