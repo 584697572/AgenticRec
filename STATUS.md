@@ -2,6 +2,8 @@
 
 最后更新：2026-10-05（Asia/Shanghai）。详细状态见 [AgenticRec/docs/STATUS.md](AgenticRec/docs/STATUS.md)，最新证据见 [真实单轮报告](reports/live_original_app_20261005.md)和[Key配置报告](reports/local_key_setup_20261005.md)。
 
+项目仓库：[584697572/AgenticRec](https://github.com/584697572/AgenticRec)，public；根项目 `origin` 指向该仓库，`master` 跟踪 `origin/master`。创建与首次推送已核验，见 [发布报告](reports/public_repository_20261005.md)。上游 `RecAI/` 保留独立远程与固定版本。
+
 - DONE：T00、T01、T02、T05。现代 Python 3.11 开发环境及离线重建已验收，两个环境各 15 项基础测试通过。
 - T03 IN_PROGRESS：原资源可运行，但 checkpoint/矩阵的权威 ID 语义及预制包独立许可仍 NOT VERIFIED。真实 ReDial raw test 已取得，按原 notebook 加 dtype 适配生成 45 条 A1 输入；作者 canonical 子集等价性 NOT VERIFIED。
 - T04 BLOCKED：原工具、原 app mock 和真实连接已通过。本机 .env 已配置；执行端完成真实单轮 SUCCESS/VERIFIED，2次HTTP200、3880 token。多轮 NOT VERIFIED，原评测 NOT EVALUATED。
