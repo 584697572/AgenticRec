@@ -1,0 +1,1 @@
+SyntaxError: Non-UTF-8 code starting with '\xe6' in file D:\AgenticRec\reproduction\scripts\render_repairs_report.py on line 29, but no encoding declared; see https://python.org/dev/peps/pep-0263/ for details

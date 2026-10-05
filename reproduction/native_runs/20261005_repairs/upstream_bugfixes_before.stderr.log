@@ -1,0 +1,53 @@
+test_contract_blocks_whole_input_and_never_filters (test_upstream_bugfixes.UpstreamBugfixTests) ... ok
+test_contract_requires_exact_year_and_unique_title (test_upstream_bugfixes.UpstreamBugfixTests) ... ok
+test_original_signed_year_bug_is_reproduced (test_upstream_bugfixes.UpstreamBugfixTests) ... ok
+test_patch_preserves_non_duplicate_mapping_and_original_input (test_upstream_bugfixes.UpstreamBugfixTests) ... ok
+test_patch_selects_exact_remake_year (test_upstream_bugfixes.UpstreamBugfixTests) ... FAIL
+test_patch_selects_nearest_absolute_year (test_upstream_bugfixes.UpstreamBugfixTests) ... FAIL
+test_reflection_keeps_external_history_every_attempt (test_upstream_bugfixes.UpstreamBugfixTests) ... ERROR
+test_reflection_keeps_limit_and_memory_fallback (test_upstream_bugfixes.UpstreamBugfixTests) ... ERROR
+
+======================================================================
+ERROR: test_reflection_keeps_external_history_every_attempt (test_upstream_bugfixes.UpstreamBugfixTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\AgenticRec\reproduction\tests\test_upstream_bugfixes.py", line 65, in test_reflection_keeps_external_history_every_attempt
+    seen, critics, bot, answer = flow_fixture(run)
+  File "D:\AgenticRec\reproduction\tests\test_upstream_bugfixes.py", line 31, in flow_fixture
+    response = bot.run({"input": "FIXTURE_QUERY"}, chat_history=history)
+  File "D:\AgenticRec\RecAI\InteRecAgent\llm4crs\agent_plan_first_openai.py", line 422, in run
+    "tools": f"{self.toolbox.name}: {self.toolbox.desc} \n",
+AttributeError: 'types.SimpleNamespace' object has no attribute 'name'
+
+======================================================================
+ERROR: test_reflection_keeps_limit_and_memory_fallback (test_upstream_bugfixes.UpstreamBugfixTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\AgenticRec\reproduction\tests\test_upstream_bugfixes.py", line 73, in test_reflection_keeps_limit_and_memory_fallback
+    seen, _, bot, _ = flow_fixture(run, history=None, reject_count=10, limit=2)
+  File "D:\AgenticRec\reproduction\tests\test_upstream_bugfixes.py", line 31, in flow_fixture
+    response = bot.run({"input": "FIXTURE_QUERY"}, chat_history=history)
+  File "D:\AgenticRec\RecAI\InteRecAgent\llm4crs\agent_plan_first_openai.py", line 422, in run
+    "tools": f"{self.toolbox.name}: {self.toolbox.desc} \n",
+AttributeError: 'types.SimpleNamespace' object has no attribute 'name'
+
+======================================================================
+FAIL: test_patch_selects_exact_remake_year (test_upstream_bugfixes.UpstreamBugfixTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\AgenticRec\reproduction\tests\test_upstream_bugfixes.py", line 47, in test_patch_selects_exact_remake_year
+    self.assertEqual(mapped[("fixture", 2007)], 2)
+AssertionError: 1 != 2
+
+======================================================================
+FAIL: test_patch_selects_nearest_absolute_year (test_upstream_bugfixes.UpstreamBugfixTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\AgenticRec\reproduction\tests\test_upstream_bugfixes.py", line 53, in test_patch_selects_nearest_absolute_year
+    self.assertEqual(mapped[("fixture", 2007)], 2)
+AssertionError: 1 != 2
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.393s
+
+FAILED (failures=2, errors=2)

@@ -1,0 +1,31 @@
+{
+  "scope": "isolated_upstream_correctness_patch_and_catalog_contract; not a new benchmark",
+  "status": "PASS",
+  "samples": 45,
+  "input_sha256": "f63630aa236198145e07e3ebae18e9c9d044faff55e21adc961aec7e3980b095",
+  "notebook_sha256": "2bfc48712db3d04b281471b3d822ba6f1f1f2c9141ad6f5aa1d070aeeb795062",
+  "catalog_sha256": "1a0e8687ba0c366cf4ab7837c591542f9bbb3b445ec4f4155fe1e932b58bb8c9",
+  "private_cases_sha256": "29344ad09a9bbe6986a8813e85dcb7b432eb8aeabe666da7438caf50fcf39cb8",
+  "original_mapping_unmapped": 21,
+  "patched_mapping_unmapped": 21,
+  "changed_mapping_count": 1,
+  "original_mapping_year_mismatch_count": 4,
+  "patched_mapping_year_mismatch_count": 3,
+  "exact_catalog_contract_counts": {
+    "exact_catalog_match": 22,
+    "year_absent": 6,
+    "title_absent": 17
+  },
+  "proposed_reachable_catalog_evaluation": "BLOCKED; full input rejected, zero samples silently filtered",
+  "original_evaluation_input_preserved": true,
+  "original_metrics_preserved": true,
+  "previous_private_evidence_files_unchanged": 431,
+  "archive_entries_inspected": 15,
+  "authoritative_checkpoint_title_mapping": "NOT VERIFIED; source archive has no training ID map",
+  "similarity_row_title_mapping": "NOT VERIFIED",
+  "new_dataset_created": false,
+  "new_prediction_metrics": null,
+  "new_algorithm_evaluation": "NOT EVALUATED",
+  "remote_api_requests": 0,
+  "network_download_bytes": 0
+}

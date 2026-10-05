@@ -1,0 +1,9 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "reproduction/scripts/check_repair_impact.py"
+  ],
+  "started_at_utc": "2026-10-05T14:04:19.781608+00:00",
+  "finished_at_utc": "2026-10-05T14:04:22.852952+00:00",
+  "exit_code": 0
+}

@@ -1,0 +1,11 @@
+--- upstream/llm4crs/agent_plan_first_openai.py
++++ upstream_compat/llm4crs/agent_plan_first_openai.py
+@@ -460,7 +460,7 @@
+                 if self._reflection_cnt < self.reflection_limits:
+                     self._reflection_cnt += 1
+                     # do rechain
+-                    response = self.run(inputs, reflection=reflection)
++                    response = self.run(inputs, chat_history=chat_history, reflection=reflection)
+                     self._reflection_cnt = 0
+                 else:
+                     rechain = False

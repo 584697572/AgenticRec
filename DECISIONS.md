@@ -130,3 +130,13 @@
 - 决定：原输入、全部分母、原 hit_judge 和正式 0/45 结果不变；增加独立离线诊断。剥离年份后的6个模糊命中是另一种目标表示，不能替代正式结果或宣称推荐模型提升；它们也没有记录Map ID的对应证明。
 - 替代/后续：若后续修正映射/评分表示，必须另建协议、声明覆盖和排除数量、冻结独立评测，不能把当前已查看结果的样本事后筛成更好test。原论文canonical输入和模型ID仍待权威来源核验；不为此下载无明确用途的大包。
 - 可比性：本轮可证明原执行链在A1条件下工作，但不支持论文质量复现或算法收益。未改变总体路线，未直接修改规范；建议见 `reports/spec_issues.md`，真实诊断由 `audit_a1_eval_failures.py` 从保存产物计算。
+
+## ADR-014：隔离修复年份选择与反思历史丢失，保留原版评测
+
+- 日期：2026-10-05；用户要求检查是否可修复。规范 §5.4 要求最小补丁、先回归、不得偷换模型/prompt/指标；原版对照必须保留。
+- 实际发现：原 movie_map 对同名电影取 signed date_diff 的 idxmin，2007 年版本可误选 1957 年版本；原 Agent 反思递归未传 chat_history，原评测外部对话在第二次规划和 Critic 中丢失。正确 fixture 的先行回归产生 3 个真实断言失败；更早一次 fixture 缺工具 name/desc 的错误另存，不作为历史丢失证据。
+- 原要求与阻碍：不能把改过映射/输入的结果算作原版，不能把缺资源语义伪装成运行成功；原筛选只保留有两个可映射正反馈的对话，并不保证最终 target 可达。
+- 最小替代：在单独 `upstream_bugfixes.py` 中严格定位并执行 AST 补丁，日期比较加 abs，递归显式传 chat_history。两份 patch 展示精确差异；RecAI/、既有 compat 工作副本和真实 CLI 默认不改。新增 target_catalog_contract/require_reachable_targets 对拟开展的目录内新评测拒绝整批坏输入，不静默筛样本，不修改原 45 条。
+- 验证：53 项完整回归通过；原 DemoSelector(fixed)、Critic、Agent 和 SDK MockTransport 完成四组原版/补丁×zero/fixed 对照，原版第二次规划/critic 无外部历史，补丁均保留，反思限次和 memory 保持。fixture 使用自造 gallery/buffer/tools/响应，不能当真实 App 推荐结果。固定示例来自上游已存在的 placeholder 文件；作者 canonical demo 等价性未证明。动态默认模型未缓存，避免额外下载；动态与真实功能恢复仍 NOT VERIFIED。
+- 真实输入影响：45 条中补丁只改变 1 个映射，年份不一致从 4 到 3；严格目录契约有 22 个唯一标题/年份匹配、17 个缺标题、6 个缺年份。21 个原映射未知仍是未知，没有数据补造。训练 ID/矩阵语义和包许可没有新证明，不能用目录 exact match 替代它们。
+- 可比性：补丁是 upstream_compat 的行为变化；后续启用须独立记录和评测，不能归为 upstream_pristine/A2。旧真实预测、全部 45 分母和三个 0/45 指标保持不变。本轮新请求/下载为 0，120 次授权仍已用 93 次，无台账重置、无路线变更。证据见 `reports/reproduction_repairs_20261005.md`。

@@ -12,6 +12,8 @@
 
 本轮原执行链已跑通，正式零结果及目录覆盖、输出截断、指标表示问题均保留在[多轮与评测报告](reports/a1_multiturn_eval_20261005.md)。当前保留 A1 路线；论文 A2 尚未验证，详见 [STATUS.md](STATUS.md) 和 [任务依赖](TASKS.yaml)。
 
+后续[检查与修复](reports/reproduction_repairs_20261005.md)验证了两项独立行为补丁：纠正同名电影年份选择、保留反思重跑的外部历史。53 项完整回归通过；固定示例与反思仅完成离线原组件联调。原版真实结果不改写；补丁未接入既有真实运行入口，收益尚未评测。
+
 ## 来源、个人改动与证据
 
 | Upstream | My changes | Evidence |
@@ -19,6 +21,7 @@
 | Microsoft InteRecAgent 的 planner、工具、候选 buffer、原推荐模型与提示 | 固定版本审计、隔离环境、资源完整性检查和兼容运行脚本 | [上游版本锚点](reproduction/upstream_lock.json)、[原版复现记录](reproduction/UPSTREAM_REPRODUCTION.md) |
 | 原 App 与原评测执行链 | 受限调用入口、本地 Key 配置、无真实 Key 的模型工作进程、原指标复算和失败诊断 | [多轮与原评测报告](reports/a1_multiturn_eval_20261005.md)、[真实单轮报告](reports/live_original_app_20261005.md) |
 | 原 ReDial notebook 预处理 | 整数年份兼容适配、固定派生输入及重复运行验证 | [决策记录](DECISIONS.md)、[阶段报告](reports/progress_20261005.md) |
+| 原同名电影映射及反思流程 | 显式可选的两行正确性修复、严格目录可达性预检 | [补丁说明](reproduction/patches/README.md)、[修复报告](reports/reproduction_repairs_20261005.md) |
 
 上游仓库：[microsoft/RecAI](https://github.com/microsoft/RecAI)，固定 commit：`0959ecb05b0794748426e73e6efc1b6b35ec433d`。本项目不是微软官方项目；上游代码许可保留于 [LICENSE.txt](LICENSE.txt)，数据和模型的许可分别核验。
 

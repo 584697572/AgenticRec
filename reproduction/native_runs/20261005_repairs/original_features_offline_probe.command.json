@@ -1,0 +1,9 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "reproduction/scripts/probe_original_features.py"
+  ],
+  "started_at_utc": "2026-10-05T14:02:46.526765+00:00",
+  "finished_at_utc": "2026-10-05T14:03:39.378183+00:00",
+  "exit_code": 0
+}

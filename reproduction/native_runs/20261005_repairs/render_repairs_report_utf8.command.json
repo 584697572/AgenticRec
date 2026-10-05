@@ -1,0 +1,9 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "reproduction/scripts/render_repairs_report.py"
+  ],
+  "started_at_utc": "2026-10-05T14:16:17.553168+00:00",
+  "finished_at_utc": "2026-10-05T14:16:17.707158+00:00",
+  "exit_code": 0
+}

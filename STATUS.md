@@ -2,6 +2,8 @@
 
 最后更新：2026-10-05（Asia/Shanghai）。详细状态见 [AgenticRec/docs/STATUS.md](AgenticRec/docs/STATUS.md)，最新证据见[真实多轮与原评测报告](reports/a1_multiturn_eval_20261005.md)。
 
+最新检查与修复见[修复报告](reports/reproduction_repairs_20261005.md)：两项可选 `upstream_compat` 行为补丁修正同名电影年份选择和反思丢失外部历史；53 项全量回归通过。真实上游 fixed demo/Critic/反思在 fixture 与 SDK MockTransport 上通过，未作新的真实调用或下载。45 条原输入仅 22 条满足唯一标题/年份目录契约；新增预检拒绝不满足契约的整批新实验，不删除样本。原版输入、预测及三个 0/45 指标原样保留，T03/T04 状态不变。
+
 项目仓库：[584697572/AgenticRec](https://github.com/584697572/AgenticRec)，public；根项目 `origin` 指向该仓库，`master` 跟踪 `origin/master`。创建与首次推送已核验，见 [发布报告](reports/public_repository_20261005.md)。上游 `RecAI/` 保留独立远程与固定版本。
 
 - DONE：T00、T01、T02、T05。现代 Python 3.11 开发环境及离线重建已验收，两个环境各 15 项基础测试通过。

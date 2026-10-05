@@ -1,0 +1,124 @@
+{
+  "status": "PASS",
+  "scope": "native_original_feature_control_flow_on_fixtures_only",
+  "cases": [
+    {
+      "behavior": "upstream_pristine",
+      "demo_mode": "zero",
+      "mock_sdk_calls": 4,
+      "call_order": [
+        "planner",
+        "critic",
+        "planner",
+        "critic"
+      ],
+      "planner_external_history_present": [
+        true,
+        false
+      ],
+      "critic_external_history_present": [
+        true,
+        false
+      ],
+      "demo_prompt_present": [
+        false,
+        false
+      ],
+      "memory_entries": 2,
+      "reflection_counter_after_run": 0,
+      "fixture_response_returned": true
+    },
+    {
+      "behavior": "upstream_pristine",
+      "demo_mode": "fixed",
+      "mock_sdk_calls": 4,
+      "call_order": [
+        "planner",
+        "critic",
+        "planner",
+        "critic"
+      ],
+      "planner_external_history_present": [
+        true,
+        false
+      ],
+      "critic_external_history_present": [
+        true,
+        false
+      ],
+      "demo_prompt_present": [
+        true,
+        true
+      ],
+      "memory_entries": 2,
+      "reflection_counter_after_run": 0,
+      "fixture_response_returned": true
+    },
+    {
+      "behavior": "upstream_behavior_patch",
+      "demo_mode": "zero",
+      "mock_sdk_calls": 4,
+      "call_order": [
+        "planner",
+        "critic",
+        "planner",
+        "critic"
+      ],
+      "planner_external_history_present": [
+        true,
+        true
+      ],
+      "critic_external_history_present": [
+        true,
+        true
+      ],
+      "demo_prompt_present": [
+        false,
+        false
+      ],
+      "memory_entries": 2,
+      "reflection_counter_after_run": 0,
+      "fixture_response_returned": true
+    },
+    {
+      "behavior": "upstream_behavior_patch",
+      "demo_mode": "fixed",
+      "mock_sdk_calls": 4,
+      "call_order": [
+        "planner",
+        "critic",
+        "planner",
+        "critic"
+      ],
+      "planner_external_history_present": [
+        true,
+        true
+      ],
+      "critic_external_history_present": [
+        true,
+        true
+      ],
+      "demo_prompt_present": [
+        true,
+        true
+      ],
+      "memory_entries": 2,
+      "reflection_counter_after_run": 0,
+      "fixture_response_returned": true
+    }
+  ],
+  "real_key_in_worker": false,
+  "remote_api_requests": 0,
+  "network_download_bytes": 0,
+  "usage": null,
+  "usage_is_fixture": true,
+  "recommendation_quality": "NOT EVALUATED",
+  "demo_source": "RecAI/InteRecAgent/demonstration/seed_demos_placeholder.jsonl",
+  "demo_sha256": "b10a5139699ef97f70564a5e55f4eddc61d0d48d81d73d9c28c9f013bdb5a988",
+  "demo_total_examples": 14,
+  "selected_fixed_examples": 3,
+  "dynamic_default_embedding_model": "sentence-transformers/all-mpnet-base-v2",
+  "dynamic_model_cache_present": false,
+  "dynamic_default_runtime": "NOT VERIFIED; no model download attempted",
+  "canonical_author_demo_equivalence": "NOT VERIFIED"
+}

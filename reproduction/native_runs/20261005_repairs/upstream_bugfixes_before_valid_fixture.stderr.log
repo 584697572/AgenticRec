@@ -1,0 +1,48 @@
+test_contract_blocks_whole_input_and_never_filters (test_upstream_bugfixes.UpstreamBugfixTests) ... ok
+test_contract_requires_exact_year_and_unique_title (test_upstream_bugfixes.UpstreamBugfixTests) ... ok
+test_original_signed_year_bug_is_reproduced (test_upstream_bugfixes.UpstreamBugfixTests) ... ok
+test_patch_preserves_non_duplicate_mapping_and_original_input (test_upstream_bugfixes.UpstreamBugfixTests) ... ok
+test_patch_selects_exact_remake_year (test_upstream_bugfixes.UpstreamBugfixTests) ... FAIL
+test_patch_selects_nearest_absolute_year (test_upstream_bugfixes.UpstreamBugfixTests) ... FAIL
+test_reflection_keeps_external_history_every_attempt (test_upstream_bugfixes.UpstreamBugfixTests) ... FAIL
+test_reflection_keeps_limit_and_memory_fallback (test_upstream_bugfixes.UpstreamBugfixTests) ... ok
+
+======================================================================
+FAIL: test_patch_selects_exact_remake_year (test_upstream_bugfixes.UpstreamBugfixTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\AgenticRec\reproduction\tests\test_upstream_bugfixes.py", line 47, in test_patch_selects_exact_remake_year
+    self.assertEqual(mapped[("fixture", 2007)], 2)
+AssertionError: 1 != 2
+
+======================================================================
+FAIL: test_patch_selects_nearest_absolute_year (test_upstream_bugfixes.UpstreamBugfixTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\AgenticRec\reproduction\tests\test_upstream_bugfixes.py", line 53, in test_patch_selects_nearest_absolute_year
+    self.assertEqual(mapped[("fixture", 2007)], 2)
+AssertionError: 1 != 2
+
+======================================================================
+FAIL: test_reflection_keeps_external_history_every_attempt (test_upstream_bugfixes.UpstreamBugfixTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\AgenticRec\reproduction\tests\test_upstream_bugfixes.py", line 66, in test_reflection_keeps_external_history_every_attempt
+    self.assertEqual([m["history"] for m in seen], ["EXTERNAL_HISTORY_FIXTURE"] * 2)
+AssertionError: Lists differ: ['EXTERNAL_HISTORY_FIXTURE', 'LOCAL_MEMORY_FIXTURE'] != ['EXTERNAL_HISTORY_FIXTURE', 'EXTERNAL_HISTORY_FIXTURE']
+
+First differing element 1:
+'LOCAL_MEMORY_FIXTURE'
+'EXTERNAL_HISTORY_FIXTURE'
+
+- ['EXTERNAL_HISTORY_FIXTURE', 'LOCAL_MEMORY_FIXTURE']
+?                               ^^^   ^^^
+
++ ['EXTERNAL_HISTORY_FIXTURE', 'EXTERNAL_HISTORY_FIXTURE']
+?                               ^^^^^^   ^^^^
+
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.373s
+
+FAILED (failures=3)

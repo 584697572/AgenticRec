@@ -14,6 +14,8 @@
 
 ## 最新证据
 
+- [检查与修复报告](../../reports/reproduction_repairs_20261005.md)：可选年份绝对差与反思历史传递补丁验证；53 项完整回归通过。原版/修复版各在 zero/fixed demo 模式完成真实上游组件的 fixture 反思流程，0 真实请求。动态默认 all-mpnet-base-v2 未缓存，未下载；真实 LLM 下启用这些功能仍 NOT VERIFIED。
+- [目录契约检查](../../reproduction/native_runs/20261005_repairs/catalog_contract_summary.json)：补丁改变 1 个旧映射，年份不一致由 4 变 3；严格标题/年份检查为 22 个唯一匹配、17 个缺标题、6 个缺对应年份。这是原目录可达性检查，不证明 checkpoint ID 对齐，也不是新的评测指标。
 - [真实多轮与原评测报告](../../reports/a1_multiturn_eval_20261005.md)：93次HTTP200，实际输入184724/输出17220/总计201944 token；高峰估算0.507208CNY，账单null。
 - [公开摘要](../../reproduction/native_runs/20261005_session/live_summary.json)：原保存对话、逐样本命中及原函数指标复算一致，分母全部45。第二轮原prompt带此前输入和回答，原memory为4条。
 - [失败诊断](../../reproduction/native_runs/20261005_session/failure_diagnostics_summary.json)：21个最终target不可映射、4个映射年份不同、44个target带年份后缀；索引37被截断且无Map，仍在分母中。去掉年份的6个模糊命中是诊断，不是正式结果或模型提升。

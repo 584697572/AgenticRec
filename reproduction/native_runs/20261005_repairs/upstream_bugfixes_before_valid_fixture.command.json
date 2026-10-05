@@ -1,0 +1,16 @@
+{
+  "command": [
+    "reproduction/.venv-legacy/Scripts/python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "reproduction/tests",
+    "-p",
+    "test_upstream_bugfixes.py",
+    "-v"
+  ],
+  "started_at_utc": "2026-10-05T14:00:22.835180+00:00",
+  "finished_at_utc": "2026-10-05T14:00:24.687259+00:00",
+  "exit_code": 1
+}

@@ -1,0 +1,11 @@
+--- upstream/preprocess_redial.ipynb:movie_map_cell
++++ upstream_compat/preprocess_redial.ipynb:movie_map_cell
+@@ -22,7 +22,7 @@
+         if len(res) > 1:
+             if date is not None:
+                 res.loc[:, 'date_diff'] = res['release_date'] - pd.to_datetime(str(date))
+-                res = res.loc[res['date_diff'].idxmin()]
++                res = res.loc[res['date_diff'].abs().idxmin()]
+             else:
+                 res = res.iloc[0]
+         else:
