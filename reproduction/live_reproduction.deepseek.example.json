@@ -1,0 +1,12 @@
+{
+  "provider": "deepseek",
+  "api_type": "open_ai",
+  "api_base": "https://api.deepseek.com",
+  "api_version": null,
+  "model_id": "deepseek-flash",
+  "allow_paid_api": false,
+  "api_request_cap": 0,
+  "max_output_tokens": 1024,
+  "money_budget": 0,
+  "budget_unit": "CNY"
+}

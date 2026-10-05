@@ -112,3 +112,11 @@
 - 决定：创建 `https://github.com/584697572/AgenticRec`，根项目 `origin` 使用不含凭据的 HTTPS URL，保留 `master` 分支和现有提交历史。上游 remote、固定 SHA、执行规范与数据保持原样；根首页明确区分上游、个人改动、证据和未完成项。
 - 验证：GitHub 创建返回 HTTP 201；首次推送成功。匿名 API 返回 public、owner 正确、默认分支 master，远程提交与本地发布前提交 `9ab928d5c0fcfe58679d6c9147381a30f248911d` 一致。检查全部可达历史中的 251 个唯一 blob，未发现已配置的实际 Key 或被排除的资源路径；一处 URL 凭据格式命中经人工核对为自造测试 fixture。`.env` 和私密日志仍被忽略。
 - 影响：只改变项目托管位置和公开文档，不改变实验设置、任务依赖或验收状态。公开单轮摘要不等于完成 T04 或算法评测。证据见 `reproduction/publication_20261005.json`；该证据明确锚定首次推送，不伪称包含随后新增的发布文档提交。
+
+## ADR-012：独立多轮与原评测额度，保留 A1 条件
+
+- 日期：2026-10-05；采用。用户明确选择新增 120 次请求、每次最多 1024 输出 token、总预算 3 CNY，沿用 DeepSeek deepseek-flash 非思考、零重试。既有连接与单轮额度不重置。
+- 执行：原 App 两轮后，按固定 45 条 A1 输入调用未修改的 `one_turn_eval.py` main、原 RecBotWrapper、原 hit_judge 和原 evaluator；随机与加权热门分支离线运行。只将 context 传入原 Agent，target 保留 evaluator；预检 45 条 target 均不在可见 context 中。
+- 兼容边界：API 转发、输出上限与无重试仍在测试层；资源工作进程不注入真实 Key；复用真实 Gallery 避免重复编码，不替代目录/模型，eval 创建独立原 bot/buffer。seed 42、zero-demo、关闭 reflection/shortening 均明确记录，原作者设置未恢复。
+- 预算：120 个持久请求槽，发送前独占创建并 fsync；超时和失败不归还。未知 usage/未解决的旧请求停止后续付费。每次先作保守字节规划与高峰费率检查，再按实际 usage 更新估算；实际账单为 null，这不是供应商计费硬限额。
+- 可比性：只能报告该 45 条派生输入和该模型/设置下的 A1 原模糊文本 hit；不能据此宣称论文 A2 或新算法收益。权威 ID 对应、矩阵语义、资源独立许可和 canonical 子集限制保留。本文建立时多轮/评测结果未验收，完成后保存独立报告。
