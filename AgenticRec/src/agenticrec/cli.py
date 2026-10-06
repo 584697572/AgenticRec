@@ -22,7 +22,10 @@ def main(argv=None):
     training.add_argument("--seed", type=int, required=True)
     args = parser.parse_args(argv)
     if args.command == "train":
-        from .training import train
+        if json.loads(args.config.read_text(encoding="utf-8")).get("model") == "lightgcn":
+            from .lightgcn_training import train
+        else:
+            from .training import train
         train(args.config, args.seed)
         return 0
     if args.command == "doctor":

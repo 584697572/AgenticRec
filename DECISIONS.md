@@ -164,3 +164,10 @@
 - 日期：2026-10-06。规范 T08 要求先 fixture 过拟合/重载，再单 seed 全量，且只用 valid NDCG@10 选择模型；§7.1 最终配置仍需 3 seeds。当前设备无需 CUDA，为遵守用户尽量少下载资源的要求，选官方 `torch==2.0.1+cpu`，其 wheel 下载约166 MiB，依赖不需额外 218 MiB MKL 包；两套 Python3.11 环境可从同一缓存离线重建。未安装可选 NumPy 桥接，张量计算/测试通过，警告留在报告。
 - 训练只读 T06 train、train_positive 与映射；负采样排除全部训练期已评分候选，未来标签不参与。Random 和 Popularity 与 BPR 同用 T07 cohort、候选和过滤；valid 选择 best epoch 1，之后首次读取 test。模型 checkpoint 与训练热门计数只保留本地，公开汇总值与 SHA。未修改上游、旧 A1 指标或冻结协议。
 - 实际结果：seed 42 test NDCG@10 Random 0.014081、Popularity 0.195795、BPR-MF 0.192089。BPR-MF 未超过热门，不做提升宣称；不能据此事后换主指标。两环境各36项测试、checkpoint 重算通过。此依赖选择仅改变现代独立实验环境，不改变数据和模型比较口径。证据见 `reports/rec_baselines/t08_20261006.md` 与机器结果 JSON；T09 和最终3 seeds 待后续任务。
+
+## ADR-018：T09 固定 LightGCN 图来源、层数选择与结果边界
+
+- 日期：2026-10-06。规范 §7.1/T09 要求训练期二部图、`D^(-1/2)AD^(-1/2)` 稀疏传播、包含第0层的聚合、小图数值校验、层数实验与仅 valid 选择。参考 [LightGCN 论文](https://arxiv.org/abs/2002.02126)及作者 PyTorch 仓库固定提交 `947ca2b3b1d2d3545b114145710cb06c4e57b3d2` 的 model.py；只核验源码与版本，不克隆参考仓库。自行实现 T06 模型 ID 的对称 COO 图与均匀层聚合。
+- 以已校验的 `train_positive.parquet` 462887 条边建图，训练期已评分排除规则沿用 T08；验证/测试交互只在独立审计和 evaluator 中读取。按预设配置比较 1/2/3 层，seed42、dim32、lr1e-3、epoch上限8；valid NDCG@10 选中3层第7 epoch 后才读 test。未以旧 checkpoint 的未知编号作新模型 ID。小图误差≤1e-6、真实图与 holdout 零交叉、checkpoint/ID/训练边哈希和重算均通过。
+- 真实 test NDCG@10 LightGCN 0.194047，BPR-MF 0.192089，Popularity 0.195795；单 seed 结果不能宣称超过最强简单基线或统计显著提升。参考原论文数据、划分和旧 A1 命中不是本次指标。T09 不改变 T06/T07 协议，唯一新增的是独立 LightGCN 实现与训练产物；旧 T04 ID/许可仍 NOT VERIFIED，最终3 seeds 和 T10 适配待后续。证据见 `reports/rec_baselines/t09_20261006.md`。
+- checkpoint 审计补充：首轮 checkpoint 只有配置哈希与维度，不满足 §7.3“包含模型配置”的完整要求；旧结果、三份模型和对应源码已移入本地忽略归档。补充完整配置入 checkpoint、加载时比对后用原 seed/超参数重跑。三层 valid 指标与 test 聚合结果逐项相同，无基于 test 的调参；正式 checkpoint SHA 更新，详见 T09 报告。
