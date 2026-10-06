@@ -171,3 +171,10 @@
 - 以已校验的 `train_positive.parquet` 462887 条边建图，训练期已评分排除规则沿用 T08；验证/测试交互只在独立审计和 evaluator 中读取。按预设配置比较 1/2/3 层，seed42、dim32、lr1e-3、epoch上限8；valid NDCG@10 选中3层第7 epoch 后才读 test。未以旧 checkpoint 的未知编号作新模型 ID。小图误差≤1e-6、真实图与 holdout 零交叉、checkpoint/ID/训练边哈希和重算均通过。
 - 真实 test NDCG@10 LightGCN 0.194047，BPR-MF 0.192089，Popularity 0.195795；单 seed 结果不能宣称超过最强简单基线或统计显著提升。参考原论文数据、划分和旧 A1 命中不是本次指标。T09 不改变 T06/T07 协议，唯一新增的是独立 LightGCN 实现与训练产物；旧 T04 ID/许可仍 NOT VERIFIED，最终3 seeds 和 T10 适配待后续。证据见 `reports/rec_baselines/t09_20261006.md`。
 - checkpoint 审计补充：首轮 checkpoint 只有配置哈希与维度，不满足 §7.3“包含模型配置”的完整要求；旧结果、三份模型和对应源码已移入本地忽略归档。补充完整配置入 checkpoint、加载时比对后用原 seed/超参数重跑。三层 valid 指标与 test 聚合结果逐项相同，无基于 test 的调参；正式 checkpoint SHA 更新，详见 T09 报告。
+
+## ADR-019：T10 保留上游执行方法，隔离新模型与旧 ID 语义
+
+- 日期：2026-10-06。规范 T10 要求将已知用户 scorer 与匿名 seed scorer 分离，接入上游 Plan/Tool/Buffer，形成明确标注的 U1 upstream_rebuilt；旧 checkpoint、相似度矩阵的 ID 语义及独立许可仍 NOT VERIFIED。
+- 源码事实：原 `RecModelTool` 为 UniRec 序列模型构造 `item_seq/item_seq_len/item_id`，并不接收 T06 的训练 `user_id`。原 `ToolBox`、`CandidateBuffer`、`MapTool` 在已重建的 Python 3.9 环境可直接执行，三份执行源码与固定上游逐字节同 SHA256。
+- 决定：在 Python 3.11 侧严格校验冻结报告、配置、代码、数据和 checkpoint 后计算 BPR-MF/LightGCN 分数；只在显式身份及历史授权下使用已知用户嵌入。匿名会话采用独立的类型 Jaccard 种子评分和 train-only 热门先验，缺少种子时明示热门回退。原 ToolBox/Buffer/Map 在隔离的 legacy 子进程执行，替换的 RankingTool 和目录 facade 逐项列于 `AgenticRec/docs/UPSTREAM_DIFF.md`。离线脚本计划不是 LLM 规划。
+- 可比性：U1 的 MovieLens1M 训练 ID 和新模型不能代替 U0/A1 旧资源；T07 的 valid/test 划分、候选全集和指标口径未改变，T10 不产生质量提升声明。详细轨迹仅留本地，公开摘要只含 SHA 和计数。没有新增下载或远程 API 请求。两套开发环境各 46 项回归通过；实测两条工具链轨迹见 `reports/upstream_rebuilt/t10_20261006.md`。原 T04 blocker 保持。

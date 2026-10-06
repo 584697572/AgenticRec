@@ -1,6 +1,6 @@
 # 项目状态
 
-最后更新：2026-10-06（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06 数据/ID、T07 指标/评测集合、T08 基线/BPR-MF 与 T09 LightGCN 均已验收；下一批 T10 模型适配。旧模型语义未获证明。
+最后更新：2026-10-06（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06 数据/ID、T07 指标/评测集合、T08 基线/BPR-MF、T09 LightGCN 与 T10 U1 方法适配均已验收；下一批 T11 多路候选融合与硬约束。旧模型语义未获证明。
 
 | 任务 | 状态 | 验证与剩余项 |
 |---|---|---|
@@ -14,7 +14,8 @@
 | T07 | DONE | Recall/Hit/MRR/NDCG 手算测试及稳定全集排序；本地 valid/test 固定 cohort，空/无效预测计零；12项专项测试与32项完整回归通过 |
 | T08 | DONE | Random、Popularity、BPR-MF 同协议 seed 42 实测；valid/test NDCG@10 与 checkpoint 重算一致，36项测试在两个环境均通过；BPR-MF 未超过热门 |
 | T09 | DONE | 小图 float32 稀疏/稠密误差≤1e-6；真实图零 holdout 边；1/2/3 层 valid 实验选中3层，test NDCG@10=0.194047；checkpoint/ID/训练边 SHA 验证通过 |
-| T10—T24 | TODO | 统一适配器、最终多 seed 与 Agent 改进尚未验收 |
+| T10 | DONE | U1 独立模型适配、已知/匿名路由、原 ToolBox/Buffer/Map 两条真实数据离线轨迹及源码对照通过；LLM 规划未评测 |
+| T11—T24 | TODO | 多路候选融合、硬约束、最终多 seed 与 Agent 改进尚未验收 |
 
 ## 最新证据
 
@@ -48,3 +49,7 @@
 Key由非空环境变量优先、根目录.env次之，仅本机保留。执行命令由执行端负责。旧连接1/1与单轮2/2记录不变；新额度已用93/120，现有任务已关闭，不能删除记录重跑。后续使用剩余额度需沿同一授权计数，不能另起台账重置120次。
 
 [单轮报告](../../reports/live_original_app_20261005.md)、[Key配置](../../reports/local_key_setup_20261005.md)、[环境报告](../../reproduction/environment_dev.json)和旧报告保留历史快照。A1完整验收/A2尚未完成；B独立质量路径已选择，T08/T09 单 seed 结果已记录，最终多 seed 与 Agent 提升仍 NOT EVALUATED。
+
+## T10 验收记录（2026-10-06）
+
+T10 DONE：已知用户和匿名 seed scorer 分离，候选分数对齐、未知用户回退与 checkpoint SHA 拒绝测试通过；上游 `ToolBox`、`CandidateBuffer`、`MapTool` 三份源码逐字节核验后，在 legacy 子进程执行两条真实数据 U1 轨迹。Machine-readable 摘要：`../../reports/upstream_rebuilt/t10_20261006.json`；源码差异：`UPSTREAM_DIFF.md`。两个现代环境各 46 tests passed。当前 in-progress：无；下一任务 T11。Blocker：T04 原资源 ID/许可仍未证实；U1 LLM 规划、冷启动推荐质量、多 seed 尚未评测。
