@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "dataset": "ml-1m-v1",
+  "embedding_dim": 32,
+  "learning_rate": 0.001,
+  "regularization": 0.0001,
+  "batch_size": 2048,
+  "max_epochs": 8,
+  "early_stopping_patience": 2,
+  "torch_threads": 4,
+  "top_k": 10,
+  "selection_metric": "valid_ndcg_at_10"
+}

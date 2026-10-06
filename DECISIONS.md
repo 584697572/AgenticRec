@@ -158,3 +158,9 @@
 - 官方稳定 MovieLens1M ZIP 的 MD5/CRC/SHA 验证通过；仅完整下载这一个 5,917,549 字节的官方数据包、README 与 MD5，并为现代环境固定 PyArrow 21.0.0。MovieLens 原文件、映射和逐行数据留在忽略目录，不公开再分发。电影标题按该包实际编码 iso-8859-1 解码；用户人口属性未作为模型特征。
 - 全局 timestamp 切分在约80/10/10分位，边界上相同时间戳整体进入后窗。rating≥4 正反馈、训练期至少5个正反馈构成 warm 用户、候选电影来自训练期至少一次正反馈。验证/测试新用户和新电影保留为冷启动层；训练图、ID、历史、热门与将来的负采样只看 train。源 SHA、配置 SHA、每个数据文件 SHA 与边界/排除数保存在本地 manifest；公开仅汇总与哈希。
 - 影响：旧 A1 三个0/45 是另一种文本命中和数据来源，不与新 MovieLens1M NDCG/Recall 混算。旧 checkpoint/矩阵 ID 与包许可仍 NOT VERIFIED、T04 保留 BLOCKED；新模型效果需 T07→T08/T09 后真实运行，当前 NOT EVALUATED。决策无新增 LLM 请求。证据见 `reports/t06_movielens_protocol_20261006.md`。
+
+## ADR-017：T08 固定 CPU BPR 环境与单 seed 基线结果
+
+- 日期：2026-10-06。规范 T08 要求先 fixture 过拟合/重载，再单 seed 全量，且只用 valid NDCG@10 选择模型；§7.1 最终配置仍需 3 seeds。当前设备无需 CUDA，为遵守用户尽量少下载资源的要求，选官方 `torch==2.0.1+cpu`，其 wheel 下载约166 MiB，依赖不需额外 218 MiB MKL 包；两套 Python3.11 环境可从同一缓存离线重建。未安装可选 NumPy 桥接，张量计算/测试通过，警告留在报告。
+- 训练只读 T06 train、train_positive 与映射；负采样排除全部训练期已评分候选，未来标签不参与。Random 和 Popularity 与 BPR 同用 T07 cohort、候选和过滤；valid 选择 best epoch 1，之后首次读取 test。模型 checkpoint 与训练热门计数只保留本地，公开汇总值与 SHA。未修改上游、旧 A1 指标或冻结协议。
+- 实际结果：seed 42 test NDCG@10 Random 0.014081、Popularity 0.195795、BPR-MF 0.192089。BPR-MF 未超过热门，不做提升宣称；不能据此事后换主指标。两环境各36项测试、checkpoint 重算通过。此依赖选择仅改变现代独立实验环境，不改变数据和模型比较口径。证据见 `reports/rec_baselines/t08_20261006.md` 与机器结果 JSON；T09 和最终3 seeds 待后续任务。

@@ -1,6 +1,6 @@
 # 项目状态
 
-最后更新：2026-10-06（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06 数据/ID 与 T07 指标/评测集合已冻结；下一批 T08 基线和 BPR-MF。旧模型语义未获证明。
+最后更新：2026-10-06（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06 数据/ID、T07 指标/评测集合及 T08 基线/BPR-MF 均已验收；下一批 T09 LightGCN。旧模型语义未获证明。
 
 | 任务 | 状态 | 验证与剩余项 |
 |---|---|---|
@@ -12,12 +12,15 @@
 | T05 | DONE | Python 3.11.14，两个隔离环境各15项基础测试通过 |
 | T06 | DONE | 官方 MD5/CRC/SHA 和编码检查；1000209 条评分按全局时间拆为 800164/100024/100021；5351 warm 用户、3469 训练候选物品、462887 训练图边；5 项数据/防泄漏测试通过 |
 | T07 | DONE | Recall/Hit/MRR/NDCG 手算测试及稳定全集排序；本地 valid/test 固定 cohort，空/无效预测计零；12项专项测试与32项完整回归通过 |
-| T08—T24 | TODO | 基线和模型尚未训练；算法收益 NOT EVALUATED |
+| T08 | DONE | Random、Popularity、BPR-MF 同协议 seed 42 实测；valid/test NDCG@10 与 checkpoint 重算一致，36项测试在两个环境均通过；BPR-MF 未超过热门 |
+| T09—T24 | TODO | LightGCN、统一适配器、最终多 seed 与 Agent 改进尚未验收 |
 
 ## 最新证据
 
+- [T08 推荐基线实测](../../reports/rec_baselines/t08_20261006.md)：BPR-MF 小样本过拟合/重载验证、单 seed 全量训练、三模型同 cohort 评测完成。test NDCG@10 Random 0.014081、Popularity 0.195795、BPR-MF 0.192089；无提升宣称。机器结果见 [seed_42.json](../../reports/rec_baselines/seed_42.json)，私有 checkpoint/热门计数不入 Git。
+
 - [MovieLens1M 数据协议](../../reports/t06_movielens_protocol_20261006.md)：官方稳定 ZIP 和条款本地保存、原始行不入 Git；训练期 ID/图/历史/候选与 holdout 分离，冷热分层和全部排除数记录在本地 `artifacts/data_manifest.json` 及公开摘要。
-- [固定指标与评测 cohort](../../reports/t07_metrics_protocol_20261006.md)：valid/test 同用 5351 个训练期 warm 用户与 3469 个训练候选，分别481/954名用户有可评正反馈，其余用户显式记录无相关目标；当前无模型指标。
+- [固定指标与评测 cohort](../../reports/t07_metrics_protocol_20261006.md)：valid/test 同用 5351 个训练期 warm 用户与 3469 个训练候选，分别481/954名用户有可评正反馈，其余用户显式记录无相关目标。
 - [目录核查报告](../../reports/catalog_identity_20261005.md)：9883 个目录条目按官方元数据唯一对应，5 个歧义；12,189 条 source-backed 别名在读评测目标之前生成。45 条旧诊断输入有 28 个可解析、6 个年份冲突、11 个该来源无标题；不是新 benchmark 或质量指标。
 - [路线决定](../../reproduction/quality_route_decision_20261005.json)：原包/源码历史未找到训练编号表，按 §5.5 为质量实验采用 B/upstream_rebuilt，原 A1 和三个 0/45 保留。64 项完整回归、范围/重复门禁通过；本轮 0 新 API 请求，共246462字节下载。
 
@@ -32,14 +35,14 @@
 
 1. checkpoint权威标题映射、矩阵行标签和原包独立再分发许可 NOT VERIFIED。目录ID在范围内、权重加载和有限分数不等于语义正确；[源码复核](../../reproduction/source_alignment_review_20261005.json)不能独立恢复训练映射。
 2. 作者canonical等条件未对齐，继续限制原论文验收；用户已明确暂不追论文，它们不阻塞独立质量路径。该45条仍仅为A1派生兼容性/诊断输入。
-3. T08/T09 模型尚未实施。不能先看改进结果再调整评价指标；所有模型遵循同一冻结时间划分和 T07 指标。
+3. T09 LightGCN 与最终多 seed 尚未实施。不能先看改进结果再调整评价指标；所有模型遵循同一冻结时间划分和 T07 指标。
 
 ## 下一任务
 
-按 T08 BPR-MF/Random/Popularity→T09 LightGCN 推进。旧权重和未知语义矩阵仅保留原功能对照，不借用来伪装可信质量模型；若以后获得权威旧映射，再独立复核。
+按 T09 LightGCN 推进；其后 T10 模型适配与上游方法基线。旧权重和未知语义矩阵仅保留原功能对照，不借用来伪装可信质量模型；若以后获得权威旧映射，再独立复核。
 
 ## 本机配置与历史
 
 Key由非空环境变量优先、根目录.env次之，仅本机保留。执行命令由执行端负责。旧连接1/1与单轮2/2记录不变；新额度已用93/120，现有任务已关闭，不能删除记录重跑。后续使用剩余额度需沿同一授权计数，不能另起台账重置120次。
 
-[单轮报告](../../reports/live_original_app_20261005.md)、[Key配置](../../reports/local_key_setup_20261005.md)、[环境报告](../../reproduction/environment_dev.json)和旧报告保留历史快照。A1完整验收/A2尚未完成；B独立质量路径已选择，训练与新模型收益均 NOT EVALUATED。
+[单轮报告](../../reports/live_original_app_20261005.md)、[Key配置](../../reports/local_key_setup_20261005.md)、[环境报告](../../reproduction/environment_dev.json)和旧报告保留历史快照。A1完整验收/A2尚未完成；B独立质量路径已选择，T08 真实结果已记录，LightGCN 与最终提升仍 NOT EVALUATED。

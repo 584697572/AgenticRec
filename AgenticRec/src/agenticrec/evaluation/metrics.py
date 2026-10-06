@@ -26,7 +26,8 @@ def rank_candidates(scores, candidate_ids, k, seen=()):
     _k(k)
     universe = _positive_ids(candidate_ids, 'candidate_ids')
     seen_set = set(_positive_ids(seen, 'seen'))
-    if any(i not in universe for i in scores):
+    universe_set = set(universe)
+    if any(i not in universe_set for i in scores):
         raise ValueError('score for item outside frozen candidate universe')
     eligible = [i for i in universe if i not in seen_set]
     if any(i not in scores or type(scores[i]) not in (int, float)

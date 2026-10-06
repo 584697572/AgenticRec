@@ -17,7 +17,14 @@ def main(argv=None):
     doctor.add_argument("--offline", action="store_true", required=True)
     doctor.add_argument("--config", type=Path)
     commands.add_parser("fixture")
+    training = commands.add_parser("train")
+    training.add_argument("--config", type=Path, required=True)
+    training.add_argument("--seed", type=int, required=True)
     args = parser.parse_args(argv)
+    if args.command == "train":
+        from .training import train
+        train(args.config, args.seed)
+        return 0
     if args.command == "doctor":
         try:
             config = load_config(args.config) if args.config else ExperimentConfig()
