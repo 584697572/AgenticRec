@@ -178,3 +178,10 @@
 - 源码事实：原 `RecModelTool` 为 UniRec 序列模型构造 `item_seq/item_seq_len/item_id`，并不接收 T06 的训练 `user_id`。原 `ToolBox`、`CandidateBuffer`、`MapTool` 在已重建的 Python 3.9 环境可直接执行，三份执行源码与固定上游逐字节同 SHA256。
 - 决定：在 Python 3.11 侧严格校验冻结报告、配置、代码、数据和 checkpoint 后计算 BPR-MF/LightGCN 分数；只在显式身份及历史授权下使用已知用户嵌入。匿名会话采用独立的类型 Jaccard 种子评分和 train-only 热门先验，缺少种子时明示热门回退。原 ToolBox/Buffer/Map 在隔离的 legacy 子进程执行，替换的 RankingTool 和目录 facade 逐项列于 `AgenticRec/docs/UPSTREAM_DIFF.md`。离线脚本计划不是 LLM 规划。
 - 可比性：U1 的 MovieLens1M 训练 ID 和新模型不能代替 U0/A1 旧资源；T07 的 valid/test 划分、候选全集和指标口径未改变，T10 不产生质量提升声明。详细轨迹仅留本地，公开摘要只含 SHA 和计数。没有新增下载或远程 API 请求。两套开发环境各 46 项回归通过；实测两条工具链轨迹见 `reports/upstream_rebuilt/t10_20261006.md`。原 T04 blocker 保持。
+
+## ADR-020：T11 训练期三路召回、RRF 与双重硬过滤
+
+- 日期：2026-10-06。规范 §8/T11 要求内容、协同、热门召回，100/路与 200 并集的初始上限，`sum 1/(60+rank)` 的 RRF 基线，排序前后硬约束及结构化无解/缺字段；禁止低分屏蔽或放宽条件补足 Top-K。
+- 事实与选择：使用已校验 T06 `items.parquet` 的 title/genres/year 建本地确定性 TF-IDF；已授权训练期用户使用冻结 LightGCN 分数，匿名种子使用经校验 train-positive 边的 item-item 共现，热门同样只统计 train-positive。三个原始分数不同量纲，仅传排名给 RRF，不直接相加。类型使用目录枚举，不执行 SQL 或引入外部 embedding/下载。
+- 硬约束：include genres 全部满足，exclude genres 任一命中即排除；显式排除、种子项和授权训练历史在召回前移除，融合后再次校验。冲突需澄清，未知类型/物品 ID、缺失字段、无解均为结构化状态；候选不足返回较少结果与 shortfall，不自动放宽。T12 最终个性化重排后仍须再调用同一最终 gate。
+- 可比性和风险：100/路、200 并集为规范初始值，尚未经 valid 调整；召回外的相关物品不能被后续排序救回。T11 真实数据两路仅证明可运行和硬约束有效，不是推荐质量指标或提升声明；T07 评测协议、T08/T09 checkpoint、U0 原资源均不改变。两现代环境各 55 项测试通过，跨进程哈希种子与真实轨迹 SHA 稳定；真实数据 smoke 无 holdout、下载和远程调用。证据见 `reports/candidate_fusion/t11_20261006.md`。

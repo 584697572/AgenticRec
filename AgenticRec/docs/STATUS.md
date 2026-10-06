@@ -1,6 +1,6 @@
 # 项目状态
 
-最后更新：2026-10-06（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06 数据/ID、T07 指标/评测集合、T08 基线/BPR-MF、T09 LightGCN 与 T10 U1 方法适配均已验收；下一批 T11 多路候选融合与硬约束。旧模型语义未获证明。
+最后更新：2026-10-06（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06 数据/ID、T07 指标/评测集合、T08 基线/BPR-MF、T09 LightGCN、T10 U1 方法适配与 T11 多路候选/硬约束均已验收；下一批 T12 固定推荐流程。旧模型语义未获证明。
 
 | 任务 | 状态 | 验证与剩余项 |
 |---|---|---|
@@ -15,7 +15,8 @@
 | T08 | DONE | Random、Popularity、BPR-MF 同协议 seed 42 实测；valid/test NDCG@10 与 checkpoint 重算一致，36项测试在两个环境均通过；BPR-MF 未超过热门 |
 | T09 | DONE | 小图 float32 稀疏/稠密误差≤1e-6；真实图零 holdout 边；1/2/3 层 valid 实验选中3层，test NDCG@10=0.194047；checkpoint/ID/训练边 SHA 验证通过 |
 | T10 | DONE | U1 独立模型适配、已知/匿名路由、原 ToolBox/Buffer/Map 两条真实数据离线轨迹及源码对照通过；LLM 规划未评测 |
-| T11—T24 | TODO | 多路候选融合、硬约束、最终多 seed 与 Agent 改进尚未验收 |
+| T11 | DONE | 内容/协同/热门三路召回、RRF、硬约束前后校验、结构化失败与真实数据两路 smoke 通过；两环境各 55 项测试通过 |
+| T12—T24 | TODO | 完整固定流程、最终多 seed 与 Agent 改进尚未验收 |
 
 ## 最新证据
 
@@ -53,3 +54,7 @@ Key由非空环境变量优先、根目录.env次之，仅本机保留。执行�
 ## T10 验收记录（2026-10-06）
 
 T10 DONE：已知用户和匿名 seed scorer 分离，候选分数对齐、未知用户回退与 checkpoint SHA 拒绝测试通过；上游 `ToolBox`、`CandidateBuffer`、`MapTool` 三份源码逐字节核验后，在 legacy 子进程执行两条真实数据 U1 轨迹。Machine-readable 摘要：`../../reports/upstream_rebuilt/t10_20261006.json`；源码差异：`UPSTREAM_DIFF.md`。两个现代环境各 46 tests passed。当前 in-progress：无；下一任务 T11。Blocker：T04 原资源 ID/许可仍未证实；U1 LLM 规划、冷启动推荐质量、多 seed 尚未评测。
+
+## T11 验收记录（2026-10-06）
+
+T11 DONE：新增 `retrieval/` 和 `ranking/`，冻结 MovieLens1M 目录与 train-positive 边上三路召回、RRF 和双重硬过滤可用。专项 9 tests passed；两个独立 Python 3.11 环境各 55 tests passed；真实数据已知/匿名两路各 3 源、最终各 10 条且违规 0；跨进程哈希种子与真实轨迹 SHA 稳定。报告：`../../reports/candidate_fusion/t11_20261006.md`；机读摘要：`../../reports/candidate_fusion/t11_20261006.json`。当前 in-progress：无；下一任务 T12。T04 原资源问题保持 BLOCKED；T11 质量 NOT EVALUATED。
