@@ -19,11 +19,16 @@ class LLMBudget:
     max_output_tokens: int = 0
     money_budget: float = 0
     budget_unit: str = "CNY"
+    per_request_timeout_seconds: float = 30.0
+    round_deadline_seconds: float = 90.0
+    max_retries: int = 1
+    retry_backoff_seconds: float = 0.25
+    sdk_max_retries: int = 0
 
     def __post_init__(self):
         if type(self.allow_paid_api) is not bool:
             raise ValueError("allow_paid_api must be boolean")
-        for name in ("api_request_cap", "max_output_tokens"):
+        for name in ("api_request_cap", "max_output_tokens", "max_retries", "sdk_max_retries"):
             if type(getattr(self, name)) is not int or getattr(self, name) < 0:
                 raise ValueError(name + " must be a nonnegative integer")
         if (type(self.money_budget) not in (int, float) or not math.isfinite(self.money_budget)
@@ -35,6 +40,16 @@ class LLMBudget:
                 raise ValueError(name + " must be a nonempty string or null")
         if not isinstance(self.budget_unit, str) or not self.budget_unit.strip():
             raise ValueError("budget_unit is required")
+        for name in ("per_request_timeout_seconds", "round_deadline_seconds"):
+            value = getattr(self, name)
+            if type(value) not in (int, float) or not math.isfinite(value) or value <= 0:
+                raise ValueError(name + " must be finite and positive")
+        if (type(self.retry_backoff_seconds) not in (int, float)
+                or not math.isfinite(self.retry_backoff_seconds)
+                or self.retry_backoff_seconds < 0):
+            raise ValueError("retry_backoff_seconds must be finite and nonnegative")
+        if self.sdk_max_retries != 0:
+            raise ValueError("sdk_max_retries must be 0; the adapter owns retry accounting")
         if self.allow_paid_api and (not self.provider or not self.model_id or
                 min(self.api_request_cap, self.max_output_tokens, self.money_budget) <= 0):
             raise ValueError("live calls require explicit provider, model, request/token/money limits")

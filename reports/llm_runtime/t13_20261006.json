@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "task": "T13",
+  "status": "DONE",
+  "date": "2026-10-06",
+  "scope": "provider-neutral LLM adapter, strict JSON response schema, deadline, retry and budget accounting",
+  "remote_api_requests": 0,
+  "downloads": 0,
+  "acceptance": {
+    "attempt_counted_before_transport": true,
+    "http_401_retried": false,
+    "unknown_usage_recorded_as_null": true,
+    "unauthorized_live_transport_called": false,
+    "sdk_max_retries": 0,
+    "fake_llm_runs_with_paid_calls_disabled": true,
+    "strict_missing_field_rejection": true,
+    "shared_round_deadline_covers_retries": true
+  },
+  "tests": {
+    "focused": {
+      "command": "python -m pytest tests/unit/test_llm_adapter.py tests/unit/test_budget.py",
+      "passed": 22,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "full_dev": {"passed": 88, "failed": 0, "warnings": 2, "exit_code": 0},
+    "full_rebuild": {"passed": 88, "failed": 0, "warnings": 2, "exit_code": 0},
+    "compileall_exit_code": 0
+  },
+  "artifacts": {
+    "AgenticRec/src/agenticrec/adapters/llm.py": "dffe5d9d684de1c497748d27e34e85d32ab8f449c9a41b91179544d460b507fc",
+    "AgenticRec/src/agenticrec/runtime/budget.py": "d64ebd6e2119991983ab1fe15870e42f5b8f37cd91a79abc4aa6aecfbd64deaf",
+    "AgenticRec/src/agenticrec/runtime/deadline.py": "894ecb88de9d4ab71c455d4aa00f61cec1891eea317799dfabc58ac9b546add9",
+    "AgenticRec/src/agenticrec/runtime/errors.py": "e10911d4a6aef21a60d547e072b43a8ede8ea0a2de5b5e70795c0c4bf0dd94cb",
+    "AgenticRec/tests/unit/test_llm_adapter.py": "1695c71ed2b9e9e5e445f4ead9eaae6a9d9eded75ad261aab49878b46432d624",
+    "AgenticRec/tests/unit/test_budget.py": "ca9c9aed63032610a546000c7032eafe2eee07342f1f5b6de49e14a7a6e6313c"
+  },
+  "limitations": {
+    "provider_specific_live_transport": "NOT EVALUATED in T13",
+    "provider_billing_hard_cap": false,
+    "actual_cost_without_provider_bill": null,
+    "actual_cost_unknown_reason": "no live request was made"
+  }
+}

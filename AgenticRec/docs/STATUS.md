@@ -1,6 +1,6 @@
 # 项目状态
 
-最后更新：2026-10-06（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06—T12 的数据、指标、模型、U1 适配、候选/约束与固定流程均已验收；下一批 T13 LLM 适配、schema 与预算。旧模型语义未获证明。
+最后更新：2026-10-06（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06—T13 的数据、指标、模型、U1 适配、候选/约束、固定流程与 LLM runtime 均已验收；下一批 T14 有序计划执行器。旧模型语义未获证明。
 
 | 任务 | 状态 | 验证与剩余项 |
 |---|---|---|
@@ -17,9 +17,12 @@
 | T10 | DONE | U1 独立模型适配、已知/匿名路由、原 ToolBox/Buffer/Map 两条真实数据离线轨迹及源码对照通过；LLM 规划未评测 |
 | T11 | DONE | 内容/协同/热门三路召回、RRF、硬约束前后校验、结构化失败与真实数据两路 smoke 通过；两环境各 55 项测试通过 |
 | T12 | DONE | 结构化零 LLM 固定流程与 CLI；成功/匿名/排除/无解真实场景，证据字段、双环境 61 项测试及稳定轨迹 SHA 通过 |
-| T13—T24 | TODO | LLM/runtime、Agent 改进、评测、消融与最终多 seed 尚未验收 |
+| T13 | DONE | 严格 JSON schema、FakeLLM/live 门禁、逐尝试预算、401/429 分类、单次 timeout 与整轮 deadline；专项22项及两环境各88项完整回归通过，真实请求0 |
+| T14—T24 | TODO | Agent 改进、评测、消融与最终多 seed 尚未验收 |
 
 ## 最新证据
+
+- [T13 LLM/runtime](../../reports/llm_runtime/t13_20261006.md)：默认 FakeLLM 离线可运行，未知 transport 按 live fail-closed；每次真实尝试预记账，unknown usage/cost 保持 null，SDK 重试关闭并由 adapter 统一分类。
 
 - [T09 LightGCN 实测](../../reports/rec_baselines/t09_20261006.md)：作者论文与固定参考提交、训练期稀疏图、小图数值校验、层数比较及同协议 test 结果。机器结果见 [lightgcn_seed_42.json](../../reports/rec_baselines/lightgcn_seed_42.json)，私有 checkpoint 不入 Git。
 - [T08 推荐基线实测](../../reports/rec_baselines/t08_20261006.md)：BPR-MF 小样本过拟合/重载验证、单 seed 全量训练、三模型同 cohort 评测完成。test NDCG@10 Random 0.014081、Popularity 0.195795、BPR-MF 0.192089；无提升宣称。机器结果见 [seed_42.json](../../reports/rec_baselines/seed_42.json)，私有 checkpoint/热门计数不入 Git。
@@ -40,11 +43,11 @@
 
 1. checkpoint权威标题映射、矩阵行标签和原包独立再分发许可 NOT VERIFIED。目录ID在范围内、权重加载和有限分数不等于语义正确；[源码复核](../../reproduction/source_alignment_review_20261005.json)不能独立恢复训练映射。
 2. 作者canonical等条件未对齐，继续限制原论文验收；用户已明确暂不追论文，它们不阻塞独立质量路径。该45条仍仅为A1派生兼容性/诊断输入。
-3. 最终多 seed 与模型适配尚未实施。当前 T09 单 seed LightGCN 没有超过 Popularity，不能先看改进结果再调整评价指标；所有模型遵循同一冻结时间划分和 T07 指标。
+3. 最终多 seed 与 Agent 对照尚未实施。当前 T09 单 seed LightGCN 没有超过 Popularity，不能先看改进结果再调整评价指标；所有模型遵循同一冻结时间划分和 T07 指标。
 
 ## 下一任务
 
-按 T10 模型适配与上游方法基线推进：已知用户 scorer 与匿名 SessionScorer 分离。旧权重和未知语义矩阵仅保留原功能对照，不借用来伪装可信质量模型；若以后获得权威旧映射，再独立复核。
+按 T14 推进有序计划执行器：先写重复工具名的失败回归，再实现 PlanStep 列表、白名单、重复 step_id/坏参数拒绝和完整 trace。不得用 dict 表示可能重复的工具步骤。
 
 ## 本机配置与历史
 
@@ -63,3 +66,7 @@ T11 DONE：新增 `retrieval/` 和 `ranking/`，冻结 MovieLens1M 目录与 tra
 ## T12 验收记录（2026-10-06）
 
 T12 DONE：`pipeline.py` 与 CLI 完成严格结构化的固定推荐链，输出 ID、元数据、各路名次和个性化/RRF 分数。专项 6 tests、两环境各 61 tests 通过；真实四场景与无凭据 CLI 通过，规划/LLM/远程请求为0，连续轨迹 SHA 稳定。报告：`../../reports/fixed_pipeline/t12_20261006.md`；机读摘要：`../../reports/fixed_pipeline/t12_20261006.json`。下一任务 T13。T04 保持 BLOCKED，T12 质量 NOT EVALUATED。
+
+## T13 验收记录（2026-10-06）
+
+T13 DONE：`adapters/llm.py` 与 `runtime/` 完成 provider-neutral chat、严格 JSON object schema、FakeLLM/live 分离、请求/费用上界账本、timeout/deadline 和唯一外层重试。专项 22 tests、两环境各 88 tests、compileall 均通过；401不重试、429尝试逐次计数，unknown usage/cost 为 null+reason，未授权 live 不触达 transport。本轮真实请求0。报告：`../../reports/llm_runtime/t13_20261006.md`；机读摘要：`../../reports/llm_runtime/t13_20261006.json`。下一任务 T14。T04 保持 BLOCKED，供应商 live transport 与 Agent 质量 NOT EVALUATED。

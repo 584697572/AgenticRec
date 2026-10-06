@@ -191,3 +191,11 @@
 - 日期：2026-10-06。规范 T12 要求无规划固定流程、独立 CLI、完整证据和成功/匿名/排除/无解四场景；§9.3 明确自由文本即使不走 Agent，也可能产生一次意图抽取调用，不能隐藏其成本。
 - 决定：F baseline 仅接收版本化严格 JSON；未知字段、隐式身份授权和自由文本 fail closed。流程固定为硬过滤、三路召回、RRF、用户/冷启动评分、确定性重排、最终硬校验。输出同时保留元数据、各源名次、profile score 与 RRF score。自然语言解析留给后续 adapter，并须独立计数；模型/资源错误与非法请求采用不同状态。
 - 验证与影响：真实 MovieLens1M 四场景及无 API 凭据 CLI 通过，planner/LLM/远程请求均为0；连续两次轨迹 SHA 一致。两个现代环境各61项测试通过。T12 建立的是强 F 行为基线，不产生质量提升声明，不读取 holdout，不改变 T07 指标或 T08/T09 checkpoint。证据见 `reports/fixed_pipeline/t12_20261006.md`。
+
+## ADR-022：T13 将离线 LLM fixture 与真实授权分流，重试只由 adapter 控制
+
+- 日期：2026-10-06。规范 T13 与 §3.3/§9.4 要求默认真实调用关闭、FakeLLM 可离线测试、每次尝试计数、401不重试、unknown usage 不写0，并避免 SDK 与外层重试相乘。
+- 决定：transport 未声明时按 live 处理，必须先通过授权、请求数和单次费用上界门禁；只有显式 `is_live=false` 的 FakeLLM 可在默认配置下执行。每个 live 尝试在 transport 前占用请求次数和费用上界，失败不退款。SDK 重试固定为0，429/有限5xx/连接/timeout仅由 adapter 在共享轮次 deadline 内有限重试；401/403/参数错误不重试。
+- Schema：LLM 内容必须通过 exact-key JSON object 校验，缺字段、多字段、类型错误、非有限数和坏 JSON 均显式失败。usage/cost 不可获得时记录 `null` 与原因；本地费用上界不是供应商账单硬限额。
+- 时间边界：每请求 timeout 限制单次 provider 等待，整轮 deadline 覆盖所有尝试、失败耗时和退避；下一次尝试取两者较小值。同步 CPU worker 的底层取消仍需后续 T17 验证，T13 不作终止保证。
+- 验证与影响：专项22项、两个现代环境各88项和 compileall 通过；本轮下载0、真实请求0。供应商特定 live transport、真实账单与 Agent 输出质量保持 NOT EVALUATED。证据见 `reports/llm_runtime/t13_20261006.md`。

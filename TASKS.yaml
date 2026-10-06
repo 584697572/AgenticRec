@@ -147,11 +147,13 @@
         "T06",
         "T07"
       ],
-      "status": "TODO",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T08",
       "deliverables": "`AgenticRec/src/agenticrec/models/bpr.py`；`AgenticRec/configs/bpr.yaml`；`artifacts/models/bpr/`；`reports/rec_baselines/`。",
       "acceptance": "有真实训练日志，梯度和输出维度正确。 negative sampler 不读取未来，也不采训练期已评分物品。 是否超过热门如实报告，不伪造提升。",
-      "checks": "`python -m pytest tests/unit/test_bpr.py`；`python -m agenticrec.cli train --config configs/bpr.yaml --seed 42`。"
+      "checks": "`python -m pytest tests/unit/test_bpr.py`；`python -m agenticrec.cli train --config configs/bpr.yaml --seed 42`。",
+      "evidence": "reports/rec_baselines/t08_20261006.md; reports/rec_baselines/seed_42.json",
+      "verification": "Seed 42 full training/checkpoint replay PASS; two modern environments each 36 tests PASS; BPR-MF test NDCG@10 0.192089 did not exceed Popularity 0.195795."
     },
     {
       "id": "T09",
@@ -161,11 +163,13 @@
       "depends_on": [
         "T08"
       ],
-      "status": "TODO",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T09",
       "deliverables": "`AgenticRec/src/agenticrec/models/lightgcn.py`；`AgenticRec/configs/lightgcn.yaml`；`artifacts/models/lightgcn/`。",
       "acceptance": "传播数值校验通过（float32建议误差≤1e-5，按设备记录）。 图无 holdout 边；checkpoint 与 ID/hash 一致。",
-      "checks": "`python -m pytest tests/unit/test_lightgcn.py`；`python -m agenticrec.cli train --config configs/lightgcn.yaml --seed 42`。"
+      "checks": "`python -m pytest tests/unit/test_lightgcn.py`；`python -m agenticrec.cli train --config configs/lightgcn.yaml --seed 42`。",
+      "evidence": "reports/rec_baselines/t09_20261006.md; reports/rec_baselines/lightgcn_seed_42.json",
+      "verification": "Sparse/dense propagation and zero-holdout-edge checks PASS; selected 3-layer seed 42 checkpoint replay PASS; test NDCG@10 0.194047 did not exceed Popularity."
     },
     {
       "id": "T10",
@@ -179,11 +183,13 @@
         "T08",
         "T09"
       ],
-      "status": "TODO",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T10",
       "deliverables": "`AgenticRec/src/agenticrec/adapters/`；`AgenticRec/docs/UPSTREAM_DIFF.md`；`reports/upstream_rebuilt/`。",
       "acceptance": "相同 candidate_ids 的评分对齐；未知用户有明确 fallback。 能展示至少一条源自上游方法的端到端轨迹。 上游来源与改动一一对应。",
-      "checks": "`python -m pytest tests/integration/test_model_adapter.py tests/integration/test_upstream_bridge.py`。"
+      "checks": "`python -m pytest tests/integration/test_model_adapter.py tests/integration/test_upstream_bridge.py`。",
+      "evidence": "reports/upstream_rebuilt/t10_20261006.md; reports/upstream_rebuilt/t10_20261006.json; AgenticRec/docs/UPSTREAM_DIFF.md",
+      "verification": "Known-user and anonymous routes plus two original ToolBox/Buffer/Map traces PASS; two modern environments each 46 tests PASS; no live LLM calls."
     },
     {
       "id": "T11",
@@ -193,11 +199,13 @@
       "depends_on": [
         "T10"
       ],
-      "status": "TODO",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T11",
       "deliverables": "`AgenticRec/src/agenticrec/retrieval/`；`AgenticRec/src/agenticrec/ranking/`。",
       "acceptance": "排除物品在任意 k 和候选不足场景均不返回。 无解/缺失字段结构化返回；不放宽硬条件。",
-      "checks": "`python -m pytest tests/unit/test_constraints.py tests/unit/test_fusion.py`。"
+      "checks": "`python -m pytest tests/unit/test_constraints.py tests/unit/test_fusion.py`。",
+      "evidence": "reports/candidate_fusion/t11_20261006.md; reports/candidate_fusion/t11_20261006.json",
+      "verification": "Three-source retrieval, RRF, double hard filtering and structured failures PASS; two modern environments each 55 tests PASS."
     },
     {
       "id": "T12",
@@ -207,11 +215,13 @@
       "depends_on": [
         "T11"
       ],
-      "status": "TODO",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T12",
       "deliverables": "`AgenticRec/src/agenticrec/pipeline.py`；`reports/fixed_pipeline/`。",
       "acceptance": "无 LLM 结构化请求可工作；自然语言解析单独计费。 成功、匿名、排除、无解四场景可复现。",
-      "checks": "`python -m pytest tests/integration/test_fixed_pipeline.py`。"
+      "checks": "`python -m pytest tests/integration/test_fixed_pipeline.py`。",
+      "evidence": "reports/fixed_pipeline/t12_20261006.md; reports/fixed_pipeline/t12_20261006.json",
+      "verification": "Known, anonymous, exclusion and no-feasible scenarios PASS; two modern environments each 61 tests PASS; planner/LLM/remote requests all zero."
     },
     {
       "id": "T13",
@@ -222,11 +232,13 @@
         "T05",
         "T12"
       ],
-      "status": "TODO",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T13",
       "deliverables": "`AgenticRec/src/agenticrec/adapters/llm.py`；`AgenticRec/src/agenticrec/runtime/`。",
       "acceptance": "每次尝试计数；401不重试；unknown usage 不记0。 没有授权的 live 测试被明确阻止而非偷偷运行。",
-      "checks": "`python -m pytest tests/unit/test_llm_adapter.py tests/unit/test_budget.py`。"
+      "checks": "`python -m pytest tests/unit/test_llm_adapter.py tests/unit/test_budget.py`。",
+      "evidence": "reports/llm_runtime/t13_20261006.md; reports/llm_runtime/t13_20261006.json",
+      "verification": "22 focused tests and 88 full tests in each modern environment PASS; FakeLLM default-offline, unauthorized live block, attempt accounting, 401/429, strict schema, unknown usage/cost and shared deadline verified; zero remote requests."
     },
     {
       "id": "T14",

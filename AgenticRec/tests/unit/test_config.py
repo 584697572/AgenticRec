@@ -19,6 +19,11 @@ def test_defaults_deny_live_calls():
     {"llm": {"api_key": "fixture-secret"}}, {"llm": {"api_request_cap": True}},
     {"llm": {"money_budget": float("nan")}}, {"llm": {"allow_paid_api": True}},
     {"llm": {"max_output_tokens": -1}}, {"llm": {"provider": []}},
+    {"llm": {"per_request_timeout_seconds": 0}},
+    {"llm": {"round_deadline_seconds": float("inf")}},
+    {"llm": {"max_retries": True}},
+    {"llm": {"retry_backoff_seconds": -1}},
+    {"llm": {"sdk_max_retries": 1}},
 ])
 def test_invalid_config_fails(data):
     with pytest.raises((ValueError, TypeError)):
