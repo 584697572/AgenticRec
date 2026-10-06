@@ -1,6 +1,6 @@
 # 项目状态
 
-最后更新：2026-10-06（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06 数据/ID、T07 指标/评测集合、T08 基线/BPR-MF、T09 LightGCN、T10 U1 方法适配与 T11 多路候选/硬约束均已验收；下一批 T12 固定推荐流程。旧模型语义未获证明。
+最后更新：2026-10-06（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06—T12 的数据、指标、模型、U1 适配、候选/约束与固定流程均已验收；下一批 T13 LLM 适配、schema 与预算。旧模型语义未获证明。
 
 | 任务 | 状态 | 验证与剩余项 |
 |---|---|---|
@@ -16,7 +16,8 @@
 | T09 | DONE | 小图 float32 稀疏/稠密误差≤1e-6；真实图零 holdout 边；1/2/3 层 valid 实验选中3层，test NDCG@10=0.194047；checkpoint/ID/训练边 SHA 验证通过 |
 | T10 | DONE | U1 独立模型适配、已知/匿名路由、原 ToolBox/Buffer/Map 两条真实数据离线轨迹及源码对照通过；LLM 规划未评测 |
 | T11 | DONE | 内容/协同/热门三路召回、RRF、硬约束前后校验、结构化失败与真实数据两路 smoke 通过；两环境各 55 项测试通过 |
-| T12—T24 | TODO | 完整固定流程、最终多 seed 与 Agent 改进尚未验收 |
+| T12 | DONE | 结构化零 LLM 固定流程与 CLI；成功/匿名/排除/无解真实场景，证据字段、双环境 61 项测试及稳定轨迹 SHA 通过 |
+| T13—T24 | TODO | LLM/runtime、Agent 改进、评测、消融与最终多 seed 尚未验收 |
 
 ## 最新证据
 
@@ -58,3 +59,7 @@ T10 DONE：已知用户和匿名 seed scorer 分离，候选分数对齐、未�
 ## T11 验收记录（2026-10-06）
 
 T11 DONE：新增 `retrieval/` 和 `ranking/`，冻结 MovieLens1M 目录与 train-positive 边上三路召回、RRF 和双重硬过滤可用。专项 9 tests passed；两个独立 Python 3.11 环境各 55 tests passed；真实数据已知/匿名两路各 3 源、最终各 10 条且违规 0；跨进程哈希种子与真实轨迹 SHA 稳定。报告：`../../reports/candidate_fusion/t11_20261006.md`；机读摘要：`../../reports/candidate_fusion/t11_20261006.json`。当前 in-progress：无；下一任务 T12。T04 原资源问题保持 BLOCKED；T11 质量 NOT EVALUATED。
+
+## T12 验收记录（2026-10-06）
+
+T12 DONE：`pipeline.py` 与 CLI 完成严格结构化的固定推荐链，输出 ID、元数据、各路名次和个性化/RRF 分数。专项 6 tests、两环境各 61 tests 通过；真实四场景与无凭据 CLI 通过，规划/LLM/远程请求为0，连续轨迹 SHA 稳定。报告：`../../reports/fixed_pipeline/t12_20261006.md`；机读摘要：`../../reports/fixed_pipeline/t12_20261006.json`。下一任务 T13。T04 保持 BLOCKED，T12 质量 NOT EVALUATED。

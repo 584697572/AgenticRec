@@ -20,6 +20,11 @@ def main(argv=None):
     training = commands.add_parser("train")
     training.add_argument("--config", type=Path, required=True)
     training.add_argument("--seed", type=int, required=True)
+    recommend = commands.add_parser("recommend")
+    recommend.add_argument("--request", type=Path, required=True,
+                           help="strict structured JSON; natural language parsing is separate")
+    recommend.add_argument("--model", choices=("bpr", "lightgcn"), default="lightgcn")
+    recommend.add_argument("--seed", type=int, default=42)
     args = parser.parse_args(argv)
     if args.command == "train":
         if json.loads(args.config.read_text(encoding="utf-8")).get("model") == "lightgcn":
@@ -27,6 +32,26 @@ def main(argv=None):
         else:
             from .training import train
         train(args.config, args.seed)
+        return 0
+    if args.command == "recommend":
+        from .pipeline import FixedRecommendationPipeline, FixedRequest
+        try:
+            request = FixedRequest.from_json_file(args.request)
+        except (OSError, json.JSONDecodeError, ValueError, TypeError) as error:
+            report = {"status": "INVALID_REQUEST", "reason": str(error),
+                      "input_mode": "structured_json", "planner": "not_invoked",
+                      "llm_requests": 0, "remote_api_requests": 0}
+            print(json.dumps(report, ensure_ascii=True, indent=2, sort_keys=True))
+            return 2
+        try:
+            report = FixedRecommendationPipeline.from_frozen(args.model, args.seed).recommend(request).to_dict()
+        except (OSError, ValueError, RuntimeError) as error:
+            report = {"status": "PIPELINE_ERROR", "reason": str(error),
+                      "input_mode": "structured_json", "planner": "not_invoked",
+                      "llm_requests": 0, "remote_api_requests": 0}
+            print(json.dumps(report, ensure_ascii=True, indent=2, sort_keys=True))
+            return 3
+        print(json.dumps(report, ensure_ascii=True, indent=2, sort_keys=True))
         return 0
     if args.command == "doctor":
         try:

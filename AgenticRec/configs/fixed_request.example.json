@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "user_id": null,
+  "history_authorized": false,
+  "liked_item_ids": [],
+  "disliked_item_ids": [],
+  "seen_item_ids": [],
+  "constraints": {
+    "include_genres": ["Comedy"],
+    "exclude_genres": ["Horror"],
+    "year_min": 1990,
+    "year_max": 2000,
+    "excluded_item_ids": [],
+    "exclude_seen": true,
+    "k": 5,
+    "required_fields": ["title", "genres", "year"]
+  }
+}
