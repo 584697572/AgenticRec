@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "task": "T14",
+  "status": "DONE",
+  "date": "2026-10-06",
+  "remote_api_requests": 0,
+  "downloads": 0,
+  "upstream_failure": {
+    "command": "reproduction/.venv-legacy/Scripts/python.exe reproduction/scripts/audit_upstream.py --require-duplicates",
+    "exit_code": 1,
+    "expected_inputs": ["first-query", "second-query"],
+    "observed_inputs": ["second-query"],
+    "source": "RecAI/InteRecAgent/llm4crs/agent_plan_first_openai.py",
+    "source_sha256": "14f6598930e31ff7d78f2235b0e76680ca86985de875d3ae6fa00c59cc6c8bb3",
+    "local_raw_observation_sha256": "70522194d68ce8301f1426e81d8d93f48484a8eb2272811673305fcc955631e9",
+    "local_raw_result_sha256": "390aa9528ce892f73cc3a5fc7e0243f56c3c2402e2b9b351bae1bcfeaaa12122"
+  },
+  "fixed_trace": {
+    "ok": true,
+    "step_ids": ["s1", "s2", "s3"],
+    "tool_names": ["lookup", "lookup", "map"],
+    "arguments": [
+      {"query": "first-query"},
+      {"query": "second-query"},
+      {"limit": 5}
+    ]
+  },
+  "acceptance": {
+    "duplicate_tool_calls_preserved": true,
+    "original_order_preserved": true,
+    "original_arguments_preserved": true,
+    "unique_step_ids_required": true,
+    "unknown_tools_rejected_before_execution": true,
+    "bad_parameters_rejected_before_execution": true,
+    "exact_tool_whitelist": true,
+    "failure_trace_retained": true,
+    "upstream_modified": false
+  },
+  "tests": {
+    "focused": {"passed": 11, "failed": 0, "exit_code": 0},
+    "full_dev": {"passed": 99, "failed": 0, "warnings": 2, "exit_code": 0},
+    "full_rebuild": {"passed": 99, "failed": 0, "warnings": 2, "exit_code": 0},
+    "compileall_exit_code": 0
+  },
+  "artifacts": {
+    "AgenticRec/src/agenticrec/agent/executor.py": "345c0134243b29a83d0869dd248f4ade158e555d9c439665cc9646bd4b731d2a",
+    "AgenticRec/tests/regression/test_plan_execution.py": "560d31d56a79f1e9053c33e88a5ba21e7db14684cd7368b70b30e61284583760"
+  }
+}

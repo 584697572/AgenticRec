@@ -199,3 +199,10 @@
 - Schema：LLM 内容必须通过 exact-key JSON object 校验，缺字段、多字段、类型错误、非有限数和坏 JSON 均显式失败。usage/cost 不可获得时记录 `null` 与原因；本地费用上界不是供应商账单硬限额。
 - 时间边界：每请求 timeout 限制单次 provider 等待，整轮 deadline 覆盖所有尝试、失败耗时和退避；下一次尝试取两者较小值。同步 CPU worker 的底层取消仍需后续 T17 验证，T13 不作终止保证。
 - 验证与影响：专项22项、两个现代环境各88项和 compileall 通过；本轮下载0、真实请求0。供应商特定 live transport、真实账单与 Agent 输出质量保持 NOT EVALUATED。证据见 `reports/llm_runtime/t13_20261006.md`。
+
+## ADR-023：T14 用 PlanStep 列表修复重复动作，完整预校验后再执行
+
+- 日期：2026-10-06。固定上游 `ToolBox.run` 在 JSON 解析后使用 `{tool_name: input}`，复跑保留要求仍以 exit 1 失败：`first-query` 被覆盖，只执行 `second-query`。固定源码 SHA 与 T10 锚点一致，`RecAI/` 不修改。
+- 原理：字典保序只保证不同键的位置；相同工具名再次作为键时会替换旧值，因此无法表达同一工具的两次调用。新 Agent 路径用 `PlanStep[]` 保存执行序列，工具注册表仍可用唯一名字典做精确查找。
+- 决定：每步必须显式携带唯一 `step_id`、精确 `tool_name` 和参数 object。执行器先验证整个计划的 step_id、白名单和 exact 参数 schema，再运行第一步，避免坏的后续步骤导致部分副作用。失败或异常停止并留下结构化 trace；不做上游子串匹配或自动补 Map。
+- 影响：原 U0/U1 ToolBox 留作未修改对照；T14 是独立新实现的正确性贡献。专项11项、两个现代环境各99项和 compileall 通过，本轮下载0、真实请求0。推荐质量、任务成功率和成本变化保持 NOT EVALUATED。证据见 `reports/plan_executor/t14_20261006.md`。

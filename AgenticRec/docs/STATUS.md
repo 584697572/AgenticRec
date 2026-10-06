@@ -1,6 +1,6 @@
 # 项目状态
 
-最后更新：2026-10-06（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06—T13 的数据、指标、模型、U1 适配、候选/约束、固定流程与 LLM runtime 均已验收；下一批 T14 有序计划执行器。旧模型语义未获证明。
+最后更新：2026-10-06（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06—T14 的数据、指标、模型、U1 适配、候选/约束、固定流程、LLM runtime 与有序执行器均已验收；下一批 T15 多轮偏好状态。旧模型语义未获证明。
 
 | 任务 | 状态 | 验证与剩余项 |
 |---|---|---|
@@ -18,9 +18,12 @@
 | T11 | DONE | 内容/协同/热门三路召回、RRF、硬约束前后校验、结构化失败与真实数据两路 smoke 通过；两环境各 55 项测试通过 |
 | T12 | DONE | 结构化零 LLM 固定流程与 CLI；成功/匿名/排除/无解真实场景，证据字段、双环境 61 项测试及稳定轨迹 SHA 通过 |
 | T13 | DONE | 严格 JSON schema、FakeLLM/live 门禁、逐尝试预算、401/429 分类、单次 timeout 与整轮 deadline；专项22项及两环境各88项完整回归通过，真实请求0 |
-| T14—T24 | TODO | Agent 改进、评测、消融与最终多 seed 尚未验收 |
+| T14 | DONE | 固定上游同名工具覆盖先红；新 PlanStep 列表保留重复/顺序/参数/trace，严格白名单与预校验；专项11项及两环境各99项通过 |
+| T15—T24 | TODO | 多轮状态、Agent 闭环、评测、消融与最终多 seed 尚未验收 |
 
 ## 最新证据
+
+- [T14 有序计划执行器](../../reports/plan_executor/t14_20261006.md)：固定上游要求 `first-query → second-query` 实际只执行后者；新链路完整保留重复工具步骤，所有坏计划在工具运行前拒绝，上游源码未改。
 
 - [T13 LLM/runtime](../../reports/llm_runtime/t13_20261006.md)：默认 FakeLLM 离线可运行，未知 transport 按 live fail-closed；每次真实尝试预记账，unknown usage/cost 保持 null，SDK 重试关闭并由 adapter 统一分类。
 
@@ -47,7 +50,7 @@
 
 ## 下一任务
 
-按 T14 推进有序计划执行器：先写重复工具名的失败回归，再实现 PlanStep 列表、白名单、重复 step_id/坏参数拒绝和完整 trace。不得用 dict 表示可能重复的工具步骤。
+按 T15 推进多轮偏好状态：实现带 provenance 的 PreferencePatch、显式用户反馈优先、局部否定、冲突澄清、幂等更新和缓存版本失效。不得用模型推断覆盖用户硬条件。
 
 ## 本机配置与历史
 
@@ -70,3 +73,7 @@ T12 DONE：`pipeline.py` 与 CLI 完成严格结构化的固定推荐链，输�
 ## T13 验收记录（2026-10-06）
 
 T13 DONE：`adapters/llm.py` 与 `runtime/` 完成 provider-neutral chat、严格 JSON object schema、FakeLLM/live 分离、请求/费用上界账本、timeout/deadline 和唯一外层重试。专项 22 tests、两环境各 88 tests、compileall 均通过；401不重试、429尝试逐次计数，unknown usage/cost 为 null+reason，未授权 live 不触达 transport。本轮真实请求0。报告：`../../reports/llm_runtime/t13_20261006.md`；机读摘要：`../../reports/llm_runtime/t13_20261006.json`。下一任务 T14。T04 保持 BLOCKED，供应商 live transport 与 Agent 质量 NOT EVALUATED。
+
+## T14 验收记录（2026-10-06）
+
+T14 DONE：固定上游 `ToolBox` 的重复调用保留要求重新实测 exit 1，仅执行 `second-query`；独立 `agenticrec.agent.executor` 使用严格 `PlanStep[]`，保留同工具重复调用、顺序、原参数、step_id 和 trace，并在执行前拒绝未知工具、重复 step_id 与坏参数。专项11 tests、两环境各99 tests、compileall 均通过；`RecAI/` 未修改，本轮真实请求0。报告：`../../reports/plan_executor/t14_20261006.md`；机读摘要：`../../reports/plan_executor/t14_20261006.json`。下一任务 T15。T04 保持 BLOCKED，Agent 效果 NOT EVALUATED。

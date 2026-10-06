@@ -249,11 +249,13 @@
         "T10",
         "T13"
       ],
-      "status": "TODO",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T14",
       "deliverables": "`AgenticRec/src/agenticrec/agent/executor.py`；`AgenticRec/tests/regression/test_plan_execution.py`。",
       "acceptance": "同工具两次调用两次执行，原参数均保留。 未知工具、重复 step_id 与坏参数拒绝执行。",
-      "checks": "`python -m pytest tests/regression/test_plan_execution.py`。"
+      "checks": "`python -m pytest tests/regression/test_plan_execution.py`。",
+      "evidence": "reports/plan_executor/t14_20261006.md; reports/plan_executor/t14_20261006.json",
+      "verification": "Pinned upstream duplicate-preservation requirement fails with exit 1 and only second-query observed; new ordered executor focused 11 tests and both modern environments 99 full tests PASS; zero remote requests."
     },
     {
       "id": "T15",

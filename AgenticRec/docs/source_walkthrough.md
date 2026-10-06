@@ -82,4 +82,4 @@ flowchart TD
 
 该轨迹验证了工具装配后实际控制流、候选传递、Map重置与记忆更新。真实API请求为0；没有测token、延迟或推荐质量。reflection、demo、真实SQL、真实模型、真实表头、会话并发仍 **NOT VERIFIED**。
 
-重复LookUp计划另有真实失败证据：`--require-duplicates`退出1，要求first-query和second-query都执行，实际只有second-query。`duplicate_requirement_v2.stderr.log`保留断言与栈；目前**未修复**，T14仍TODO。
+重复LookUp计划另有真实失败证据：`--require-duplicates`退出1，要求first-query和second-query都执行，实际只有second-query。`duplicate_requirement_v2.stderr.log`保留断言与栈。T14 已在独立新链路实现有序 `PlanStep[]` 并通过回归；本段上游轨迹和固定源码保持原样。

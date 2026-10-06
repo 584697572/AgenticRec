@@ -26,7 +26,7 @@ commit：`0959ecb05b0794748426e73e6efc1b6b35ec433d`。2026-10-01。事实、静�
 | F01 | README70有两个资源入口；Issue #110公开报告可读取。**本机**Google预览200、下载入口200 HTML病毒扫描确认页（474M）；RecDrive200仅SPA。不能将Issue报告当本机测试，也不能把页面200当zip可得 | 原zip清单、授权、完整性 NOT VERIFIED；T03进行中 |
 | F02 | requirements3/4/9/10/15/16/17分别固定旧LangChain/Gradio、OpenAI下界、旧sentence-transformers、torch范围、UniRec下界、pandas上界。当前仅可见Python3.13.7、无Conda、py launcher无已注册解释器 | 尚未安装，兼容失败未实测；T02/T05隔离环境，不能生成伪lock |
 | F03 | utils/open_ai12/76使用新版客户端；one_turn_eval156仍ChatCompletion.create；user_simulator450仍openai.error.InvalidRequestError | 旧分支运行失败、最小SDK补丁 NOT VERIFIED；只对实际使用分支补丁，不全局降SDK |
-| F04 | ToolBox76/80同名dict覆盖，测试直接执行原class，first-query丢失；保留要求失败退出1和观察通过退出0 | **已再现但未修复**；T14依赖T10/T13，本轮不提前实现有序executor |
+| F04 | ToolBox76/80同名dict覆盖，测试直接执行原class，first-query丢失；保留要求失败退出1和观察通过退出0 | **上游问题已再现并保留**；T14 在独立 `agenticrec.agent.executor` 以有序 PlanStep 列表修复，新链路测试通过，上游源码不改 |
 | F05 | reco_model_tool150—156只传item_seq/item_seq_len/item_id；prefer来自标题，不是user_id | BPR-MF/LightGCN adapter待T10，不直接换checkpoint |
 | F06 | preference164—177压分后topk；_rank_by_x215—225按原候选数量取N并压分，不从集合删除 | 静态可推断N覆盖全集时仍包含masked项；真实torch/numpy regression **NOT VERIFIED**，后续T11先fail再fix |
 | F07 | app152/218共享buffer/bot；Gradio state只是对话列表，run清共享buffer | 共享可变状态事实确认；并发串扰未执行，T17；不声称生产就绪 |
