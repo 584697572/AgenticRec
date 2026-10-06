@@ -24,3 +24,7 @@ This variant is **U1 upstream_rebuilt** under the specification's route B. U0/A1
 ## T14 extension
 
 `agenticrec.agent.executor` replaces the unsafe plan representation for the new Agent path only. The pinned ToolBox turns the plan list into a dict keyed by tool name and therefore drops earlier repeated calls. The new executor keeps a validated `PlanStep[]`, requires unique `step_id` values, resolves tools through an exact whitelist and validates every step before execution. The original U0/U1 ToolBox remains available as an unchanged comparison; T14 is a project contribution, not an upstream-pristine result. Evidence is in `reports/plan_executor/t14_20261006.md`.
+
+## T15 extension
+
+`agenticrec.agent.state` is a new U1 component. It replaces the upstream memory object's unversioned aggregate sets with immutable `PreferenceState` snapshots and validated `PreferencePatch` events carrying field-level provenance. Explicit feedback outranks inference, model inference cannot write hard constraints, retries are idempotent, conflicts are rejected atomically, and session clearing retains only separately authorized training history. The pinned upstream memory remains unchanged for U0 comparison. T15 validates state semantics only; recommendation quality and Agent task success remain NOT EVALUATED. Evidence is in `reports/preference_state/t15_20261006.md`.

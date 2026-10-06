@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "task": "T15",
+  "status": "DONE",
+  "date": "2026-10-06",
+  "fixture_only": true,
+  "remote_api_requests": 0,
+  "downloads": 0,
+  "acceptance": {
+    "explicit_feedback_overrides_inference": true,
+    "model_cannot_write_hard_constraints": true,
+    "single_item_dislike_does_not_expand_to_genres": true,
+    "conflicting_patch_is_atomic": true,
+    "event_retry_is_idempotent": true,
+    "event_id_reuse_with_changed_content_rejected": true,
+    "effective_feedback_increments_profile_version": true,
+    "stale_hard_field_is_ignored": true,
+    "session_clear_preserves_authorized_training_history": true
+  },
+  "trace": {
+    "statuses": [
+      "APPLIED",
+      "APPLIED",
+      "APPLIED",
+      "IDEMPOTENT",
+      "REJECTED_INFERENCE_HARD_CONSTRAINT",
+      "CLARIFY_CONFLICT",
+      "APPLIED"
+    ],
+    "version_before_clear": 4,
+    "version_after_clear": 5,
+    "final_year_min_before_clear": 1990,
+    "final_year_max_before_clear": 2000,
+    "retained_history_item_count": 2,
+    "raw_trace_sha256": "d93ca19e527b8449dc27210874f9a99c32a18e54bbee3cc349bce247be24ae36"
+  },
+  "tests": {
+    "focused": {"passed": 11, "failed": 0, "exit_code": 0},
+    "full_dev": {"passed": 110, "failed": 0, "warnings": 2, "exit_code": 0},
+    "full_rebuild": {"passed": 110, "failed": 0, "warnings": 2, "exit_code": 0},
+    "compileall_exit_code": 0
+  },
+  "artifacts": {
+    "AgenticRec/src/agenticrec/agent/__init__.py": "fac56a7c7bd8d08903f62b61296937d939dbf065a96453bb117fc35c260a5d47",
+    "AgenticRec/src/agenticrec/agent/state.py": "bbe9d05bb020a32a298a74408827fa3fe17af6ad98e75146e06b9b190267075f",
+    "AgenticRec/tests/unit/test_preference_state.py": "7f7bbfaf173acd6ea131cfa9095e48e47c9e5d1c143360a78110862e11d4dd16"
+  },
+  "upstream": {
+    "commit": "0959ecb05b0794748426e73e6efc1b6b35ec433d",
+    "modified": false
+  },
+  "quality_metrics": "NOT EVALUATED"
+}

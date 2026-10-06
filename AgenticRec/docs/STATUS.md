@@ -1,6 +1,6 @@
 # 项目状态
 
-最后更新：2026-10-06（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06—T14 的数据、指标、模型、U1 适配、候选/约束、固定流程、LLM runtime 与有序执行器均已验收；下一批 T15 多轮偏好状态。旧模型语义未获证明。
+最后更新：2026-10-06（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06—T15 的数据、指标、模型、U1 适配、候选/约束、固定流程、LLM runtime、有序执行器与多轮状态均已验收；按依赖下一批为 T18 交互评测冻结，T16 在其后执行。旧模型语义未获证明。
 
 | 任务 | 状态 | 验证与剩余项 |
 |---|---|---|
@@ -19,9 +19,12 @@
 | T12 | DONE | 结构化零 LLM 固定流程与 CLI；成功/匿名/排除/无解真实场景，证据字段、双环境 61 项测试及稳定轨迹 SHA 通过 |
 | T13 | DONE | 严格 JSON schema、FakeLLM/live 门禁、逐尝试预算、401/429 分类、单次 timeout 与整轮 deadline；专项22项及两环境各88项完整回归通过，真实请求0 |
 | T14 | DONE | 固定上游同名工具覆盖先红；新 PlanStep 列表保留重复/顺序/参数/trace，严格白名单与预校验；专项11项及两环境各99项通过 |
-| T15—T24 | TODO | 多轮状态、Agent 闭环、评测、消融与最终多 seed 尚未验收 |
+| T15 | DONE | 不可变 PreferenceState、事件化 patch、provenance、显式反馈优先、局部否定、原子冲突、幂等与 profile version；专项11项及两环境各110项通过 |
+| T16—T24 | TODO | Agent 闭环、评测、消融与最终多 seed 尚未验收；T16 等待 T18 先冻结评测 |
 
 ## 最新证据
+
+- [T15 多轮偏好状态](../../reports/preference_state/t15_20261006.md)：显式反馈不会被模型推断覆盖，单物品否定不扩展为类型否定，冲突 patch 原子拒绝，重复事件不重复写入；session 清理保留授权训练历史。
 
 - [T14 有序计划执行器](../../reports/plan_executor/t14_20261006.md)：固定上游要求 `first-query → second-query` 实际只执行后者；新链路完整保留重复工具步骤，所有坏计划在工具运行前拒绝，上游源码未改。
 
@@ -50,7 +53,7 @@
 
 ## 下一任务
 
-按 T15 推进多轮偏好状态：实现带 provenance 的 PreferencePatch、显式用户反馈优先、局部否定、冲突澄清、幂等更新和缓存版本失效。不得用模型推断覆盖用户硬条件。
+按任务依赖先执行 T18：冻结交互评测开发集与 test，分离公开输入和隐藏 target，建立约束、数量、成功/澄清、token/latency 的完整分母评分器。在 T16 规则路由选择阈值前冻结 test，默认不启用 LLM simulator。
 
 ## 本机配置与历史
 
@@ -77,3 +80,7 @@ T13 DONE：`adapters/llm.py` 与 `runtime/` 完成 provider-neutral chat、严�
 ## T14 验收记录（2026-10-06）
 
 T14 DONE：固定上游 `ToolBox` 的重复调用保留要求重新实测 exit 1，仅执行 `second-query`；独立 `agenticrec.agent.executor` 使用严格 `PlanStep[]`，保留同工具重复调用、顺序、原参数、step_id 和 trace，并在执行前拒绝未知工具、重复 step_id 与坏参数。专项11 tests、两环境各99 tests、compileall 均通过；`RecAI/` 未修改，本轮真实请求0。报告：`../../reports/plan_executor/t14_20261006.md`；机读摘要：`../../reports/plan_executor/t14_20261006.json`。下一任务 T15。T04 保持 BLOCKED，Agent 效果 NOT EVALUATED。
+
+## T15 验收记录（2026-10-06）
+
+T15 DONE：新增 `agenticrec.agent.state`，实现不可变多轮状态、严格 `PreferencePatch`、逐字段来源/轮次/置信度证据、显式优先级、物品级局部否定、冲突原子澄清、事件幂等和缓存版本。专项11 tests、两环境各110 tests、compileall 均通过；人工确定性轨迹验证 session 清理只删除会话状态并保留授权训练历史。`RecAI/` 未修改，本轮真实请求0。报告：`../../reports/preference_state/t15_20261006.md`；机读摘要：`../../reports/preference_state/t15_20261006.json`。按依赖下一任务 T18，完成后再执行 T16。T04 保持 BLOCKED，推荐与 Agent 效果 NOT EVALUATED。
