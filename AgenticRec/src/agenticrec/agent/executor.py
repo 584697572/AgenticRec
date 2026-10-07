@@ -142,6 +142,19 @@ class PlanExecutor:
         self._tools = {tool.name: tool for tool in tools}
         self._clock = clock
 
+    def describe_tools(self):
+        """Return the exact public whitelist without exposing invoke callables."""
+        return tuple(
+            {
+                "name": name,
+                "parameters": {
+                    parameter: expected.__name__
+                    for parameter, expected in tool.parameters.items()
+                },
+            }
+            for name, tool in sorted(self._tools.items())
+        )
+
     def execute(self, steps):
         steps = self._preflight(steps)
         traces = []

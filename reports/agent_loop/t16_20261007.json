@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "task": "T16",
+  "status": "DONE",
+  "date": "2026-10-07",
+  "system_modes": [
+    "fixed_pipeline",
+    "always_agent",
+    "ours_router"
+  ],
+  "routes": [
+    "DIRECT",
+    "PERSONALIZED",
+    "AGENT",
+    "CLARIFY"
+  ],
+  "development_calibration": {
+    "input": "data/eval_private/interactive-v1/development.public.jsonl",
+    "input_sha256": "ed7d59d2dd44c4a5ba593df0d61dc3abb2b6fe0261cd70f48d7bbbc7b206254f",
+    "rows": 150,
+    "candidate_thresholds": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "selected_threshold": 0.75,
+    "contract_agreement": {
+      "correct": 150,
+      "total": 150
+    },
+    "route_counts": {
+      "AGENT": 75,
+      "CLARIFY": 7,
+      "DIRECT": 26,
+      "PERSONALIZED": 42
+    },
+    "test_files_loaded": 0,
+    "effect_estimate": "NOT EVALUATED"
+  },
+  "bounded_loop": {
+    "max_replans": 1,
+    "exact_tool_whitelist_in_prompt": true,
+    "full_plan_preflight": true,
+    "tool_result_validation_before_finish": true,
+    "retry_summary_contains_error_codes_not_result_payloads": true,
+    "fixture_trajectories": {
+      "success": "OK",
+      "replan": "OK",
+      "clarify": "CLARIFY",
+      "budget_exhausted": "BUDGET_EXHAUSTED"
+    },
+    "fixture_llm_attempts": 4,
+    "remote_api_requests": 0,
+    "private_trace_path": "artifacts/agent/t16_fake_trajectories_20261007.json",
+    "private_trace_sha256": "ece297a4b75346a8a2d4088d3fd699b7abe8a4c840e5b77207b5ab334cb8ff58"
+  },
+  "cost_accounting": {
+    "text_agent_interpretation_and_planning_are_one_metered_call": true,
+    "separate_intent_parser_invoked": false,
+    "future_separate_parser_must_use_same_runtime_ledger": true,
+    "separate_llm_explanation_enabled": false,
+    "fixed_structured_routes_have_zero_llm_calls": true,
+    "unknown_usage_is_not_coerced_to_zero": true
+  },
+  "tests": {
+    "required_end_to_end": {
+      "passed": 13,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "focused_with_plan_regressions": {
+      "passed": 24,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "full_dev": {
+      "passed": 136,
+      "failed": 0,
+      "warnings": 2,
+      "exit_code": 0
+    },
+    "full_rebuild": {
+      "passed": 136,
+      "failed": 0,
+      "warnings": 2,
+      "exit_code": 0
+    },
+    "compileall_exit_code": 0
+  },
+  "artifacts": {
+    "AgenticRec/src/agenticrec/agent/__init__.py": "6b4bb1effd5c7393cd4fef1adc7cb7c73bee4226d79395c6bd2e7c2a547e0e62",
+    "AgenticRec/src/agenticrec/agent/executor.py": "c7759717670b5c6865d2055e0cae93afbf0fed1e6b993050c5882f980da513bc",
+    "AgenticRec/src/agenticrec/agent/loop.py": "40caf60e60e3a557fcf7ea996455f08cce9612263cb7d7c8773cce0b7467a5af",
+    "AgenticRec/src/agenticrec/agent/router.py": "b375bbeb1320d4d99b79dd5b7a26cc95510a607520ec1b2117ef31575c991dc9",
+    "AgenticRec/tests/integration/test_end_to_end.py": "17700409fbe185e85dc240db824860b5a8d0d8981376f52e172c5cf53cd993d9",
+    "reproduction/scripts/t16_agent_loop_smoke.py": "14b4957596850034968080df5ac5744d28b673cadf38c34262dd0cc6fa041b9d"
+  },
+  "downloads": 0,
+  "remote_api_requests": 0,
+  "system_results": "NOT EVALUATED",
+  "upstream_modified": false,
+  "spec_sha256": "d88f02c84855234673514519486e74e73c61ffd4e2ec75594020fdf9b8ebb677"
+}

@@ -1,6 +1,6 @@
 # 项目状态
 
-最后更新：2026-10-07（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06—T15 与 T18 的数据、指标、模型、U1 适配、候选/约束、固定流程、LLM runtime、有序执行器、多轮状态和交互评测均已验收；下一批为 T16 规则路由与有限 Agent 闭环。旧模型语义未获证明。
+最后更新：2026-10-07（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06—T16 与 T18 的数据、指标、模型、U1 适配、候选/约束、固定流程、LLM runtime、有序执行器、多轮状态、规则路由和交互评测均已验收；下一批为 T17 故障注入、安全和会话隔离。旧模型语义未获证明。
 
 | 任务 | 状态 | 验证与剩余项 |
 |---|---|---|
@@ -20,11 +20,14 @@
 | T13 | DONE | 严格 JSON schema、FakeLLM/live 门禁、逐尝试预算、401/429 分类、单次 timeout 与整轮 deadline；专项22项及两环境各88项完整回归通过，真实请求0 |
 | T14 | DONE | 固定上游同名工具覆盖先红；新 PlanStep 列表保留重复/顺序/参数/trace，严格白名单与预校验；专项11项及两环境各99项通过 |
 | T15 | DONE | 不可变 PreferenceState、事件化 patch、provenance、显式反馈优先、局部否定、原子冲突、幂等与 profile version；专项11项及两环境各110项通过 |
-| T16—T17 | TODO | 规则路由、有限 Agent 闭环、故障注入与会话隔离尚未验收 |
+| T16 | DONE | DIRECT/PERSONALIZED/AGENT/CLARIFY、F/A/O、dev-only 阈值、最多一次重规划和四类 FakeLLM 轨迹；专项13项及两环境各136项通过，test 文件读取0 |
+| T17 | TODO | 故障注入、安全和会话隔离尚未验收 |
 | T18 | DONE | development/test 各150条、各40条多轮；公开/隐藏分离，用户/模板组隔离，完整分母评分器、16条人工核验和全空防刷通过 |
 | T19—T24 | TODO | 系统基线、消融、多 seed、发布与最终审计尚未验收 |
 
 ## 最新证据
+
+- [T16 规则路由与有限闭环](../../reports/agent_loop/t16_20261007.md)：结构化简单请求不进入 Agent；FakeLLM 成功、一次重规划、澄清和工具预算耗尽轨迹可重放。阈值仅由 development 公开输入选择，F/A/O 效果仍 NOT EVALUATED。
 
 - [T18 交互评测冻结](../../reports/interactive_eval/t18_20261007.md)：development/test 各150条，八类场景与双层输入；test 隐藏目标不在公开对象中，全空输出的 Strict Success 为0，LLM simulator 默认关闭。
 
@@ -57,7 +60,7 @@
 
 ## 下一任务
 
-执行 T16：实现 DIRECT/PERSONALIZED/AGENT/CLARIFY 路由与最多一次重规划的有限闭环。阈值只在已冻结 development 选择，test 私有目标不得进入 planner、工具返回、示例检索或调参；解析和解释成本必须计入同一账本。
+执行 T17：注入坏 JSON、timeout、429、无候选和 prompt injection，并验证同名用户、异步会话、反馈及缓存互不串扰。不得无限重试、越权执行工具、跨 session 泄漏或绕过硬约束。
 
 ## 本机配置与历史
 
@@ -92,3 +95,7 @@ T15 DONE：新增 `agenticrec.agent.state`，实现不可变多轮状态、严�
 ## T18 验收记录（2026-10-07）
 
 T18 DONE：冻结 development/test 各150条交互 episode，各含75条结构化、75条文本和40条多轮，覆盖八类场景；公开输入与 evaluator-only target/反馈/故障分别序列化，用户组和模板组跨 split 无交集。评分器保留缺失/失败 attempt，统计约束、数量、成功/澄清、turn/tool、latency、token/request 和 fallback/abstain；未知 usage 保持 null。专项13 tests、两环境各123 tests、compileall 均通过；16条预选样本人工核验为 VERIFIED，全空输出在两套各150条上的 Strict Success 均为0。本轮下载0、真实请求0。报告：`../../reports/interactive_eval/t18_20261007.md`；机读摘要：`../../reports/interactive_eval/t18_20261007.json`。下一任务 T16。T04 保持 BLOCKED，系统效果 NOT EVALUATED。
+
+## T16 验收记录（2026-10-07）
+
+T16 DONE：新增规则 Router 和有限 AgentLoop，支持 DIRECT/PERSONALIZED/AGENT/CLARIFY 及 fixed_pipeline/always_agent/ours_router 三种可比模式。development 公开150条上的可见输入契约选择阈值0.75，路由计数75/7/26/42，test 文件读取0；该契约一致性不是系统质量指标。最终工具结果先校验，retryable/无效结果最多重规划一次，计划超出工具预算时在副作用前停止；重规划提示只含错误码和预算。FakeLLM 成功/重规划/澄清/预算耗尽轨迹通过；专项13 tests、Agent+执行器24 tests、两环境各136 tests、compileall 均通过。本轮下载0、真实请求0。报告：`../../reports/agent_loop/t16_20261007.md`；机读摘要：`../../reports/agent_loop/t16_20261007.json`。下一任务 T17。T04 保持 BLOCKED，F/A/O 效果 NOT EVALUATED。
