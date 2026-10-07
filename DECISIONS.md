@@ -252,3 +252,10 @@
 - 决定：每个 episode 先 fsync `STARTED`，再调用 executor，完成后 fsync `COMPLETED`；异常只写 `INTERRUPTED` 类型。每行通过 previous hash 形成链，header 绑定完整 `RunSpec` identity 和 public SHA。恢复只跳过已完成 episode；任何未决 start 都 fail closed，不自动重试。runner 从不加载 evaluator-only target，评分器只在 attempt 冻结后读取私有文件。
 - 预算：单 run 在 journal 创建前核对整批请求和 planned-cost ceiling；24个正式 journal 的合计仍由上层 dry-run 与历史93次台账统一门禁。always-agent复用A，不生成重复付费证据。直接调用 runner 仍要求每个 live `RunSpec` 显式携带正请求/金额上限。
 - 验证与影响：哈希篡改、不同spec恢复、崩溃未决状态、额度不足、episode ID错配和超预留请求均回归；真实150条public fixture可重复恢复，journal SHA稳定且远程请求0。两环境专项12项、完整162项和compileall通过。该决策完成工程执行层，不代表live provider、文本解析或任何Agent效果已经验证。
+
+## ADR-030：modern live transport 不新增 SDK 依赖，文本解释沿用冻结调用口径
+
+- 日期：2026-10-07。T19 需要把 DeepSeek 接入 T13 统一账本，同时规范要求 SDK 与外层重试只能有一个控制者、自由文本成本不能从 F 中扣除、F/A/O 使用相同模型和预算。当前两个 modern 环境没有 `httpx/openai`，用户要求尽可能少下载。
+- 决定：使用 Python 标准库实现最小 OpenAI-compatible HTTPS transport，只允许 `deepseek -> https://api.deepseek.com` 固定映射；禁止 HTTP、URL 凭据、query/fragment 和重定向，限制响应为 2 MiB，SDK 重试固定为0。Provider HTTP body、底层异常和 Key 不进入错误消息；usage 缺失和供应商账单未查询分别记为 `null+reason`。密钥只在显式工厂调用时按环境变量优先、根目录 `.env` 次之读取，模块导入不读文件。
+- 解析口径：F 的文本输入用一次独立、计费的严格 JSON 抽取生成完整 `FixedRequest`，响应不得改变公开 `user_id/history_authorized`。A/O 继续在首次 planner 调用内完成解释与规划；再增加独立 parser 会把每个文本 turn 多算一次并改变 ADR-028 已冻结的 8,649 上界。三类系统的文本都至少承担一次 LLM 处理，结构化 F 仍为0调用。
+- 验证与影响：恶意响应、401/429/500/302、timeout/connection、坏 usage、无副作用导入、Key 优先级和 prompt-as-data 均有回归；两环境专项各35项、完整各197项、compileall通过，未下载依赖、真实请求0。modern transport 的真实网络连接与 DeepSeek 文本抽取质量仍 `NOT VERIFIED/NOT EVALUATED`；正式 executor 尚未接入 runner，T19 不标记完成。

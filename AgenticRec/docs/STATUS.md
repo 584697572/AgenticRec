@@ -23,7 +23,8 @@
 | T16 | DONE | DIRECT/PERSONALIZED/AGENT/CLARIFY、F/A/O、dev-only 阈值、最多一次重规划和四类 FakeLLM 轨迹；专项13项及两环境各136项通过，test 文件读取0 |
 | T17 | DONE | 坏 JSON/timeout/429/无候选/prompt injection/恶意结果与同步工具超时；同名、异步 session、32并发反馈和缓存隔离；专项14项及两环境各150项通过 |
 | T18 | DONE | development/test 各150条、各40条多轮；公开/隐藏分离，用户/模板组隔离，完整分母评分器、16条人工核验和全空防刷通过 |
-| T19—T24 | TODO | 系统基线、消融、多 seed、发布与最终审计尚未验收 |
+| T19 | IN PROGRESS | 模型三 seed、统计、dry-run、可恢复 runner、provider transport 与 F 文本解析已完成；系统 live 结果尚未评测 |
+| T20—T24 | TODO | 失败分析收口、发布与最终审计尚未验收 |
 
 ## 最新证据
 
@@ -105,3 +106,5 @@ T16 DONE：新增规则 Router 和有限 AgentLoop，支持 DIRECT/PERSONALIZED/
 ## T17 验收记录（2026-10-07）
 
 T17 DONE：新增 thread-safe `SessionStore`、按 session/version/request 隔离且深拷贝的 `SessionCache`、有界 `SyncTaskRunner` 和 Agent 最终硬约束复核。坏 JSON、两次 fixture timeout、fixture 429后成功、无候选、prompt injection 未授权工具、违反排除/类型/年份的恶意结果和同步工具20ms超时均按结构化状态有界停止；未授权工具副作用0，恶意结果不返回。相同显示名不作身份，同/跨 session 异步更新无串扰，单 session 32个并发 patch 无丢失；工具自身抛出的 TimeoutError 不会误分类为 runner 等待超时。专项14 tests、T14/T16/T17 联合38 tests、两环境各150 tests、compileall 均通过。本轮下载0、真实请求0。同步线程超时只停止等待，运行中工作可能继续占资源；有界池和不重试限制影响，硬取消需子进程或协作取消。报告：`../../reports/reliability/t17_20261007.md`；机读摘要：`../../reports/reliability/t17_20261007.json`。下一任务 T19。T04 保持 BLOCKED，系统效果 NOT EVALUATED。
+
+T19 IN PROGRESS：推荐模型三 seed 与配对统计、整批 dry-run、24个 run 的写前哈希链 journal，以及可恢复 runner 已完成。现补齐固定 DeepSeek 基址的标准库 HTTPS transport、modern `.env` Key loader 和 F 的独立计费文本解析器；A/O 按冻结协议在首次 planner 调用中完成解释与规划，8,649次整批上界不变。Provider/解析专项两环境各35 tests，完整回归各197 tests，compileall 均通过；本批下载0、真实请求0。modern transport 真实连接 `NOT VERIFIED`，解析与系统指标 `NOT EVALUATED`；剩余27次不足以覆盖整批，正式 U1/F/A/O executor 尚未接入 runner。阶段证据：`../../reports/benchmark/t19_20261007.md`。
