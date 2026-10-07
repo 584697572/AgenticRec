@@ -230,3 +230,11 @@
 - 闭环决定：规划器只接收公开请求、精确工具名和参数类型；T14 执行器在副作用前预校验整份计划。最终工具结果必须满足响应契约；retryable 工具失败或无效最终结果可重规划一次，第二次失败、不可重试错误、坏计划或预算耗尽立即停止。重规划上下文只含 step ID、错误码和剩余工具预算，不回传原始工具结果或 evaluator 目标。
 - 可比性：F 是相同推荐工具/模型/约束/数据的强确定性基线，用来度量规划的增量价值和额外成本；A 在相同 LLM/工具/预算下让所有请求规划，用来隔离选择性路由相对无条件 Agent 的价值；O 不能通过独享更强模型获得优势。解析/规划调用进入 T13 同一账本；当前没有独立 LLM 解释步骤，因此固定结构化路线为零 LLM 调用。
 - 验证与影响：FakeLLM 成功、一次重规划、澄清和工具预算耗尽轨迹可重放；专项13项、Agent+执行器24项、两个现代环境各136项和 compileall 通过。development 路由75 Agent/7 Clarify/26 Direct/42 Personalized，test 文件读取0，下载0，真实请求0。T16 证明控制流与隔离，不产生 F/A/O 效果结论；这些指标留给 T19。T04 blocker 不变。证据见 `reports/agent_loop/t16_20261007.md`。
+
+## ADR-027：T17 用 session ID/版本键隔离状态，并显式承认线程 timeout 不是硬取消
+
+- 日期：2026-10-07。规范 T17 要求同名用户、异步 session、反馈和缓存不串扰，并注入坏 JSON、timeout、429、无候选和 prompt injection；失败不得无限重试、越权执行或绕过硬约束。
+- 会话决定：只有不可猜测的 `session_id` 是状态身份，显示名仅为元数据且允许重复。state patch 与 record 替换在同一锁内原子执行；异步接口把同步原子操作提交到线程，不暴露可变中间状态。缓存键固定包含 session ID、profile version 和请求指纹，读写均深拷贝；写入新版本时清理该 session 的旧版本项。未知 session 和重复 ID fail closed。
+- 运行时决定：同步工具可选使用固定大小线程池和单工具 timeout。调用方超时后尝试 `Future.cancel()`；未开始的任务可取消，已运行线程不能被 Python 安全强杀，故返回 `TOOL_TIMEOUT` 并记录 `timeout_work_may_continue`。超时工具不自动重试，避免同一外部副作用重复；有界池限制并发，但无限阻塞任务仍可能占用 worker，必须用可终止子进程或工具内协作取消才能硬停止。
+- 安全决定：planner 仍只能看到精确工具 schema；prompt injection 生成的未授权工具在整计划预校验阶段拒绝。Agent 工具结果在返回前按结构化请求重新核验唯一正 ID、K、显式/seen 排除、类型、年份和必需元数据；无候选以 `NO_FEASIBLE_ITEMS` 终止，不放宽约束。重规划仍最多一次。
+- 验证与影响：专项14项在两环境通过，包含32个并发同 session patch，并区分 runner 等待超时与工具自身抛出的 TimeoutError；T14/T16/T17 联合38项、两环境完整150项和 compileall 通过。下载0、真实请求0。T17 证明本进程内隔离和有界 caller 行为，不证明跨进程/分布式一致性、任意线程硬终止或线上安全；系统效果保持 NOT EVALUATED。证据见 `reports/reliability/t17_20261007.md`。

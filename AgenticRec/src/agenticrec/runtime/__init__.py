@@ -2,5 +2,6 @@
 
 from .budget import BudgetLedger
 from .deadline import RoundDeadline
+from .sync import SyncTaskRunner
 
-__all__ = ["BudgetLedger", "RoundDeadline"]
+__all__ = ["BudgetLedger", "RoundDeadline", "SyncTaskRunner"]

@@ -102,12 +102,57 @@ class LoopReport:
         }
 
 
-def _default_result_validator(value):
-    return (
-        isinstance(value, dict)
-        and isinstance(value.get("status"), str)
-        and isinstance(value.get("recommendations"), list)
-    )
+def _default_result_validator(value, routing_request):
+    if (not isinstance(value, dict)
+            or not isinstance(value.get("status"), str)
+            or not isinstance(value.get("recommendations"), list)):
+        return False
+    recommendations = value["recommendations"]
+    if value["status"] != "OK":
+        return recommendations == []
+    item_ids = []
+    for row in recommendations:
+        if (not isinstance(row, dict) or type(row.get("item_id")) is not int
+                or row["item_id"] <= 0):
+            return False
+        item_ids.append(row["item_id"])
+    if len(item_ids) != len(set(item_ids)):
+        return False
+    fixed = routing_request.fixed_request
+    if fixed is None:
+        return True
+    constraints = fixed.constraints
+    if len(recommendations) > constraints.k:
+        return False
+    blocked = set(constraints.excluded_item_ids)
+    if constraints.exclude_seen:
+        blocked.update(fixed.seen_item_ids)
+    if blocked & set(item_ids):
+        return False
+    include = {genre.casefold() for genre in constraints.include_genres}
+    exclude = {genre.casefold() for genre in constraints.exclude_genres}
+    for row in recommendations:
+        genres = row.get("genres")
+        if include or exclude or "genres" in constraints.required_fields:
+            if (not isinstance(genres, list)
+                    or any(not isinstance(genre, str) or not genre for genre in genres)):
+                return False
+            normalized = {genre.casefold() for genre in genres}
+            if not include <= normalized or exclude & normalized:
+                return False
+        year = row.get("year")
+        if (constraints.year_min is not None or constraints.year_max is not None
+                or "year" in constraints.required_fields):
+            if type(year) is not int or year <= 0:
+                return False
+            if constraints.year_min is not None and year < constraints.year_min:
+                return False
+            if constraints.year_max is not None and year > constraints.year_max:
+                return False
+        if "title" in constraints.required_fields and (
+                not isinstance(row.get("title"), str) or not row["title"].strip()):
+            return False
+    return True
 
 
 class AgentLoop:
@@ -231,7 +276,7 @@ class AgentLoop:
 
             if execution.ok:
                 final_data = execution.traces[-1].result.data
-                if self.result_validator(final_data):
+                if self.result_validator(final_data, request):
                     payload = deepcopy(final_data)
                     return self._report(
                         request, decision, payload.get("status", "OK"), payload,

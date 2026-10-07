@@ -1,6 +1,6 @@
 # 项目状态
 
-最后更新：2026-10-07（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06—T16 与 T18 的数据、指标、模型、U1 适配、候选/约束、固定流程、LLM runtime、有序执行器、多轮状态、规则路由和交互评测均已验收；下一批为 T17 故障注入、安全和会话隔离。旧模型语义未获证明。
+最后更新：2026-10-07（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06—T18 的数据、指标、模型、U1 适配、候选/约束、固定流程、LLM runtime、有序执行器、多轮状态、规则路由、安全隔离和交互评测均已验收；下一批为 T19 真实基线、消融与配对统计。旧模型语义未获证明。
 
 | 任务 | 状态 | 验证与剩余项 |
 |---|---|---|
@@ -21,11 +21,13 @@
 | T14 | DONE | 固定上游同名工具覆盖先红；新 PlanStep 列表保留重复/顺序/参数/trace，严格白名单与预校验；专项11项及两环境各99项通过 |
 | T15 | DONE | 不可变 PreferenceState、事件化 patch、provenance、显式反馈优先、局部否定、原子冲突、幂等与 profile version；专项11项及两环境各110项通过 |
 | T16 | DONE | DIRECT/PERSONALIZED/AGENT/CLARIFY、F/A/O、dev-only 阈值、最多一次重规划和四类 FakeLLM 轨迹；专项13项及两环境各136项通过，test 文件读取0 |
-| T17 | TODO | 故障注入、安全和会话隔离尚未验收 |
+| T17 | DONE | 坏 JSON/timeout/429/无候选/prompt injection/恶意结果与同步工具超时；同名、异步 session、32并发反馈和缓存隔离；专项14项及两环境各150项通过 |
 | T18 | DONE | development/test 各150条、各40条多轮；公开/隐藏分离，用户/模板组隔离，完整分母评分器、16条人工核验和全空防刷通过 |
 | T19—T24 | TODO | 系统基线、消融、多 seed、发布与最终审计尚未验收 |
 
 ## 最新证据
+
+- [T17 故障注入与会话隔离](../../reports/reliability/t17_20261007.md)：未授权工具在副作用前拒绝，坏 JSON/重试/无候选/恶意结果均有界停止；同名用户、异步反馈和版本化缓存不串扰，并明确同步 timeout 不是线程硬取消。
 
 - [T16 规则路由与有限闭环](../../reports/agent_loop/t16_20261007.md)：结构化简单请求不进入 Agent；FakeLLM 成功、一次重规划、澄清和工具预算耗尽轨迹可重放。阈值仅由 development 公开输入选择，F/A/O 效果仍 NOT EVALUATED。
 
@@ -60,7 +62,7 @@
 
 ## 下一任务
 
-执行 T17：注入坏 JSON、timeout、429、无候选和 prompt injection，并验证同名用户、异步会话、反馈及缓存互不串扰。不得无限重试、越权执行工具、跨 session 泄漏或绕过硬约束。
+执行 T19：先运行 benchmark dry-run，冻结 F/A/O/U1、消融和三 seed 的总请求数及预算；随后在已有授权范围内执行真实实验。原始预测必须能重建表格，不得改变冻结 test、手填指标或把 fixture 当 live 结果。
 
 ## 本机配置与历史
 
@@ -99,3 +101,7 @@ T18 DONE：冻结 development/test 各150条交互 episode，各含75条结构�
 ## T16 验收记录（2026-10-07）
 
 T16 DONE：新增规则 Router 和有限 AgentLoop，支持 DIRECT/PERSONALIZED/AGENT/CLARIFY 及 fixed_pipeline/always_agent/ours_router 三种可比模式。development 公开150条上的可见输入契约选择阈值0.75，路由计数75/7/26/42，test 文件读取0；该契约一致性不是系统质量指标。最终工具结果先校验，retryable/无效结果最多重规划一次，计划超出工具预算时在副作用前停止；重规划提示只含错误码和预算。FakeLLM 成功/重规划/澄清/预算耗尽轨迹通过；专项13 tests、Agent+执行器24 tests、两环境各136 tests、compileall 均通过。本轮下载0、真实请求0。报告：`../../reports/agent_loop/t16_20261007.md`；机读摘要：`../../reports/agent_loop/t16_20261007.json`。下一任务 T17。T04 保持 BLOCKED，F/A/O 效果 NOT EVALUATED。
+
+## T17 验收记录（2026-10-07）
+
+T17 DONE：新增 thread-safe `SessionStore`、按 session/version/request 隔离且深拷贝的 `SessionCache`、有界 `SyncTaskRunner` 和 Agent 最终硬约束复核。坏 JSON、两次 fixture timeout、fixture 429后成功、无候选、prompt injection 未授权工具、违反排除/类型/年份的恶意结果和同步工具20ms超时均按结构化状态有界停止；未授权工具副作用0，恶意结果不返回。相同显示名不作身份，同/跨 session 异步更新无串扰，单 session 32个并发 patch 无丢失；工具自身抛出的 TimeoutError 不会误分类为 runner 等待超时。专项14 tests、T14/T16/T17 联合38 tests、两环境各150 tests、compileall 均通过。本轮下载0、真实请求0。同步线程超时只停止等待，运行中工作可能继续占资源；有界池和不重试限制影响，硬取消需子进程或协作取消。报告：`../../reports/reliability/t17_20261007.md`；机读摘要：`../../reports/reliability/t17_20261007.json`。下一任务 T19。T04 保持 BLOCKED，系统效果 NOT EVALUATED。

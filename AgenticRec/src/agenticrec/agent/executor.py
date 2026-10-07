@@ -9,6 +9,8 @@ from types import MappingProxyType
 from typing import Any, Callable, Mapping
 
 from ..protocols import ToolResult
+from ..runtime.errors import SyncTaskTimeout
+from ..runtime.sync import SyncTaskRunner
 
 
 class PlanValidationError(ValueError):
@@ -131,7 +133,8 @@ def parse_plan(payload):
 
 
 class PlanExecutor:
-    def __init__(self, tools, *, clock=time.monotonic):
+    def __init__(self, tools, *, clock=time.monotonic, sync_runner=None,
+                 tool_timeout_seconds=None):
         tools = tuple(tools)
         if not tools or not all(isinstance(tool, ToolDefinition) for tool in tools):
             raise ValueError("at least one ToolDefinition is required")
@@ -139,8 +142,21 @@ class PlanExecutor:
             raise ValueError("tool registry contains duplicate names")
         if not callable(clock):
             raise ValueError("clock must be callable")
+        if (sync_runner is None) != (tool_timeout_seconds is None):
+            raise ValueError("sync_runner and tool_timeout_seconds must be set together")
+        if sync_runner is not None and not isinstance(sync_runner, SyncTaskRunner):
+            raise TypeError("sync_runner must be SyncTaskRunner")
+        if tool_timeout_seconds is not None and (
+                type(tool_timeout_seconds) not in (int, float)
+                or not math.isfinite(tool_timeout_seconds)
+                or tool_timeout_seconds <= 0):
+            raise ValueError("tool_timeout_seconds must be finite and positive")
         self._tools = {tool.name: tool for tool in tools}
         self._clock = clock
+        self._sync_runner = sync_runner
+        self._tool_timeout_seconds = (
+            None if tool_timeout_seconds is None else float(tool_timeout_seconds)
+        )
 
     def describe_tools(self):
         """Return the exact public whitelist without exposing invoke callables."""
@@ -164,13 +180,31 @@ class PlanExecutor:
             invocation_arguments = deepcopy(original_arguments)
             started = self._clock()
             try:
-                result = tool.invoke(invocation_arguments)
+                if self._sync_runner is None:
+                    result = tool.invoke(invocation_arguments)
+                else:
+                    result = self._sync_runner.run(
+                        tool.invoke,
+                        invocation_arguments,
+                        timeout_seconds=self._tool_timeout_seconds,
+                    )
                 if not isinstance(result, ToolResult):
                     result = ToolResult(
                         False,
                         error_code="INVALID_TOOL_RESULT",
                         provenance="executor",
                     )
+            except SyncTaskTimeout as error:
+                result = ToolResult(
+                    False,
+                    error_code="TOOL_TIMEOUT",
+                    retryable=False,
+                    provenance=(
+                        "executor:timeout_work_may_continue"
+                        if error.work_may_continue
+                        else "executor:timeout_cancelled_before_start"
+                    ),
+                )
             except Exception as error:
                 result = ToolResult(
                     False,

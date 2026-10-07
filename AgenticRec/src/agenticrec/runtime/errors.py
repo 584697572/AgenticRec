@@ -17,6 +17,16 @@ class DeadlineExceeded(LLMRuntimeError):
     """Raised before a new attempt when the shared round deadline expired."""
 
 
+class SyncTaskTimeout(LLMRuntimeError):
+    """The caller stopped waiting; an already-running thread may continue."""
+
+    def __init__(self, message, *, work_may_continue):
+        super().__init__(message)
+        if type(work_may_continue) is not bool:
+            raise ValueError("work_may_continue must be boolean")
+        self.work_may_continue = work_may_continue
+
+
 class ResponseValidationError(LLMRuntimeError):
     """Raised for malformed JSON or a response that violates its schema."""
 

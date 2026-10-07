@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "task": "T17",
+  "status": "DONE",
+  "date": "2026-10-07",
+  "fault_injection": {
+    "bad_json": {
+      "status": "INVALID_PLAN",
+      "planner_calls": 1,
+      "tool_calls": 0
+    },
+    "prompt_injection_unauthorized_tool": {
+      "status": "INVALID_PLAN",
+      "tool_calls": 0,
+      "side_effects": 0
+    },
+    "fixture_429_then_success": {
+      "status": "OK",
+      "adapter_attempts": 2,
+      "planner_calls": 1,
+      "remote_api_requests": 0
+    },
+    "fixture_timeout_exhaustion": {
+      "status": "PLANNER_FAILED",
+      "adapter_attempts": 2,
+      "tool_calls": 0,
+      "bounded_under_seconds": 1.0
+    },
+    "no_candidates": {
+      "status": "NO_FEASIBLE_ITEMS",
+      "replans": 0,
+      "constraint_relaxation": false
+    },
+    "malicious_hard_constraint_result": {
+      "status": "INVALID_RESULT",
+      "replans": 1,
+      "response_released": false
+    },
+    "sync_tool_timeout": {
+      "status": "TOOL_TIMEOUT",
+      "caller_returned_under_seconds": 0.5,
+      "work_may_continue": true,
+      "automatic_retry": false,
+      "pool_is_bounded": true
+    },
+    "tool_raised_timeout_error": {
+      "status": "TOOL_EXCEPTION",
+      "misclassified_as_runner_timeout": false
+    }
+  },
+  "session_isolation": {
+    "display_name_used_as_identity": false,
+    "session_id_is_storage_identity": true,
+    "distinct_async_sessions_crossed": false,
+    "same_session_concurrent_patches": 32,
+    "same_session_lost_updates": 0,
+    "cache_key_fields": [
+      "session_id",
+      "profile_version",
+      "request_fingerprint"
+    ],
+    "cache_values_deep_copied": true,
+    "feedback_invalidates_prior_version": true,
+    "unknown_sessions_fail_closed": true
+  },
+  "final_result_gate": {
+    "positive_unique_item_ids": true,
+    "max_k": true,
+    "explicit_exclusions": true,
+    "seen_exclusions": true,
+    "include_genres": true,
+    "exclude_genres": true,
+    "year_range": true,
+    "required_metadata": true
+  },
+  "tests": {
+    "required_focus_dev": {
+      "passed": 14,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "required_focus_rebuild": {
+      "passed": 14,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "agent_regression": {
+      "passed": 38,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "full_dev": {
+      "passed": 150,
+      "failed": 0,
+      "warnings": 2,
+      "exit_code": 0
+    },
+    "full_rebuild": {
+      "passed": 150,
+      "failed": 0,
+      "warnings": 2,
+      "exit_code": 0
+    },
+    "compileall_exit_code": 0
+  },
+  "artifacts": {
+    "AgenticRec/src/agenticrec/agent/__init__.py": "ba6812b8496dc0db704e77a1c8d6905f3c5151c2acda52857241d483b463fa25",
+    "AgenticRec/src/agenticrec/agent/executor.py": "b542c8599cfb504b8463ff9ae0e6536ae1c5b9b3574d0364236c4741a1a24af0",
+    "AgenticRec/src/agenticrec/agent/loop.py": "cc0977a5919d3198b4a2a34525a409e2483256d3f04d9bc07d0fe2972b561263",
+    "AgenticRec/src/agenticrec/agent/session.py": "702224d2f0f9130665052a7f71355982da3f686b8675e5e72c4394e23fa4045e",
+    "AgenticRec/src/agenticrec/runtime/__init__.py": "023533f8c6010a34c1864da6ca5f20c39cd9fbfba48775d382672ee7ff9cab58",
+    "AgenticRec/src/agenticrec/runtime/errors.py": "76c0b5dcebda2412923a51a6a1fadfb2c62009e129132616c8d1ea9282a86527",
+    "AgenticRec/src/agenticrec/runtime/sync.py": "3c2ab51979fab962cc8ac95584347372fa473ac14ec8a58b902cf9a744177096",
+    "AgenticRec/tests/regression/test_runtime.py": "e88fe725ec1687a630b0ceab084cc17efe959f68fa0759fa8b45a7a515eaaa6d",
+    "AgenticRec/tests/regression/test_session_isolation.py": "d9d7ef1f9cc3298834b5600bd25d149ef37841f09b4a70efc4e3eee564712f90"
+  },
+  "downloads": 0,
+  "remote_api_requests": 0,
+  "upstream_modified": false,
+  "system_effect": "NOT EVALUATED",
+  "spec_sha256": "d88f02c84855234673514519486e74e73c61ffd4e2ec75594020fdf9b8ebb677"
+}
