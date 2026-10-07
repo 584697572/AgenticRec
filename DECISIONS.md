@@ -238,3 +238,10 @@
 - 运行时决定：同步工具可选使用固定大小线程池和单工具 timeout。调用方超时后尝试 `Future.cancel()`；未开始的任务可取消，已运行线程不能被 Python 安全强杀，故返回 `TOOL_TIMEOUT` 并记录 `timeout_work_may_continue`。超时工具不自动重试，避免同一外部副作用重复；有界池限制并发，但无限阻塞任务仍可能占用 worker，必须用可终止子进程或工具内协作取消才能硬停止。
 - 安全决定：planner 仍只能看到精确工具 schema；prompt injection 生成的未授权工具在整计划预校验阶段拒绝。Agent 工具结果在返回前按结构化请求重新核验唯一正 ID、K、显式/seen 排除、类型、年份和必需元数据；无候选以 `NO_FEASIBLE_ITEMS` 终止，不放宽约束。重规划仍最多一次。
 - 验证与影响：专项14项在两环境通过，包含32个并发同 session patch，并区分 runner 等待超时与工具自身抛出的 TimeoutError；T14/T16/T17 联合38项、两环境完整150项和 compileall 通过。下载0、真实请求0。T17 证明本进程内隔离和有界 caller 行为，不证明跨进程/分布式一致性、任意线程硬终止或线上安全；系统效果保持 NOT EVALUATED。证据见 `reports/reliability/t17_20261007.md`。
+
+## ADR-028：T19 以整批请求上界门禁 live，并保留推荐模型负收益
+
+- 日期：2026-10-07。规范要求真实运行前核验总请求数，所有系统使用同一冻结 test、LLM、工具与预算，并且最终模型跑三个 seed。现有授权总额120次，历史证据已用93次，不能把剩余27次直接用于不完整正式表。
+- 预注册：模型和 Agent seed 固定为7/42/2026；系统顺序为U1/F/A/O；消融固定为 no-user-model、no-collaborative、no-explicit-preference-state、always-agent、no-replanning。按150条 episode 的230个 max-turn、123个文本 turn、A/O最多一次重规划计，整批上界8,649次；always-agent消融复用A。该上界用于防止付费批次中途越界，实际路由调用可更少。
+- 模型证据：三个 seed 均使用3,469物品全候选、train-seen过滤和冻结test。2,862行原始预测不含 target ID，独立评分完全重建源指标。LightGCN 相对 BPR-MF 的 NDCG@10 配对差为 -0.008631，95%用户bootstrap区间[-0.012850,-0.004344]，因此如实报告负收益，不基于 seed 42 的单次正收益选择结果。
+- 影响：模型三 seed 子任务通过；T19 整体仍 IN PROGRESS。live runner 在额度与金额都覆盖整批前 fail closed，U1/F/A/O和消融保持 NOT EVALUATED。U0继续因原资源语义/许可未验证而 NOT RUN；T04 blocker不变。

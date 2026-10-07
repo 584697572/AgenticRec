@@ -26,13 +26,13 @@ T17 DONE：[故障注入与会话隔离](reports/reliability/t17_20261007.md)覆
 - DONE：T00、T01、T02、T03、T05—T18。T03 完成资源审计/缺失记录/路线选择，未将旧模型语义标为通过；现代开发基础保持原验收。
 - T03 审计结论：官方 MovieLens10M 元数据中 9883 个目录身份唯一对应、5 个歧义；source-backed 别名解析使旧 45 条诊断输入从 22 到 28 个可解析，另 6 个年份冲突、11 个该来源未收录标题。旧 checkpoint/矩阵语义与预制包独立许可仍 NOT VERIFIED，原数据和指标不变。见[目录核查报告](reports/catalog_identity_20261005.md)。
 - T04 BLOCKED（其余验收前置）：真实单轮及两轮条件修改 VERIFIED；45 条 A1 派生输入的原 recbot/random/加权 popularity 评测链已完成，正式原模糊 hit 均为 0/45。新会话实际93次HTTP200、201944 token，高峰费率估算0.507208 CNY；账单未查询。canonical 子集、权威 ID/许可及原 demo/reflection 条件仍未验收。
-- T06—T18 DONE；T19—T24 TODO。独立数据、指标协议、推荐模型、U1 上游方法、候选/约束、固定流程、LLM runtime、有序执行、多轮状态、规则路由、安全隔离和交互评测已固定；最终多 seed 与 Agent 效果仍 NOT EVALUATED。
+- T06—T18 DONE；T19 IN PROGRESS；T20—T24 TODO。独立数据、指标协议、推荐模型、U1 上游方法、候选/约束、固定流程、LLM runtime、有序执行、多轮状态、规则路由、安全隔离和交互评测已固定；T19 推荐模型三 seed 已完成，Agent 效果仍 NOT EVALUATED。
 
 当前路线：保留 A1 原功能执行证据，质量实验按 ADR-015 采用规范 B/upstream_rebuilt 的独立数据/模型路径。用户要求暂不追论文；作者 canonical 条件不再阻塞独立新实验。原规范和固定 upstream 未改，不把新的 raw_movie_id 套进旧 embedding。旧报告/证据保持历史快照，不重置额度。
 
 此前真实运行批次的40+3项测试、原指标复算和22个旧证据检查保留。原映射21个target未知、4个年份不同、索引37截断且无Map，全部45个分母不变；年份剥离后的6个模糊诊断不替代正式结果。当前source-backed别名新增6个解析与该旧模糊命中不是同一指标。
 
-Key仍按环境变量优先、根目录`.env`次之，不入Git/哈希清单。原额度仍已用93/120，本轮新 LLM 请求0。此前 MovieLens10M 元数据只用于旧目录核查；官方 MovieLens1M 是独立新实验的主数据集。T16 只用已冻结 development 公开输入选择阈值，未读取 test 文件；T17 仅使用本地故障 fixture。当前优先 T19，须先 dry-run 核验总请求数，再沿已有授权台账执行真实基线。后续模型须用同一冻结划分，不能事后换指标选有利结果。
+Key仍按环境变量优先、根目录`.env`次之，不入Git/哈希清单。原额度仍已用93/120，本轮新 LLM 请求0。此前 MovieLens10M 元数据只用于旧目录核查；官方 MovieLens1M 是独立新实验的主数据集。T19 dry-run 已核验整批上界8,649次、剩余27次、缺口8,622次，live fail closed；三 seed 模型表已由原始预测重建。后续模型与 Agent 必须沿用冻结划分，不能事后换指标或 seed 选择有利结果。
 
 ## T10 阶段更新（2026-10-06）
 
@@ -106,3 +106,13 @@ Key仍按环境变量优先、根目录`.env`次之，不入Git/哈希清单。�
 - 同步 timeout 边界：调用方停止等待不等于运行中的 Python 线程被终止；有界池限制并发并记录 `work_may_continue`，超时工具不自动重试。无限阻塞或不可信工具仍需可终止子进程或协作取消。
 - Blocker：T04 原资源 ID/许可保持 BLOCKED；T17 不证明分布式锁、跨进程缓存或在线安全，也不产生系统效果结论。
 - 下一任务：T19 先执行 benchmark dry-run 和总请求数核验，再按既有授权额度运行 F/A/O/U1、规定消融、配对 CI、失败分类与三 seed 模型实验。
+
+## T19 阶段更新（2026-10-07）
+
+- 当前阶段：G4；T19 IN PROGRESS。推荐模型三 seed 子任务已完成，真实交互系统与消融仍被授权上限阻塞。
+- 已完成：冻结 seed 7/42/2026 的 BPR-MF 与 LightGCN 运行；导出 2,862 行每用户 Top-10 原始预测，并由 evaluator-only test 目标独立重算 Random/Popularity/BPR-MF/LightGCN 两套统计。原始预测重算与全部三 seed 源报告逐指标一致。
+- 模型结果：BPR-MF NDCG@10 为 0.203947 +/- 0.010365，LightGCN 为 0.195317 +/- 0.001138。LightGCN-BPR 配对用户 bootstrap 均值 -0.008631，95% CI [-0.012850, -0.004344]；这是负收益证据，不声称 LightGCN 改进。
+- dry-run：150 条 frozen test 的 max-turn 合计 230，文本 turn 123；U1/F/A/O、五项消融和三个 Agent seed 的保守整批请求上界为 8,649。历史已使用 93/120，只剩 27，缺口 8,622；money budget 是否足够仍 NOT VERIFIED。dry-run 与本轮训练的远程请求均为 0。
+- Blocker：T19 live 状态为 BLOCKED_AUTHORIZATION；U1/F/A/O、消融、交互任务成功率、约束满足率、延迟、token、工具次数及失败分类均 NOT EVALUATED。T04 原资源 ID/许可 blocker 不变。
+- 验证：benchmark 专项两个环境各5/5、完整回归各155/155、两个环境 compileall exit 0；仅既有 PyTorch 可选 NumPy 与 TypedStorage warning。证据见 `reports/benchmark/t19_20261007.md`。
+- 下一任务：先把 live runner 接到同一冻结 public episode 与 attempt writer；在任何请求前取得覆盖预注册批次的明确请求/金额授权，或按规范在看结果前预注册可承担的缩小协议。不得用现有 27 次零散试跑填正式表。

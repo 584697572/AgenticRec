@@ -25,7 +25,66 @@ def main(argv=None):
                            help="strict structured JSON; natural language parsing is separate")
     recommend.add_argument("--model", choices=("bpr", "lightgcn"), default="lightgcn")
     recommend.add_argument("--seed", type=int, default=42)
+    benchmark = commands.add_parser("benchmark")
+    benchmark.add_argument("--config", type=Path, required=True)
+    benchmark.add_argument("--dry-run", action="store_true")
     args = parser.parse_args(argv)
+    if args.command == "benchmark":
+        from .evaluation.benchmark import (
+            ROOT as WORKSPACE_ROOT,
+            _sha256,
+            build_dry_run,
+            build_model_summary,
+            write_dry_run_artifact,
+            write_model_summary,
+            write_partial_reports,
+        )
+        try:
+            report = build_dry_run(args.config)
+        except (OSError, json.JSONDecodeError, ValueError, TypeError) as error:
+            report = {
+                "status": "INVALID_BENCHMARK_CONFIG",
+                "reason": str(error),
+                "remote_api_requests": 0,
+                "live_run_authorized": False,
+            }
+            print(json.dumps(report, ensure_ascii=True, indent=2, sort_keys=True))
+            return 2
+        if not args.dry_run:
+            report["planning_dry_run_completed"] = True
+            report["dry_run"] = False
+            report["live_run_authorized"] = False
+            if report["status"] == "BLOCKED_AUTHORIZATION":
+                report["reason"] = (
+                    "the remaining request authorization does not cover the audited "
+                    "batch ceiling; money-budget sufficiency is also not verified"
+                )
+            else:
+                report["status"] = "BLOCKED_LIVE_RUNNER_NOT_IMPLEMENTED"
+                report["reason"] = "the paid runner is not implemented"
+            print(json.dumps(report, ensure_ascii=True, indent=2, sort_keys=True))
+            return 3
+        write_dry_run_artifact(report)
+        raw_predictions = WORKSPACE_ROOT / "artifacts/runs/t19/model_predictions.jsonl"
+        saved_summary = WORKSPACE_ROOT / "artifacts/runs/t19/model_summary.json"
+        model_summary = None
+        if raw_predictions.is_file() and saved_summary.is_file():
+            candidate = json.loads(saved_summary.read_text(encoding="utf-8"))
+            raw_evidence = candidate.get("raw_predictions", {})
+            if (candidate.get("status") == "PASS"
+                    and raw_evidence.get("sha256") == _sha256(raw_predictions)):
+                model_summary = candidate
+        if model_summary is None:
+            try:
+                model_summary = build_model_summary()
+            except FileNotFoundError:
+                model_summary = None
+        if model_summary is not None:
+            write_model_summary(model_summary)
+            write_partial_reports(report, model_summary)
+            report["offline_model_summary"] = "WRITTEN"
+        print(json.dumps(report, ensure_ascii=True, indent=2, sort_keys=True))
+        return 0
     if args.command == "train":
         if json.loads(args.config.read_text(encoding="utf-8")).get("model") == "lightgcn":
             from .lightgcn_training import train
