@@ -1,6 +1,6 @@
 # 项目状态
 
-最后更新：2026-10-06（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06—T15 的数据、指标、模型、U1 适配、候选/约束、固定流程、LLM runtime、有序执行器与多轮状态均已验收；按依赖下一批为 T18 交互评测冻结，T16 在其后执行。旧模型语义未获证明。
+最后更新：2026-10-07（Asia/Shanghai）。G0 资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06—T15 与 T18 的数据、指标、模型、U1 适配、候选/约束、固定流程、LLM runtime、有序执行器、多轮状态和交互评测均已验收；下一批为 T16 规则路由与有限 Agent 闭环。旧模型语义未获证明。
 
 | 任务 | 状态 | 验证与剩余项 |
 |---|---|---|
@@ -20,9 +20,13 @@
 | T13 | DONE | 严格 JSON schema、FakeLLM/live 门禁、逐尝试预算、401/429 分类、单次 timeout 与整轮 deadline；专项22项及两环境各88项完整回归通过，真实请求0 |
 | T14 | DONE | 固定上游同名工具覆盖先红；新 PlanStep 列表保留重复/顺序/参数/trace，严格白名单与预校验；专项11项及两环境各99项通过 |
 | T15 | DONE | 不可变 PreferenceState、事件化 patch、provenance、显式反馈优先、局部否定、原子冲突、幂等与 profile version；专项11项及两环境各110项通过 |
-| T16—T24 | TODO | Agent 闭环、评测、消融与最终多 seed 尚未验收；T16 等待 T18 先冻结评测 |
+| T16—T17 | TODO | 规则路由、有限 Agent 闭环、故障注入与会话隔离尚未验收 |
+| T18 | DONE | development/test 各150条、各40条多轮；公开/隐藏分离，用户/模板组隔离，完整分母评分器、16条人工核验和全空防刷通过 |
+| T19—T24 | TODO | 系统基线、消融、多 seed、发布与最终审计尚未验收 |
 
 ## 最新证据
+
+- [T18 交互评测冻结](../../reports/interactive_eval/t18_20261007.md)：development/test 各150条，八类场景与双层输入；test 隐藏目标不在公开对象中，全空输出的 Strict Success 为0，LLM simulator 默认关闭。
 
 - [T15 多轮偏好状态](../../reports/preference_state/t15_20261006.md)：显式反馈不会被模型推断覆盖，单物品否定不扩展为类型否定，冲突 patch 原子拒绝，重复事件不重复写入；session 清理保留授权训练历史。
 
@@ -53,7 +57,7 @@
 
 ## 下一任务
 
-按任务依赖先执行 T18：冻结交互评测开发集与 test，分离公开输入和隐藏 target，建立约束、数量、成功/澄清、token/latency 的完整分母评分器。在 T16 规则路由选择阈值前冻结 test，默认不启用 LLM simulator。
+执行 T16：实现 DIRECT/PERSONALIZED/AGENT/CLARIFY 路由与最多一次重规划的有限闭环。阈值只在已冻结 development 选择，test 私有目标不得进入 planner、工具返回、示例检索或调参；解析和解释成本必须计入同一账本。
 
 ## 本机配置与历史
 
@@ -84,3 +88,7 @@ T14 DONE：固定上游 `ToolBox` 的重复调用保留要求重新实测 exit 1
 ## T15 验收记录（2026-10-06）
 
 T15 DONE：新增 `agenticrec.agent.state`，实现不可变多轮状态、严格 `PreferencePatch`、逐字段来源/轮次/置信度证据、显式优先级、物品级局部否定、冲突原子澄清、事件幂等和缓存版本。专项11 tests、两环境各110 tests、compileall 均通过；人工确定性轨迹验证 session 清理只删除会话状态并保留授权训练历史。`RecAI/` 未修改，本轮真实请求0。报告：`../../reports/preference_state/t15_20261006.md`；机读摘要：`../../reports/preference_state/t15_20261006.json`。按依赖下一任务 T18，完成后再执行 T16。T04 保持 BLOCKED，推荐与 Agent 效果 NOT EVALUATED。
+
+## T18 验收记录（2026-10-07）
+
+T18 DONE：冻结 development/test 各150条交互 episode，各含75条结构化、75条文本和40条多轮，覆盖八类场景；公开输入与 evaluator-only target/反馈/故障分别序列化，用户组和模板组跨 split 无交集。评分器保留缺失/失败 attempt，统计约束、数量、成功/澄清、turn/tool、latency、token/request 和 fallback/abstain；未知 usage 保持 null。专项13 tests、两环境各123 tests、compileall 均通过；16条预选样本人工核验为 VERIFIED，全空输出在两套各150条上的 Strict Success 均为0。本轮下载0、真实请求0。报告：`../../reports/interactive_eval/t18_20261007.md`；机读摘要：`../../reports/interactive_eval/t18_20261007.json`。下一任务 T16。T04 保持 BLOCKED，系统效果 NOT EVALUATED。

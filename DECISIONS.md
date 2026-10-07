@@ -214,3 +214,11 @@
 - 数据边界：`history_item_ids` 只在显式授权时建立，并标为 `training_history`；`clear_session()` 清空本轮约束、物品反馈和软偏好，但保留训练历史。物品级否定不派生类型否定。
 - 缓存影响：有效状态变化提升 `profile_version`；幂等重试、拒绝和全量低优先级 patch 不提升版本。后续缓存键必须包含该版本。
 - 验证与影响：旧轮次硬约束覆盖测试先红后绿；专项11项、两个现代环境各110项和 compileall 通过，本轮下载0、真实请求0。只证明状态语义，推荐质量与 Agent 效果保持 NOT EVALUATED。证据见 `reports/preference_state/t15_20261006.md`。
+
+## ADR-025：T18 在路由调参前冻结公开输入与 evaluator-only 目标
+
+- 日期：2026-10-07。T16 依赖已冻结评测协议，因此按依赖先于 T16 执行 T18。development 使用 T07 valid cohort，test 使用 T07 test cohort；两个 split 各选150个互不重叠的 warm 用户。
+- 决定：公开 episode 与隐藏接受集合、规范化约束、后续反馈、期望状态和故障注入分文件保存并各自哈希。公开 loader 不返回隐藏字段；验证器拒绝目标 ID/标题泄漏、跨 split 用户组和模板组。重复模板变体归入模板组，不靠换电影名伪造独立性。
+- 评分：所有 episode 固定进入分母。非法/重复/违规 ID 不静默删除；可行任务空输出计0；Strict Success 同时要求状态、合法性、约束、数量上限/下限和隐藏接受集合。unknown token usage 为 null+计数，latency/turn/tool/request 包含失败。
+- 人工与模拟边界：manifest 先写 PENDING；两个 split 的八类场景各抽一条，共16条，核验后才标 VERIFIED。默认关闭 LLM simulator；即使以后启用，它仍是离线代理，不代表真实用户满意度或线上业务指标。
+- 验证与影响：专项13项、两个现代环境各123项和 compileall 通过；全空 ABSTAIN 在两个 split 的 Strict Success/Fill@K 均为0；本轮下载0、真实请求0。T18 只冻结协议，F/A/O 系统效果保持 NOT EVALUATED。证据见 `reports/interactive_eval/t18_20261007.md`。

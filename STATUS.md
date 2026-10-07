@@ -1,6 +1,6 @@
 # 工作区状态入口
 
-最后更新：2026-10-06（Asia/Shanghai）。详细状态见 [AgenticRec/docs/STATUS.md](AgenticRec/docs/STATUS.md)，最新证据见 [T15 多轮偏好状态](reports/preference_state/t15_20261006.md)。
+最后更新：2026-10-07（Asia/Shanghai）。详细状态见 [AgenticRec/docs/STATUS.md](AgenticRec/docs/STATUS.md)，最新证据见 [T18 交互评测冻结](reports/interactive_eval/t18_20261007.md)。
 
 T06 DONE：官方稳定 MovieLens1M ZIP 的 MD5/CRC/SHA 验证通过；1,000,209 条评分按全局时间分成 800,164/100,024/100,021。训练期独立建立 5,351 个 warm 用户、3,469 个候选电影 ID、462,887 条正反馈图边；验证/测试冷启动与非正反馈保留计数。
 
@@ -15,6 +15,7 @@ T12 DONE：[固定推荐流程](reports/fixed_pipeline/t12_20261006.md)把结构
 T13 DONE：[统一 LLM/runtime](reports/llm_runtime/t13_20261006.md)完成严格 JSON schema、默认关闭的 live 门禁、离线 FakeLLM、逐尝试预算、单次 timeout、整轮 deadline 与统一重试分类。专项 22 项、两套环境各 88 项完整回归通过；真实请求 0，供应商 live transport 与输出质量 NOT EVALUATED。下一任务 T14。
 T14 DONE：[有序计划执行器](reports/plan_executor/t14_20261006.md)先以固定上游实测重复工具覆盖失败，再用严格 `PlanStep[]` 保留重复步骤、顺序、参数、step_id 与 trace；未知工具、重复 step_id 和坏参数在执行前拒绝。专项11项、两环境各99项完整回归通过；上游未改，真实请求0。下一任务 T15。
 T15 DONE：[多轮偏好状态](reports/preference_state/t15_20261006.md)实现不可变 `PreferenceState`、事件化 `PreferencePatch`、逐字段 provenance、显式反馈优先、局部否定、冲突原子澄清、幂等事件与缓存版本。专项11项、两环境各110项完整回归通过；session 清理保留授权训练历史，上游未改，真实请求0。按依赖下一任务 T18。
+T18 DONE：[交互评测冻结](reports/interactive_eval/t18_20261007.md)在 T16 调参前冻结 development/test 各150条、各40条多轮 episode，公开/隐藏字段分别序列化，用户组和模板组跨 split 隔离；完整分母评分器与全空输出防刷验证通过。专项13项、两环境各123项完整回归通过；真实请求0。下一任务 T16。
 
 此前修复批次见[修复报告](reports/reproduction_repairs_20261005.md)：两项可选 upstream_compat 补丁及当时53项测试通过；原组件 fixed demo/反思完成 fixture 联调。该批未新增请求/下载，原版输入、预测与三个0/45保留。本批来源核查和路线更新见下文。
 
@@ -23,13 +24,13 @@ T15 DONE：[多轮偏好状态](reports/preference_state/t15_20261006.md)实现�
 - DONE：T00、T01、T02、T03、T05—T14。T03 完成资源审计/缺失记录/路线选择，未将旧模型语义标为通过；现代开发基础保持原验收。
 - T03 审计结论：官方 MovieLens10M 元数据中 9883 个目录身份唯一对应、5 个歧义；source-backed 别名解析使旧 45 条诊断输入从 22 到 28 个可解析，另 6 个年份冲突、11 个该来源未收录标题。旧 checkpoint/矩阵语义与预制包独立许可仍 NOT VERIFIED，原数据和指标不变。见[目录核查报告](reports/catalog_identity_20261005.md)。
 - T04 BLOCKED（其余验收前置）：真实单轮及两轮条件修改 VERIFIED；45 条 A1 派生输入的原 recbot/random/加权 popularity 评测链已完成，正式原模糊 hit 均为 0/45。新会话实际93次HTTP200、201944 token，高峰费率估算0.507208 CNY；账单未查询。canonical 子集、权威 ID/许可及原 demo/reflection 条件仍未验收。
-- T06—T15 DONE；T16—T24 TODO。独立数据、指标协议、推荐模型、U1 上游方法、候选/约束、固定流程、LLM runtime、有序执行与多轮状态已固定；最终多 seed 与 Agent 效果仍 NOT EVALUATED。
+- T06—T15、T18 DONE；T16—T17、T19—T24 TODO。独立数据、指标协议、推荐模型、U1 上游方法、候选/约束、固定流程、LLM runtime、有序执行、多轮状态和交互评测已固定；最终多 seed 与 Agent 效果仍 NOT EVALUATED。
 
 当前路线：保留 A1 原功能执行证据，质量实验按 ADR-015 采用规范 B/upstream_rebuilt 的独立数据/模型路径。用户要求暂不追论文；作者 canonical 条件不再阻塞独立新实验。原规范和固定 upstream 未改，不把新的 raw_movie_id 套进旧 embedding。旧报告/证据保持历史快照，不重置额度。
 
 此前真实运行批次的40+3项测试、原指标复算和22个旧证据检查保留。原映射21个target未知、4个年份不同、索引37截断且无Map，全部45个分母不变；年份剥离后的6个模糊诊断不替代正式结果。当前source-backed别名新增6个解析与该旧模糊命中不是同一指标。
 
-Key仍按环境变量优先、根目录`.env`次之，不入Git/哈希清单。原额度仍已用93/120，本轮新 LLM 请求0。此前 MovieLens10M 元数据只用于旧目录核查；官方 MovieLens1M 是独立新实验的主数据集。当前按依赖优先 T18：先冻结交互评测集和评分器，再执行依赖它的 T16；后续模型须用同一冻结划分，不能事后换指标选有利结果。
+Key仍按环境变量优先、根目录`.env`次之，不入Git/哈希清单。原额度仍已用93/120，本轮新 LLM 请求0。此前 MovieLens10M 元数据只用于旧目录核查；官方 MovieLens1M 是独立新实验的主数据集。T18 已在路由调参前冻结；当前优先 T16，只能用 development 选择阈值，不能读取 test 私有目标。后续模型须用同一冻结划分，不能事后换指标选有利结果。
 
 ## T10 阶段更新（2026-10-06）
 
@@ -78,3 +79,11 @@ Key仍按环境变量优先、根目录`.env`次之，不入Git/哈希清单。�
 - 最后验证：专项11/11；两个现代环境各110/110；compileall exit 0；确定性人工轨迹覆盖 APPLIED/IDEMPOTENT/REJECTED/CLARIFY，远程请求0。修复前旧轮次硬字段回归测试稳定失败，修复后通过。
 - Blocker：T04 原资源 ID/许可保持 BLOCKED；T15 只验证状态语义，推荐质量、任务成功率、延迟和成本均 NOT EVALUATED。
 - 下一任务：按依赖先执行 T18，冻结公开/隐藏字段隔离的交互开发集/test 与完整分母评分器；在 T16 路由阈值调节之前固定 test。
+
+## T18 阶段更新（2026-10-07）
+
+- 当前阶段：G2/G3；T18 已完成验收，T16 的评测前置依赖已满足。
+- 已完成：development/test 各150条，其中各75条结构化、75条文本、40条多轮；八类场景、用户/模板组隔离、公开/隐藏分离、manifest 哈希、16条人工核验子集和完整分母评分器。
+- 最后验证：专项13/13；两个现代环境各123/123；compileall exit 0；全空 ABSTAIN 在两个 split 的 Fill@K 与 Strict Success 均为0；下载0、真实请求0。
+- Blocker：T04 原资源 ID/许可保持 BLOCKED；T18 只冻结合成离线 benchmark，系统任务成功率、延迟、token 与 Agent 提升均 NOT EVALUATED。
+- 下一任务：T16 规则路由与有限 Agent 闭环；阈值只可在 development 选择，test 私有目标不得进入 planner、工具历史或 demo 检索。

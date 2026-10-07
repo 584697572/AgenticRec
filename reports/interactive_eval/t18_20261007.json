@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "task": "T18",
+  "status": "DONE",
+  "date": "2026-10-07",
+  "remote_api_requests": 0,
+  "downloads": 0,
+  "llm_simulator_enabled": false,
+  "manifest": {
+    "local_path": "artifacts/eval_manifest.json",
+    "sha256": "d666d22f02898a3d6f3d8fdc372ca74856d1d025b88904fbb75d6848c5eb3811",
+    "human_review_status": "VERIFIED",
+    "human_reviewed_episodes": 16
+  },
+  "splits": {
+    "development": {
+      "episodes": 150,
+      "structured": 75,
+      "text": 75,
+      "multi_turn": 40,
+      "feasible": 120,
+      "infeasible": 30,
+      "unique_user_groups": 150,
+      "unique_template_groups": 66,
+      "public_sha256": "ed7d59d2dd44c4a5ba593df0d61dc3abb2b6fe0261cd70f48d7bbbc7b206254f",
+      "private_sha256": "d0281a9660c08be1a3b93f03f97590b67e82fafdaf67a8aba771c80e546f9b81"
+    },
+    "test": {
+      "episodes": 150,
+      "structured": 75,
+      "text": 75,
+      "multi_turn": 40,
+      "feasible": 120,
+      "infeasible": 30,
+      "unique_user_groups": 150,
+      "unique_template_groups": 69,
+      "public_sha256": "0f3072d7ce71ae05908ebcb46dd4a733d59d689a0a292761d6af54e35ed52cdb",
+      "private_sha256": "e24bac40b4a2d6641dc3eaf30ca41f2a07a38935ea0b07a689fe7900b09c011d"
+    }
+  },
+  "all_empty_guard": {
+    "development_strict_success_rate": 0.0,
+    "test_strict_success_rate": 0.0,
+    "development_fill_at_k": 0.0,
+    "test_fill_at_k": 0.0,
+    "local_trace_sha256": "a7d3488a5f2897c6b852f117ccff0ee60b68952d24e32be569b51f21b9257100"
+  },
+  "acceptance": {
+    "public_private_serialization_separate": true,
+    "test_targets_absent_from_public_inputs": true,
+    "user_groups_disjoint": true,
+    "template_groups_disjoint": true,
+    "missing_attempts_remain_in_denominator": true,
+    "invalid_outputs_not_silently_removed": true,
+    "unknown_usage_remains_null": true,
+    "test_frozen_before_t16_tuning": true
+  },
+  "tests": {
+    "focused": {"passed": 13, "failed": 0, "exit_code": 0},
+    "full_dev": {"passed": 123, "failed": 0, "warnings": 2, "exit_code": 0},
+    "full_rebuild": {"passed": 123, "failed": 0, "warnings": 2, "exit_code": 0},
+    "compileall_exit_code": 0
+  },
+  "artifacts": {
+    "AgenticRec/src/agenticrec/evaluation/__init__.py": "1c57a0f1ad44147e5b577cc91889606322e42739f10cf314af024ce7bc203826",
+    "AgenticRec/src/agenticrec/evaluation/episodes.py": "dae9123c1876d9ecb62b603fc470c842384457e5a3354a40647696af70c4e99a",
+    "AgenticRec/tests/regression/test_eval_leakage.py": "b06f685c6e6b671e09176ee9cb5d0419b8e5228afa23d73f9bd434c099d1336e",
+    "AgenticRec/tests/unit/test_episode_metrics.py": "098315ebb1bcbaea692ae1beb55a2ca8dd4772f93a37b2ffd84b420ed28e8671"
+  },
+  "system_results": "NOT EVALUATED"
+}

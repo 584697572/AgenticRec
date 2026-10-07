@@ -1,1 +1,1 @@
-"""Frozen offline recommendation metrics and protocol helpers."""
+"""Frozen recommendation and interaction evaluation protocols."""

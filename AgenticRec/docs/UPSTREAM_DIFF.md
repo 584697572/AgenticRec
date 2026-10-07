@@ -28,3 +28,7 @@ This variant is **U1 upstream_rebuilt** under the specification's route B. U0/A1
 ## T15 extension
 
 `agenticrec.agent.state` is a new U1 component. It replaces the upstream memory object's unversioned aggregate sets with immutable `PreferenceState` snapshots and validated `PreferencePatch` events carrying field-level provenance. Explicit feedback outranks inference, model inference cannot write hard constraints, retries are idempotent, conflicts are rejected atomically, and session clearing retains only separately authorized training history. The pinned upstream memory remains unchanged for U0 comparison. T15 validates state semantics only; recommendation quality and Agent task success remain NOT EVALUATED. Evidence is in `reports/preference_state/t15_20261006.md`.
+
+## T18 extension
+
+`agenticrec.evaluation.episodes` is a new project evaluator and does not modify upstream evaluation code. It freezes separate development/test interactive episodes over the independently rebuilt MovieLens1M catalog, stores system-visible and evaluator-only objects separately, rejects target and group leakage, and keeps failed or empty attempts in the denominator. U0's original fuzzy text-hit metrics remain a separate historical result and are not compared directly with this protocol. F/A/O system results are still NOT EVALUATED. Evidence is in `reports/interactive_eval/t18_20261007.md`.
