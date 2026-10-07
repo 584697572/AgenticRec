@@ -266,3 +266,10 @@
 - 决定：`FeedbackSchedule` 从 evaluator 对象中只抽取精确的 `turn/kind/patch`，实例不保留接受集合、期望状态、硬约束或故障字段；回调只能在首轮系统结果之后按 episode ID 和 turn 释放该事件。多轮 `RunSpec` 必须带 schedule SHA，该 SHA 进入 run identity、header 和报告；缺失或改变时在执行前失败。`BenchmarkSystemExecutor` 以实际完成的轮数记账：单轮为1，反馈请求/校验为2，最终响应完成才为3；缺失/非法反馈分别落为完成的失败状态，不伪造成功。
 - 系统口径：F 的 text 首轮解析一次，反馈后由严格状态更新直接复用 fixed flow；A 始终规划，O 对结构化简单请求保持 fixed、对 text 在 planner 内解释，`no_explicit_preference_state` 可见当前反馈但不持久化 patch；U1 通过显式 upstream turn 接口接入且共享账本。parser/planner 的 live attempt、token 和工具次数统一汇总到 `EpisodeAttempt`。
 - 验证与影响：模拟 live transport 的一次 F text 解析从统一账本进入 runner/journal，request=1、输入20/输出5 token；冻结150条 test 的 F 机械 fixture 为75次解析、190次 fixed 调用、40条三轮，恢复执行器调用0，journal不含 evaluator-only字段。联合专项两环境各22项、完整各212项和compileall通过，真实请求0。RunSpec identity 因新增 feedback SHA 字段而改变，旧 runner smoke journal 仅保留为历史证据且不会被新版静默恢复；新版 runner-only smoke 写入独立 journal。该 smoke 不使用真实模型输出且不评分，所有系统指标仍 `NOT EVALUATED`；真实 A/O 推荐工具工厂、U1 upstream live turn 和 fault 注入仍是下一批。
+
+## ADR-032：Agent 推荐工具复用冻结 fixed pipeline，并在副作用前绑定公开请求
+
+- 日期：2026-10-07。T19 要求 A/O 使用相同推荐工具、模型、约束和预算；T14 的工具参数类型预检不能验证嵌套 `FixedRequest` 的完整性，也不能阻止 planner 改写公开身份或结构化约束。
+- 决定：A/O 与 Agent 消融统一通过 `build_benchmark_agent_loop` 构造。唯一 `recommend` 工具只接受完整且精确的 `FixedRequest`/constraints 键集，解析后直接调用已冻结的 `FixedRecommendationPipeline`。planner 输出在 PlanExecutor 副作用前额外验证：文本输入绑定公开 `user_id/history_authorized`，结构化输入逐字段保持不变。planner system prompt 显式声明 public request 是数据、禁止 evaluator-only 字段；运行时校验仍为最终边界。
+- 可比性：A 使用 always-agent，O 和路由消融使用同一个 ours-router；`no_replanning` 只修改 planner/replan 上限。推荐模型或消融版本由调用方注入同一工具工厂，不给 O 独占能力。结构化 O 保持零 LLM 直接 fixed route；A 对相同请求计一次 planner 与一次工具调用。
+- 验证与影响：两套环境新增专项各11项、完整回归各223项。真实 LightGCN seed 42 smoke 中 A/O 返回相同 response SHA，3条推荐均满足 Action；身份篡改计划在工具调用前返回 `INVALID_PLAN`。下载0、真实请求0，效果指标保持 `NOT EVALUATED`。这完成 A/O 真实推荐工具工厂，不完成 U1 adapter、fault schedule 或正式 live benchmark。

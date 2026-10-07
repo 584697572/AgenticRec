@@ -159,7 +159,9 @@ class AgentLoop:
     PLAN_SCHEMA = StrictObjectSchema({"plan": list})
 
     def __init__(self, router, fixed_pipeline, planner, executor, *, limits=None,
-                 planned_cost_ceiling=0, result_validator=None, clock=time.monotonic):
+                 planned_cost_ceiling=0, result_validator=None,
+                 planner_instructions=None, plan_validator=None,
+                 clock=time.monotonic):
         if not isinstance(router, Router):
             raise TypeError("router must be Router")
         if not hasattr(fixed_pipeline, "recommend"):
@@ -177,6 +179,13 @@ class AgentLoop:
             raise ValueError("planned_cost_ceiling must be finite and nonnegative")
         if result_validator is not None and not callable(result_validator):
             raise TypeError("result_validator must be callable")
+        if planner_instructions is not None and (
+                not isinstance(planner_instructions, str)
+                or not planner_instructions.strip()
+                or planner_instructions != planner_instructions.strip()):
+            raise ValueError("planner_instructions must be nonempty trimmed text or null")
+        if plan_validator is not None and not callable(plan_validator):
+            raise TypeError("plan_validator must be callable")
         if not callable(clock):
             raise TypeError("clock must be callable")
         self.router = router
@@ -186,6 +195,8 @@ class AgentLoop:
         self.limits = limits
         self.planned_cost_ceiling = float(planned_cost_ceiling)
         self.result_validator = result_validator or _default_result_validator
+        self.planner_instructions = planner_instructions
+        self.plan_validator = plan_validator
         self._clock = clock
 
     def run(self, request):
@@ -237,6 +248,8 @@ class AgentLoop:
                     deadline=deadline,
                 )
                 steps = parse_plan(chat.value["plan"])
+                if self.plan_validator is not None:
+                    self.plan_validator(steps, request)
             except (BudgetExceeded, DeadlineExceeded, LiveCallsDisabled):
                 return self._report(
                     request, decision, "BUDGET_EXHAUSTED", None,
@@ -314,6 +327,8 @@ class AgentLoop:
             "array of exact step objects: step_id, tool_name, arguments. Use only "
             "registered tools. Do not add prose. Registered tools: " + tools
         )
+        if self.planner_instructions is not None:
+            contract += " " + self.planner_instructions
         visible = json.dumps(
             dict(request.public_input), ensure_ascii=True, sort_keys=True,
             separators=(",", ":"),

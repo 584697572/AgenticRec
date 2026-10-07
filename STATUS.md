@@ -1,6 +1,6 @@
 # 工作区状态入口
 
-最后更新：2026-10-07（Asia/Shanghai）。详细状态见 [AgenticRec/docs/STATUS.md](AgenticRec/docs/STATUS.md)，最新证据见 [T17 故障注入与会话隔离](reports/reliability/t17_20261007.md)。
+最后更新：2026-10-07（Asia/Shanghai）。详细状态见 [AgenticRec/docs/STATUS.md](AgenticRec/docs/STATUS.md)，最新证据见 [T19 A/O 真实推荐工具](reports/benchmark/t19_agent_tool_20261007.md)。
 
 T06 DONE：官方稳定 MovieLens1M ZIP 的 MD5/CRC/SHA 验证通过；1,000,209 条评分按全局时间分成 800,164/100,024/100,021。训练期独立建立 5,351 个 warm 用户、3,469 个候选电影 ID、462,887 条正反馈图边；验证/测试冷启动与非正反馈保留计数。
 
@@ -115,6 +115,14 @@ Key仍按环境变量优先、根目录`.env`次之，不入Git/哈希清单。�
 - dry-run：150 条 frozen test 的 max-turn 合计 230，文本 turn 123；U1/F/A/O、五项消融和三个 Agent seed 的保守整批请求上界为 8,649。历史已使用 93/120，只剩 27，缺口 8,622；money budget 是否足够仍 NOT VERIFIED。dry-run 与本轮训练的远程请求均为 0。
 - Blocker：T19 live 状态为 BLOCKED_AUTHORIZATION；U1/F/A/O、消融、交互任务成功率、约束满足率、延迟、token、工具次数及失败分类均 NOT EVALUATED。T04 原资源 ID/许可 blocker 不变。
 - 验证：benchmark 专项两个环境各5/5、完整回归各155/155、两个环境 compileall exit 0；仅既有 PyTorch 可选 NumPy 与 TypedStorage warning。证据见 `reports/benchmark/t19_20261007.md`。
+
+## T19 A/O 工具接入更新（2026-10-07）
+
+- 当前阶段：G4；T19 继续 `IN PROGRESS`。
+- 已完成：A/O 与 Agent 消融的统一工厂；`recommend` 工具已接入真实冻结 LightGCN fixed pipeline；完整 `FixedRequest`、公开身份/授权和结构化请求不可变校验均在工具副作用前执行；`no_replanning` 固定零次重规划。
+- 最后验证：新增专项在两个现代环境各 `11 passed`；完整回归各 `223 passed`；真实资产 smoke 中 A 为 planner 1/工具 1、O 为 planner 0/Agent 工具 0，均返回相同的 3 条 Action 推荐；篡改公开 user ID 的计划为 `INVALID_PLAN` 且工具调用 0。下载 0、真实 API 请求 0。
+- Blocker：U1 live turn adapter、fault schedule 和正式 DeepSeek 整批指标尚未完成；既有整批授权仍只有 27 次余额，不能形成规定系统表。T04 原资源 ID/许可 blocker 不变。
+- 下一任务：实现 U1 upstream turn adapter 与 evaluator-only fault 执行边界，再重算正式整批请求上界；不得把本批 FakeLLM smoke 写成 live 或效果指标。
 - Runner 进展：完成 public-only `RunSpec`、写前 `STARTED`/`COMPLETED`/`INTERRUPTED` 哈希链 journal、未决付费尝试恢复阻塞、run identity 校验、请求/金额整批门禁及 `EpisodeAttempt` 重建。真实150条 public test 离线 smoke 首跑/恢复 SHA 一致且请求0；24个正式 run 已冻结。联合专项两环境各12/12、完整回归各162/162、compileall通过。live transport、文本解析和正式 executor 仍未接入，T19保持 IN PROGRESS。
 - Provider/解析进展：新增标准库 HTTPS 的 DeepSeek/OpenAI-compatible transport、固定 provider allowlist、零 SDK 重试、无重定向、2 MiB 响应上限、usage/null-cost 提取、脱敏错误分类，以及环境变量优先/根目录 `.env` 次之且导入时不读密钥的 modern loader。F 的自由文本现在可经独立计费 `TextRequestParser` 严格生成完整 `FixedRequest`，并绑定公开 user ID 与历史授权；A/O 仍按冻结协议在 planner 同一次调用中解释并规划，避免新增一次调用后改变 8,649 上界。两环境专项各35/35、完整回归各197/197、compileall通过；fixture 验证均无网络，本轮真实请求0。modern transport 的真实连接、解析准确率和正式 U1/F/A/O executor 仍未验收，T19保持 IN PROGRESS。
 - System executor 进展：新增 U1/F/A/O/消融共用的 `BenchmarkSystemExecutor` 核心，统一把 parser/planner 的同一账本增量转换成 `EpisodeAttempt`，区分实际1轮、反馈到达的第2轮和最终第3轮；缺反馈不再伪记三轮成功。evaluator-only 对象经 `FeedbackSchedule` 只保留逐轮显式 patch，目标、期望状态、硬约束和故障字段不进入对象或 journal；schedule SHA 已绑定 `RunSpec`，恢复时不能换反馈。真实冻结150条 test 的 F 机械 fixture 联调完成：75次解析、190次 fixed 调用、40条三轮、恢复重复调用0、远程请求0、journal私有字段0，指标仍 `NOT EVALUATED`。专项联合两环境各22/22、完整回归各212/212、compileall通过。真实 A/O 工具工厂、U1 upstream live turn 与 evaluator 故障注入仍未完成。
