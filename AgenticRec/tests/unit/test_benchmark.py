@@ -118,6 +118,10 @@ def test_dry_run_counts_every_system_and_fails_closed_before_live_calls(tmp_path
         "ablation:no_replanning": 12,
     }
     assert plan["required_new_requests_ceiling"] == 153
+    assert len(plan["run_matrix"]) == 24
+    assert sum(item["request_ceiling"] for item in plan["run_matrix"]) == 153
+    assert len({item["run_id"] for item in plan["run_matrix"]}) == 24
+    assert plan["run_aliases"] == {"always_agent": "A"}
     assert plan["authorization"]["requests_remaining"] == 27
     assert plan["authorization"]["request_shortfall"] == 126
     assert plan["status"] == "BLOCKED_AUTHORIZATION"

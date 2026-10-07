@@ -179,6 +179,32 @@ def build_dry_run(config_path):
         "ablation:no_replanning": one_call_all_turns,
     }
     required = sum(breakdown.values())
+    per_seed_ceiling = {
+        "U1": all_turns,
+        "F": text_turns,
+        "A": all_turns * replanning_multiplier,
+        "O": all_turns * replanning_multiplier,
+        "no_user_model": all_turns * replanning_multiplier,
+        "no_collaborative": all_turns * replanning_multiplier,
+        "no_explicit_preference_state": all_turns * replanning_multiplier,
+        "no_replanning": all_turns,
+    }
+    run_matrix = [
+        {
+            "run_id": "t19-{}-seed{}".format(condition, seed),
+            "condition": condition,
+            "seed": seed,
+            "request_ceiling": per_seed_ceiling[condition],
+            "journal": "artifacts/runs/t19/live/{}/seed_{}.jsonl".format(
+                condition, seed
+            ),
+        }
+        for condition in (
+            "U1", "F", "A", "O", "no_user_model", "no_collaborative",
+            "no_explicit_preference_state", "no_replanning",
+        )
+        for seed in config.agent_seeds
+    ]
     remaining = cap - used
     shortfall = max(0, required - remaining)
     return {
@@ -198,6 +224,8 @@ def build_dry_run(config_path):
         "systems": list(config.systems),
         "ablations": list(config.ablations),
         "request_ceiling_by_run": breakdown,
+        "run_matrix": run_matrix,
+        "run_aliases": {"always_agent": "A"},
         "required_new_requests_ceiling": required,
         "authorization": {
             "provider": ledger["budget"]["provider"],

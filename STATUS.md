@@ -115,4 +115,5 @@ Key仍按环境变量优先、根目录`.env`次之，不入Git/哈希清单。�
 - dry-run：150 条 frozen test 的 max-turn 合计 230，文本 turn 123；U1/F/A/O、五项消融和三个 Agent seed 的保守整批请求上界为 8,649。历史已使用 93/120，只剩 27，缺口 8,622；money budget 是否足够仍 NOT VERIFIED。dry-run 与本轮训练的远程请求均为 0。
 - Blocker：T19 live 状态为 BLOCKED_AUTHORIZATION；U1/F/A/O、消融、交互任务成功率、约束满足率、延迟、token、工具次数及失败分类均 NOT EVALUATED。T04 原资源 ID/许可 blocker 不变。
 - 验证：benchmark 专项两个环境各5/5、完整回归各155/155、两个环境 compileall exit 0；仅既有 PyTorch 可选 NumPy 与 TypedStorage warning。证据见 `reports/benchmark/t19_20261007.md`。
+- Runner 进展：完成 public-only `RunSpec`、写前 `STARTED`/`COMPLETED`/`INTERRUPTED` 哈希链 journal、未决付费尝试恢复阻塞、run identity 校验、请求/金额整批门禁及 `EpisodeAttempt` 重建。真实150条 public test 离线 smoke 首跑/恢复 SHA 一致且请求0；24个正式 run 已冻结。联合专项两环境各12/12、完整回归各162/162、compileall通过。live transport、文本解析和正式 executor 仍未接入，T19保持 IN PROGRESS。
 - 下一任务：先把 live runner 接到同一冻结 public episode 与 attempt writer；在任何请求前取得覆盖预注册批次的明确请求/金额授权，或按规范在看结果前预注册可承担的缩小协议。不得用现有 27 次零散试跑填正式表。

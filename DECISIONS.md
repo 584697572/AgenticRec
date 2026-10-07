@@ -245,3 +245,10 @@
 - 预注册：模型和 Agent seed 固定为7/42/2026；系统顺序为U1/F/A/O；消融固定为 no-user-model、no-collaborative、no-explicit-preference-state、always-agent、no-replanning。按150条 episode 的230个 max-turn、123个文本 turn、A/O最多一次重规划计，整批上界8,649次；always-agent消融复用A。该上界用于防止付费批次中途越界，实际路由调用可更少。
 - 模型证据：三个 seed 均使用3,469物品全候选、train-seen过滤和冻结test。2,862行原始预测不含 target ID，独立评分完全重建源指标。LightGCN 相对 BPR-MF 的 NDCG@10 配对差为 -0.008631，95%用户bootstrap区间[-0.012850,-0.004344]，因此如实报告负收益，不基于 seed 42 的单次正收益选择结果。
 - 影响：模型三 seed 子任务通过；T19 整体仍 IN PROGRESS。live runner 在额度与金额都覆盖整批前 fail closed，U1/F/A/O和消融保持 NOT EVALUATED。U0继续因原资源语义/许可未验证而 NOT RUN；T04 blocker不变。
+
+## ADR-029：T19 使用写前哈希链日志阻止崩溃后的重复付费调用
+
+- 日期：2026-10-07。单次 `BudgetLedger` 能在 transport 前计数，但不能证明跨150条 episode 的恢复不会重复调用；正式评测需要把 public 输入、system、seed、请求上界和输出 attempt 绑定为持久证据。
+- 决定：每个 episode 先 fsync `STARTED`，再调用 executor，完成后 fsync `COMPLETED`；异常只写 `INTERRUPTED` 类型。每行通过 previous hash 形成链，header 绑定完整 `RunSpec` identity 和 public SHA。恢复只跳过已完成 episode；任何未决 start 都 fail closed，不自动重试。runner 从不加载 evaluator-only target，评分器只在 attempt 冻结后读取私有文件。
+- 预算：单 run 在 journal 创建前核对整批请求和 planned-cost ceiling；24个正式 journal 的合计仍由上层 dry-run 与历史93次台账统一门禁。always-agent复用A，不生成重复付费证据。直接调用 runner 仍要求每个 live `RunSpec` 显式携带正请求/金额上限。
+- 验证与影响：哈希篡改、不同spec恢复、崩溃未决状态、额度不足、episode ID错配和超预留请求均回归；真实150条public fixture可重复恢复，journal SHA稳定且远程请求0。两环境专项12项、完整162项和compileall通过。该决策完成工程执行层，不代表live provider、文本解析或任何Agent效果已经验证。
