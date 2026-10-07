@@ -259,3 +259,10 @@
 - 决定：使用 Python 标准库实现最小 OpenAI-compatible HTTPS transport，只允许 `deepseek -> https://api.deepseek.com` 固定映射；禁止 HTTP、URL 凭据、query/fragment 和重定向，限制响应为 2 MiB，SDK 重试固定为0。Provider HTTP body、底层异常和 Key 不进入错误消息；usage 缺失和供应商账单未查询分别记为 `null+reason`。密钥只在显式工厂调用时按环境变量优先、根目录 `.env` 次之读取，模块导入不读文件。
 - 解析口径：F 的文本输入用一次独立、计费的严格 JSON 抽取生成完整 `FixedRequest`，响应不得改变公开 `user_id/history_authorized`。A/O 继续在首次 planner 调用内完成解释与规划；再增加独立 parser 会把每个文本 turn 多算一次并改变 ADR-028 已冻结的 8,649 上界。三类系统的文本都至少承担一次 LLM 处理，结构化 F 仍为0调用。
 - 验证与影响：恶意响应、401/429/500/302、timeout/connection、坏 usage、无副作用导入、Key 优先级和 prompt-as-data 均有回归；两环境专项各35项、完整各197项、compileall通过，未下载依赖、真实请求0。modern transport 的真实网络连接与 DeepSeek 文本抽取质量仍 `NOT VERIFIED/NOT EVALUATED`；正式 executor 尚未接入 runner，T19 不标记完成。
+
+## ADR-031：多轮反馈由 evaluator 逐轮释放并绑定恢复身份
+
+- 日期：2026-10-07。T18 将40条多轮 episode 的后续显式反馈与接受集合、期望状态、规范约束和故障注入一起保存在 evaluator-only 文件；T19 runner 则只加载 public 文件。直接把 private 对象交给 executor 会泄漏目标，而只记录 `max_turns=3` 又会把未发生的对话伪造成三轮完成。另一个恢复风险是：原 `RunSpec` 只绑定 public SHA，崩溃后可能以另一套反馈继续同一 journal。
+- 决定：`FeedbackSchedule` 从 evaluator 对象中只抽取精确的 `turn/kind/patch`，实例不保留接受集合、期望状态、硬约束或故障字段；回调只能在首轮系统结果之后按 episode ID 和 turn 释放该事件。多轮 `RunSpec` 必须带 schedule SHA，该 SHA 进入 run identity、header 和报告；缺失或改变时在执行前失败。`BenchmarkSystemExecutor` 以实际完成的轮数记账：单轮为1，反馈请求/校验为2，最终响应完成才为3；缺失/非法反馈分别落为完成的失败状态，不伪造成功。
+- 系统口径：F 的 text 首轮解析一次，反馈后由严格状态更新直接复用 fixed flow；A 始终规划，O 对结构化简单请求保持 fixed、对 text 在 planner 内解释，`no_explicit_preference_state` 可见当前反馈但不持久化 patch；U1 通过显式 upstream turn 接口接入且共享账本。parser/planner 的 live attempt、token 和工具次数统一汇总到 `EpisodeAttempt`。
+- 验证与影响：模拟 live transport 的一次 F text 解析从统一账本进入 runner/journal，request=1、输入20/输出5 token；冻结150条 test 的 F 机械 fixture 为75次解析、190次 fixed 调用、40条三轮，恢复执行器调用0，journal不含 evaluator-only字段。联合专项两环境各22项、完整各212项和compileall通过，真实请求0。RunSpec identity 因新增 feedback SHA 字段而改变，旧 runner smoke journal 仅保留为历史证据且不会被新版静默恢复；新版 runner-only smoke 写入独立 journal。该 smoke 不使用真实模型输出且不评分，所有系统指标仍 `NOT EVALUATED`；真实 A/O 推荐工具工厂、U1 upstream live turn 和 fault 注入仍是下一批。

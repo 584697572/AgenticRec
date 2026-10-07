@@ -1,5 +1,6 @@
 """Exercise the resumable runner on all frozen public test episodes, offline."""
 
+import hashlib
 from pathlib import Path
 
 from agenticrec.data import digest
@@ -14,7 +15,7 @@ from agenticrec.evaluation.runner import (
 
 def main():
     public_path = ROOT / "data/eval_private/interactive-v1/test.public.jsonl"
-    journal = ROOT / "artifacts/runs/t19/runner_smoke_o_seed7.jsonl"
+    journal = ROOT / "artifacts/runs/t19/runner_smoke_o_seed7_feedback_bound.jsonl"
     spec = RunSpec(
         run_id="t19-offline-smoke-O-seed7",
         benchmark_id="interactive-v1-t19-offline-fixture",
@@ -28,6 +29,7 @@ def main():
         money_budget_cny=0,
         per_request_cost_ceiling_cny=0,
         live=False,
+        feedback_sha256=hashlib.sha256(b"runner-smoke-no-feedback").hexdigest(),
     )
 
     def fixture(episode):
@@ -35,7 +37,7 @@ def main():
             episode_id=episode.episode_id,
             status="OFFLINE_FIXTURE_NOT_EVALUATED",
             item_ids=(),
-            turns=episode.max_turns,
+            turns=1,
             tool_calls=0,
             latency_ms=0,
             input_tokens=None,

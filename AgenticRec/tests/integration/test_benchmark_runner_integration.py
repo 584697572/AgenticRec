@@ -93,6 +93,7 @@ def test_public_runner_records_fixed_and_fake_agent_trajectories(tmp_path, monke
         money_budget_cny=0,
         per_request_cost_ceiling_cny=0,
         live=False,
+        feedback_sha256="e" * 64,
     )
     journal = tmp_path / "attempts.jsonl"
     result = runner.run_benchmark(spec, journal, execute)

@@ -74,6 +74,7 @@ class RunSpec:
     money_budget_cny: float
     per_request_cost_ceiling_cny: float
     live: bool
+    feedback_sha256: str | None = None
     schema_version: int = 1
 
     def __post_init__(self):
@@ -106,6 +107,10 @@ class RunSpec:
                 raise ValueError(name + " must be finite and nonnegative")
         if type(self.live) is not bool:
             raise ValueError("live must be boolean")
+        if self.feedback_sha256 is not None and (
+                not isinstance(self.feedback_sha256, str)
+                or not re.fullmatch(r"[0-9a-f]{64}", self.feedback_sha256)):
+            raise ValueError("feedback_sha256 must be lowercase SHA256 or null")
         if self.live and (self.authorized_request_cap < 1
                           or self.money_budget_cny <= 0
                           or self.per_request_cost_ceiling_cny <= 0):
@@ -229,6 +234,7 @@ def _report(spec, episodes, ceilings, completed, remote, *, status, resumed):
         "remote_api_requests": remote,
         "private_targets_loaded": False,
         "public_sha256": spec.public_sha256,
+        "feedback_sha256": spec.feedback_sha256,
         "run_identity": spec.identity,
     }
 
@@ -241,6 +247,12 @@ def run_benchmark(spec, journal_path, executor, *, dry_run=False):
     if type(dry_run) is not bool:
         raise ValueError("dry_run must be boolean")
     _public_path, episodes = _load_public(spec)
+    if any(episode.multi_turn for episode in episodes) and spec.feedback_sha256 is None:
+        raise ValueError("multi-turn runs require a feedback schedule hash")
+    executor_feedback_sha = getattr(executor, "feedback_sha256", spec.feedback_sha256)
+    if (not dry_run and any(episode.multi_turn for episode in episodes)
+            and executor_feedback_sha != spec.feedback_sha256):
+        raise ValueError("executor feedback schedule does not match RunSpec")
     ceilings = {
         episode.episode_id: episode_request_ceiling(spec.system, episode)
         for episode in episodes
@@ -277,6 +289,7 @@ def run_benchmark(spec, journal_path, executor, *, dry_run=False):
                 "seed": spec.seed,
                 "split": spec.split,
                 "public_sha256": spec.public_sha256,
+                "feedback_sha256": spec.feedback_sha256,
                 "private_targets_loaded": False,
                 "authorized_request_cap": spec.authorized_request_cap,
                 "money_budget_cny": spec.money_budget_cny,

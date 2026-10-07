@@ -51,6 +51,7 @@ def _spec(tmp_path, **overrides):
         "money_budget_cny": 0.0,
         "per_request_cost_ceiling_cny": 0.0,
         "live": False,
+        "feedback_sha256": "f" * 64,
     }
     values.update(overrides)
     return runner.RunSpec(**values)
@@ -82,6 +83,7 @@ def test_dry_run_reads_only_public_input_and_has_no_side_effects(tmp_path, monke
     assert report["episode_request_ceiling"] == {"test-001": 0, "test-002": 3}
     assert report["required_request_ceiling"] == 3
     assert report["private_targets_loaded"] is False
+    assert report["feedback_sha256"] == "f" * 64
     assert report["remote_api_requests"] == 0
     assert invoked == []
     assert not (tmp_path / "attempts.jsonl").exists()
@@ -169,6 +171,36 @@ def test_journal_hash_chain_and_spec_identity_fail_closed(tmp_path, monkeypatch)
     changed = _spec(tmp_path, run_id="t19-F-seed42", seed=42)
     with pytest.raises(ValueError, match="identity"):
         runner.run_benchmark(changed, clean, lambda episode: _attempt(episode.episode_id))
+
+
+def test_multiturn_run_requires_a_bound_feedback_schedule(tmp_path, monkeypatch):
+    monkeypatch.setattr(runner, "ROOT", tmp_path)
+    spec = _spec(tmp_path, feedback_sha256=None)
+    journal = tmp_path / "attempts.jsonl"
+
+    with pytest.raises(ValueError, match="feedback schedule hash"):
+        runner.run_benchmark(
+            spec, journal, lambda episode: _attempt(episode.episode_id)
+        )
+
+    assert not journal.exists()
+
+
+def test_bound_executor_feedback_must_match_run_identity(tmp_path, monkeypatch):
+    monkeypatch.setattr(runner, "ROOT", tmp_path)
+    spec = _spec(tmp_path)
+    journal = tmp_path / "attempts.jsonl"
+
+    class BoundExecutor:
+        feedback_sha256 = "a" * 64
+
+        def __call__(self, episode):
+            return _attempt(episode.episode_id)
+
+    with pytest.raises(ValueError, match="executor feedback schedule"):
+        runner.run_benchmark(spec, journal, BoundExecutor())
+
+    assert not journal.exists()
 
 
 def test_attempt_must_match_episode_and_reserved_request_ceiling(tmp_path, monkeypatch):
