@@ -1,33 +1,70 @@
-# AgenticRec 开发包
+# AgenticRec — Constraint-Aware Interactive Recommendation on InteRecAgent
 
-已验收 T05 与 T06：独立 Python 3.11.14、严格配置、评分协议、FakeLLM，以及官方稳定 MovieLens1M 的全局时间划分和训练期 ID 契约。训练、真实 SDK、推荐流水线和效果 benchmark 尚未实现；不能从数据合同测试推导推荐质量。
+基于Microsoft InteRecAgent的方法级复现与二次开发。推荐模型、硬约束、反馈状态、有序计划和路由均有工程测试及真实实验；原论文全部条件尚未复现，本项目不是微软官方项目。
 
-T07 已用手算 fixture 验证 ID 排序、Recall/Hit/MRR/NDCG 与失败分母，并冻结本地 valid/test 用户及相关目标。运行 `& AgenticRec/.venv-dev/Scripts/python.exe -m pytest AgenticRec/tests/unit/test_metrics.py -q` 核验。后续所有模型需用同一训练候选、已评分过滤和冻结 cohort，详见[指标报告](../reports/t07_metrics_protocol_20261006.md)。
+## Upstream / My changes / Evidence
 
-T06 数据输入从官方 [MovieLens1M](https://grouplens.org/datasets/movielens/1m/) 下载并按官方 MD5 核对，原 ZIP/条款保留在本地忽略目录 `../data/raw/ml-1m/`。在工作区根目录运行 `& AgenticRec/.venv-dev/Scripts/python.exe -m agenticrec.data --config AgenticRec/configs/data.yaml`；首次产出 `../data/processed/ml-1m-v1/` 与 `../artifacts/data_manifest.json`，重复运行拒绝覆盖。用 `& AgenticRec/.venv-dev/Scripts/python.exe -m pytest AgenticRec/tests/unit/test_data_contract.py AgenticRec/tests/regression/test_no_leakage.py -q` 核验。详细规则和计数见[数据协议报告](../reports/t06_movielens_protocol_20261006.md)。
+| Upstream | My changes | Evidence |
+|---|---|---|
+| 固定上游的Plan First、ToolBox、CandidateBuffer、Map；memory/reflection/demo已存在 | 隔离legacy/现代环境；U1通过原工具组件接入独立模型 | [走读](docs/source_walkthrough.md)、[逐项差异](docs/UPSTREAM_DIFF.md) |
+| 原预制资源与item_seq排序模型 | 自行实现BPR-MF/LightGCN、训练期ID/图/采样、已知用户和匿名种子评分 | [模型结果](../reports/benchmark/t19_live_20261010.json)、[贡献](docs/MY_CONTRIBUTIONS.md) |
+| 按工具名转字典的计划、部分排除项降分 | 有序重复步骤、硬过滤、事件化反馈、规则路由、有限重规划 | [回归](tests/regression/test_plan_execution.py)、[约束](tests/unit/test_constraints.py)、[实验](reports/benchmark.md) |
 
-从工作区根目录运行已存在的命令：
-
-```powershell
-& AgenticRec/.venv-dev/Scripts/python.exe -m agenticrec.cli doctor --offline --config AgenticRec/configs/experiment_contract.example.yaml
-& AgenticRec/.venv-dev/Scripts/python.exe -m agenticrec.cli fixture
-& AgenticRec/.venv-dev/Scripts/python.exe -m pytest AgenticRec/tests/unit/test_config.py -q
+```mermaid
+flowchart LR
+  R[请求与偏好状态] --> Q[规则路由]
+  Q --> F[固定推荐流程]
+  Q --> A[有限计划与有序执行]
+  A --> F
+  F --> C[CF / 内容 / 热门召回]
+  C --> S[RRF与用户或匿名评分]
+  S --> G[硬约束复核与Top-K证据]
 ```
 
-配置文件采用 YAML 1.2 的 JSON 子集；未知字段、未知 CLI 参数、布尔型数量、NaN 预算均报错。默认付费请求为 0。FakeLLM 不联网，usage 为 null，带 fixture 标记。AttemptBudget 只是内存中的尝试计数原语，不是已完成的 T13 SDK、持久预算或账单硬限额。
+## 真实实验与边界
 
-隔离环境重建命令（首次需要取得公开 Python/依赖，后续可用缓存）：
+150条冻结**合成**test episode、三个seed；U1/F/A/O与规定消融共24个run、3,600次episode执行、2,850次正式真实LLM请求。不是3,600个独立样本或线上用户实验。
+
+| 条件 | Strict Success（均值 ± 样本标准差） | 每seed请求数 |
+|---|---:|---:|
+| U1 upstream_rebuilt | 62.44% ± 1.02% | 190 |
+| F fixed_pipeline | 68.67% ± 0.67% | 75 |
+| A always_agent | 81.33% ± 0.67% | 190 |
+| O ours_router | 81.33% ± 0.67% | 99 |
+
+O相对A请求减少47.89%，本评测的-2个百分点非劣界通过。F有ID类型解析失败，U1有计划契约失败，不能将O/F/U1差距全归因于路由。正式批次实际重规划0次，无法证明其质量收益。无内容消融成功率86%，高于O；三seed LightGCN NDCG@10低于BPR-MF，保留负结果。置信区间、分层与失败见 [T19汇总](../reports/benchmark/t19_live_20261010.md)、[消融](reports/ablations.md)、[失败分析](reports/failure_analysis.md)。
+
+## 离线快速开始
+
+从仓库根目录在PowerShell执行。已验Windows x64 / Python3.11.14 / CPU；其它平台NOT VERIFIED。已有环境不要覆盖。首次取得公开依赖后，演示不需要数据、模型、legacy环境、Key或网络。
 
 ```powershell
+python reproduction/scripts/bootstrap_uv.py
 $env:UV_PYTHON_INSTALL_DIR = "$PWD/reproduction/.runtime/python"
 $env:UV_CACHE_DIR = "$PWD/reproduction/.uv-cache"
 & reproduction/.runtime/uv.exe python install 3.11.14 --no-bin --no-registry --native-tls
-& reproduction/.runtime/uv.exe venv AgenticRec/.venv-dev-rebuild --python 3.11.14 --offline
-& reproduction/.runtime/uv.exe pip install --python AgenticRec/.venv-dev-rebuild/Scripts/python.exe -r AgenticRec/requirements.dev.lock.txt --offline
-& reproduction/.runtime/uv.exe pip install --python AgenticRec/.venv-dev-rebuild/Scripts/python.exe --no-build-isolation --no-deps -e AgenticRec --offline
-& reproduction/.runtime/uv.exe pip check --python AgenticRec/.venv-dev-rebuild/Scripts/python.exe
+& reproduction/.runtime/uv.exe venv AgenticRec/.venv-dev --python 3.11.14 --offline
+& reproduction/.runtime/uv.exe pip install --python AgenticRec/.venv-dev/Scripts/python.exe --native-tls --index-strategy unsafe-best-match --extra-index-url https://download.pytorch.org/whl/cpu -r AgenticRec/requirements.dev.lock.txt
+& reproduction/.runtime/uv.exe pip install --python AgenticRec/.venv-dev/Scripts/python.exe --offline --no-build-isolation --no-deps -e AgenticRec
+& reproduction/.runtime/uv.exe pip check --python AgenticRec/.venv-dev/Scripts/python.exe
+& AgenticRec/.venv-dev/Scripts/python.exe -m agenticrec.cli doctor --offline
+& AgenticRec/.venv-dev/Scripts/python.exe -m agenticrec.cli fixture
 ```
 
-上述重建路径应为空；不要覆盖正在使用的环境。首次没有缓存时，依赖安装需去掉 `--offline`，环境建立后保持版本锁不变。T05 的首次重建验证了7个锁定依赖和两个环境各15项基础测试；T06 增加 PyArrow 21.0.0 后已用缓存对第二环境离线安装并运行5项数据合同/防泄漏测试。历史环境记录见 [环境报告](../reproduction/environment_dev.json)，新增验证见[数据协议报告](../reports/t06_movielens_protocol_20261006.md)。
+`fixture`用六部自造电影、确定性toy scorer和FakeLLM演示正常推荐、匿名、排除、反馈、无解及A/O路由；不代表训练模型或真实API效果。`doctor`仅查基础环境与配置，不验证GPU或模型质量。CPU索引与PyPI均为官方来源，依赖按lock固定；完整缓存可加`--offline`。
 
-上游独立保存在 `../RecAI/`；legacy 环境在 `../reproduction/.venv-legacy/`。开发包不依赖 legacy 启动，不更改原推荐算法。完整任务、原资源限制和后续依赖见 [状态](docs/STATUS.md)。
+## 真实数据与LLM
+
+[REPRODUCE](docs/REPRODUCE.md)列出实际数据、训练、推荐、完整测试、最小真实调用和报告重建命令。新checkout没有权重，历史seed报告须在全新工作副本先归档保留，完成数据与训练后才可执行：
+
+```powershell
+& AgenticRec/.venv-dev/Scripts/python.exe -m agenticrec.cli recommend --request AgenticRec/configs/fixed_request.example.json --model lightgcn --seed 42
+```
+
+结构化推荐0LLM；自由文本解析/规划另计请求。发布smoke默认关闭，只在明确授权后执行一次真实规划。Key仅存于被忽略的根目录`.env`。
+
+## 来源、许可与限制
+
+上游 [RecAI/InteRecAgent](https://github.com/microsoft/RecAI/tree/0959ecb05b0794748426e73e6efc1b6b35ec433d/InteRecAgent)，固定commit `0959ecb05b0794748426e73e6efc1b6b35ec433d`；[论文](https://arxiv.org/abs/2308.16505)；保留[MIT代码许可](../LICENSE.txt)。算法引用与原创边界见[贡献清单](docs/MY_CONTRIBUTIONS.md)。
+
+MovieLens使用独立的[GroupLens数据条款](https://files.grouplens.org/datasets/movielens/ml-1m-README.txt)，MIT不适用于数据；本仓库不分发数据、衍生数据、权重、私密trace或Key。T04旧资源ID/许可/canonical论文条件仍BLOCKED；当前质量实验属于规范B路线。其它边界见[已知限制](docs/KNOWN_LIMITATIONS.md)，验收见[STATUS](docs/STATUS.md)、[TASKS](../TASKS.yaml)。

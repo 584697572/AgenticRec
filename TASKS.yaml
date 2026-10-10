@@ -352,11 +352,24 @@
       "depends_on": [
         "T19"
       ],
-      "status": "TODO",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T20",
       "deliverables": "`AgenticRec/README.md`；`AgenticRec/docs/REPRODUCE.md`；`AgenticRec/docs/MY_CONTRIBUTIONS.md`；`AgenticRec/docs/KNOWN_LIMITATIONS.md`。",
       "acceptance": "第三方按文档知道哪些命令存在、数据如何合法取得。 不宣称保证面试、生产级或论文全部复现。",
-      "checks": "`python -m pytest tests/unit tests/integration tests/regression`；`干净环境完整重建日志`。"
+      "checks": "`python -m pytest tests/unit tests/integration tests/regression`；`干净环境完整重建日志`。",
+      "verification": {
+        "command": "python -m pytest tests/unit tests/integration tests/regression -q",
+        "exit_code": 0,
+        "tests_passed": 253,
+        "log": "artifacts/runs/t20/release_20261010/full_suite_final.stdout.log",
+        "evidence": "reports/release/t20_20261010.json",
+        "evidence_sha256": "866c9976224c5eb062887b65193228718ff185f0c665f6b224472eada78f80c2",
+        "source_only_fixture": "PASS",
+        "data_hash_rebuild": "PASS",
+        "seed42_training_rebuild": "PASS",
+        "live_smoke_requests": 1,
+        "repeat_live_new_requests": 0
+      }
     },
     {
       "id": "T21",

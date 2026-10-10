@@ -1,0 +1,424 @@
+{
+  "status": "PASS",
+  "task": "T20",
+  "date": "2026-10-10",
+  "scope": "independent Windows CPU modern environments; source-only fixture; raw-data and seed42 training rebuild; existing pinned legacy interpreter reused",
+  "source_base_commit": "6bf79ddb227ef9c561baf25620fd9913d6fbeaa8",
+  "environments": {
+    ".venv-t20": {
+      "python": "3.11.14",
+      "packages": {
+        "agenticrec": "0.1.0",
+        "colorama": "0.4.6",
+        "filelock": "3.32.3",
+        "iniconfig": "2.3.0",
+        "jinja2": "3.1.6",
+        "markupsafe": "3.0.3",
+        "mpmath": "1.3.0",
+        "networkx": "3.6.1",
+        "packaging": "26.3",
+        "pluggy": "1.6.0",
+        "pyarrow": "21.0.0",
+        "pygments": "2.21.0",
+        "pytest": "8.4.2",
+        "setuptools": "80.9.0",
+        "sympy": "1.14.0",
+        "torch": "2.0.1+cpu",
+        "typing-extensions": "4.16.0"
+      }
+    },
+    ".venv-t20-portable": {
+      "python": "3.11.14",
+      "packages": {
+        "agenticrec": "0.1.0",
+        "colorama": "0.4.6",
+        "filelock": "3.32.3",
+        "iniconfig": "2.3.0",
+        "jinja2": "3.1.6",
+        "markupsafe": "3.0.3",
+        "mpmath": "1.3.0",
+        "networkx": "3.6.1",
+        "packaging": "26.3",
+        "pluggy": "1.6.0",
+        "pyarrow": "21.0.0",
+        "pygments": "2.21.0",
+        "pytest": "8.4.2",
+        "setuptools": "80.9.0",
+        "sympy": "1.14.0",
+        "torch": "2.0.1+cpu",
+        "typing-extensions": "4.16.0"
+      }
+    }
+  },
+  "full_suite_final": {
+    "tests": 253,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "first_full_suite": {
+    "tests": 251,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0
+  },
+  "portable_foundation": {
+    "tests": 21,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "cohort_regression_before": {
+    "tests": 2,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0
+  },
+  "cohort_regression_after": {
+    "tests": 2,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "fixture": {
+    "status": "PASS",
+    "catalog": "self_authored_six_items",
+    "model": "toy_scorer_not_trained_model",
+    "new_api_requests": 0
+  },
+  "portable_rebuild": {
+    "data_files_matched": 16,
+    "data_and_private_labels_identical": true,
+    "models": {
+      "seed_42.json": {
+        "metrics_identical": true,
+        "selection_identical": true,
+        "metrics": {
+          "test": {
+            "BPR-MF": {
+              "failures": 0,
+              "hit": 0.6111111111111112,
+              "mrr": 0.3315438754117999,
+              "ndcg": 0.19208937975909687,
+              "recall": 0.05152006798187208,
+              "users_evaluated": 954,
+              "users_total": 5351,
+              "users_without_relevance": 4397
+            },
+            "Popularity": {
+              "failures": 0,
+              "hit": 0.6174004192872118,
+              "mrr": 0.34000199660577,
+              "ndcg": 0.19579463874317485,
+              "recall": 0.05336981566628194,
+              "users_evaluated": 954,
+              "users_total": 5351,
+              "users_without_relevance": 4397
+            },
+            "Random": {
+              "failures": 0,
+              "hit": 0.12054507337526206,
+              "mrr": 0.0395806295963529,
+              "ndcg": 0.01408106549052053,
+              "recall": 0.0023538166223083397,
+              "users_evaluated": 954,
+              "users_total": 5351,
+              "users_without_relevance": 4397
+            }
+          },
+          "valid": {
+            "BPR-MF": {
+              "failures": 0,
+              "hit": 0.4074844074844075,
+              "mrr": 0.20374467874467883,
+              "ndcg": 0.12039457225995746,
+              "recall": 0.04597473819731541,
+              "users_evaluated": 481,
+              "users_total": 5351,
+              "users_without_relevance": 4870
+            },
+            "Popularity": {
+              "failures": 0,
+              "hit": 0.41372141372141374,
+              "mrr": 0.2163704913704913,
+              "ndcg": 0.12290652254063533,
+              "recall": 0.04724882657156393,
+              "users_evaluated": 481,
+              "users_total": 5351,
+              "users_without_relevance": 4870
+            },
+            "Random": {
+              "failures": 0,
+              "hit": 0.07692307692307693,
+              "mrr": 0.015228690228690231,
+              "ndcg": 0.007382805874760925,
+              "recall": 0.004463419265554116,
+              "users_evaluated": 481,
+              "users_total": 5351,
+              "users_without_relevance": 4870
+            }
+          }
+        },
+        "selection": {
+          "best_epoch": 1,
+          "early_stopped": true,
+          "metric": "valid_ndcg_at_10"
+        },
+        "report_sha256": "827b259bbeddef94db59fb4af0576b27f22375c581b50af35735f09cb0a45d7b"
+      },
+      "lightgcn_seed_42.json": {
+        "metrics_identical": true,
+        "selection_identical": true,
+        "metrics": {
+          "failures": 0,
+          "hit": 0.6153039832285115,
+          "mrr": 0.335337426375162,
+          "ndcg": 0.19404680101910457,
+          "recall": 0.054078656059174446,
+          "users_evaluated": 954,
+          "users_total": 5351,
+          "users_without_relevance": 4397
+        },
+        "selection": {
+          "best_epoch": 7,
+          "metric": "valid_ndcg_at_10",
+          "selected_layers": 3
+        },
+        "report_sha256": "a25fee7495aea56cb693fd0ecf166f624e4de34f716e64518945deb2aa569231"
+      }
+    },
+    "seed": 42,
+    "reports_archived_without_overwrite": true,
+    "cache_install_network_downloads": 0
+  },
+  "live_smoke": {
+    "status": "VERIFIED",
+    "scope": "T20_live_tool_smoke_not_quality",
+    "model": "deepseek-flash",
+    "nonthinking": true,
+    "max_output_tokens": 1024,
+    "remote_generation_requests": 1,
+    "planner_status": "OK",
+    "tool_calls": 1,
+    "recommendation_count": 5,
+    "constraints_verified": true,
+    "actual_cost_cny": null,
+    "actual_cost_reason": "provider_bill_not_queried"
+  },
+  "live_usage": {
+    "completion_tokens": 124,
+    "prompt_tokens": 392,
+    "total_tokens": 516
+  },
+  "repeat_live": {
+    "status": "REFUSED_AS_EXPECTED",
+    "new_remote_api_requests": 0,
+    "provider_journal_unchanged": true
+  },
+  "preservation": {
+    "status": "PASS",
+    "spec_sha256": "d88f02c84855234673514519486e74e73c61ffd4e2ec75594020fdf9b8ebb677",
+    "source_changes": [
+      "AgenticRec\\src\\agenticrec\\cli.py",
+      "AgenticRec\\src\\agenticrec\\evaluation\\cohort.py"
+    ],
+    "checkpoints_unchanged": true,
+    "t19_reports_unchanged": true,
+    "frozen_data_config_unchanged": true
+  },
+  "commands": {
+    "cohort_green": {
+      "exit_code": 0,
+      "elapsed_seconds": 1.4181969165802002,
+      "log": "artifacts/runs/t20/release_20261010/cohort_green.command.json",
+      "sha256": "4faabee86b1ff78a5449bd9cc55469b896ffa5f31959113a4e60c2f4096a6165"
+    },
+    "cohort_red": {
+      "exit_code": 1,
+      "elapsed_seconds": 1.6720876693725586,
+      "log": "artifacts/runs/t20/release_20261010/cohort_red.command.json",
+      "sha256": "b93b00398e62e28f2ecabd6146b7462cbef643cbd3fdc41697de262b2b5db4db"
+    },
+    "doctor": {
+      "exit_code": 0,
+      "elapsed_seconds": 0.288252592086792,
+      "log": "artifacts/runs/t20/release_20261010/doctor.command.json",
+      "sha256": "0a82afb26c48dedbb59eb020ffce2cdff759db910cd61672fae581af7d552ad5"
+    },
+    "fixture": {
+      "exit_code": 0,
+      "elapsed_seconds": 21.830231189727783,
+      "log": "artifacts/runs/t20/release_20261010/fixture.command.json",
+      "sha256": "2efdcd5fb83bbd894cee2ee9effed8bbda3ad0b084ede08eb0ff092445b739a9"
+    },
+    "full_suite": {
+      "exit_code": 1,
+      "elapsed_seconds": 174.26098895072937,
+      "log": "artifacts/runs/t20/release_20261010/full_suite.command.json",
+      "sha256": "77a7511ff60070a45c337b2098e728d9ead516ae720c0da99e2db2ec8c52018e"
+    },
+    "full_suite_final": {
+      "exit_code": 0,
+      "elapsed_seconds": 93.06084275245667,
+      "log": "artifacts/runs/t20/release_20261010/full_suite_final.command.json",
+      "sha256": "0203dd13124e1dd2c2d499a84321120e51a827f698dc93676d001ac516f9ae8f"
+    },
+    "full_suite_warm": {
+      "exit_code": 0,
+      "elapsed_seconds": 106.47344708442688,
+      "log": "artifacts/runs/t20/release_20261010/full_suite_warm.command.json",
+      "sha256": "59d41a69f4ac9dc9484fff95e39336e604d81a9e73b68a77938604971d81c6f8"
+    },
+    "live": {
+      "exit_code": 0,
+      "elapsed_seconds": 12.455106496810913,
+      "log": "artifacts/runs/t20/release_20261010/live.command.json",
+      "sha256": "cebecea142b4860773d5d5306fdc1a90c77da62684e702e181ccd9bf5932cc9e"
+    },
+    "live_repeat": {
+      "exit_code": 3,
+      "expected_exit_code": 3,
+      "new_remote_api_requests": 0,
+      "journal_unchanged": true,
+      "log": "artifacts/runs/t20/release_20261010/live_repeat.command.json",
+      "sha256": "1a33a6cdbd88ccf202983fcaccc87caffbd46cd218eb21e57142ebc4b1629908"
+    },
+    "pip_check": {
+      "exit_code": 0,
+      "elapsed_seconds": 0.07807564735412598,
+      "log": "artifacts/runs/t20/release_20261010/pip_check.command.json",
+      "sha256": "f960472ed4caa0eed47a0ca83611e5e5e82ec15f02515ca434d3b65ccc59df51"
+    },
+    "portable_cohort": {
+      "exit_code": 1,
+      "elapsed_seconds": 0.30509352684020996,
+      "log": "artifacts/runs/t20/release_20261010/portable_cohort.command.json",
+      "sha256": "4d4da973a3db7ed7e5aeabb0e196bbce09d2a4cf198b5559cbd5afa141d104c0"
+    },
+    "portable_cohort_restored": {
+      "exit_code": 0,
+      "elapsed_seconds": 5.384816646575928,
+      "log": "artifacts/runs/t20/release_20261010/portable_cohort_restored.command.json",
+      "sha256": "289a0d2f71dc64826f875ad7381d85e38e7971276d9c21ab002628462833149f"
+    },
+    "portable_data_prepare": {
+      "exit_code": 0,
+      "elapsed_seconds": 5.902013778686523,
+      "log": "artifacts/runs/t20/release_20261010/portable_data_prepare.command.json",
+      "sha256": "d7fa53eac70164a962375980fb5a3df97f9b421aedcb234ac51d3c63bbc787f1"
+    },
+    "portable_editable": {
+      "exit_code": 0,
+      "elapsed_seconds": 3.806306838989258,
+      "log": "artifacts/runs/t20/release_20261010/portable_editable.command.json",
+      "sha256": "ba4485546525f21225f2732ec2e203de4a5508c9320d1e39f35f16df247c3185"
+    },
+    "portable_episodes": {
+      "exit_code": 0,
+      "elapsed_seconds": 5.757795095443726,
+      "log": "artifacts/runs/t20/release_20261010/portable_episodes.command.json",
+      "sha256": "ab0b6df97e121bf775149c218d347b5b25215e024c24726a41107c5c95ef73a0"
+    },
+    "portable_fixture": {
+      "exit_code": 0,
+      "elapsed_seconds": 22.791452646255493,
+      "log": "artifacts/runs/t20/release_20261010/portable_fixture.command.json",
+      "sha256": "768f6820309ee4c74f753a9e7c44e2dbbbf0895e6bfb19e16303cd12bb1dc954"
+    },
+    "portable_foundation_tests": {
+      "exit_code": 0,
+      "elapsed_seconds": 26.10437798500061,
+      "log": "artifacts/runs/t20/release_20261010/portable_foundation_tests.command.json",
+      "sha256": "08147e9965336aa9fbf7a2bad26c278e6c1ba94f0f0d31f87616191fc073dc2a"
+    },
+    "portable_locked_install": {
+      "exit_code": 0,
+      "elapsed_seconds": 13.985674381256104,
+      "log": "artifacts/runs/t20/release_20261010/portable_locked_install.command.json",
+      "sha256": "4ddb88ac385497679cddc3d04e9d0e091f0a1bded15d4d6dbf9ef9cafef29f6f"
+    },
+    "portable_pip_check": {
+      "exit_code": 0,
+      "elapsed_seconds": 0.08398580551147461,
+      "log": "artifacts/runs/t20/release_20261010/portable_pip_check.command.json",
+      "sha256": "74a68aac1b3fd1252b3a5fb59ce1018f17df32953f29973a62699a2237077898"
+    },
+    "portable_recommend": {
+      "exit_code": 0,
+      "elapsed_seconds": 10.376423358917236,
+      "log": "artifacts/runs/t20/release_20261010/portable_recommend.command.json",
+      "sha256": "29b4a9a55d351ba4f1b0ddcd2abbf02bab7e598233dafe9712d6998b732bf93b"
+    },
+    "portable_train_bpr": {
+      "exit_code": 0,
+      "elapsed_seconds": 24.380554676055908,
+      "log": "artifacts/runs/t20/release_20261010/portable_train_bpr.command.json",
+      "sha256": "926a3acf8c32deb3127b190610144745bf57500977bf31cd2d3527807e76bb2b"
+    },
+    "portable_train_lightgcn": {
+      "exit_code": 0,
+      "elapsed_seconds": 165.3123037815094,
+      "log": "artifacts/runs/t20/release_20261010/portable_train_lightgcn.command.json",
+      "sha256": "dd5f1b902b6c883dea39a7f846c12c20d2c00ca4056cec2caba6a3826a3205db"
+    },
+    "portable_venv": {
+      "exit_code": 0,
+      "elapsed_seconds": 1.3088953495025635,
+      "log": "artifacts/runs/t20/release_20261010/portable_venv.command.json",
+      "sha256": "41dfd4688b2ea314f2935b9cc67ff99d140e039ff661dc51354a819026d3f50e"
+    },
+    "u1_clean": {
+      "exit_code": 1,
+      "elapsed_seconds": 6.480756998062134,
+      "log": "artifacts/runs/t20/release_20261010/u1_clean.command.json",
+      "sha256": "3776e16fa3a4df402f419eac46a2b6c2c4a394c50b1016bd60eb9d4387630642"
+    },
+    "u1_clean_verified": {
+      "exit_code": 0,
+      "elapsed_seconds": 13.022056341171265,
+      "log": "artifacts/runs/t20/release_20261010/u1_clean_verified.command.json",
+      "sha256": "f5ab0003d251607afcce38bef47be0c05ec1f8844649783a9cbd933e22076ec1"
+    },
+    "u1_diagnostic": {
+      "exit_code": 0,
+      "elapsed_seconds": 34.39268636703491,
+      "log": "artifacts/runs/t20/release_20261010/u1_diagnostic.command.json",
+      "sha256": "f552ae0100887fc55db0f9c73045851acaf816194e1077d136420f80aa50aea1"
+    }
+  },
+  "evidence_sha256": {
+    "artifacts/runs/t20/release_20261010/cohort_green.xml": "54624edabb6589973f8a82b5f0f87827bb5d276f8473205d6c80ac607ae0d065",
+    "artifacts/runs/t20/release_20261010/cohort_red.xml": "c4fb2ed50aa481ca8f0fb46d5e52ce5948f1fcceffea7ee7ded84922e0e6a6dc",
+    "artifacts/runs/t20/release_20261010/demo_green.xml": "ac8103baa4ec2a72613bc9c41eaf12ca456aa696f561e7b2dec6b0a0d52cd600",
+    "artifacts/runs/t20/release_20261010/demo_red.xml": "66aa59c111fa92e2bf1e35ce930af8d913bf06063fc2fde9990fffc5ef47f620",
+    "artifacts/runs/t20/release_20261010/full_suite.xml": "6de68d515011e486d92c07615501a67eea13e0518c96ccae2fe4922284186faf",
+    "artifacts/runs/t20/release_20261010/full_suite_final.xml": "a9e0b555e316a002c640853b6c4289d99da7bfd77848d4e42e77985789088a75",
+    "artifacts/runs/t20/release_20261010/full_suite_warm.xml": "4adbd77640e5f320e9dabbb0295be64b0df010d38f7e0a790f29ce1c85029c8b",
+    "artifacts/runs/t20/release_20261010/portable_tests.xml": "4b1ad67a10f2d34280f7cfdd7f8fc28219baba19a71be3bfdbf752faad9db042",
+    "artifacts/runs/t20/release_20261010/u1_diagnostic.xml": "59a81597f0537508e1395e220d6dab9389ed3ba05371b3264ab29a6914d676c0",
+    "artifacts/runs/t20/release_live_20261010/report.json": "5c9d65d59a58490d251b86b90d2738c04d34084831c6a8a805acfef23943beff",
+    "artifacts/runs/t20/release_live_20261010/llm_attempts.jsonl": "718b308b6b6c2a702cf29d9811a978d2ae9b5c15edc554d03c630987843cf839",
+    "artifacts/runs/t20/release_20261010/model_comparison.json": "92ad81cc142b8d09bfb7db912f27975097dc934f6ad5ae4ee975b9c400cb2676",
+    "artifacts/runs/t20/release_20261010/portable_data_comparison.json": "d64e51a738c14e58630bc35a0b0d7944bee2ff10e620c855331fc0fb1e0b0168",
+    "artifacts/runs/t20/release_20261010/preservation.json": "2ee323c094378768eddf3ffa96dee42e694e707b71653105bfcd5a206b3c5f69"
+  },
+  "initial_installation": {
+    "offline_cache": "missing cp311/other wheels; initial network install needed",
+    "network_wheel_downloads_reported": 5,
+    "large_downloads_reported_mib": {
+      "torch_cpu": 166.0,
+      "pyarrow": 25.0,
+      "networkx": 2.0
+    },
+    "download_totals": "NOT MEASURED; log progress sizes are approximate, not network byte totals",
+    "second_install": "complete lock rebuilt offline, 0 downloads"
+  },
+  "limitations": [
+    "first full-suite U1 bridge failure, isolated and subsequent full suites pass; root cause unconfirmed, no timeout relaxation or new retries",
+    "legacy interpreter reused; no independent new-machine legacy install",
+    "Linux/macOS/GPU not verified",
+    "full T19 live batch not repeated; historical results unchanged",
+    "unified target CLI aliases not yet implemented; real module entry points documented",
+    "bill not queried; balance before and after live smoke both 3.01 CNY does not establish zero cost"
+  ]
+}

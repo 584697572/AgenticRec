@@ -44,3 +44,9 @@ T03 新增事实（2026-10-01）：原包共享 ID 假设未获验证。完整�
 5. 当前只有Python3.13.7可见，3.9/3.11未发现；后续环境阶段需要合法取得隔离解释器或记录替代方案，不能把规范建议版本当已建立环境。
 
 所有运行/实验指标保持NOT EVALUATED。以上仅修正路径与事实记录，不修改任务依赖或研究路线。
+
+## T20接口和发布重建核查（2026-10-10）
+
+规范§12.1为目标接口；当前实际CLI有doctor/fixture/train/recommend/benchmark，data/cohort/episodes通过模块，模型评测在train内，系统报告通过generate_system_reports。data prepare/validate、eval-rec、chat、eval-agent、report统一CLI名尚未实现。建议将等价实际入口列为当前兼容范围，或另立接口补齐任务；不修改本规范、不改变实验协议。实际命令与限制已在REPRODUCE逐项公开，未将不存在的目标命令写为验收通过。
+
+新checkout已有公开cohort_summary但无私密labels，旧freeze会阻断重建；T20按公开SHA精确恢复后16个数据文件完全一致。原始规范SHA保持不变。历史seed报告在全新实验副本归档保留后训练，原证据不覆盖；U1另用源码/settings准备，不下载A1资源。

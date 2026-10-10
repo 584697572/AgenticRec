@@ -1,8 +1,6 @@
 # 工作区状态入口
 
-最后更新：2026-10-10（Asia/Shanghai）。详细状态见 [AgenticRec/docs/STATUS.md](AgenticRec/docs/STATUS.md)，最新验收见 [T19真实完整批次](reports/benchmark/t19_live_20261010.md)与[机器摘要](reports/benchmark/t19_live_20261010.json)。支出策略见 DECISIONS.md ADR-034；旧核算保留为历史证据。
-
-当前阶段 G4，T19 DONE。冻结150条合成test、8个规定条件、3个seed的24个run全部完成，3,600条执行、2,850次正式真实请求；development另6次。完整provider/token/trace审计、报告重建SHA一致、24份journal零调用恢复和代码/数据/checkpoint哈希检查通过。O与A Strict Success同为81.33%，每seed请求从190降到99（减少47.89%），本评测的-2百分点非劣界通过；不推广为线上效果。保留无内容86%优于O、LightGCN弱于BPR-MF等负结果，以及F ID类型和U1计划契约失败。生成请求已停止；观察余额5.10→3.08 CNY（减少2.02），实际账单未知。两环境完整各249项及新增专项通过；无测试后修改。T04原ID/许可/论文条件仍BLOCKED。下一任务T20独立环境与发布材料，随后T21。
+最后更新：2026-10-10（Asia/Shanghai）。G4，T20 DONE：两个新现代环境按固定lock重建；无资源源码快照fixture和21项基础通过；数据/cohort/交互集16文件SHA一致；seed42 BPR-MF/LightGCN从零训练，valid/test与选模结果相同；最终完整253项通过。T20独立真实LLM smoke仅1请求/516token、五个约束合法结果，重复启动新增0请求；账单未知。README、复现指南、贡献与限制已补齐，详见[阶段报告](reports/release/t20_20261010.md)和[机器验收](reports/release/t20_20261010.json)。原T19数据/权重/报告不变，T04旧ID/许可/论文条件仍BLOCKED。下一任务T21，未启用可选任务。
 
 ## 既往阶段记录
 
