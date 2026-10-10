@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "run_id": "lightgcn_diagnostic_layer1_20261010",
+  "purpose": "Adaptive exploratory layer/batch interaction diagnosis on validation only; not confirmatory",
+  "seed": 42,
+  "layers": 1,
+  "embedding_dim": 32,
+  "learning_rate": 0.001,
+  "regularization": 0.0001,
+  "torch_threads": 4,
+  "top_k": 10,
+  "selection_metric": "valid_ndcg_at_10",
+  "test_access": false,
+  "remote_api_requests": 0,
+  "trials": [
+    {"name": "original", "batch_size": 32768, "max_epochs": 8, "patience": 2},
+    {"name": "smaller_batch", "batch_size": 2048, "max_epochs": 8, "patience": 2}
+  ]
+}

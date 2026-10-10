@@ -64,3 +64,15 @@ def test_diagnostic_file_guard_blocks_canonical_test_but_restores_open(tmp_path)
         with pytest.raises(PermissionError):
             open(test, 'rb')
     assert test.read_text() == 'secret test target'
+
+
+@pytest.mark.parametrize('use_bytes', [False, True])
+def test_diagnostic_guard_also_blocks_relative_and_byte_paths(tmp_path, monkeypatch, use_bytes):
+    test = tmp_path / 'data/eval_private/ml-1m-v1/test.json'
+    test.parent.mkdir(parents=True)
+    test.write_text('fixture-only target')
+    monkeypatch.chdir(tmp_path)
+    relative = 'data/eval_private/ml-1m-v1/test.json'
+    path = relative.encode() if use_bytes else relative
+    with validation_only_files(), pytest.raises(PermissionError):
+        open(path, 'rb')

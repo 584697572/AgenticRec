@@ -66,12 +66,13 @@ def validation_only_files():
     """Deny Python file opens of all canonical test labels, even indirectly."""
     import builtins
     import io
+    import os
     real_open, real_io_open = builtins.open, io.open
 
     def guarded(opener):
         def open_file(file, *args, **kwargs):
-            if isinstance(file, (str, bytes, Path)):
-                path = str(file).replace('\\', '/').lower()
+            if isinstance(file, (str, bytes, os.PathLike)):
+                path = Path(os.fsdecode(file)).resolve().as_posix().lower()
                 if (path.endswith('/eval_test.parquet') or path.endswith('/test.parquet')
                         or ('/data/eval_private/' in path and path.endswith('/test.json'))
                         or '/data/interactive/' in path and 'test' in Path(path).name):
