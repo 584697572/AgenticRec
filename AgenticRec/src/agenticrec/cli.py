@@ -1,4 +1,4 @@
-"""Implemented T05 commands only. Unknown commands/arguments fail explicitly."""
+"""Public implemented commands. Unknown commands/arguments fail explicitly."""
 import argparse
 from dataclasses import asdict
 import importlib.util
@@ -7,7 +7,6 @@ import platform
 from pathlib import Path
 
 from .config import ExperimentConfig, load_config
-from .testing import FakeLLM
 
 
 def main(argv=None):
@@ -137,9 +136,8 @@ def main(argv=None):
             "config": asdict(config), "remote_api_requests": 0,
             "note": "offline check never grants live API authorization"}
     else:
-        reply = FakeLLM(["fixture response"]).chat([{"role": "user", "content": "offline fixture"}])
-        report = {"status": "PASS", "scope": "FakeLLM_fixture_only", "reply": asdict(reply),
-                  "recommendation_pipeline": "NOT IMPLEMENTED"}
+        from .demo import run_demo
+        report = run_demo()
     print(json.dumps(report, ensure_ascii=True, indent=2))
     return 0
 

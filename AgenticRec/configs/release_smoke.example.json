@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "scope": "t20_release_smoke",
+  "llm": {
+    "allow_paid_api": false,
+    "provider": "deepseek",
+    "model_id": "deepseek-flash",
+    "api_request_cap": 1,
+    "max_output_tokens": 1024,
+    "money_budget": 0.024832,
+    "budget_unit": "CNY",
+    "max_retries": 0
+  }
+}
