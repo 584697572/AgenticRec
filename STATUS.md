@@ -1,6 +1,6 @@
 # 工作区状态入口
 
-最后更新：2026-10-10（Asia/Shanghai）。LG-S01 IN_PROGRESS：用户要求继续改进LightGCN，登记6个train/valid候选（1/2层×32/64维，另给BPR同维度/停止策略），batch2048、最多32轮、patience8，仅valid NDCG选择，HitRate作为次指标。13项fixture/guard测试通过；真实搜索 NOT EVALUATED；新test/三seed NOT EVALUATED。LG-D01/T20 DONE；T21暂待，T04仍BLOCKED。原训练器/正式模型和既往实验不覆盖。
+最后更新：2026-10-10（Asia/Shanghai）。LG-S01有限开发搜索 DONE：[真实结果](reports/rec_baselines/recommendation_search_20261010.md)。6个候选、seed42，仅train/valid；选中1层64维LightGCN，NDCG@10=0.148072（上一轮0.131417，相对+12.67%），HitRate=45.32%（上一轮42.41%，+2.91个百分点）。增强BPR NDCG=0.148613，未证明GCN优于增强BPR；HitRate提升区间含0。266项完整工程回归通过、55个历史文件SHA不变、报告字节一致重建、两模型配置已冻结。正式新test/三seed NOT EVALUATED，原服务模型未替换。T20/LG-D01 DONE，T21暂待，T04旧资源阻塞沿用；API/下载0。
 
 ## 既往阶段记录
 

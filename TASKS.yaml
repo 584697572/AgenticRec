@@ -437,7 +437,7 @@
   "active_followup": {
     "id": "LG-S01",
     "title": "LightGCN有限验证集联合搜索与可比BPR调参",
-    "status": "IN_PROGRESS",
+    "status": "DONE",
     "authorized_by": "2026-10-10 user: 重新检查并判断，继续改进",
     "depends_on": [
       "T09",
@@ -447,8 +447,26 @@
     ],
     "plan": "AgenticRec/configs/recommendation_search_20261010.json",
     "scope": "6 finite train-valid-only candidates; NDCG selection, HitRate secondary; zero LLM; no new test evaluation",
-    "verification": "13 fixture/guard tests passed; full training NOT EVALUATED",
-    "next": "Complete all registered candidates; freeze selected configuration before three-seed evaluation"
+    "verification": {
+      "training_trials": 6,
+      "actual_epochs": 178,
+      "training_seed": 42,
+      "full_tests": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "tests": 266
+      },
+      "test_evaluation": "NOT EVALUATED",
+      "three_seed_evaluation": "NOT EVALUATED",
+      "remote_api_requests": 0,
+      "unchanged_historical_files": 55,
+      "report": "reports/rec_baselines/recommendation_search_20261010.json",
+      "report_sha256": "07e5cddb6dd9c2b4498138c75daff9fe6afd2c8e171009982557a4da6409fa93",
+      "selection_frozen": "AgenticRec/configs/recommendation_search_selected_20261010.json",
+      "byte_identical_report_rebuild": true
+    },
+    "next": "Use frozen GCN/BPR configs for three-seed comparison; preserve historical negative T19 and test-exposure disclosure; T21 pending"
   },
   "followup_history": [
     {

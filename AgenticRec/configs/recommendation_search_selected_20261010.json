@@ -1,0 +1,41 @@
+{
+  "historical_test_already_exposed": true,
+  "new_test_evaluation": "NOT EVALUATED",
+  "purpose": "Frozen LG-S01 validation selection for subsequent three-seed comparison",
+  "remote_api_requests": 0,
+  "schema_version": 1,
+  "seeds": [
+    7,
+    42,
+    2026
+  ],
+  "selected": {
+    "bpr": {
+      "batch_size": 2048,
+      "embedding_dim": 32,
+      "layers": 0,
+      "learning_rate": 0.001,
+      "max_epochs": 32,
+      "model": "bpr",
+      "name": "bpr_l0_d32",
+      "patience": 8,
+      "regularization": 0.0001
+    },
+    "lightgcn": {
+      "batch_size": 2048,
+      "embedding_dim": 64,
+      "layers": 1,
+      "learning_rate": 0.001,
+      "max_epochs": 32,
+      "model": "lightgcn",
+      "name": "lightgcn_l1_d64",
+      "patience": 8,
+      "regularization": 0.0001
+    }
+  },
+  "selection_metric": "valid_ndcg_at_10",
+  "serving_model_replaced": false,
+  "source_plan_sha256": "988a8088f55c61c0fa83ca3bd0dbcad266a9853b7c0868054c0addc00879a24d",
+  "source_report_sha256": "07e5cddb6dd9c2b4498138c75daff9fe6afd2c8e171009982557a4da6409fa93",
+  "three_seed_evaluation": "NOT EVALUATED"
+}
