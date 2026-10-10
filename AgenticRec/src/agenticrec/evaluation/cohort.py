@@ -62,7 +62,7 @@ def freeze():
     manifest = ROOT / 'artifacts/data_manifest.json'
     out = ROOT / 'data/eval_private/ml-1m-v1'
     public = ROOT / 'reproduction/native_runs/20261006_metrics/cohort_summary.json'
-    if out.exists() or public.exists():
+    if out.exists():
         raise FileExistsError('Frozen evaluation cohorts already exist')
     m = json.loads(manifest.read_text(encoding='utf-8'))
     mapping_path = data_dir / 'id_map.json'
@@ -71,8 +71,7 @@ def freeze():
         assert sha(data_dir / name) == m['files'][name]['sha256']
     ids = json.loads(mapping_path.read_text(encoding='utf-8'))
     train = pq.read_table(data_dir / 'train.parquet').to_pylist()
-    out.mkdir(parents=True)
-    public.parent.mkdir(parents=True, exist_ok=True)
+    encoded_cohorts = {}
     summary = {'status': 'PASS', 'protocol': 'fixed MovieLens1M warm full-universe cohorts',
                'data_manifest_sha256': sha(manifest), 'id_map_sha256': m['id_map_sha256'],
                'test_used_for_training_or_tuning': False, 'model_metrics': None,
@@ -86,14 +85,23 @@ def freeze():
         cohort['holdout_sha256'] = m['files']['eval_' + split + '.parquet']['sha256']
         cohort['evaluator_only'] = True
         path = out / (split + '.json')
-        with path.open('x', encoding='utf-8', newline='\n') as f:
-            json.dump(cohort, f, separators=(',', ':'), sort_keys=True)
-            f.write('\n')
+        encoded = (json.dumps(cohort, separators=(',', ':'), sort_keys=True) + '\n').encode('utf-8')
+        encoded_cohorts[path] = encoded
         summary['splits'][split] = {'private_path': path.relative_to(ROOT).as_posix(),
-                                    'sha256': sha(path), **cohort['coverage_only']}
-    with public.open('x', encoding='utf-8', newline='\n') as f:
-        json.dump(summary, f, indent=2, sort_keys=True)
-        f.write('\n')
+                                    'sha256': hashlib.sha256(encoded).hexdigest(), **cohort['coverage_only']}
+    # Public summaries ship in Git; private labels do not. Restore only the
+    # exact sealed labels, validate both splits before writing, preserve summary.
+    if public.exists() and json.loads(public.read_text(encoding='utf-8')) != summary:
+        raise ValueError('Rebuilt cohorts differ from the published frozen summary')
+    out.mkdir(parents=True)
+    for path, encoded in encoded_cohorts.items():
+        with path.open('xb') as stream:
+            stream.write(encoded)
+    if not public.exists():
+        public.parent.mkdir(parents=True, exist_ok=True)
+        with public.open('x', encoding='utf-8', newline='\n') as f:
+            json.dump(summary, f, indent=2, sort_keys=True)
+            f.write('\n')
     print(json.dumps(summary, sort_keys=True))
 
 
