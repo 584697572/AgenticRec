@@ -435,32 +435,50 @@
   "status_evidence_index": "AgenticRec/docs/STATUS.md",
   "status_updated": "2026-10-10",
   "active_followup": {
-    "id": "LG-D01",
-    "title": "LightGCN 训练预算与实现诊断",
-    "status": "DONE",
-    "authorized_by": "2026-10-10 user request after T20",
+    "id": "LG-S01",
+    "title": "LightGCN有限验证集联合搜索与可比BPR调参",
+    "status": "IN_PROGRESS",
+    "authorized_by": "2026-10-10 user: 重新检查并判断，继续改进",
     "depends_on": [
       "T09",
       "T19",
-      "T20"
+      "T20",
+      "LG-D01"
     ],
-    "scope": "train/valid-only exploratory diagnosis; retain T19 negative results",
-    "plan": "AgenticRec/configs/lightgcn_diagnostic_20261010.json",
-    "plans": [
-      "AgenticRec/configs/lightgcn_diagnostic_20261010.json",
-      "AgenticRec/configs/lightgcn_diagnostic_layer1_20261010.json",
-      "AgenticRec/configs/lightgcn_diagnostic_patience_20261010.json"
-    ],
-    "verification": {
-      "tests_passed": 25,
-      "training_trials": 6,
-      "training_seed": 42,
-      "test_evaluation": "NOT EVALUATED",
-      "remote_api_requests": 0,
-      "unchanged_historical_files": 52,
-      "report": "reports/rec_baselines/lightgcn_diagnosis_20261010.json",
-      "report_sha256": "da8b11861b815dfb20965a0993e4a134f41f8298829a1e8940423781754876bd"
-    },
-    "next": "有限valid-only联合搜索，冻结后3seed；T21待续"
-  }
+    "plan": "AgenticRec/configs/recommendation_search_20261010.json",
+    "scope": "6 finite train-valid-only candidates; NDCG selection, HitRate secondary; zero LLM; no new test evaluation",
+    "verification": "13 fixture/guard tests passed; full training NOT EVALUATED",
+    "next": "Complete all registered candidates; freeze selected configuration before three-seed evaluation"
+  },
+  "followup_history": [
+    {
+      "id": "LG-D01",
+      "title": "LightGCN 训练预算与实现诊断",
+      "status": "DONE",
+      "authorized_by": "2026-10-10 user request after T20",
+      "depends_on": [
+        "T09",
+        "T19",
+        "T20"
+      ],
+      "scope": "train/valid-only exploratory diagnosis; retain T19 negative results",
+      "plan": "AgenticRec/configs/lightgcn_diagnostic_20261010.json",
+      "plans": [
+        "AgenticRec/configs/lightgcn_diagnostic_20261010.json",
+        "AgenticRec/configs/lightgcn_diagnostic_layer1_20261010.json",
+        "AgenticRec/configs/lightgcn_diagnostic_patience_20261010.json"
+      ],
+      "verification": {
+        "tests_passed": 25,
+        "training_trials": 6,
+        "training_seed": 42,
+        "test_evaluation": "NOT EVALUATED",
+        "remote_api_requests": 0,
+        "unchanged_historical_files": 52,
+        "report": "reports/rec_baselines/lightgcn_diagnosis_20261010.json",
+        "report_sha256": "da8b11861b815dfb20965a0993e4a134f41f8298829a1e8940423781754876bd"
+      },
+      "next": "有限valid-only联合搜索，冻结后3seed；T21待续"
+    }
+  ]
 }
