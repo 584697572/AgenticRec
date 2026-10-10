@@ -1,6 +1,6 @@
 # 工作区状态入口
 
-最后更新：2026-10-10（Asia/Shanghai）。G4，T20 DONE：两个新现代环境按固定lock重建；无资源源码快照fixture和21项基础通过；数据/cohort/交互集16文件SHA一致；seed42 BPR-MF/LightGCN从零训练，valid/test与选模结果相同；最终完整253项通过。T20独立真实LLM smoke仅1请求/516token、五个约束合法结果，重复启动新增0请求；账单未知。README、复现指南、贡献与限制已补齐，详见[阶段报告](reports/release/t20_20261010.md)和[机器验收](reports/release/t20_20261010.json)。原T19数据/权重/报告不变，T04旧ID/许可/论文条件仍BLOCKED。下一任务T21，未启用可选任务。
+最后更新：2026-10-10（Asia/Shanghai）。T20 DONE，T21 TODO。用户授权优先开展 LightGCN 诊断 LG-D01（IN PROGRESS）：检查训练步数、停止策略与数值实现，另立仅 train/valid 的探索实验；保留 T19 全部负结果和原数据/config/权重，零 LLM 请求、不下载新资源。原版 T04 仍 BLOCKED，未启用可选任务。
 
 ## 既往阶段记录
 

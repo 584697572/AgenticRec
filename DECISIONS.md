@@ -303,3 +303,11 @@
 - 风险记录：首轮完整测试一项U1约97秒失败，独立和后续完整检查通过，根因未证实，不放宽90秒边界或加重试；故障日志保留。文档写入曾受PowerShell管道ASCII编码影响，显式UTF-8重写并检查，不改变源码/数据。
 - 接口差异：既有实现使用data/cohort/episodes模块、train内模型评测和report函数，而规范§12.1的data prepare/validate、eval-rec、chat、eval-agent、report统一CLI名未实现。T20材料列真实命令并记录限制；不将目标名伪称可用，不为交付改算法。差异建议另记spec_issues，原规范不修改。
 - 可比性：cohort标签/摘要SHA、模型选择、T19模型/数据/config/正式表格均保持；当前只改变CLI演示和cohort恢复逻辑，新增发布脚本不加入正式评测。原T19执行commit ad4d493与结果6bf79dd保留，不能把T20源码哈希当原运行。重建是验证，不用已看test结果再次调参。账单未查询保留null，余额显示无变化不写0费用。
+
+## ADR-036：用户授权的 LightGCN 诊断先检查训练预算，另立仅验证集实验
+
+- 日期：2026-10-10。用户在 T20 后明确要求“先判断是哪里问题最大，导致效果并不好”，因此先开展模型诊断，T21 暂待，不启用 T22—T24。规范 §7.1 要求 valid-only 选择，§10.6 要求保留负收益与三个 seeds；历史 T19 负结果和数据协议保持原样。
+- 实际发现：相同 462,887 条训练边，LightGCN batch32768 每轮仅15次 Adam 更新，BPR batch2048 每轮227次；两者初始最多8轮、patience2。多个 LightGCN 最优 epoch 落在第8轮上限，仅此不能证明训练不足是根因。
+- 决定：先登记 seed42、3层、32维、相同学习率/正则/图/采样的三个开发诊断：原配置复算；batch不变而延长至32轮/patience8；原8轮/patience2但batch降至2048。延长实验同时改变轮数与早停耐心，需合称训练预算/停止策略，不能独立归因。损失和全量梯度另用独立稠密小图对照。
+- 隔离：新脚本只装载 train 与 valid；拒绝 Python 文件接口打开 canonical test 标签；新模型/预测/日志仅写 ignored artifacts/runs/lightgcn_diagnostics，不改原训练器/config/checkpoint/正式报告。记录 plan/source/data/valid SHA，默认不覆盖既有 run。零下载、零 LLM 请求。
+- 可比性：valid 仍是原冻结 valid，但历史 test 结论已被看过，本轮属于后续探索性开发，不是新的独立确认性实验。单 seed 的开发收益不能作为正式三 seed/test/线上提升；若后续选择新模型，需先登记最终配置与评价口径并明确历史测试暴露，保留原报告。当前诊断原因与收益 NOT VERIFIED，待真实对照执行更新。

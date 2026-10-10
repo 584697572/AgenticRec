@@ -433,5 +433,18 @@
     }
   ],
   "status_evidence_index": "AgenticRec/docs/STATUS.md",
-  "status_updated": "2026-10-10"
+  "status_updated": "2026-10-10",
+  "active_followup": {
+    "id": "LG-D01",
+    "title": "LightGCN 训练预算与实现诊断",
+    "status": "IN PROGRESS",
+    "authorized_by": "2026-10-10 user request after T20",
+    "depends_on": [
+      "T09",
+      "T19",
+      "T20"
+    ],
+    "scope": "train/valid-only exploratory diagnosis; retain T19 negative results",
+    "plan": "AgenticRec/configs/lightgcn_diagnostic_20261010.json"
+  }
 }
