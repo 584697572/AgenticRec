@@ -1,6 +1,6 @@
 # 项目状态
 
-最后更新：2026-10-10（Asia/Shanghai）。T20 DONE，T21 TODO。用户授权优先开展 LightGCN 诊断 LG-D01（IN PROGRESS）：检查训练步数、停止策略与数值实现，另立仅 train/valid 的探索实验；保留 T19 全部负结果和原数据/config/权重，零 LLM 请求、不下载新资源。原版 T04 仍 BLOCKED，未启用可选任务。
+最后更新：2026-10-10（Asia/Shanghai）。T20 DONE；用户授权的LightGCN诊断LG-D01 DONE，详见[诊断报告](../../reports/rec_baselines/lightgcn_diagnosis_20261010.md)。6个仅train/valid对照、25项专项通过；同8轮/batch2048下1层valid NDCG@10=0.131417，3层=0.122805（相对+7.01%，仅seed42探索性结果）。原模型未替换，52个历史基线文件SHA不变，原T19负结果保留，改进模型的3seed/test NOT EVALUATED。下一批valid-only配置联选，之后T21；T04仍BLOCKED、可选任务未启用。
 
 | 任务 | 状态 | 验证与剩余项 |
 |---|---|---|
@@ -25,7 +25,9 @@
 | T18 | DONE | development/test 各150条、各40条多轮；公开/隐藏分离，用户/模板组隔离，完整分母评分器、16条人工核验和全空防刷通过 |
 | T19 | DONE | 模型三seed、U1/F/A/O、全部规定消融、24个run真实执行与CI/失败分析完成；3,600个episode执行/2,850个正式请求，表格SHA可重建；恢复新增0调用；负收益与接口失败均保留 |
 | T20 | DONE | 独立环境/源码快照、253项完整回归、精确数据/训练重建及1次真实smoke，详见发布报告 |
-| T21—T24 | TODO | 失败分析收口、发布与最终审计尚未验收 |
+| T21 | TODO | 技术报告与简历事实核对待续 |
+| T22—T24 | TODO（可选） | 未启用SASRec、学习式成本路由和上游贡献 |
+| LG-D01 | DONE | 用户授权后续模型诊断；6个验证集对照、25项专项通过，未替换正式模型 |
 
 ## 最新证据
 

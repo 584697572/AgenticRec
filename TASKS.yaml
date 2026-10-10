@@ -437,7 +437,7 @@
   "active_followup": {
     "id": "LG-D01",
     "title": "LightGCN 训练预算与实现诊断",
-    "status": "IN PROGRESS",
+    "status": "DONE",
     "authorized_by": "2026-10-10 user request after T20",
     "depends_on": [
       "T09",
@@ -445,6 +445,22 @@
       "T20"
     ],
     "scope": "train/valid-only exploratory diagnosis; retain T19 negative results",
-    "plan": "AgenticRec/configs/lightgcn_diagnostic_20261010.json"
+    "plan": "AgenticRec/configs/lightgcn_diagnostic_20261010.json",
+    "plans": [
+      "AgenticRec/configs/lightgcn_diagnostic_20261010.json",
+      "AgenticRec/configs/lightgcn_diagnostic_layer1_20261010.json",
+      "AgenticRec/configs/lightgcn_diagnostic_patience_20261010.json"
+    ],
+    "verification": {
+      "tests_passed": 25,
+      "training_trials": 6,
+      "training_seed": 42,
+      "test_evaluation": "NOT EVALUATED",
+      "remote_api_requests": 0,
+      "unchanged_historical_files": 52,
+      "report": "reports/rec_baselines/lightgcn_diagnosis_20261010.json",
+      "report_sha256": "da8b11861b815dfb20965a0993e4a134f41f8298829a1e8940423781754876bd"
+    },
+    "next": "有限valid-only联合搜索，冻结后3seed；T21待续"
   }
 }

@@ -1,6 +1,6 @@
 # 工作区状态入口
 
-最后更新：2026-10-10（Asia/Shanghai）。T20 DONE，T21 TODO。用户授权优先开展 LightGCN 诊断 LG-D01（IN PROGRESS）：检查训练步数、停止策略与数值实现，另立仅 train/valid 的探索实验；保留 T19 全部负结果和原数据/config/权重，零 LLM 请求、不下载新资源。原版 T04 仍 BLOCKED，未启用可选任务。
+最后更新：2026-10-10（Asia/Shanghai）。T20 DONE；用户授权的LightGCN诊断LG-D01 DONE，详见[诊断报告](reports/rec_baselines/lightgcn_diagnosis_20261010.md)。6个仅train/valid对照、25项专项通过；同8轮/batch2048下1层valid NDCG@10=0.131417，3层=0.122805（相对+7.01%，仅seed42探索性结果）。原模型未替换，52个历史基线文件SHA不变，原T19负结果保留，改进模型的3seed/test NOT EVALUATED。下一批valid-only配置联选，之后T21；T04仍BLOCKED、可选任务未启用。
 
 ## 既往阶段记录
 
