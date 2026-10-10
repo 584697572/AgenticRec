@@ -1,6 +1,6 @@
 # 项目状态
 
-最后更新：2026-10-10（Asia/Shanghai）。G0资源审计/路线选择闭合，质量实验按规范独立重建路径推进。T06—T18已验收；T19 IN PROGRESS。用户最新授权按现有账户余额运行，余额不足即停止提醒，不充值。初查5.10 CNY；四系统development真实联调通过5次调用，另1次schema失败保留，正式test未开始。全部规定消融与三个seed保留，仅推迟额外no_collaborative；24个run、最坏4,608次请求。两环境全量各249项通过，余额/403和schema专项各10项通过。T04阻塞不变；最终系统效果/CI仍NOT EVALUATED，不能将开发联调当质量评测。支出与计时边界见根DECISIONS.md ADR-034。
+最后更新：2026-10-10（Asia/Shanghai）。T19 DONE：24个真实系统/规定消融/seed运行完成，150条冻结合成test各执行24次，共3,600条与2,850次正式请求。完整审计与原始报告重建SHA一致，恢复新增请求0，源代码/模型/数据身份不变。O/A成功率均81.33%，请求190→99；无内容成功率86%更高，保留负结果。观察余额5.10→3.08 CNY、减少2.02，实际账单未知，有限工作完成后已停止生成。两环境完整各249项及新增专项通过。T04 ID语义/许可/canonical条件仍BLOCKED；此处完成的是独立方法级benchmark。下一任务T20，非全项目或论文复现完成。
 
 | 任务 | 状态 | 验证与剩余项 |
 |---|---|---|
@@ -23,12 +23,13 @@
 | T16 | DONE | DIRECT/PERSONALIZED/AGENT/CLARIFY、F/A/O、dev-only 阈值、最多一次重规划和四类 FakeLLM 轨迹；专项13项及两环境各136项通过，test 文件读取0 |
 | T17 | DONE | 坏 JSON/timeout/429/无候选/prompt injection/恶意结果与同步工具超时；同名、异步 session、32并发反馈和缓存隔离；专项14项及两环境各150项通过 |
 | T18 | DONE | development/test 各150条、各40条多轮；公开/隐藏分离，用户/模板组隔离，完整分母评分器、16条人工核验和全空防刷通过 |
-| T19 | IN PROGRESS | 模型三seed子任务已完成；U1/F/A/O/消融、局部fault、audit与报告实现接通；两个环境各239项通过；30元预算不能覆盖现有全批保守预留，live效果NOT EVALUATED |
+| T19 | DONE | 模型三seed、U1/F/A/O、全部规定消融、24个run真实执行与CI/失败分析完成；3,600个episode执行/2,850个正式请求，表格SHA可重建；恢复新增0调用；负收益与接口失败均保留 |
 | T20—T24 | TODO | 失败分析收口、发布与最终审计尚未验收 |
 
 ## 最新证据
 
-- [T19 工程与30元预算核算](../../reports/benchmark/t19_engineering_20261010.md)：239项双环境离线回归；真实候选经原版ToolBox执行通过；补no_content并修正状态/工具/失败调用计数；预算profile仅用于工程核算，本轮真实请求0。完整live报告生成验收尚未完成，T19不标DONE。
+- [T19真实完整批次](../../reports/benchmark/t19_live_20261010.md)：本轮最终验收；[机器摘要](../../reports/benchmark/t19_live_20261010.json)包含原始证据/重建SHA与配对CI。
+- [T19 工程与30元预算核算](../../reports/benchmark/t19_engineering_20261010.md)：历史239项双环境与旧预算快照，已由ADR-034和最终真实批次取代当前状态；旧失败/原始记录保留。
 
 - [T17 故障注入与会话隔离](../../reports/reliability/t17_20261007.md)：未授权工具在副作用前拒绝，坏 JSON/重试/无候选/恶意结果均有界停止；同名用户、异步反馈和版本化缓存不串扰，并明确同步 timeout 不是线程硬取消。
 
@@ -114,3 +115,7 @@ T19 IN PROGRESS：推荐模型三 seed 与配对统计、整批 dry-run、24个 
 T19 executor 更新：新增 U1/F/A/O/消融共用的 episode executor 核心及只保留显式逐轮 patch 的 `FeedbackSchedule`。多轮 schedule SHA 现绑定 `RunSpec` 和 journal identity；缺失反馈只记到第2轮，最终响应完成才记3轮。冻结150条 test 的 F 机械 fixture 完成75次解析、190次 fixed 调用、40条三轮，恢复重复调用0，journal私有字段0，真实请求0；不产生质量指标。联合专项两环境各22 tests，完整回归各212 tests，compileall通过。真实 A/O 工具工厂、U1 upstream live turn、fault 注入和 live 指标仍未完成。证据：`../../reports/benchmark/t19_system_executor_20261007.md`。
 
 T19 A/O 工具更新：新增 benchmark Agent 工厂，把 A/O 与规定消融接到冻结的真实 `FixedRecommendationPipeline`。planner 计划必须携带完整精确的 `FixedRequest`；公开 user ID、历史授权和结构化请求在任何工具执行前绑定校验。两套环境专项各11 tests、完整回归各223 tests；真实 LightGCN seed 42 smoke 中 A 经1次fixture planner和1次工具调用返回3条满足 Action 的推荐，O 对结构化输入零 planner 直达相同结果，身份篡改计划工具调用0。下载0、真实请求0，系统指标仍 `NOT EVALUATED`。U1 turn adapter、fault 执行和 live 整批仍未完成。证据：`../../reports/benchmark/t19_agent_tool_20261007.md`。
+
+## T19 live batch started (2026-10-10)
+
+T19 IN PROGRESS. Engineering commit ad4d493 is frozen; formal run directory: artifacts/runs/t19/live_20261010. All 24 required system/ablation/seed runs are started by the same audited CLI. Initial provider balance 5.10 CNY; no top-ups. Progress evidence lives in per-run predictions.jsonl, llm_attempts.jsonl and account_balance.jsonl. First U1 test episode completed successfully. No complete quality/CI claim is made while the batch is running. Sources/configuration will not be tuned against these test observations.

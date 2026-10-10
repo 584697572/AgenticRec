@@ -1,0 +1,2592 @@
+{
+  "H2_noninferiority_supported": true,
+  "actual_cost_cny": null,
+  "actual_cost_reason": "provider_bill_not_queried",
+  "agent_seeds": [
+    7,
+    42,
+    2026
+  ],
+  "aggregate": {
+    "A": {
+      "constraint_precision": {
+        "mean": 0.96,
+        "sample_std": 0.0
+      },
+      "fallback_rate": {
+        "mean": 0.8266666666666667,
+        "sample_std": 0.0
+      },
+      "fill_at_k": {
+        "mean": 0.7600000000000001,
+        "sample_std": 0.0
+      },
+      "input_tokens": {
+        "mean": 68600.0,
+        "sample_std": 0.0
+      },
+      "latency_p50_ms": {
+        "mean": 1122.1666666666958,
+        "sample_std": 38.48484550270021
+      },
+      "latency_p95_ms": {
+        "mean": 2322.666666666919,
+        "sample_std": 77.20319509782955
+      },
+      "output_tokens": {
+        "mean": 21054.0,
+        "sample_std": 5.291502622129181
+      },
+      "parser_calls": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "planner_calls": {
+        "mean": 190.0,
+        "sample_std": 0.0
+      },
+      "replans": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "requests": {
+        "mean": 190.0,
+        "sample_std": 0.0
+      },
+      "strict_success": {
+        "mean": 0.8133333333333334,
+        "sample_std": 0.006666666666666654
+      },
+      "tool_calls": {
+        "mean": 171.0,
+        "sample_std": 0.0
+      }
+    },
+    "F": {
+      "constraint_precision": {
+        "mean": 0.8000000000000002,
+        "sample_std": 0.0
+      },
+      "fallback_rate": {
+        "mean": 0.6666666666666666,
+        "sample_std": 0.0
+      },
+      "fill_at_k": {
+        "mean": 0.6,
+        "sample_std": 0.0
+      },
+      "input_tokens": {
+        "mean": 21299.0,
+        "sample_std": 0.0
+      },
+      "latency_p50_ms": {
+        "mean": 380.33333333290403,
+        "sample_std": 32.46664955464507
+      },
+      "latency_p95_ms": {
+        "mean": 1224.00000000016,
+        "sample_std": 32.18695387886397
+      },
+      "output_tokens": {
+        "mean": 6937.0,
+        "sample_std": 0.0
+      },
+      "parser_calls": {
+        "mean": 75.0,
+        "sample_std": 0.0
+      },
+      "planner_calls": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "replans": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "requests": {
+        "mean": 75.0,
+        "sample_std": 0.0
+      },
+      "strict_success": {
+        "mean": 0.6866666666666666,
+        "sample_std": 0.006666666666666654
+      },
+      "tool_calls": {
+        "mean": 146.0,
+        "sample_std": 0.0
+      }
+    },
+    "O": {
+      "constraint_precision": {
+        "mean": 0.96,
+        "sample_std": 0.0
+      },
+      "fallback_rate": {
+        "mean": 0.7733333333333333,
+        "sample_std": 0.0
+      },
+      "fill_at_k": {
+        "mean": 0.7600000000000001,
+        "sample_std": 0.0
+      },
+      "input_tokens": {
+        "mean": 33734.666666666664,
+        "sample_std": 23.671361036774655
+      },
+      "latency_p50_ms": {
+        "mean": 393.3333333337335,
+        "sample_std": 4.9074772880614095
+      },
+      "latency_p95_ms": {
+        "mean": 2161.3333333328533,
+        "sample_std": 106.26539104176119
+      },
+      "output_tokens": {
+        "mean": 10992.666666666666,
+        "sample_std": 2.309401076758503
+      },
+      "parser_calls": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "planner_calls": {
+        "mean": 99.0,
+        "sample_std": 0.0
+      },
+      "replans": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "requests": {
+        "mean": 99.0,
+        "sample_std": 0.0
+      },
+      "strict_success": {
+        "mean": 0.8133333333333334,
+        "sample_std": 0.006666666666666654
+      },
+      "tool_calls": {
+        "mean": 163.33333333333334,
+        "sample_std": 0.5773502691896257
+      }
+    },
+    "U1": {
+      "constraint_precision": {
+        "mean": 0.7088888888888888,
+        "sample_std": 0.010183501544346316
+      },
+      "fallback_rate": {
+        "mean": 0.6266666666666666,
+        "sample_std": 0.006666666666666654
+      },
+      "fill_at_k": {
+        "mean": 0.5311111111111111,
+        "sample_std": 0.0138777733297742
+      },
+      "input_tokens": {
+        "mean": 76679.33333333333,
+        "sample_std": 40.5010287935175
+      },
+      "latency_p50_ms": {
+        "mean": 1359.5000000001771,
+        "sample_std": 15.499999999974534
+      },
+      "latency_p95_ms": {
+        "mean": 3088.3333333331393,
+        "sample_std": 118.15808619557636
+      },
+      "output_tokens": {
+        "mean": 41456.0,
+        "sample_std": 151.0595908904827
+      },
+      "parser_calls": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "planner_calls": {
+        "mean": 190.0,
+        "sample_std": 0.0
+      },
+      "replans": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "requests": {
+        "mean": 190.0,
+        "sample_std": 0.0
+      },
+      "strict_success": {
+        "mean": 0.6244444444444445,
+        "sample_std": 0.010183501544346328
+      },
+      "tool_calls": {
+        "mean": 337.3333333333333,
+        "sample_std": 4.932882862316247
+      }
+    },
+    "always_agent": {
+      "constraint_precision": {
+        "mean": 0.96,
+        "sample_std": 0.0
+      },
+      "fallback_rate": {
+        "mean": 0.8266666666666667,
+        "sample_std": 0.0
+      },
+      "fill_at_k": {
+        "mean": 0.7600000000000001,
+        "sample_std": 0.0
+      },
+      "input_tokens": {
+        "mean": 68600.0,
+        "sample_std": 0.0
+      },
+      "latency_p50_ms": {
+        "mean": 1122.1666666666958,
+        "sample_std": 38.48484550270021
+      },
+      "latency_p95_ms": {
+        "mean": 2322.666666666919,
+        "sample_std": 77.20319509782955
+      },
+      "output_tokens": {
+        "mean": 21054.0,
+        "sample_std": 5.291502622129181
+      },
+      "parser_calls": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "planner_calls": {
+        "mean": 190.0,
+        "sample_std": 0.0
+      },
+      "replans": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "requests": {
+        "mean": 190.0,
+        "sample_std": 0.0
+      },
+      "strict_success": {
+        "mean": 0.8133333333333334,
+        "sample_std": 0.006666666666666654
+      },
+      "tool_calls": {
+        "mean": 171.0,
+        "sample_std": 0.0
+      }
+    },
+    "no_content": {
+      "constraint_precision": {
+        "mean": 0.96,
+        "sample_std": 0.0
+      },
+      "fallback_rate": {
+        "mean": 0.21333333333333335,
+        "sample_std": 0.0
+      },
+      "fill_at_k": {
+        "mean": 0.7600000000000001,
+        "sample_std": 0.0
+      },
+      "input_tokens": {
+        "mean": 33721.0,
+        "sample_std": 0.0
+      },
+      "latency_p50_ms": {
+        "mean": 437.3333333336025,
+        "sample_std": 7.751343969699252
+      },
+      "latency_p95_ms": {
+        "mean": 2322.666666666919,
+        "sample_std": 72.16878364765303
+      },
+      "output_tokens": {
+        "mean": 10993.333333333334,
+        "sample_std": 0.5773502691896257
+      },
+      "parser_calls": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "planner_calls": {
+        "mean": 99.0,
+        "sample_std": 0.0
+      },
+      "replans": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "requests": {
+        "mean": 99.0,
+        "sample_std": 0.0
+      },
+      "strict_success": {
+        "mean": 0.86,
+        "sample_std": 0.006666666666666654
+      },
+      "tool_calls": {
+        "mean": 163.0,
+        "sample_std": 0.0
+      }
+    },
+    "no_explicit_preference_state": {
+      "constraint_precision": {
+        "mean": 0.9422222222222222,
+        "sample_std": 0.00384900179459753
+      },
+      "fallback_rate": {
+        "mean": 0.7622222222222222,
+        "sample_std": 0.00384900179459753
+      },
+      "fill_at_k": {
+        "mean": 0.7422222222222222,
+        "sample_std": 0.00384900179459753
+      },
+      "input_tokens": {
+        "mean": 33748.333333333336,
+        "sample_std": 23.671361036774655
+      },
+      "latency_p50_ms": {
+        "mean": 445.4999999998108,
+        "sample_std": 47.34712240479218
+      },
+      "latency_p95_ms": {
+        "mean": 2166.9999999994616,
+        "sample_std": 45.03332099651356
+      },
+      "output_tokens": {
+        "mean": 10991.333333333334,
+        "sample_std": 1.1547005383792515
+      },
+      "parser_calls": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "planner_calls": {
+        "mean": 99.0,
+        "sample_std": 0.0
+      },
+      "replans": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "requests": {
+        "mean": 99.0,
+        "sample_std": 0.0
+      },
+      "strict_success": {
+        "mean": 0.791111111111111,
+        "sample_std": 0.0138777733297742
+      },
+      "tool_calls": {
+        "mean": 162.0,
+        "sample_std": 0.0
+      }
+    },
+    "no_replanning": {
+      "constraint_precision": {
+        "mean": 0.96,
+        "sample_std": 0.0
+      },
+      "fallback_rate": {
+        "mean": 0.7733333333333333,
+        "sample_std": 0.0
+      },
+      "fill_at_k": {
+        "mean": 0.7600000000000001,
+        "sample_std": 0.0
+      },
+      "input_tokens": {
+        "mean": 33734.666666666664,
+        "sample_std": 23.671361036774655
+      },
+      "latency_p50_ms": {
+        "mean": 432.16666666679276,
+        "sample_std": 11.898879499287924
+      },
+      "latency_p95_ms": {
+        "mean": 2312.6666666660944,
+        "sample_std": 138.78160300723184
+      },
+      "output_tokens": {
+        "mean": 10993.0,
+        "sample_std": 1.0
+      },
+      "parser_calls": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "planner_calls": {
+        "mean": 99.0,
+        "sample_std": 0.0
+      },
+      "replans": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "requests": {
+        "mean": 99.0,
+        "sample_std": 0.0
+      },
+      "strict_success": {
+        "mean": 0.8155555555555556,
+        "sample_std": 0.003849001794597466
+      },
+      "tool_calls": {
+        "mean": 163.33333333333334,
+        "sample_std": 0.5773502691896257
+      }
+    },
+    "no_user_model": {
+      "constraint_precision": {
+        "mean": 0.96,
+        "sample_std": 0.0
+      },
+      "fallback_rate": {
+        "mean": 0.21333333333333335,
+        "sample_std": 0.0
+      },
+      "fill_at_k": {
+        "mean": 0.7600000000000001,
+        "sample_std": 0.0
+      },
+      "input_tokens": {
+        "mean": 33748.333333333336,
+        "sample_std": 23.671361036774655
+      },
+      "latency_p50_ms": {
+        "mean": 377.9999999997017,
+        "sample_std": 9.096702698808826
+      },
+      "latency_p95_ms": {
+        "mean": 2114.6666666663805,
+        "sample_std": 48.33563212896532
+      },
+      "output_tokens": {
+        "mean": 10992.666666666666,
+        "sample_std": 1.1547005383792515
+      },
+      "parser_calls": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "planner_calls": {
+        "mean": 99.0,
+        "sample_std": 0.0
+      },
+      "replans": {
+        "mean": 0.0,
+        "sample_std": 0.0
+      },
+      "requests": {
+        "mean": 99.0,
+        "sample_std": 0.0
+      },
+      "strict_success": {
+        "mean": 0.8333333333333334,
+        "sample_std": 0.0
+      },
+      "tool_calls": {
+        "mean": 163.66666666666666,
+        "sample_std": 0.5773502691896257
+      }
+    }
+  },
+  "cost_planning_reserved_cny": 70.77120000000002,
+  "episodes_per_run": 150,
+  "episodes_unknown_usage": 0,
+  "estimated_cost_cny_peak_ceiling": 4.997432,
+  "failures": {
+    "A": {
+      "categories": {
+        "acceptance_miss": 66,
+        "parse_or_plan_failure": 18,
+        "short_fill": 18,
+        "wrong_status": 18
+      },
+      "examples": [
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-004",
+          "family": "seed_similar",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PLAN"
+        },
+        {
+          "categories": [
+            "acceptance_miss"
+          ],
+          "episode_id": "test-010",
+          "family": "personalized",
+          "layer": "text",
+          "seed": 7,
+          "status": "OK"
+        },
+        {
+          "categories": [
+            "acceptance_miss"
+          ],
+          "episode_id": "test-030",
+          "family": "exclusion_feedback",
+          "layer": "text",
+          "seed": 7,
+          "status": "OK"
+        },
+        {
+          "categories": [
+            "acceptance_miss"
+          ],
+          "episode_id": "test-033",
+          "family": "personalized",
+          "layer": "structured",
+          "seed": 7,
+          "status": "OK"
+        },
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-034",
+          "family": "seed_similar",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PLAN"
+        }
+      ],
+      "strata": {
+        "family:cold_start": {
+          "episodes": 30,
+          "strict_successes": 30
+        },
+        "family:constraint_conflict": {
+          "episodes": 45,
+          "strict_successes": 45
+        },
+        "family:exclusion_feedback": {
+          "episodes": 120,
+          "strict_successes": 96
+        },
+        "family:explicit_filter": {
+          "episodes": 60,
+          "strict_successes": 60
+        },
+        "family:personalized": {
+          "episodes": 60,
+          "strict_successes": 27
+        },
+        "family:seed_similar": {
+          "episodes": 60,
+          "strict_successes": 42
+        },
+        "family:tool_error": {
+          "episodes": 30,
+          "strict_successes": 21
+        },
+        "family:unknown_attribute": {
+          "episodes": 45,
+          "strict_successes": 45
+        },
+        "layer:structured": {
+          "episodes": 225,
+          "strict_successes": 194
+        },
+        "layer:text": {
+          "episodes": 225,
+          "strict_successes": 172
+        }
+      }
+    },
+    "F": {
+      "categories": {
+        "acceptance_miss": 51,
+        "parse_or_plan_failure": 90,
+        "preference_update_mismatch": 72,
+        "short_fill": 90,
+        "wrong_status": 90
+      },
+      "examples": [
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-004",
+          "family": "seed_similar",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PARSE"
+        },
+        {
+          "categories": [
+            "acceptance_miss"
+          ],
+          "episode_id": "test-010",
+          "family": "personalized",
+          "layer": "text",
+          "seed": 7,
+          "status": "OK"
+        },
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "preference_update_mismatch",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-014",
+          "family": "exclusion_feedback",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PARSE"
+        },
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "preference_update_mismatch",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-018",
+          "family": "exclusion_feedback",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PARSE"
+        },
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "preference_update_mismatch",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-030",
+          "family": "exclusion_feedback",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PARSE"
+        }
+      ],
+      "strata": {
+        "family:cold_start": {
+          "episodes": 30,
+          "strict_successes": 30
+        },
+        "family:constraint_conflict": {
+          "episodes": 45,
+          "strict_successes": 45
+        },
+        "family:exclusion_feedback": {
+          "episodes": 120,
+          "strict_successes": 39
+        },
+        "family:explicit_filter": {
+          "episodes": 60,
+          "strict_successes": 60
+        },
+        "family:personalized": {
+          "episodes": 60,
+          "strict_successes": 27
+        },
+        "family:seed_similar": {
+          "episodes": 60,
+          "strict_successes": 42
+        },
+        "family:tool_error": {
+          "episodes": 30,
+          "strict_successes": 21
+        },
+        "family:unknown_attribute": {
+          "episodes": 45,
+          "strict_successes": 45
+        },
+        "layer:structured": {
+          "episodes": 225,
+          "strict_successes": 194
+        },
+        "layer:text": {
+          "episodes": 225,
+          "strict_successes": 115
+        }
+      }
+    },
+    "O": {
+      "categories": {
+        "acceptance_miss": 66,
+        "parse_or_plan_failure": 18,
+        "short_fill": 18,
+        "wrong_status": 18
+      },
+      "examples": [
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-004",
+          "family": "seed_similar",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PLAN"
+        },
+        {
+          "categories": [
+            "acceptance_miss"
+          ],
+          "episode_id": "test-010",
+          "family": "personalized",
+          "layer": "text",
+          "seed": 7,
+          "status": "OK"
+        },
+        {
+          "categories": [
+            "acceptance_miss"
+          ],
+          "episode_id": "test-030",
+          "family": "exclusion_feedback",
+          "layer": "text",
+          "seed": 7,
+          "status": "OK"
+        },
+        {
+          "categories": [
+            "acceptance_miss"
+          ],
+          "episode_id": "test-033",
+          "family": "personalized",
+          "layer": "structured",
+          "seed": 7,
+          "status": "OK"
+        },
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-034",
+          "family": "seed_similar",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PLAN"
+        }
+      ],
+      "strata": {
+        "family:cold_start": {
+          "episodes": 30,
+          "strict_successes": 30
+        },
+        "family:constraint_conflict": {
+          "episodes": 45,
+          "strict_successes": 45
+        },
+        "family:exclusion_feedback": {
+          "episodes": 120,
+          "strict_successes": 96
+        },
+        "family:explicit_filter": {
+          "episodes": 60,
+          "strict_successes": 60
+        },
+        "family:personalized": {
+          "episodes": 60,
+          "strict_successes": 27
+        },
+        "family:seed_similar": {
+          "episodes": 60,
+          "strict_successes": 42
+        },
+        "family:tool_error": {
+          "episodes": 30,
+          "strict_successes": 21
+        },
+        "family:unknown_attribute": {
+          "episodes": 45,
+          "strict_successes": 45
+        },
+        "layer:structured": {
+          "episodes": 225,
+          "strict_successes": 194
+        },
+        "layer:text": {
+          "episodes": 225,
+          "strict_successes": 172
+        }
+      }
+    },
+    "U1": {
+      "categories": {
+        "acceptance_miss": 38,
+        "fallback_mismatch": 16,
+        "parse_or_plan_failure": 131,
+        "short_fill": 121,
+        "wrong_status": 131
+      },
+      "examples": [
+        {
+          "categories": [
+            "wrong_status",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-002",
+          "family": "constraint_conflict",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PLAN"
+        },
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-004",
+          "family": "seed_similar",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PLAN"
+        },
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-008",
+          "family": "personalized",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PLAN"
+        },
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-010",
+          "family": "personalized",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PLAN"
+        },
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-018",
+          "family": "exclusion_feedback",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PLAN"
+        }
+      ],
+      "strata": {
+        "family:cold_start": {
+          "episodes": 30,
+          "strict_successes": 21
+        },
+        "family:constraint_conflict": {
+          "episodes": 45,
+          "strict_successes": 37
+        },
+        "family:exclusion_feedback": {
+          "episodes": 120,
+          "strict_successes": 66
+        },
+        "family:explicit_filter": {
+          "episodes": 60,
+          "strict_successes": 56
+        },
+        "family:personalized": {
+          "episodes": 60,
+          "strict_successes": 15
+        },
+        "family:seed_similar": {
+          "episodes": 60,
+          "strict_successes": 33
+        },
+        "family:tool_error": {
+          "episodes": 30,
+          "strict_successes": 10
+        },
+        "family:unknown_attribute": {
+          "episodes": 45,
+          "strict_successes": 43
+        },
+        "layer:structured": {
+          "episodes": 225,
+          "strict_successes": 183
+        },
+        "layer:text": {
+          "episodes": 225,
+          "strict_successes": 98
+        }
+      }
+    },
+    "no_content": {
+      "categories": {
+        "acceptance_miss": 45,
+        "parse_or_plan_failure": 18,
+        "short_fill": 18,
+        "wrong_status": 18
+      },
+      "examples": [
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-004",
+          "family": "seed_similar",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PLAN"
+        },
+        {
+          "categories": [
+            "acceptance_miss"
+          ],
+          "episode_id": "test-010",
+          "family": "personalized",
+          "layer": "text",
+          "seed": 7,
+          "status": "OK"
+        },
+        {
+          "categories": [
+            "acceptance_miss"
+          ],
+          "episode_id": "test-033",
+          "family": "personalized",
+          "layer": "structured",
+          "seed": 7,
+          "status": "OK"
+        },
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-034",
+          "family": "seed_similar",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PLAN"
+        },
+        {
+          "categories": [
+            "acceptance_miss"
+          ],
+          "episode_id": "test-043",
+          "family": "tool_error",
+          "layer": "structured",
+          "seed": 7,
+          "status": "OK"
+        }
+      ],
+      "strata": {
+        "family:cold_start": {
+          "episodes": 30,
+          "strict_successes": 30
+        },
+        "family:constraint_conflict": {
+          "episodes": 45,
+          "strict_successes": 45
+        },
+        "family:exclusion_feedback": {
+          "episodes": 120,
+          "strict_successes": 117
+        },
+        "family:explicit_filter": {
+          "episodes": 60,
+          "strict_successes": 60
+        },
+        "family:personalized": {
+          "episodes": 60,
+          "strict_successes": 27
+        },
+        "family:seed_similar": {
+          "episodes": 60,
+          "strict_successes": 42
+        },
+        "family:tool_error": {
+          "episodes": 30,
+          "strict_successes": 21
+        },
+        "family:unknown_attribute": {
+          "episodes": 45,
+          "strict_successes": 45
+        },
+        "layer:structured": {
+          "episodes": 225,
+          "strict_successes": 203
+        },
+        "layer:text": {
+          "episodes": 225,
+          "strict_successes": 184
+        }
+      }
+    },
+    "no_explicit_preference_state": {
+      "categories": {
+        "acceptance_miss": 56,
+        "constraint_violation": 15,
+        "parse_or_plan_failure": 23,
+        "preference_update_mismatch": 120,
+        "short_fill": 38,
+        "wrong_status": 23
+      },
+      "examples": [
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-004",
+          "family": "seed_similar",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PLAN"
+        },
+        {
+          "categories": [
+            "acceptance_miss"
+          ],
+          "episode_id": "test-010",
+          "family": "personalized",
+          "layer": "text",
+          "seed": 7,
+          "status": "OK"
+        },
+        {
+          "categories": [
+            "preference_update_mismatch"
+          ],
+          "episode_id": "test-014",
+          "family": "exclusion_feedback",
+          "layer": "text",
+          "seed": 7,
+          "status": "OK"
+        },
+        {
+          "categories": [
+            "preference_update_mismatch"
+          ],
+          "episode_id": "test-018",
+          "family": "exclusion_feedback",
+          "layer": "text",
+          "seed": 7,
+          "status": "OK"
+        },
+        {
+          "categories": [
+            "preference_update_mismatch"
+          ],
+          "episode_id": "test-027",
+          "family": "exclusion_feedback",
+          "layer": "structured",
+          "seed": 7,
+          "status": "OK"
+        }
+      ],
+      "strata": {
+        "family:cold_start": {
+          "episodes": 30,
+          "strict_successes": 30
+        },
+        "family:constraint_conflict": {
+          "episodes": 45,
+          "strict_successes": 45
+        },
+        "family:exclusion_feedback": {
+          "episodes": 120,
+          "strict_successes": 86
+        },
+        "family:explicit_filter": {
+          "episodes": 60,
+          "strict_successes": 60
+        },
+        "family:personalized": {
+          "episodes": 60,
+          "strict_successes": 27
+        },
+        "family:seed_similar": {
+          "episodes": 60,
+          "strict_successes": 42
+        },
+        "family:tool_error": {
+          "episodes": 30,
+          "strict_successes": 21
+        },
+        "family:unknown_attribute": {
+          "episodes": 45,
+          "strict_successes": 45
+        },
+        "layer:structured": {
+          "episodes": 225,
+          "strict_successes": 188
+        },
+        "layer:text": {
+          "episodes": 225,
+          "strict_successes": 168
+        }
+      }
+    },
+    "no_replanning": {
+      "categories": {
+        "acceptance_miss": 65,
+        "parse_or_plan_failure": 18,
+        "short_fill": 18,
+        "wrong_status": 18
+      },
+      "examples": [
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-004",
+          "family": "seed_similar",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PLAN"
+        },
+        {
+          "categories": [
+            "acceptance_miss"
+          ],
+          "episode_id": "test-010",
+          "family": "personalized",
+          "layer": "text",
+          "seed": 7,
+          "status": "OK"
+        },
+        {
+          "categories": [
+            "acceptance_miss"
+          ],
+          "episode_id": "test-030",
+          "family": "exclusion_feedback",
+          "layer": "text",
+          "seed": 7,
+          "status": "OK"
+        },
+        {
+          "categories": [
+            "acceptance_miss"
+          ],
+          "episode_id": "test-033",
+          "family": "personalized",
+          "layer": "structured",
+          "seed": 7,
+          "status": "OK"
+        },
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-034",
+          "family": "seed_similar",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PLAN"
+        }
+      ],
+      "strata": {
+        "family:cold_start": {
+          "episodes": 30,
+          "strict_successes": 30
+        },
+        "family:constraint_conflict": {
+          "episodes": 45,
+          "strict_successes": 45
+        },
+        "family:exclusion_feedback": {
+          "episodes": 120,
+          "strict_successes": 97
+        },
+        "family:explicit_filter": {
+          "episodes": 60,
+          "strict_successes": 60
+        },
+        "family:personalized": {
+          "episodes": 60,
+          "strict_successes": 27
+        },
+        "family:seed_similar": {
+          "episodes": 60,
+          "strict_successes": 42
+        },
+        "family:tool_error": {
+          "episodes": 30,
+          "strict_successes": 21
+        },
+        "family:unknown_attribute": {
+          "episodes": 45,
+          "strict_successes": 45
+        },
+        "layer:structured": {
+          "episodes": 225,
+          "strict_successes": 194
+        },
+        "layer:text": {
+          "episodes": 225,
+          "strict_successes": 173
+        }
+      }
+    },
+    "no_user_model": {
+      "categories": {
+        "acceptance_miss": 57,
+        "parse_or_plan_failure": 18,
+        "short_fill": 18,
+        "wrong_status": 18
+      },
+      "examples": [
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-004",
+          "family": "seed_similar",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PLAN"
+        },
+        {
+          "categories": [
+            "acceptance_miss"
+          ],
+          "episode_id": "test-010",
+          "family": "personalized",
+          "layer": "text",
+          "seed": 7,
+          "status": "OK"
+        },
+        {
+          "categories": [
+            "acceptance_miss"
+          ],
+          "episode_id": "test-033",
+          "family": "personalized",
+          "layer": "structured",
+          "seed": 7,
+          "status": "OK"
+        },
+        {
+          "categories": [
+            "short_fill",
+            "wrong_status",
+            "parse_or_plan_failure"
+          ],
+          "episode_id": "test-034",
+          "family": "seed_similar",
+          "layer": "text",
+          "seed": 7,
+          "status": "INVALID_PLAN"
+        },
+        {
+          "categories": [
+            "acceptance_miss"
+          ],
+          "episode_id": "test-039",
+          "family": "seed_similar",
+          "layer": "structured",
+          "seed": 7,
+          "status": "OK"
+        }
+      ],
+      "strata": {
+        "family:cold_start": {
+          "episodes": 30,
+          "strict_successes": 30
+        },
+        "family:constraint_conflict": {
+          "episodes": 45,
+          "strict_successes": 45
+        },
+        "family:exclusion_feedback": {
+          "episodes": 120,
+          "strict_successes": 102
+        },
+        "family:explicit_filter": {
+          "episodes": 60,
+          "strict_successes": 60
+        },
+        "family:personalized": {
+          "episodes": 60,
+          "strict_successes": 33
+        },
+        "family:seed_similar": {
+          "episodes": 60,
+          "strict_successes": 39
+        },
+        "family:tool_error": {
+          "episodes": 30,
+          "strict_successes": 21
+        },
+        "family:unknown_attribute": {
+          "episodes": 45,
+          "strict_successes": 45
+        },
+        "layer:structured": {
+          "episodes": 225,
+          "strict_successes": 198
+        },
+        "layer:text": {
+          "episodes": 225,
+          "strict_successes": 177
+        }
+      }
+    }
+  },
+  "input_tokens": 1005796,
+  "known_token_cost_cny_peak_estimate": 4.997432,
+  "noninferiority_margin": -0.02,
+  "output_tokens": 373230,
+  "paired_ci": {
+    "O_minus_A": {
+      "constraint_precision": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "confidence": 0.95,
+        "mean_difference": 0.0,
+        "paired_count": 150
+      },
+      "fill_at_k": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "confidence": 0.95,
+        "mean_difference": 0.0,
+        "paired_count": 150
+      },
+      "latency_ms": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": -778.6618333333532,
+        "ci_upper": -551.087500000021,
+        "confidence": 0.95,
+        "mean_difference": -662.1755555555542,
+        "paired_count": 150
+      },
+      "request_count": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": -0.72,
+        "ci_upper": -0.5,
+        "confidence": 0.95,
+        "mean_difference": -0.6066666666666667,
+        "paired_count": 150
+      },
+      "strict_success": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "confidence": 0.95,
+        "mean_difference": 0.0,
+        "paired_count": 150
+      }
+    },
+    "O_minus_F": {
+      "constraint_precision": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.10666666666666667,
+        "ci_upper": 0.22,
+        "confidence": 0.95,
+        "mean_difference": 0.16,
+        "paired_count": 150
+      },
+      "fill_at_k": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.10666666666666667,
+        "ci_upper": 0.22,
+        "confidence": 0.95,
+        "mean_difference": 0.16,
+        "paired_count": 150
+      },
+      "latency_ms": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 101.01794444449189,
+        "ci_upper": 233.82005555550407,
+        "confidence": 0.95,
+        "mean_difference": 164.83777777777706,
+        "paired_count": 150
+      },
+      "request_count": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.10666666666666667,
+        "ci_upper": 0.22,
+        "confidence": 0.95,
+        "mean_difference": 0.16,
+        "paired_count": 150
+      },
+      "strict_success": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.07333333333333333,
+        "ci_upper": 0.18,
+        "confidence": 0.95,
+        "mean_difference": 0.12666666666666668,
+        "paired_count": 150
+      }
+    },
+    "O_minus_U1": {
+      "constraint_precision": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.19105555555555606,
+        "ci_upper": 0.31333333333333335,
+        "confidence": 0.95,
+        "mean_difference": 0.2511111111111111,
+        "paired_count": 150
+      },
+      "fill_at_k": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.17111111111111113,
+        "ci_upper": 0.2888888888888889,
+        "confidence": 0.95,
+        "mean_difference": 0.2288888888888889,
+        "paired_count": 150
+      },
+      "latency_ms": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": -1041.877999999966,
+        "ci_upper": -836.3264444445018,
+        "confidence": 0.95,
+        "mean_difference": -937.0222222221936,
+        "paired_count": 150
+      },
+      "request_count": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": -0.72,
+        "ci_upper": -0.5,
+        "confidence": 0.95,
+        "mean_difference": -0.6066666666666667,
+        "paired_count": 150
+      },
+      "strict_success": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.13333333333333333,
+        "ci_upper": 0.24666666666666667,
+        "confidence": 0.95,
+        "mean_difference": 0.1888888888888889,
+        "paired_count": 150
+      }
+    },
+    "O_minus_no_content": {
+      "constraint_precision": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "confidence": 0.95,
+        "mean_difference": 0.0,
+        "paired_count": 150
+      },
+      "fill_at_k": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "confidence": 0.95,
+        "mean_difference": 0.0,
+        "paired_count": 150
+      },
+      "latency_ms": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": -48.55133333335641,
+        "ci_upper": -6.4327777777023485,
+        "confidence": 0.95,
+        "mean_difference": -27.871111111081614,
+        "paired_count": 150
+      },
+      "request_count": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "confidence": 0.95,
+        "mean_difference": 0.0,
+        "paired_count": 150
+      },
+      "strict_success": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": -0.08,
+        "ci_upper": -0.013333333333333334,
+        "confidence": 0.95,
+        "mean_difference": -0.04666666666666667,
+        "paired_count": 150
+      }
+    },
+    "O_minus_no_explicit_preference_state": {
+      "constraint_precision": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.003999999999999997,
+        "ci_upper": 0.03688888888888888,
+        "confidence": 0.95,
+        "mean_difference": 0.017777777777777774,
+        "paired_count": 150
+      },
+      "fill_at_k": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.003999999999999997,
+        "ci_upper": 0.03688888888888888,
+        "confidence": 0.95,
+        "mean_difference": 0.017777777777777774,
+        "paired_count": 150
+      },
+      "latency_ms": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": -24.233555555565335,
+        "ci_upper": 15.462444444464285,
+        "confidence": 0.95,
+        "mean_difference": -3.8644444444071278,
+        "paired_count": 150
+      },
+      "request_count": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "confidence": 0.95,
+        "mean_difference": 0.0,
+        "paired_count": 150
+      },
+      "strict_success": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": -0.017777777777777778,
+        "ci_upper": 0.06222222222222223,
+        "confidence": 0.95,
+        "mean_difference": 0.022222222222222223,
+        "paired_count": 150
+      }
+    },
+    "O_minus_no_replanning": {
+      "constraint_precision": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "confidence": 0.95,
+        "mean_difference": 0.0,
+        "paired_count": 150
+      },
+      "fill_at_k": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "confidence": 0.95,
+        "mean_difference": 0.0,
+        "paired_count": 150
+      },
+      "latency_ms": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": -67.42727777769383,
+        "ci_upper": -17.504333333349788,
+        "confidence": 0.95,
+        "mean_difference": -41.51777777774745,
+        "paired_count": 150
+      },
+      "request_count": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "confidence": 0.95,
+        "mean_difference": 0.0,
+        "paired_count": 150
+      },
+      "strict_success": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": -0.006666666666666667,
+        "ci_upper": 0.0,
+        "confidence": 0.95,
+        "mean_difference": -0.0022222222222222222,
+        "paired_count": 150
+      }
+    },
+    "O_minus_no_user_model": {
+      "constraint_precision": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "confidence": 0.95,
+        "mean_difference": 0.0,
+        "paired_count": 150
+      },
+      "fill_at_k": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "confidence": 0.95,
+        "mean_difference": 0.0,
+        "paired_count": 150
+      },
+      "latency_ms": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": -15.402277777795762,
+        "ci_upper": 25.904499999994695,
+        "confidence": 0.95,
+        "mean_difference": 4.475555555569983,
+        "paired_count": 150
+      },
+      "request_count": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": 0.0,
+        "ci_upper": 0.0,
+        "confidence": 0.95,
+        "mean_difference": 0.0,
+        "paired_count": 150
+      },
+      "strict_success": {
+        "bootstrap_samples": 10000,
+        "bootstrap_seed": 42,
+        "ci_lower": -0.051111111111111114,
+        "ci_upper": 0.01111111111111111,
+        "confidence": 0.95,
+        "mean_difference": -0.02,
+        "paired_count": 150
+      }
+    }
+  },
+  "per_seed": {
+    "A": [
+      {
+        "constraint_precision": 0.96,
+        "fallback_rate": 0.8266666666666667,
+        "fill_at_k": 0.76,
+        "input_tokens": 68600,
+        "latency_p50_ms": 1148.50000000024,
+        "latency_p95_ms": 2359.0000000003783,
+        "output_tokens": 21048,
+        "parser_calls": 0,
+        "planner_calls": 190,
+        "replans": 0,
+        "requests": 190,
+        "seed": 7,
+        "strict_success": 0.82,
+        "tool_calls": 171
+      },
+      {
+        "constraint_precision": 0.96,
+        "fallback_rate": 0.8266666666666667,
+        "fill_at_k": 0.76,
+        "input_tokens": 68600,
+        "latency_p50_ms": 1077.9999999995198,
+        "latency_p95_ms": 2375.0,
+        "output_tokens": 21056,
+        "parser_calls": 0,
+        "planner_calls": 190,
+        "replans": 0,
+        "requests": 190,
+        "seed": 42,
+        "strict_success": 0.8066666666666666,
+        "tool_calls": 171
+      },
+      {
+        "constraint_precision": 0.96,
+        "fallback_rate": 0.8266666666666667,
+        "fill_at_k": 0.76,
+        "input_tokens": 68600,
+        "latency_p50_ms": 1140.0000000003274,
+        "latency_p95_ms": 2234.0000000003783,
+        "output_tokens": 21058,
+        "parser_calls": 0,
+        "planner_calls": 190,
+        "replans": 0,
+        "requests": 190,
+        "seed": 2026,
+        "strict_success": 0.8133333333333334,
+        "tool_calls": 171
+      }
+    ],
+    "F": [
+      {
+        "constraint_precision": 0.8,
+        "fallback_rate": 0.6666666666666666,
+        "fill_at_k": 0.6,
+        "input_tokens": 21299,
+        "latency_p50_ms": 344.00000000005093,
+        "latency_p95_ms": 1188.0000000001019,
+        "output_tokens": 6937,
+        "parser_calls": 75,
+        "planner_calls": 0,
+        "replans": 0,
+        "requests": 75,
+        "seed": 7,
+        "strict_success": 0.6933333333333334,
+        "tool_calls": 146
+      },
+      {
+        "constraint_precision": 0.8,
+        "fallback_rate": 0.6666666666666666,
+        "fill_at_k": 0.6,
+        "input_tokens": 21299,
+        "latency_p50_ms": 406.49999999914144,
+        "latency_p95_ms": 1234.0000000003783,
+        "output_tokens": 6937,
+        "parser_calls": 75,
+        "planner_calls": 0,
+        "replans": 0,
+        "requests": 75,
+        "seed": 42,
+        "strict_success": 0.68,
+        "tool_calls": 146
+      },
+      {
+        "constraint_precision": 0.8,
+        "fallback_rate": 0.6666666666666666,
+        "fill_at_k": 0.6,
+        "input_tokens": 21299,
+        "latency_p50_ms": 390.4999999995198,
+        "latency_p95_ms": 1250.0,
+        "output_tokens": 6937,
+        "parser_calls": 75,
+        "planner_calls": 0,
+        "replans": 0,
+        "requests": 75,
+        "seed": 2026,
+        "strict_success": 0.6866666666666666,
+        "tool_calls": 146
+      }
+    ],
+    "O": [
+      {
+        "constraint_precision": 0.96,
+        "fallback_rate": 0.7733333333333333,
+        "fill_at_k": 0.76,
+        "input_tokens": 33762,
+        "latency_p50_ms": 390.4999999995198,
+        "latency_p95_ms": 2280.9999999990396,
+        "output_tokens": 10990,
+        "parser_calls": 0,
+        "planner_calls": 99,
+        "replans": 0,
+        "requests": 99,
+        "seed": 7,
+        "strict_success": 0.82,
+        "tool_calls": 164
+      },
+      {
+        "constraint_precision": 0.96,
+        "fallback_rate": 0.7733333333333333,
+        "fill_at_k": 0.76,
+        "input_tokens": 33721,
+        "latency_p50_ms": 399.00000000034197,
+        "latency_p95_ms": 2077.99999999952,
+        "output_tokens": 10994,
+        "parser_calls": 0,
+        "planner_calls": 99,
+        "replans": 0,
+        "requests": 99,
+        "seed": 42,
+        "strict_success": 0.8066666666666666,
+        "tool_calls": 163
+      },
+      {
+        "constraint_precision": 0.96,
+        "fallback_rate": 0.7733333333333333,
+        "fill_at_k": 0.76,
+        "input_tokens": 33721,
+        "latency_p50_ms": 390.5000000013388,
+        "latency_p95_ms": 2125.0,
+        "output_tokens": 10994,
+        "parser_calls": 0,
+        "planner_calls": 99,
+        "replans": 0,
+        "requests": 99,
+        "seed": 2026,
+        "strict_success": 0.8133333333333334,
+        "tool_calls": 163
+      }
+    ],
+    "U1": [
+      {
+        "constraint_precision": 0.7066666666666667,
+        "fallback_rate": 0.62,
+        "fill_at_k": 0.5266666666666666,
+        "input_tokens": 76639,
+        "latency_p50_ms": 1375.0,
+        "latency_p95_ms": 3140.9999999996217,
+        "output_tokens": 41319,
+        "parser_calls": 0,
+        "planner_calls": 190,
+        "replans": 0,
+        "requests": 190,
+        "seed": 7,
+        "strict_success": 0.6266666666666667,
+        "tool_calls": 335
+      },
+      {
+        "constraint_precision": 0.7,
+        "fallback_rate": 0.6333333333333333,
+        "fill_at_k": 0.52,
+        "input_tokens": 76679,
+        "latency_p50_ms": 1359.5000000004802,
+        "latency_p95_ms": 2952.99999999952,
+        "output_tokens": 41431,
+        "parser_calls": 0,
+        "planner_calls": 190,
+        "replans": 0,
+        "requests": 190,
+        "seed": 42,
+        "strict_success": 0.6133333333333333,
+        "tool_calls": 334
+      },
+      {
+        "constraint_precision": 0.72,
+        "fallback_rate": 0.6266666666666667,
+        "fill_at_k": 0.5466666666666666,
+        "input_tokens": 76720,
+        "latency_p50_ms": 1344.000000000051,
+        "latency_p95_ms": 3171.0000000002765,
+        "output_tokens": 41618,
+        "parser_calls": 0,
+        "planner_calls": 190,
+        "replans": 0,
+        "requests": 190,
+        "seed": 2026,
+        "strict_success": 0.6333333333333333,
+        "tool_calls": 343
+      }
+    ],
+    "no_content": [
+      {
+        "constraint_precision": 0.96,
+        "fallback_rate": 0.21333333333333335,
+        "fill_at_k": 0.76,
+        "input_tokens": 33721,
+        "latency_p50_ms": 437.5,
+        "latency_p95_ms": 2281.0000000008586,
+        "output_tokens": 10993,
+        "parser_calls": 0,
+        "planner_calls": 99,
+        "replans": 0,
+        "requests": 99,
+        "seed": 7,
+        "strict_success": 0.8666666666666667,
+        "tool_calls": 163
+      },
+      {
+        "constraint_precision": 0.96,
+        "fallback_rate": 0.21333333333333335,
+        "fill_at_k": 0.76,
+        "input_tokens": 33721,
+        "latency_p50_ms": 445.00000000061846,
+        "latency_p95_ms": 2281.0000000008586,
+        "output_tokens": 10993,
+        "parser_calls": 0,
+        "planner_calls": 99,
+        "replans": 0,
+        "requests": 99,
+        "seed": 42,
+        "strict_success": 0.8533333333333334,
+        "tool_calls": 163
+      },
+      {
+        "constraint_precision": 0.96,
+        "fallback_rate": 0.21333333333333335,
+        "fill_at_k": 0.76,
+        "input_tokens": 33721,
+        "latency_p50_ms": 429.5000000001892,
+        "latency_p95_ms": 2405.9999999990396,
+        "output_tokens": 10994,
+        "parser_calls": 0,
+        "planner_calls": 99,
+        "replans": 0,
+        "requests": 99,
+        "seed": 2026,
+        "strict_success": 0.86,
+        "tool_calls": 163
+      }
+    ],
+    "no_explicit_preference_state": [
+      {
+        "constraint_precision": 0.9466666666666667,
+        "fallback_rate": 0.7666666666666667,
+        "fill_at_k": 0.7466666666666666,
+        "input_tokens": 33721,
+        "latency_p50_ms": 414.49999999986176,
+        "latency_p95_ms": 2140.9999999996217,
+        "output_tokens": 10992,
+        "parser_calls": 0,
+        "planner_calls": 99,
+        "replans": 0,
+        "requests": 99,
+        "seed": 7,
+        "strict_success": 0.8066666666666666,
+        "tool_calls": 162
+      },
+      {
+        "constraint_precision": 0.94,
+        "fallback_rate": 0.76,
+        "fill_at_k": 0.7399999999999999,
+        "input_tokens": 33762,
+        "latency_p50_ms": 500.0,
+        "latency_p95_ms": 2140.9999999996217,
+        "output_tokens": 10990,
+        "parser_calls": 0,
+        "planner_calls": 99,
+        "replans": 0,
+        "requests": 99,
+        "seed": 42,
+        "strict_success": 0.78,
+        "tool_calls": 162
+      },
+      {
+        "constraint_precision": 0.94,
+        "fallback_rate": 0.76,
+        "fill_at_k": 0.7399999999999999,
+        "input_tokens": 33762,
+        "latency_p50_ms": 421.9999999995707,
+        "latency_p95_ms": 2218.9999999991414,
+        "output_tokens": 10992,
+        "parser_calls": 0,
+        "planner_calls": 99,
+        "replans": 0,
+        "requests": 99,
+        "seed": 2026,
+        "strict_success": 0.7866666666666666,
+        "tool_calls": 162
+      }
+    ],
+    "no_replanning": [
+      {
+        "constraint_precision": 0.96,
+        "fallback_rate": 0.7733333333333333,
+        "fill_at_k": 0.76,
+        "input_tokens": 33721,
+        "latency_p50_ms": 445.00000000061846,
+        "latency_p95_ms": 2468.9999999991414,
+        "output_tokens": 10994,
+        "parser_calls": 0,
+        "planner_calls": 99,
+        "replans": 0,
+        "requests": 99,
+        "seed": 7,
+        "strict_success": 0.82,
+        "tool_calls": 163
+      },
+      {
+        "constraint_precision": 0.96,
+        "fallback_rate": 0.7733333333333333,
+        "fill_at_k": 0.76,
+        "input_tokens": 33721,
+        "latency_p50_ms": 429.99999999938154,
+        "latency_p95_ms": 2264.999999999418,
+        "output_tokens": 10993,
+        "parser_calls": 0,
+        "planner_calls": 99,
+        "replans": 0,
+        "requests": 99,
+        "seed": 42,
+        "strict_success": 0.8133333333333334,
+        "tool_calls": 163
+      },
+      {
+        "constraint_precision": 0.96,
+        "fallback_rate": 0.7733333333333333,
+        "fill_at_k": 0.76,
+        "input_tokens": 33762,
+        "latency_p50_ms": 421.50000000037835,
+        "latency_p95_ms": 2203.9999999997235,
+        "output_tokens": 10992,
+        "parser_calls": 0,
+        "planner_calls": 99,
+        "replans": 0,
+        "requests": 99,
+        "seed": 2026,
+        "strict_success": 0.8133333333333334,
+        "tool_calls": 164
+      }
+    ],
+    "no_user_model": [
+      {
+        "constraint_precision": 0.96,
+        "fallback_rate": 0.21333333333333335,
+        "fill_at_k": 0.76,
+        "input_tokens": 33762,
+        "latency_p50_ms": 382.9999999998108,
+        "latency_p95_ms": 2061.999999999898,
+        "output_tokens": 10992,
+        "parser_calls": 0,
+        "planner_calls": 99,
+        "replans": 0,
+        "requests": 99,
+        "seed": 7,
+        "strict_success": 0.8333333333333334,
+        "tool_calls": 164
+      },
+      {
+        "constraint_precision": 0.96,
+        "fallback_rate": 0.21333333333333335,
+        "fill_at_k": 0.76,
+        "input_tokens": 33721,
+        "latency_p50_ms": 367.50000000029104,
+        "latency_p95_ms": 2125.0,
+        "output_tokens": 10994,
+        "parser_calls": 0,
+        "planner_calls": 99,
+        "replans": 0,
+        "requests": 99,
+        "seed": 42,
+        "strict_success": 0.8333333333333334,
+        "tool_calls": 163
+      },
+      {
+        "constraint_precision": 0.96,
+        "fallback_rate": 0.21333333333333335,
+        "fill_at_k": 0.76,
+        "input_tokens": 33762,
+        "latency_p50_ms": 383.4999999990032,
+        "latency_p95_ms": 2156.9999999992433,
+        "output_tokens": 10992,
+        "parser_calls": 0,
+        "planner_calls": 99,
+        "replans": 0,
+        "requests": 99,
+        "seed": 2026,
+        "strict_success": 0.8333333333333334,
+        "tool_calls": 164
+      }
+    ]
+  },
+  "post_run_format_diagnostics": {
+    "F_invalid_element_type": {
+      "string_elements": 90
+    },
+    "counts": {
+      "F": {
+        "request:liked_item_ids must be a JSON list of positive integer model IDs": 90
+      },
+      "U1": {
+        "middle_step_contract": 184
+      }
+    },
+    "scope": "post-run format diagnostic; no changes or reruns"
+  },
+  "provenance": {
+    "authorization_ledger_sha256": "261d4070aa1566279af340a9e7c58ac11babd654024166661090399ad1d286cd",
+    "benchmark_config_sha256": "0a825a526e68d2b8211ca3c1491e0f23bccbf5d3d198bd529999e1561d9d9a04",
+    "checkpoints": {
+      "2026": {
+        "identity": {
+          "code_sha256": "326144f1da99c025d95d81cba580eb74f0375d5f718d377590fc70b84ca34945",
+          "config_sha256": "053c8ed3ad004704b354646b7d404eb6834eb505b419f451001f62701f0907c6",
+          "data_manifest_sha256": "01cdaa8d1e39ec197536015aa72e6d2d8b756e5d7aed5feaba3aae6c011fa0be",
+          "id_map_sha256": "19364182e1eccb53a978d10bf38a9d6dcd2f1f63f7ee8510f88aae6076269dac",
+          "pyarrow_version": "21.0.0",
+          "python_version": "3.11.14",
+          "seed": 2026,
+          "split_sha256": "182b931caf74ea26e3dab1931896e33fb5541e14e0df13dbf7c160a8e4307a17",
+          "torch_version": "2.0.1+cpu",
+          "train_positive_sha256": "9157734924c399a6b3c94c8a436775881b92a5285d4b0e4a42c8a342eda95051"
+        },
+        "path": "artifacts/models/lightgcn/seed_2026_layer_3.pt",
+        "report_sha256": "117cfec2c22d1533c48ac8a62db01b8237751e8ccf25a090f439c86ef557564e",
+        "sha256": "d2121caf291a09cab88c495150d19d4d953882b359ddfa1b6ba7bb3e1a4bca8b"
+      },
+      "42": {
+        "identity": {
+          "code_sha256": "326144f1da99c025d95d81cba580eb74f0375d5f718d377590fc70b84ca34945",
+          "config_sha256": "053c8ed3ad004704b354646b7d404eb6834eb505b419f451001f62701f0907c6",
+          "data_manifest_sha256": "01cdaa8d1e39ec197536015aa72e6d2d8b756e5d7aed5feaba3aae6c011fa0be",
+          "id_map_sha256": "19364182e1eccb53a978d10bf38a9d6dcd2f1f63f7ee8510f88aae6076269dac",
+          "pyarrow_version": "21.0.0",
+          "python_version": "3.11.14",
+          "seed": 42,
+          "split_sha256": "182b931caf74ea26e3dab1931896e33fb5541e14e0df13dbf7c160a8e4307a17",
+          "torch_version": "2.0.1+cpu",
+          "train_positive_sha256": "9157734924c399a6b3c94c8a436775881b92a5285d4b0e4a42c8a342eda95051"
+        },
+        "path": "artifacts/models/lightgcn/seed_42_layer_3.pt",
+        "report_sha256": "af3fe249057cdd15679a771350e78c2d9c425b02b49b57f5d8db1574e34ac161",
+        "sha256": "5d439abf641f3992a0c391917674f36d488bd49f47087adaf21422d66ff7679c"
+      },
+      "7": {
+        "identity": {
+          "code_sha256": "326144f1da99c025d95d81cba580eb74f0375d5f718d377590fc70b84ca34945",
+          "config_sha256": "053c8ed3ad004704b354646b7d404eb6834eb505b419f451001f62701f0907c6",
+          "data_manifest_sha256": "01cdaa8d1e39ec197536015aa72e6d2d8b756e5d7aed5feaba3aae6c011fa0be",
+          "id_map_sha256": "19364182e1eccb53a978d10bf38a9d6dcd2f1f63f7ee8510f88aae6076269dac",
+          "pyarrow_version": "21.0.0",
+          "python_version": "3.11.14",
+          "seed": 7,
+          "split_sha256": "182b931caf74ea26e3dab1931896e33fb5541e14e0df13dbf7c160a8e4307a17",
+          "torch_version": "2.0.1+cpu",
+          "train_positive_sha256": "9157734924c399a6b3c94c8a436775881b92a5285d4b0e4a42c8a342eda95051"
+        },
+        "path": "artifacts/models/lightgcn/seed_7_layer_3.pt",
+        "report_sha256": "1d8b3811bb262a4c2e6ad30434a292d10be1b6269acb76749e074734d2d1b13a",
+        "sha256": "d91e265bcd549c2e7ccfc44af7f92aba21396de876b5c4ea73dba7e77833867d"
+      }
+    },
+    "concurrency": 1,
+    "data_manifest_sha256": "01cdaa8d1e39ec197536015aa72e6d2d8b756e5d7aed5feaba3aae6c011fa0be",
+    "fault_sha256": "4731aa98bbd233f8bfaa6064364605fd37a2f63e60cb7a2fdc1c1449eae55e91",
+    "feedback_sha256": "4293ade99a073c08dceff4cdd7dd37d1ca4a64544bc8cf576dbac7c4d083fa55",
+    "hardware": {
+      "cpu_count": 16,
+      "machine": "AMD64",
+      "system": "Windows"
+    },
+    "input_token_planning_bound": 8320,
+    "latency_scope": "prewarmed model and U1 legacy worker, serial episodes; one-time warmup excluded",
+    "lock_sha256": "03ba5efe5d386a3fac1bcf6080b7838a79ce4d8650932bf3f409624f3c9f13b4",
+    "manifest_sha256": "d666d22f02898a3d6f3d8fdc372ca74856d1d025b88904fbb75d6848c5eb3811",
+    "model": "lightgcn",
+    "model_id": "deepseek-flash",
+    "model_seeds": [
+      7,
+      42,
+      2026
+    ],
+    "network_retries": 0,
+    "output_cap": 1024,
+    "peak_input_cny_per_million": 2.0,
+    "peak_output_cny_per_million": 8.0,
+    "per_request_cost_ceiling_cny": 0.024832,
+    "price_checked_date": "2026-10-10",
+    "pricing_source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+    "provider": "deepseek",
+    "public_sha256": "0f3072d7ce71ae05908ebcb46dd4a733d59d689a0a292761d6af54e35ed52cdb",
+    "python": "3.11.14",
+    "source_sha256": {
+      "AgenticRec\\src\\agenticrec\\__init__.py": "29d866edee2b4df2af6f9f956c3f995ead6ac4d7e5c9534716c8c95613b97057",
+      "AgenticRec\\src\\agenticrec\\adapters\\__init__.py": "452f533adfb7fa2c5eccb6030e64f9ab368f34eab55dcba80ce16c2c6f47f6f1",
+      "AgenticRec\\src\\agenticrec\\adapters\\account_balance.py": "76f25135784e41f4765180577aaafa485c34e36b239b65f73194bc3eb0241457",
+      "AgenticRec\\src\\agenticrec\\adapters\\llm.py": "dffe5d9d684de1c497748d27e34e85d32ab8f449c9a41b91179544d460b507fc",
+      "AgenticRec\\src\\agenticrec\\adapters\\model.py": "6266d90f2fc74fc7055d4d9322ac0cd467bcb960a9bcc96c4a02f31f1858a798",
+      "AgenticRec\\src\\agenticrec\\adapters\\openai_compatible.py": "dea337fc0cb91a6b0f800f930127c82ac6230d911339b70de19ddeb52eac5571",
+      "AgenticRec\\src\\agenticrec\\adapters\\providers.py": "8ca9a14cf9da4e6b4868849411cade11dd7d3f889b97826f87f1d5ad94d6c40f",
+      "AgenticRec\\src\\agenticrec\\adapters\\upstream_bridge.py": "5716e0787c642148a37dee93b858612a4f6015d8954c65c1300944f3c02eeebc",
+      "AgenticRec\\src\\agenticrec\\agent\\__init__.py": "130d61c24db56ddcfb1a709f4d9ebf9010eea180edcab6874245da93f530afa0",
+      "AgenticRec\\src\\agenticrec\\agent\\executor.py": "b542c8599cfb504b8463ff9ae0e6536ae1c5b9b3574d0364236c4741a1a24af0",
+      "AgenticRec\\src\\agenticrec\\agent\\loop.py": "9bd25a21d40ba5942e8ee03e2083323c315af01114b8be54240eaba0e6c7177b",
+      "AgenticRec\\src\\agenticrec\\agent\\request_contract.py": "80c2af47fb7bc4434c1f339438cbf7e545816e38ef575a39696733be6569e023",
+      "AgenticRec\\src\\agenticrec\\agent\\router.py": "b375bbeb1320d4d99b79dd5b7a26cc95510a607520ec1b2117ef31575c991dc9",
+      "AgenticRec\\src\\agenticrec\\agent\\session.py": "702224d2f0f9130665052a7f71355982da3f686b8675e5e72c4394e23fa4045e",
+      "AgenticRec\\src\\agenticrec\\agent\\state.py": "bbe9d05bb020a32a298a74408827fa3fe17af6ad98e75146e06b9b190267075f",
+      "AgenticRec\\src\\agenticrec\\agent\\text_parser.py": "819e9a89fd9739da04beacc99fe1a33902a9216ce521a9cf7408b4738e240b73",
+      "AgenticRec\\src\\agenticrec\\cli.py": "c3fa849caf9d603378dea15c98183f3a13a386be0d0982baf3cc04a4292ca85f",
+      "AgenticRec\\src\\agenticrec\\config.py": "978c22e702212ee2cf00caf09e7474e142f23c365c7d66d5eeb9e0704234fe77",
+      "AgenticRec\\src\\agenticrec\\data.py": "ab38d83047eef43205c4e59e6b9e7a6f7442b2e347bb25dd1b7a5d318ae4cefa",
+      "AgenticRec\\src\\agenticrec\\evaluation\\__init__.py": "1c57a0f1ad44147e5b577cc91889606322e42739f10cf314af024ce7bc203826",
+      "AgenticRec\\src\\agenticrec\\evaluation\\benchmark.py": "4e7d463d4ffe845f28d94c6ba33c31a29c1b3ddecef4a68647b14de73182265d",
+      "AgenticRec\\src\\agenticrec\\evaluation\\cohort.py": "d7efee886ac719150c8eeb0155ddd3a95d5f10662fa4ab01f8b42c3fe457d0ab",
+      "AgenticRec\\src\\agenticrec\\evaluation\\cost_limits.py": "d8319fa05809193429b2def650b803bf8bc1bb14a6ea07d6d97b832b3c81f90d",
+      "AgenticRec\\src\\agenticrec\\evaluation\\episodes.py": "dae9123c1876d9ecb62b603fc470c842384457e5a3354a40647696af70c4e99a",
+      "AgenticRec\\src\\agenticrec\\evaluation\\faults.py": "a50bb30151b05e9a91161ce47e0d0355acfe7846e66c1d43ba7327a6ac0b2605",
+      "AgenticRec\\src\\agenticrec\\evaluation\\fixture_transport.py": "d98c8730c217a3c408535e3476790767c6242225f39ac1b5c2160917ab54f6a9",
+      "AgenticRec\\src\\agenticrec\\evaluation\\live_benchmark.py": "bc066b1b7f42ad51ec0d0ccf2550b8fbda9046ce77a4c4bae7ae5ecf253e2463",
+      "AgenticRec\\src\\agenticrec\\evaluation\\metrics.py": "8535156cec17bd1c256e91222e8605c7a0557f6146d48a3211464156f9d32325",
+      "AgenticRec\\src\\agenticrec\\evaluation\\model_benchmark.py": "128ea5e02907ba0bd369f390590bc713f2dad19487bd2e989416f9d6ec9166b8",
+      "AgenticRec\\src\\agenticrec\\evaluation\\runner.py": "b041e491059005e255cd1c50678e5ed9780c0890073dc2bc7c1c5018ebc5eaa1",
+      "AgenticRec\\src\\agenticrec\\evaluation\\system_executor.py": "cb2e7f11551208ea40a59bdf18264bc3cfda11d28f69cbaa0a14c682df3349d6",
+      "AgenticRec\\src\\agenticrec\\evaluation\\system_factory.py": "118ebd18ce8b739d37432e6a9e396cd20262f7c126b33b68b3f43ad8d133c8b9",
+      "AgenticRec\\src\\agenticrec\\evaluation\\system_reports.py": "6f6c8cab98cc4843f008226d4e82e77f3a118cb4dea96a5185ff98d45afafb2c",
+      "AgenticRec\\src\\agenticrec\\evaluation\\upstream_turn.py": "19d456f090c7b713727928c79b68dda81635c2bc9078af50d62d55e2e72b33a8",
+      "AgenticRec\\src\\agenticrec\\evaluation\\variants.py": "1060b2e9749a50160254ca7100b6fa7ea0768606f831b8b43b5b3abc8b856963",
+      "AgenticRec\\src\\agenticrec\\lightgcn_training.py": "47335ad348433b862fc22ddb242d5d4d5858f34849f737701d0fafa47077bd5f",
+      "AgenticRec\\src\\agenticrec\\models\\__init__.py": "a20768dd5ac3adfd96091054ac41bd1aa0f2547582458d9398d22720c700fc96",
+      "AgenticRec\\src\\agenticrec\\models\\baselines.py": "3f1f7ec208847c1969b0dbf77cc7226e29fee79e0e01256d56228a3622367818",
+      "AgenticRec\\src\\agenticrec\\models\\bpr.py": "6693d65c247da9bdef1953dd6e616454f0b50b48981258c18db59df8dbccf80f",
+      "AgenticRec\\src\\agenticrec\\models\\lightgcn.py": "553f3b022b02f34becd7d835f388c0309711dd2c91985a8518de8594c502a314",
+      "AgenticRec\\src\\agenticrec\\pipeline.py": "5773751f84085c17b9f569a9194bde5536802bef53b25a17e6ff021859a32bf3",
+      "AgenticRec\\src\\agenticrec\\protocols.py": "302eecf16dbdcbba228376333b4f585e74f787b7fef59fb5addf8be952d30290",
+      "AgenticRec\\src\\agenticrec\\ranking\\__init__.py": "6aa202675a73c49777faaf07d76933dfc82b520e320afd0717afab33f1068ea8",
+      "AgenticRec\\src\\agenticrec\\ranking\\constraints.py": "310a5b8ce302eb337065636c8f6cff2d02c7e5aa48c40ce344be78b1f8a27125",
+      "AgenticRec\\src\\agenticrec\\retrieval\\__init__.py": "163bd1bc272c0fd0618c5ebfd3e969d2fe947a09744297c9223314d948e3f883",
+      "AgenticRec\\src\\agenticrec\\retrieval\\fusion.py": "42641e59a9e96aad2c8c2d5541726a9cfe4c9138be09fedebda6f29652673eef",
+      "AgenticRec\\src\\agenticrec\\retrieval\\sources.py": "ff6570fb12b23196c40b36db082600af06ba4b025fab90dd32128a0e085a3bad",
+      "AgenticRec\\src\\agenticrec\\runtime\\__init__.py": "023533f8c6010a34c1864da6ca5f20c39cd9fbfba48775d382672ee7ff9cab58",
+      "AgenticRec\\src\\agenticrec\\runtime\\budget.py": "d64ebd6e2119991983ab1fe15870e42f5b8f37cd91a79abc4aa6aecfbd64deaf",
+      "AgenticRec\\src\\agenticrec\\runtime\\deadline.py": "894ecb88de9d4ab71c455d4aa00f61cec1891eea317799dfabc58ac9b546add9",
+      "AgenticRec\\src\\agenticrec\\runtime\\errors.py": "76c0b5dcebda2412923a51a6a1fadfb2c62009e129132616c8d1ea9282a86527",
+      "AgenticRec\\src\\agenticrec\\runtime\\secrets.py": "109fdd45e9593cbbc56cead5b288ac2123a6bf1ddfcd0735ee3fb84dc0338317",
+      "AgenticRec\\src\\agenticrec\\runtime\\sync.py": "3c2ab51979fab962cc8ac95584347372fa473ac14ec8a58b902cf9a744177096",
+      "AgenticRec\\src\\agenticrec\\testing.py": "4e1f80b895fe3aa676f64c5b8f05f7114a292266ba0740708d546f55fa2bd4e9",
+      "AgenticRec\\src\\agenticrec\\training.py": "3df3c7a4c2a5e94d8e84ddc6b32d3ab7f7b8c18513c1b195a739d6ce113a6296",
+      "reproduction/scripts/t10_upstream_worker.py": "076cfa35a3a1a923804b32e6185086bc41c1a8da10c69742222b1fbe60e927f9"
+    },
+    "spending_policy": "account_balance",
+    "temperature": 0,
+    "thinking": "disabled",
+    "torch": "2.0.1+cpu",
+    "u1_scope": "rebuilt request/planner schema and frozen recommendation pipeline followed by original ToolBox/Buffer/Map; no LLM answer summarization"
+  },
+  "raw_evidence": [
+    {
+      "condition": "U1",
+      "provider_attempts_sha256": "029318d0350448b5bb72e32acaf53be2a7c5ab90bc7909a622edc3efc0116eef",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 190
+      },
+      "raw_attempts_sha256": "10327490b8aa09b086f3f258b4347b14e01b892ea9ac0eb9d933304041735da2",
+      "run_identity": "10146170c7dc98f1fed521549084ef5214469a51560157c43250bf093308c837",
+      "seed": 7,
+      "traces_sha256": "cc3be101493787a152b9e980b58fc23f032fb1d8a151e6aec7e69fe7f759bc96"
+    },
+    {
+      "condition": "U1",
+      "provider_attempts_sha256": "4eecec28484a67f272a0d39be374a4394dec0eda64edb653aa7c46b8ef5f9d66",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 190
+      },
+      "raw_attempts_sha256": "693806ad04f2aa844ca79e69767266a49835739dd85c1531e5a85171b554aa8d",
+      "run_identity": "9f3e98d5189178acff77ecd8acbdffe4f98ba1186ca16cf2011949f205a1db5b",
+      "seed": 42,
+      "traces_sha256": "663ea3f9340e459ed4ef98476d13fef87e8e2721cd553772ba95f6e1a2ba5551"
+    },
+    {
+      "condition": "U1",
+      "provider_attempts_sha256": "a8e5a800ad71615ab7192e87df92e872e6a75b5e2deae3b600ca8457885f777f",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 190
+      },
+      "raw_attempts_sha256": "a7ebb2a5ad9db62b4f79dae9d98ae4b7bc09a06f7b5e84a8c3f0b8339d6f0422",
+      "run_identity": "fcce8b8de5cca5fe73d8996c8fd082e08a6e1759445230730228fa6293833c17",
+      "seed": 2026,
+      "traces_sha256": "24ccd5cedc54b3b1706eba885603cfb5fca7d619c2264fb51c8ab837b293bae9"
+    },
+    {
+      "condition": "F",
+      "provider_attempts_sha256": "e840836bbe0cfcb56b4af064c19a4b5d0acfa28c9f3222389a942aa38bbb5a55",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 75
+      },
+      "raw_attempts_sha256": "7418dc8cc10f2365a5e4a4cdc290d909decde0d23d62bab6be4b97b91c025a04",
+      "run_identity": "eeaea569910c365959bc293fd82959d9696cb762092695fcf6137a8ab9ea883b",
+      "seed": 7,
+      "traces_sha256": "a2c142e0944315edf11625a4b1e708ce10b2fd0e538da006321f20ecae2a51d5"
+    },
+    {
+      "condition": "F",
+      "provider_attempts_sha256": "06a1b9621e8f002aba3a5a4ec491b60fbf4dd1795603d6b9902f74af5fa20fda",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 75
+      },
+      "raw_attempts_sha256": "cc8c10104c433a28b10b382668086db7840b4cfe13720238aded80ccd9fbe0ce",
+      "run_identity": "a22bfff1464dae380ff445c88f49258f103d8f2cd5e9553ab934530baf09b019",
+      "seed": 42,
+      "traces_sha256": "b196487155f6b9e1c9ec43858a55a20f0ce3eb49da6d20c6a06e150accc9ca91"
+    },
+    {
+      "condition": "F",
+      "provider_attempts_sha256": "cda239270fbe95d99a41241c37a5c29d68ff71e871b96f286f2758d6324c3668",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 75
+      },
+      "raw_attempts_sha256": "daaafd42df64f319f20c18b155393ac43daa3d35c48fcc0f941e25ab91d1a11b",
+      "run_identity": "0781ab61e954d906aa8513c89f59e0214e308ea2e5ac3d839ab0b11924eee782",
+      "seed": 2026,
+      "traces_sha256": "14dba60bafcbec5ed9a163eb402ea9f83e5f08ad56c69e0fadb00e3dd44d894a"
+    },
+    {
+      "condition": "A",
+      "provider_attempts_sha256": "7ed7c15a32f34ec4e35d9e31a15a782c1a2b6b860a686d8beb5fbff9b04a2c61",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 190
+      },
+      "raw_attempts_sha256": "251e51edacf7766f8eacfa6e9071eb2a719d437e6e80f0f8d3bdc42f4e2a1597",
+      "run_identity": "fc0eb8465110f706baf49e14cafae7ae3bc2b044d3545cef11d51abe25ad94c2",
+      "seed": 7,
+      "traces_sha256": "8f83340018031261c703ba1b006fb3f55ae892c1ec4c4d0f0a51246fc8f29a70"
+    },
+    {
+      "condition": "A",
+      "provider_attempts_sha256": "bfbe5669aa444b83dd5926399fe72eab53e7cf314243cfd82fee7ef77fa5aea0",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 190
+      },
+      "raw_attempts_sha256": "fa82e408c0e0ea1778ea33c750c4d4359be7c033054f97d1d99c09cda436b99f",
+      "run_identity": "5d9fbfcc7fed30951459b096dbe6a6af696104e93af55c61097a2eafe83f59bd",
+      "seed": 42,
+      "traces_sha256": "0223c3e27b460f68e3c5e17bf82688a2c65862a6cd196add2f1ffec5b14122b8"
+    },
+    {
+      "condition": "A",
+      "provider_attempts_sha256": "99b248b962069f4e3f12fa293e4b76067ff64dc25a9767a81c0fd55329df2dde",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 190
+      },
+      "raw_attempts_sha256": "81b6c6e95b755a2d78a6544eed56a6e231cb3a988954e090ab488b8b3a3c5d75",
+      "run_identity": "a341bf6300540d34cc27b6f51036caf9363a58b250c869c760d8adc2171f1817",
+      "seed": 2026,
+      "traces_sha256": "cee829894232daa2813a77525a80cff5902ac0bb8d57b95bfa48ba17df4c1046"
+    },
+    {
+      "condition": "O",
+      "provider_attempts_sha256": "70141a6144eb735f12131181d4ecd5f561a8627c5a516859604bb070679f1d5d",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 99
+      },
+      "raw_attempts_sha256": "797d629901b6d515afb0a6fc73057bf292bbecc4883f594bd98882ef550e186c",
+      "run_identity": "f96e86d2166e8a610487f59a927798e9bfb284918dd3464ab7e8817494676fb9",
+      "seed": 7,
+      "traces_sha256": "edb27b188da434df64e3d16b2efbdce2020d4c193ceda212f048c66243cbb02a"
+    },
+    {
+      "condition": "O",
+      "provider_attempts_sha256": "972f815657567bca25042308e1eb97b3dedf72091f0e4d8d66a36d9d8230c3c7",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 99
+      },
+      "raw_attempts_sha256": "3f2def7a19b1eef3c5ea7037d9a0859ddbf708dccfddc0c85ef35cd47e87cd0e",
+      "run_identity": "fa9f6dd98da09eb1ff02b5085a1538aa00905d8e7bca871b6cc3232b85a987d6",
+      "seed": 42,
+      "traces_sha256": "946f534c72b87ee988ee2f10e689811801c56a70537d6253af573ace0c667bad"
+    },
+    {
+      "condition": "O",
+      "provider_attempts_sha256": "4c43d11a7b7b46e8a6fb42c016c782a8f256643efc88b9c08f784ae5e37b5ec6",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 99
+      },
+      "raw_attempts_sha256": "1e360eff7b2451296db9388a615b4fdffee057d9d9ebef7e7129cc1a15bdc2f0",
+      "run_identity": "8fe1c97a7fa8fb70c5b51d02868c165f67203b406f3ad0f43c9aa133304c52a9",
+      "seed": 2026,
+      "traces_sha256": "be2e6ee217b20769dd80f71b8a551aa03ca27a1928ba85b902d0e9c10a7abeac"
+    },
+    {
+      "condition": "no_user_model",
+      "provider_attempts_sha256": "37331d46d6ff32636bbb7408c816cf48e4e6564eaca14995b9cedfeaccfbf322",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 99
+      },
+      "raw_attempts_sha256": "bed523e34c6d21d9483fa88b31f1013d6a4121efbce19657869329a51f3452ab",
+      "run_identity": "8d237149c56123fd95aa5aeef1fd7ede488e874d93c3849b8fa2c5d81c30045b",
+      "seed": 7,
+      "traces_sha256": "6d936b965c9aeb16f5c66a1f6e5b383771d420141d31110264446c5ca49f112c"
+    },
+    {
+      "condition": "no_user_model",
+      "provider_attempts_sha256": "1c40b04a861b6b1ce02e9d2c2e92dd3b12e3fc2ba776cefd60ef24c8489e7724",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 99
+      },
+      "raw_attempts_sha256": "362756d7c39f60efc5d383153c48152f49576bb6abf0ff45782068443157e3dc",
+      "run_identity": "16b805635c0adbdc15445ab9d51fef3f7d5356a70bf046a462d4801e85d16955",
+      "seed": 42,
+      "traces_sha256": "c304a14165f719b312fb8e1591773b94b79ad35f796055ed034cd67cc409f0c6"
+    },
+    {
+      "condition": "no_user_model",
+      "provider_attempts_sha256": "4f505be283cbf841fa6a77fc444a027e424f950a0868d47184bb35584f62d1a4",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 99
+      },
+      "raw_attempts_sha256": "b2f9130207715b4be2c17fb5757a99c6933801996a643731133b65b4837cc000",
+      "run_identity": "f0bd067f930cbd705883001f5582d61eeae1f3d7c7e1daa3160427890fd75b63",
+      "seed": 2026,
+      "traces_sha256": "497dede743169bfca835f0e05a91083f7f1387ecb3054157e268f602fed334ca"
+    },
+    {
+      "condition": "no_explicit_preference_state",
+      "provider_attempts_sha256": "af2975d5cb5ba046acc4b667f762e0562cadcd88c6703ee3177fcfa7c36cace5",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 99
+      },
+      "raw_attempts_sha256": "c81ffa593f0f36fa0f02de6b180d5d7cf9e65854dbe85e2ba3013706da1e3294",
+      "run_identity": "38c880bc771736bb24258f10dc3f8b5dac204b70a6a09a3e329c9828f047d8c3",
+      "seed": 7,
+      "traces_sha256": "be63d3c7f886359f592fb1daf44ead2027061058d6dcd820c0b3a6ffb462b96f"
+    },
+    {
+      "condition": "no_explicit_preference_state",
+      "provider_attempts_sha256": "2792aeb11664d2580228a1d04dbe1929b0fdf4f82f3613a9be84707e07055caa",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 99
+      },
+      "raw_attempts_sha256": "bb4c37a5ea575e0a2b881d22047d9dda05b0ffc49a4ac096ab83a6476646df44",
+      "run_identity": "d9197cf7ad27322455d5e324e57cb46d8c5abdcf9b18a15018f4656da645dadb",
+      "seed": 42,
+      "traces_sha256": "9965834abd2d2bb0fa810dd0247a9876318601359461376da11a7c149631d894"
+    },
+    {
+      "condition": "no_explicit_preference_state",
+      "provider_attempts_sha256": "a67a3194e90878ce13f4b35f302233d1ba609c9b3ae8fbd8ba44b576f78ee69e",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 99
+      },
+      "raw_attempts_sha256": "91c8f5ac48517f7135f4e576221f0fb800ac8248a858fc7539525f00267ac006",
+      "run_identity": "3a78db1a485525bcbb64649e198f950967f6ab27ca68cfb1cb1f6cade0b65bc9",
+      "seed": 2026,
+      "traces_sha256": "3cf4b2e86c0e91e9bf96d1ab24b292ba8b362e6bcdc2f8734ab8fc58a9fff416"
+    },
+    {
+      "condition": "no_replanning",
+      "provider_attempts_sha256": "657b260734a377b31ea83c43da11005e82d68c8c203b86d0fbd3a96cd606d94a",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 99
+      },
+      "raw_attempts_sha256": "5f54d8fcf4ad92ec96ff79b0f3d2b94381cae7ac878c75b7ab5b63284b6ba501",
+      "run_identity": "7f994101a9d6617f16b0fc18a7515e5cbda9a979b8aa74d07bc3a215a153d515",
+      "seed": 7,
+      "traces_sha256": "0dfc4a22cdea11b2cbf57c596e37df362034e8b4549f20bb0626044c695e66a3"
+    },
+    {
+      "condition": "no_replanning",
+      "provider_attempts_sha256": "6b8364b27ae7a19004070cc883d2470ca7f0dd81fa2417a0683051baf7f51a2c",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 99
+      },
+      "raw_attempts_sha256": "032df15192119078d62612f80884a5e36fd4bc4a81bb1927241280e985049838",
+      "run_identity": "ce8b807f28cf4e9a1e85e5fccf32aaa20f2450ccb8729de40ed7889ced42940a",
+      "seed": 42,
+      "traces_sha256": "e969ff95020986e63a81e4e3e7f9f4ce419fe1da151186c253ffc03ad0082392"
+    },
+    {
+      "condition": "no_replanning",
+      "provider_attempts_sha256": "17a3a9075d1ff598dd0425d3806c2b8036d20303da6035895498168d15d31d8c",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 99
+      },
+      "raw_attempts_sha256": "97bf97b2db9314b08562c426691c1c72e18d29fd2da3379b3ad7255fd9f24a19",
+      "run_identity": "e0fddf537e40da1c8fd8d7c642f8ac110b8f9246c782d4dc3f95b14f3e22b324",
+      "seed": 2026,
+      "traces_sha256": "773f75cbbbd9336ef2c0d826d971eede3e3fb5d34a44060fa911a644568ffe31"
+    },
+    {
+      "condition": "no_content",
+      "provider_attempts_sha256": "b57d2ce9eb91f106615c2374d16eb1de14382e584a441411b7a9abbbf4c0dd5e",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 99
+      },
+      "raw_attempts_sha256": "63367f8a099ee216620a6591a6f5fb22bd5629903fc7187d68f396de9dd49a73",
+      "run_identity": "59c103399a96ea37700c44775319a5fd76d36c5dac54e4f648f1c9646d3041f8",
+      "seed": 7,
+      "traces_sha256": "bfe088ab4d4bb915d3f7519ae3c3599ece129acf23877893a51478f84b548ba1"
+    },
+    {
+      "condition": "no_content",
+      "provider_attempts_sha256": "920c428856806f86aa31ab117557b4cb263d662f5ba66e59f4cfcec696fac6d9",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 99
+      },
+      "raw_attempts_sha256": "a09d762ca7ea732876099c442723ec1b90de0e961d42cf47baa8b053e40a3193",
+      "run_identity": "c5ca27ce008ee04d1c97ca29b90ef68d556d2daa7f21a1a7b6e2956b63134258",
+      "seed": 42,
+      "traces_sha256": "a4a48d11ed653908ef4a686620c2fedf7a268d676dbf3e0dc3e0e38733b54b12"
+    },
+    {
+      "condition": "no_content",
+      "provider_attempts_sha256": "25f593c6601ebe4f4906b70f55fd1b99069ab81b48dbe8cdfd2afd69d49bcb58",
+      "provider_evidence": {
+        "failed_requests": 0,
+        "requests": 99
+      },
+      "raw_attempts_sha256": "62dec47d3603084ad0c2e23479979f2a2e2434bcb53c1497cedbe2e439f0e24e",
+      "run_identity": "9e7ae3e38c871f5e9bf2fc9f9d5f675743f30b2b8076b6291a40a0633f86296b",
+      "seed": 2026,
+      "traces_sha256": "3a919ef699c920036278cfd4786f9f4e89a6b1cc8b5eda7a900cb2aea4ed6eab"
+    }
+  ],
+  "requests": 2850,
+  "runs": 24,
+  "scope": "T19 synthetic offline interactive benchmark with real provider and real tools",
+  "status": "COMPLETE",
+  "u0": "NOT_RUN_RESOURCE_SEMANTICS_UNVERIFIED",
+  "verification": {
+    "completed_run_audit_sha256": "290cd88174e530294d671bb45e17dbf73545cc46824d5f0bbc2a18e7e24f4af0",
+    "development_requests": 6,
+    "formal_exit_code": 0,
+    "frozen_source_changed": [],
+    "local_verification_sha256": "b96a69e9c6c73b7a499b75484b4df81fd09640c41436bfaacfd59ddc4ae66ca6",
+    "observed_account_balance_decrease_cny": "2.02",
+    "optional_no_collaborative": "NOT RUN; deferred before formal test",
+    "post_run_checkpoint_hash_checks": {
+      "2026": true,
+      "42": true,
+      "7": true
+    },
+    "post_run_data_manifest_match": true,
+    "report_rebuild_sha256": {
+      "AgenticRec/reports/ablations.md": "f7fb6c331408dc36627351af4c950d7d09f0ef45fdc279b27431f53464aaa395",
+      "AgenticRec/reports/benchmark.md": "722de8d520ea9207fa7670567b64b0d2677707199351eee5456a0fed4730e932",
+      "AgenticRec/reports/failure_analysis.md": "23fb9e8a68b09c6143913dd2acdfb06c3dbfee57e34755f5ec8379a54badb8a9",
+      "artifacts/runs/t19/live_20261010/summary.json": "13477707a3ad32925a15e43f6b18fa55d5eb0e47943a6dee1a6b119296a82d88"
+    },
+    "resume_verification": {
+      "artifact_sha256": "53b985b51b72afe09098c91fce2b97960c82dbdf7772503fe3863ceb2539095f",
+      "new_remote_api_requests": 0,
+      "runs": 24,
+      "status": "PASS",
+      "unchanged_journal_count": 24
+    },
+    "source_commit": "ad4d493",
+    "status": "PASS"
+  }
+}

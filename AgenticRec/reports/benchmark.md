@@ -1,4 +1,4 @@
-# T19 Benchmark (IN PROGRESS)
+# T19 Benchmark (COMPLETED)
 
 Generated from frozen per-user predictions for seeds 7, 42, and 2026. Values are mean +/- sample standard deviation across seeds.
 
@@ -17,13 +17,21 @@ Paired user bootstrap for LightGCN minus BPR-MF NDCG@10: mean -0.008631, 95% CI 
 
 ## Interactive systems
 
-| System | Strict Success | Constraint Precision | Fill@K | Requests | Latency p50/p95 |
-|---|---:|---:|---:|---:|---:|
-| U1 | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED |
-| F | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED |
-| A | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED |
-| O | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED |
+Real DeepSeek deepseek-flash, non-thinking, 1024-token cap, zero network retries; frozen 150-episode synthetic test, three seeds. Mean +/- sample SD. All failures remain in the denominator.
 
-Paid batch status: READY. Audited ceiling: 4,608 requests; conservative monetary reservation: 114.425856 CNY. Budget/permission details: {"max_output_tokens": 1024, "model_id": "deepseek-flash", "money_budget_cny_total": null, "money_budget_sufficiency": "PROVIDER_BALANCE_CHECK_REQUIRED", "money_remaining_cny_conservative": null, "money_required_cny_ceiling": 114.425856, "money_shortfall_cny": null, "money_used_cny_peak_estimate": 0, "paid_calls_allowed": true, "per_request_planning_ceiling_cny": 0.024832, "provider": "deepseek", "request_cap_total": 4624, "request_shortfall": 0, "requests_remaining": 4624, "requests_used": 0, "spending_policy": "account_balance"}. These are planning bounds, not actual expenditure.
+| System | Strict Success | Constraint Precision | Fill@K | Requests/run | Tools/run | Latency p50/p95 ms |
+|---|---:|---:|---:|---:|---:|---:|
+| U1 | 0.6244 +/- 0.0102 | 0.7089 +/- 0.0102 | 0.5311 +/- 0.0139 | 190.0000 +/- 0.0000 | 337.3333 +/- 4.9329 | 1359.5/3088.3 |
+| F | 0.6867 +/- 0.0067 | 0.8000 +/- 0.0000 | 0.6000 +/- 0.0000 | 75.0000 +/- 0.0000 | 146.0000 +/- 0.0000 | 380.3/1224.0 |
+| A | 0.8133 +/- 0.0067 | 0.9600 +/- 0.0000 | 0.7600 +/- 0.0000 | 190.0000 +/- 0.0000 | 171.0000 +/- 0.0000 | 1122.2/2322.7 |
+| O | 0.8133 +/- 0.0067 | 0.9600 +/- 0.0000 | 0.7600 +/- 0.0000 | 99.0000 +/- 0.0000 | 163.3333 +/- 0.5774 | 393.3/2161.3 |
 
-Machine-readable local evidence: `artifacts/runs/t19/model_summary.json` and `artifacts/runs/t19/dry_run_plan.json`.
+U0: NOT RUN; original resource semantics/license remain unverified. U1 is a rebuilt Plan First JSON adapter with common frozen recommendation pipeline followed by original ToolBox/Buffer/Map; no paper prompt or result claim.
+
+O minus A paired episode bootstrap: {"constraint_precision":{"bootstrap_samples":10000,"bootstrap_seed":42,"ci_lower":0.0,"ci_upper":0.0,"confidence":0.95,"mean_difference":0.0,"paired_count":150},"fill_at_k":{"bootstrap_samples":10000,"bootstrap_seed":42,"ci_lower":0.0,"ci_upper":0.0,"confidence":0.95,"mean_difference":0.0,"paired_count":150},"latency_ms":{"bootstrap_samples":10000,"bootstrap_seed":42,"ci_lower":-778.6618333333532,"ci_upper":-551.087500000021,"confidence":0.95,"mean_difference":-662.1755555555542,"paired_count":150},"request_count":{"bootstrap_samples":10000,"bootstrap_seed":42,"ci_lower":-0.72,"ci_upper":-0.5,"confidence":0.95,"mean_difference":-0.6066666666666667,"paired_count":150},"strict_success":{"bootstrap_samples":10000,"bootstrap_seed":42,"ci_lower":0.0,"ci_upper":0.0,"confidence":0.95,"mean_difference":0.0,"paired_count":150}}
+
+H2 noninferiority at -0.02: supported
+
+Provider bill: NOT QUERIED. Peak-rate token estimate: 4.997432 CNY over 2850 request attempts; 0 episodes have unknown usage. Conservative planning reservation: 70.771200 CNY. Unknown usage remains null; no partial token sum is presented as a total cost ceiling.
+
+Latency includes parsing, tools and failures; serial episodes, prewarmed model and U1 worker. One-time model/legacy-worker warmup is excluded; each U1 request still creates fresh candidate state. This synthetic offline benchmark does not measure online satisfaction or CTR.

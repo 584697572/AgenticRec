@@ -1,8 +1,12 @@
 # 工作区状态入口
 
-最后更新：2026-10-10（Asia/Shanghai）。详细状态见 [AgenticRec/docs/STATUS.md](AgenticRec/docs/STATUS.md)，支出策略见 DECISIONS.md ADR-034，旧30元工程核算保留为历史证据。
+最后更新：2026-10-10（Asia/Shanghai）。详细状态见 [AgenticRec/docs/STATUS.md](AgenticRec/docs/STATUS.md)，最新验收见 [T19真实完整批次](reports/benchmark/t19_live_20261010.md)与[机器摘要](reports/benchmark/t19_live_20261010.json)。支出策略见 DECISIONS.md ADR-034；旧核算保留为历史证据。
 
-当前阶段 G4，T19 IN PROGRESS。用户最新授权按现有账户余额执行，余额不足停止提醒、不充值；官方余额初查5.10 CNY。四系统真实development联调通过5次请求，首批schema失败1次保留，共6次；正式test尚未开始。两套环境完整回归各249项通过，新增余额/403与schema专项各10项通过。正式工作保留全部规定消融和三个seed，仅推迟非规定额外no_collaborative，共24个run/4,608次请求最坏上界；不删测试、不改模型或路由阈值。完整系统效果/消融/CI仍NOT EVALUATED，报告重建NOT VERIFIED；T04 blocker不变。下一步执行已授权正式批次，余额不足时保持T19未完成。
+当前阶段 G4，T19 DONE。冻结150条合成test、8个规定条件、3个seed的24个run全部完成，3,600条执行、2,850次正式真实请求；development另6次。完整provider/token/trace审计、报告重建SHA一致、24份journal零调用恢复和代码/数据/checkpoint哈希检查通过。O与A Strict Success同为81.33%，每seed请求从190降到99（减少47.89%），本评测的-2百分点非劣界通过；不推广为线上效果。保留无内容86%优于O、LightGCN弱于BPR-MF等负结果，以及F ID类型和U1计划契约失败。生成请求已停止；观察余额5.10→3.08 CNY（减少2.02），实际账单未知。两环境完整各249项及新增专项通过；无测试后修改。T04原ID/许可/论文条件仍BLOCKED。下一任务T20独立环境与发布材料，随后T21。
+
+## 既往阶段记录
+
+下列旧阶段快照按原日期保留，当前状态以上方摘要、TASKS.yaml及最新报告为准。
 
 T06 DONE：官方稳定 MovieLens1M ZIP 的 MD5/CRC/SHA 验证通过；1,000,209 条评分按全局时间分成 800,164/100,024/100,021。训练期独立建立 5,351 个 warm 用户、3,469 个候选电影 ID、462,887 条正反馈图边；验证/测试冷启动与非正反馈保留计数。
 
@@ -129,3 +133,7 @@ Key仍按环境变量优先、根目录`.env`次之，不入Git/哈希清单。�
 - Provider/解析进展：新增标准库 HTTPS 的 DeepSeek/OpenAI-compatible transport、固定 provider allowlist、零 SDK 重试、无重定向、2 MiB 响应上限、usage/null-cost 提取、脱敏错误分类，以及环境变量优先/根目录 `.env` 次之且导入时不读密钥的 modern loader。F 的自由文本现在可经独立计费 `TextRequestParser` 严格生成完整 `FixedRequest`，并绑定公开 user ID 与历史授权；A/O 仍按冻结协议在 planner 同一次调用中解释并规划，避免新增一次调用后改变 8,649 上界。两环境专项各35/35、完整回归各197/197、compileall通过；fixture 验证均无网络，本轮真实请求0。modern transport 的真实连接、解析准确率和正式 U1/F/A/O executor 仍未验收，T19保持 IN PROGRESS。
 - System executor 进展：新增 U1/F/A/O/消融共用的 `BenchmarkSystemExecutor` 核心，统一把 parser/planner 的同一账本增量转换成 `EpisodeAttempt`，区分实际1轮、反馈到达的第2轮和最终第3轮；缺反馈不再伪记三轮成功。evaluator-only 对象经 `FeedbackSchedule` 只保留逐轮显式 patch，目标、期望状态、硬约束和故障字段不进入对象或 journal；schedule SHA 已绑定 `RunSpec`，恢复时不能换反馈。真实冻结150条 test 的 F 机械 fixture 联调完成：75次解析、190次 fixed 调用、40条三轮、恢复重复调用0、远程请求0、journal私有字段0，指标仍 `NOT EVALUATED`。专项联合两环境各22/22、完整回归各212/212、compileall通过。真实 A/O 工具工厂、U1 upstream live turn 与 evaluator 故障注入仍未完成。
 - 下一任务：实现真实 A/O recommendation tool 工厂、U1 upstream-rebuilt turn adapter 和隔离 fault 注入，并在 frozen fixture 上核对实际 request/tool/turn 上界；随后才取得覆盖预注册批次的明确请求/金额授权。不得用现有 27 次零散试跑填正式表。
+
+## T19 live batch started (2026-10-10)
+
+T19 IN PROGRESS. Engineering commit ad4d493 is frozen; formal run directory: artifacts/runs/t19/live_20261010. All 24 required system/ablation/seed runs are started by the same audited CLI. Initial provider balance 5.10 CNY; no top-ups. Progress evidence lives in per-run predictions.jsonl, llm_attempts.jsonl and account_balance.jsonl. First U1 test episode completed successfully. No complete quality/CI claim is made while the batch is running. Sources/configuration will not be tuned against these test observations.

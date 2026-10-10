@@ -266,7 +266,7 @@
         "T12",
         "T13"
       ],
-      "status": "TODO",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T15",
       "deliverables": "`AgenticRec/src/agenticrec/agent/state.py`；`AgenticRec/tests/unit/test_preference_state.py`。",
       "acceptance": "明确反馈优先，模型推断不能盖过用户硬条件。 一次否定不被错误扩展为全类型否定。",
@@ -282,7 +282,7 @@
         "T15",
         "T18"
       ],
-      "status": "TODO",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T16",
       "deliverables": "`AgenticRec/src/agenticrec/agent/router.py`；`AgenticRec/src/agenticrec/agent/loop.py`。",
       "acceptance": "FakeLLM 的成功/重规划/澄清/预算耗尽轨迹可重放。 不把所有请求都走 Agent 作为唯一方案。",
@@ -296,7 +296,7 @@
       "depends_on": [
         "T16"
       ],
-      "status": "TODO",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T17",
       "deliverables": "`AgenticRec/tests/regression/`；`reports/reliability/`。",
       "acceptance": "没有越权工具执行、跨 session 状态泄漏。 失败不会挂死、无限重试或绕过硬约束。",
@@ -312,7 +312,7 @@
         "T12",
         "T15"
       ],
-      "status": "TODO",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T18",
       "deliverables": "`data/eval_private/`；`artifacts/eval_manifest.json`；`AgenticRec/src/agenticrec/evaluation/episodes.py`。",
       "acceptance": "test target 不进入可见 prompt、demo 检索或工具历史。 全空输出不能刷高可行任务成功率。 在 T16 调参前冻结 test。",
@@ -328,11 +328,21 @@
         "T18",
         "T10"
       ],
-      "status": "IN PROGRESS",
+      "status": "DONE",
       "source": "AgenticRec_完整复现与优化执行规范.md#T19",
       "deliverables": "`artifacts/runs/`；`AgenticRec/reports/benchmark.md`；`AgenticRec/reports/ablations.md`；`AgenticRec/reports/failure_analysis.md`。",
       "acceptance": "表格可由原始预测重新生成；无手填指标。 含负收益、失败与分层覆盖率；各方法条件一致。 置信度不够时不声称显著提升。",
-      "checks": "`python -m agenticrec.cli benchmark --config configs/benchmark.yaml --dry-run`；`预算授权后运行同一命令去掉 --dry-run；先核验总请求数`。"
+      "checks": "`python -m agenticrec.cli benchmark --config configs/benchmark.yaml --dry-run`；`预算授权后运行同一命令去掉 --dry-run；先核验总请求数`。",
+      "verification": {
+        "command": "python -m agenticrec.cli benchmark --config configs/benchmark.yaml",
+        "exit_code": 0,
+        "evidence": "reports/benchmark/t19_live_20261010.json",
+        "evidence_sha256": "fe4f93e15335ac4a67231a4bc09f8e630010c0d030016df6b2bf29297ed61e42",
+        "raw_run_dir": "artifacts/runs/t19/live_20261010",
+        "source_commit": "ad4d493",
+        "report_rebuild": "PASS",
+        "resume_no_new_requests": "PASS"
+      }
     },
     {
       "id": "T20",
@@ -408,5 +418,7 @@
       "acceptance": "不得把未提交/未合并写成被微软采纳。 按实际状态陈述贡献。",
       "checks": "`原始失败与修复后通过对照`。"
     }
-  ]
+  ],
+  "status_evidence_index": "AgenticRec/docs/STATUS.md",
+  "status_updated": "2026-10-10"
 }
