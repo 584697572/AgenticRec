@@ -328,7 +328,7 @@
         "T18",
         "T10"
       ],
-      "status": "TODO",
+      "status": "IN PROGRESS",
       "source": "AgenticRec_完整复现与优化执行规范.md#T19",
       "deliverables": "`artifacts/runs/`；`AgenticRec/reports/benchmark.md`；`AgenticRec/reports/ablations.md`；`AgenticRec/reports/failure_analysis.md`。",
       "acceptance": "表格可由原始预测重新生成；无手填指标。 含负收益、失败与分层覆盖率；各方法条件一致。 置信度不够时不声称显著提升。",

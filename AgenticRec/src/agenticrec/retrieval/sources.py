@@ -37,7 +37,11 @@ class RetrievalResult:
 class CandidateRetriever:
     """The initial 100/route, 200-union RRF baseline from spec section 8.1."""
 
-    def __init__(self, catalog: Catalog, train_positive_edges, known_user=None):
+    def __init__(self, catalog: Catalog, train_positive_edges, known_user=None, *,
+                 use_content=True, use_collaborative=True):
+        if type(use_content) is not bool or type(use_collaborative) is not bool:
+            raise ValueError("recall switches must be boolean")
+        self.use_content, self.use_collaborative = use_content, use_collaborative
         self.catalog = catalog
         self.gate = ConstraintGate(catalog)
         self.known_user = known_user
@@ -166,10 +170,12 @@ class CandidateRetriever:
         if pre.status != "OK":
             return self._empty(pre, effective, tuple(sorted(seen)), source, reason)
         eligible = pre.item_ids
-        content = self.content_rank(eligible, liked, disliked, effective, per_route)
-        collaborative, cf_name = self.collaborative_rank(
+        content = (self.content_rank(eligible, liked, disliked, effective, per_route)
+                   if self.use_content else [])
+        collaborative, cf_name = (self.collaborative_rank(
             eligible, liked, user_id=user_id, history_authorized=history_authorized, limit=per_route)
-        rankings = {"content": content}
+            if self.use_collaborative else ([], None))
+        rankings = {"content": content} if self.use_content else {}
         if cf_name is not None:
             rankings[cf_name] = collaborative
         rankings["popularity"] = self.popularity_rank(eligible, per_route)

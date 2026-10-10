@@ -2,7 +2,7 @@
   "schema_version": 1,
   "benchmark_id": "interactive-v1-t19",
   "eval_manifest": "artifacts/eval_manifest.json",
-  "authorization_ledger": "reproduction/native_runs/20261005_session/live_summary.json",
+  "authorization_ledger": "reproduction/t19_budget_20261010.json",
   "split": "test",
   "episodes": 150,
   "model_seeds": [7, 42, 2026],
@@ -13,7 +13,8 @@
     "no_collaborative",
     "no_explicit_preference_state",
     "always_agent",
-    "no_replanning"
+    "no_replanning",
+    "no_content"
   ],
   "max_replans": 1,
   "bootstrap_samples": 10000,

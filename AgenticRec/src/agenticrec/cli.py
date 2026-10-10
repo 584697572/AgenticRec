@@ -56,14 +56,22 @@ def main(argv=None):
             report["live_run_authorized"] = False
             if report["status"] == "BLOCKED_AUTHORIZATION":
                 report["reason"] = (
-                    "the remaining request authorization does not cover the audited "
-                    "batch ceiling; money-budget sufficiency is also not verified"
+                    "paid-call permission, remaining requests and conservative money "
+                    "budget must all cover the complete audited batch"
                 )
-            else:
-                report["status"] = "BLOCKED_LIVE_RUNNER_NOT_IMPLEMENTED"
-                report["reason"] = "the paid runner is not implemented"
-            print(json.dumps(report, ensure_ascii=True, indent=2, sort_keys=True))
-            return 3
+                print(json.dumps(report, ensure_ascii=True, indent=2, sort_keys=True))
+                return 3
+            from .evaluation.live_benchmark import run_batch
+            try:
+                result = run_batch(args.config, live=True)
+            except (OSError, ValueError, RuntimeError) as error:
+                print(json.dumps({"status": "BLOCKED_BATCH", "error_type": type(error).__name__,
+                                  "reason": str(error)}, ensure_ascii=True))
+                return 3
+            from .evaluation.system_reports import generate_system_reports
+            generate_system_reports(args.config, result["batch_dir"])
+            print(json.dumps(result, ensure_ascii=True, sort_keys=True))
+            return 0
         write_dry_run_artifact(report)
         raw_predictions = WORKSPACE_ROOT / "artifacts/runs/t19/model_predictions.jsonl"
         saved_summary = WORKSPACE_ROOT / "artifacts/runs/t19/model_summary.json"
@@ -81,7 +89,9 @@ def main(argv=None):
                 model_summary = None
         if model_summary is not None:
             write_model_summary(model_summary)
-            write_partial_reports(report, model_summary)
+            # Dry-run must not overwrite completed reports from a real batch.
+            if not (WORKSPACE_ROOT / "artifacts/runs/t19/live_20261010/summary.json").is_file():
+                write_partial_reports(report, model_summary)
             report["offline_model_summary"] = "WRITTEN"
         print(json.dumps(report, ensure_ascii=True, indent=2, sort_keys=True))
         return 0

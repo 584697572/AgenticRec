@@ -32,3 +32,9 @@ This variant is **U1 upstream_rebuilt** under the specification's route B. U0/A1
 ## T18 extension
 
 `agenticrec.evaluation.episodes` is a new project evaluator and does not modify upstream evaluation code. It freezes separate development/test interactive episodes over the independently rebuilt MovieLens1M catalog, stores system-visible and evaluator-only objects separately, rejects target and group leakage, and keeps failed or empty attempts in the denominator. U0's original fuzzy text-hit metrics remain a separate historical result and are not compared directly with this protocol. F/A/O system results are still NOT EVALUATED. Evidence is in `reports/interactive_eval/t18_20261007.md`.
+
+## T19 live execution boundary (2026-10-10)
+
+The new `UpstreamRebuiltTurn` meters a rewritten Plan First JSON prompt and the shared frozen recommendation pipeline, then sends the actual tool-name plan to the existing credential-free `t10_upstream_worker.py`. The worker executes original ToolBox/CandidateBuffer/MapTool, preserving tool-name overwrite behavior. Its ranking tool consumes new mapped scores. This adapts the planner/schema and omits original CRSAgent answer summarization; it is method-level U1, not original prompt/paper reproduction. All systems produce item IDs under the same benchmark contract. U1 latency includes legacy subprocess startup; it cannot isolate planner efficiency alone.
+
+`FaultSchedule` is evaluator-owned and exposes no targets; ranking faults are deterministic local execution fixtures. `variants.py` explicitly removes content or collaborative signals, preserving train-seen filtering. New report generation requires real provider evidence and all failed episodes. All T19 live quality metrics remain NOT EVALUATED until the separately bounded batch runs. Pristine RecAI remains unchanged at the pinned commit.

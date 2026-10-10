@@ -13,7 +13,7 @@ from .episodes import EpisodeAttempt, load_public_episodes
 
 ROOT = Path(__file__).resolve().parents[4]
 SYSTEMS = frozenset((
-    "U1", "F", "A", "O", "no_user_model", "no_collaborative",
+    "U1", "F", "A", "O", "no_user_model", "no_collaborative", "no_content",
     "no_explicit_preference_state", "always_agent", "no_replanning",
 ))
 RUN_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$")
@@ -75,6 +75,8 @@ class RunSpec:
     per_request_cost_ceiling_cny: float
     live: bool
     feedback_sha256: str | None = None
+    fault_sha256: str | None = None
+    provenance_sha256: str | None = None
     schema_version: int = 1
 
     def __post_init__(self):
@@ -111,6 +113,11 @@ class RunSpec:
                 not isinstance(self.feedback_sha256, str)
                 or not re.fullmatch(r"[0-9a-f]{64}", self.feedback_sha256)):
             raise ValueError("feedback_sha256 must be lowercase SHA256 or null")
+        for name in ("fault_sha256", "provenance_sha256"):
+            value = getattr(self, name)
+            if value is not None and (not isinstance(value, str)
+                                     or not re.fullmatch(r"[0-9a-f]{64}", value)):
+                raise ValueError(name + " must be lowercase SHA256 or null")
         if self.live and (self.authorized_request_cap < 1
                           or self.money_budget_cny <= 0
                           or self.per_request_cost_ceiling_cny <= 0):
@@ -125,14 +132,20 @@ class RunSpec:
 
 
 def episode_request_ceiling(system, episode):
+    # The feedback arrival is a user turn, not an LLM response turn.
+    response_turns = 2 if episode.multi_turn else 1
     if system == "F":
-        return episode.max_turns if episode.layer == "text" else 0
+        return 1 if episode.layer == "text" else 0
     if system in ("U1", "no_replanning"):
-        return episode.max_turns
+        if system == "no_replanning" and episode.layer == "structured":
+            return 0
+        return response_turns
     if system in (
             "A", "O", "no_user_model", "no_collaborative",
-            "no_explicit_preference_state", "always_agent"):
-        return episode.max_turns * 2
+            "no_explicit_preference_state", "always_agent", "no_content"):
+        if system not in ("A", "always_agent") and episode.layer == "structured":
+            return 0
+        return response_turns * 2
     raise ValueError("unsupported benchmark system")
 
 
@@ -247,6 +260,8 @@ def run_benchmark(spec, journal_path, executor, *, dry_run=False):
     if type(dry_run) is not bool:
         raise ValueError("dry_run must be boolean")
     _public_path, episodes = _load_public(spec)
+    if not dry_run and spec.fault_sha256 != getattr(executor, "fault_sha256", None):
+        raise ValueError("executor fault schedule does not match RunSpec")
     if any(episode.multi_turn for episode in episodes) and spec.feedback_sha256 is None:
         raise ValueError("multi-turn runs require a feedback schedule hash")
     executor_feedback_sha = getattr(executor, "feedback_sha256", spec.feedback_sha256)
@@ -290,6 +305,8 @@ def run_benchmark(spec, journal_path, executor, *, dry_run=False):
                 "split": spec.split,
                 "public_sha256": spec.public_sha256,
                 "feedback_sha256": spec.feedback_sha256,
+                "fault_sha256": spec.fault_sha256,
+                "provenance_sha256": spec.provenance_sha256,
                 "private_targets_loaded": False,
                 "authorized_request_cap": spec.authorized_request_cap,
                 "money_budget_cny": spec.money_budget_cny,

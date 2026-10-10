@@ -80,8 +80,8 @@ def test_dry_run_reads_only_public_input_and_has_no_side_effects(tmp_path, monke
                                   lambda episode: invoked.append(episode), dry_run=True)
 
     assert report["status"] == "READY"
-    assert report["episode_request_ceiling"] == {"test-001": 0, "test-002": 3}
-    assert report["required_request_ceiling"] == 3
+    assert report["episode_request_ceiling"] == {"test-001": 0, "test-002": 1}
+    assert report["required_request_ceiling"] == 1
     assert report["private_targets_loaded"] is False
     assert report["feedback_sha256"] == "f" * 64
     assert report["remote_api_requests"] == 0
@@ -139,7 +139,7 @@ def test_interrupted_started_episode_blocks_resume_without_duplicate_charge(
 def test_insufficient_full_run_authorization_stops_before_journal_or_executor(
         tmp_path, monkeypatch):
     monkeypatch.setattr(runner, "ROOT", tmp_path)
-    spec = _spec(tmp_path, authorized_request_cap=2)
+    spec = _spec(tmp_path, authorized_request_cap=0)
     journal = tmp_path / "attempts.jsonl"
     invoked = []
 

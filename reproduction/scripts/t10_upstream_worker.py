@@ -63,10 +63,13 @@ def execute(payload):
                       {ranking.name: ranking, mapping.name: mapping})
     plan = [{"tool_name": ranking.name, "input": '{"schema":"model_scores"}'},
             {"tool_name": mapping.name, "input": str(payload["top_k"])}]
+    if "tool_plan" in payload:
+        plan = payload["tool_plan"]
     success, answer = toolbox.run(json.dumps(plan, ensure_ascii=False))
     return {
         "variant": "U1_upstream_rebuilt",
-        "plan_source": "scripted_offline_fixture_not_llm",
+        "plan_source": ("metered_llm_rebuilt_plan" if "tool_plan" in payload
+                        else "scripted_offline_fixture_not_llm"),
         "upstream_classes": ["ToolBox", "CandidateBuffer", "MapTool"],
         "replaced_tool": "RecModelTool_by_U1_ModelRankingTool",
         "plan": plan,

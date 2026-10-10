@@ -18,7 +18,8 @@ UPSTREAM_SOURCES = {
 UPSTREAM_SHA256 = UPSTREAM_SOURCES["llm4crs/agent_plan_first_openai.py"]
 
 
-def run_upstream_plan(route: RouteResult, titles_by_id, *, top_k=3, root=ROOT):
+def run_upstream_plan(route: RouteResult, titles_by_id, *, top_k=3, root=ROOT,
+                      tool_plan=None):
     root = Path(root)
     if type(top_k) is not int or not 1 <= top_k <= 20:
         raise ValueError("top_k must be in 1..20")
@@ -58,6 +59,18 @@ def run_upstream_plan(route: RouteResult, titles_by_id, *, top_k=3, root=ROOT):
         "profile_source": route.profile_source,
         "fallback_reason": route.fallback_reason,
     }
+    if tool_plan is not None:
+        allowed = {"Movie Candidates Ranking Tool", "Mapping Tool"}
+        if (type(tool_plan) is not list or not 2 <= len(tool_plan) <= 4
+                or any(type(step) is not dict or set(step) != {"tool_name", "input"}
+                       or step["tool_name"] not in allowed for step in tool_plan)
+                or tool_plan[-1] != {"tool_name": "Mapping Tool", "input": str(top_k)}
+                or any(step["input"] != ('{"schema":"model_scores"}'
+                        if step["tool_name"] == "Movie Candidates Ranking Tool"
+                        else str(top_k)) for step in tool_plan)
+                or tool_plan[0]["tool_name"] != "Movie Candidates Ranking Tool"):
+            raise ValueError("unsafe upstream rebuilt plan")
+        payload["tool_plan"] = tool_plan
     completed = subprocess.run([str(python), str(worker)], input=json.dumps(payload),
                                text=True, encoding="utf-8", capture_output=True,
                                cwd=root, env=env, timeout=90, check=False)

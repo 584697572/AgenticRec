@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "scope": "T19_engineering_and_budget_recalculation",
+  "authorization_status": "ENGINEERING_ONLY_PENDING_FULL_BATCH_FEASIBILITY",
+  "allow_paid_api": false,
+  "budget": {
+    "provider": "deepseek",
+    "model_id": "deepseek-flash",
+    "allow_paid_api": false,
+    "api_request_cap": 6000,
+    "max_output_tokens": 1024,
+    "money_budget": 30,
+    "budget_unit": "CNY"
+  },
+  "remote_api_requests": 0,
+  "estimated_cost_cny_peak_ceiling": 0,
+  "actual_cost_cny": null,
+  "actual_cost_reason": "no_new_provider_calls",
+  "request_cap_note": "6000 is the proposed planning ceiling; selecting engineering-first at CNY 30 does not authorize starting the full paid batch",
+  "user_selection": "保持总预算 30 元，先完成工程并重新核算",
+  "historical_ledger": "reproduction/native_runs/20261005_session/live_summary.json",
+  "historical_requests_used": 93,
+  "historical_request_cap": 120
+}

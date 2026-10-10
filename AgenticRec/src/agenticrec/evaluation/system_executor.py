@@ -25,15 +25,19 @@ from .episodes import EpisodeAttempt, PrivateEpisode, PublicEpisode
 
 
 SYSTEMS = frozenset({
-    "U1", "F", "A", "O", "no_user_model", "no_collaborative",
+    "U1", "F", "A", "O", "no_user_model", "no_collaborative", "no_content",
     "no_explicit_preference_state", "always_agent", "no_replanning",
 })
 _ROUTED_SYSTEMS = frozenset({
-    "O", "no_user_model", "no_collaborative",
+    "O", "no_user_model", "no_collaborative", "no_content",
     "no_explicit_preference_state", "no_replanning",
 })
 _FEEDBACK_KEYS = frozenset({"turn", "kind", "patch"})
 _PATCH_KEYS = frozenset({"liked_item_ids", "disliked_item_ids"})
+
+
+def episode_input_is_text(value):
+    return value.get("mode") == "text"
 
 
 @dataclass(frozen=True)
@@ -272,11 +276,13 @@ class BenchmarkSystemExecutor:
         self.ledger = ledger
         self.planned_cost_ceiling = float(planned_cost_ceiling)
         self._clock = clock
+        self.last_trace = None
 
     def __call__(self, episode):
         if not isinstance(episode, PublicEpisode):
             raise TypeError("executor requires PublicEpisode")
         started = self._clock()
+        self.last_trace = {"episode_id": episode.episode_id, "turns": []}
         before = self.ledger.snapshot()
         turns = 1
         total_tool_calls = 0
@@ -369,6 +375,9 @@ class BenchmarkSystemExecutor:
 
     def _run_turn(self, episode, public_input, fixed_request, *, parse_text):
         if self.system == "F":
+            trace = {"route": "FIXED", "planner_calls": 0,
+                     "parser_calls": int(fixed_request is None), "replans": 0}
+            self.last_trace["turns"].append(trace)
             if fixed_request is None:
                 if not parse_text:
                     raise ValueError("fixed text state was not established")
@@ -378,17 +387,39 @@ class BenchmarkSystemExecutor:
                 )
                 fixed_request = parsed.request
             response = self.fixed_pipeline.recommend(fixed_request).to_dict()
-            return _turn_from_payload(response), fixed_request
+            trace.update(request=fixed_request_payload(fixed_request), response=response)
+            return _turn_from_payload(response, tool_calls=1), fixed_request
 
         request = self._routing_request(
             episode.episode_id, public_input, fixed_request
         )
         if self.system == "U1":
+            trace = {"route": "UPSTREAM", "planner_calls": 1, "parser_calls": 0, "replans": 0}
+            self.last_trace["turns"].append(trace)
             result = self.upstream_turn(request)
             if not isinstance(result, TurnResult):
                 raise TypeError("upstream turn adapter must return TurnResult")
-            return result, fixed_request
-        return _turn_from_loop(self.agent_loop.run(request)), fixed_request
+            parsed = getattr(self.upstream_turn, "last_request", None)
+            trace["trace"] = getattr(self.upstream_turn, "last_trace", None)
+            return result, parsed if isinstance(parsed, FixedRequest) else fixed_request
+        report = self.agent_loop.run(request)
+        trace = report.to_dict()
+        trace.pop("budget", None)
+        self.last_trace["turns"].append(trace)
+        # Only validated, actually executed requests establish text preference state.
+        for execution in report.executions:
+            for trace in execution.traces:
+                raw = trace.arguments.get("request")
+                if trace.result.ok and isinstance(raw, dict):
+                    fixed_request = FixedRequest.parse(raw)
+        turn = _turn_from_loop(report)
+        if report.planner_calls == 0 and report.response is not None:
+            turn = TurnResult(turn.status, turn.item_ids, turn.tool_calls + 1,
+                              turn.fallback_kind)
+        if (turn.status == "CLARIFY" and fixed_request is not None
+                and report.route_reason.startswith("conflict:")):
+            turn = TurnResult("CLARIFY_CONFLICT", (), turn.tool_calls, None)
+        return turn, fixed_request
 
     def _routing_request(self, request_id, public_input, fixed_request):
         if fixed_request is None:
@@ -404,9 +435,9 @@ class BenchmarkSystemExecutor:
         return RoutingRequest(
             request_id=request_id,
             public_input=visible,
-            agent_need_score=0.0,
+            agent_need_score=1.0 if episode_input_is_text(public_input) else 0.0,
             fixed_request=fixed_request,
-            needs_planning=False,
+            needs_planning=episode_input_is_text(public_input),
         )
 
     def _apply_feedback(self, episode_id, fixed_request, event):

@@ -89,7 +89,7 @@ def _fixture(tmp_path):
         "systems": ["U1", "F", "A", "O"],
         "ablations": [
             "no_user_model", "no_collaborative", "no_explicit_preference_state",
-            "always_agent", "no_replanning",
+            "always_agent", "no_replanning", "no_content",
         ],
         "max_replans": 1,
         "bootstrap_samples": 1000,
@@ -105,25 +105,26 @@ def test_dry_run_counts_every_system_and_fails_closed_before_live_calls(tmp_path
     monkeypatch.setattr(benchmark, "ROOT", tmp_path)
     plan = benchmark.build_dry_run(_fixture(tmp_path))
 
-    # Four total turns, three of which require text parsing. Three agent seeds.
+    # Three response turns; F parses the text episode only once. Three seeds.
     assert plan["request_ceiling_by_run"] == {
-        "system:U1": 12,
-        "system:F": 9,
-        "system:A": 24,
-        "system:O": 24,
-        "ablation:no_user_model": 24,
-        "ablation:no_collaborative": 24,
-        "ablation:no_explicit_preference_state": 24,
+        "system:U1": 9,
+        "system:F": 3,
+        "system:A": 18,
+        "system:O": 12,
+        "ablation:no_user_model": 12,
+        "ablation:no_collaborative": 12,
+        "ablation:no_explicit_preference_state": 12,
         "ablation:always_agent": 0,
-        "ablation:no_replanning": 12,
+        "ablation:no_replanning": 6,
+        "ablation:no_content": 12,
     }
-    assert plan["required_new_requests_ceiling"] == 153
-    assert len(plan["run_matrix"]) == 24
-    assert sum(item["request_ceiling"] for item in plan["run_matrix"]) == 153
-    assert len({item["run_id"] for item in plan["run_matrix"]}) == 24
+    assert plan["required_new_requests_ceiling"] == 96
+    assert len(plan["run_matrix"]) == 27
+    assert sum(item["request_ceiling"] for item in plan["run_matrix"]) == 96
+    assert len({item["run_id"] for item in plan["run_matrix"]}) == 27
     assert plan["run_aliases"] == {"always_agent": "A"}
     assert plan["authorization"]["requests_remaining"] == 27
-    assert plan["authorization"]["request_shortfall"] == 126
+    assert plan["authorization"]["request_shortfall"] == 69
     assert plan["status"] == "BLOCKED_AUTHORIZATION"
     assert plan["remote_api_requests"] == 0
     assert plan["test_private_loaded"] is False

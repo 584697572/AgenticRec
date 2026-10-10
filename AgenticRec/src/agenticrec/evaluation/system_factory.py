@@ -21,6 +21,7 @@ AGENT_BENCHMARK_SYSTEMS = frozenset({
     "always_agent",
     "no_user_model",
     "no_collaborative",
+    "no_content",
     "no_explicit_preference_state",
     "no_replanning",
 })
@@ -34,6 +35,12 @@ PLANNER_INSTRUCTIONS = (
     "excluded_item_ids, exclude_seen, k, and required_fields. Never change the "
     "public user_id or history_authorized value. For structured input, copy the "
     "entire request exactly. Never use evaluator-only fields."
+    " schema_version is integer 1. Defaults for absent facts are user_id null, "
+    "history_authorized false, all ID/genre/required_fields arrays empty, "
+    "year_min/year_max null, exclude_seen true, k 5. Item ID references in text "
+    "become liked_item_ids for similar recommendations. Unknown requested fields "
+    "such as duration belong in required_fields. Preserve explicit conflicting "
+    "include/exclude conditions for deterministic clarification."
 )
 
 

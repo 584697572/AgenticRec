@@ -10,7 +10,7 @@ from ..runtime.secrets import LocalKeyError, read_api_key
 _PROVIDER_BASES = {"deepseek": "https://api.deepseek.com"}
 
 
-def build_live_chat_adapter(config, *, api_key=None, ledger=None, sender=None):
+def build_live_chat_adapter(config, *, api_key=None, ledger=None, sender=None, seed=None):
     """Build the configured provider without making a network request."""
     if not isinstance(config, LLMBudget):
         raise TypeError("config must be LLMBudget")
@@ -25,5 +25,6 @@ def build_live_chat_adapter(config, *, api_key=None, ledger=None, sender=None):
         api_base=_PROVIDER_BASES[config.provider],
         api_key=api_key.strip(),
         sender=sender,
+        seed=seed,
     )
     return ChatAdapter(transport, config, ledger=ledger)

@@ -72,6 +72,8 @@ def test_deepseek_request_is_exact_json_with_no_sdk_retry():
         "messages": [{"role": "user", "content": "return JSON"}],
         "max_tokens": 128,
         "response_format": {"type": "json_object"},
+        "thinking": {"type": "disabled"},
+        "temperature": 0,
     }
     assert timeout == 9.5
     assert reply.content == '{"route":"DIRECT"}'

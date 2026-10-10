@@ -24,6 +24,7 @@ ABLATIONS = (
     "no_explicit_preference_state",
     "always_agent",
     "no_replanning",
+    "no_content",
 )
 PREREGISTERED_SEEDS = (7, 42, 2026)
 
@@ -147,7 +148,8 @@ def _load_authorization(config):
     if (budget.get("provider") != "deepseek"
             or budget.get("model_id") != "deepseek-flash"
             or budget.get("max_output_tokens") != 1024
-            or budget.get("money_budget") != 3
+            or type(budget.get("money_budget")) not in (int, float)
+            or budget.get("money_budget", 0) <= 0
             or budget.get("budget_unit") != "CNY"):
         raise ValueError("authorization ledger does not match the frozen T19 provider budget")
     return path, ledger, used, cap
@@ -160,35 +162,16 @@ def build_dry_run(config_path):
     ledger_path, ledger, used, cap = _load_authorization(config)
 
     seed_count = len(config.agent_seeds)
+    from .runner import episode_request_ceiling
     all_turns = sum(item.max_turns for item in episodes)
     text_turns = sum(item.max_turns for item in episodes if item.layer == "text")
-    replanning_multiplier = 1 + config.max_replans
-    one_call_all_turns = all_turns * seed_count
-    routed_ceiling = one_call_all_turns * replanning_multiplier
-    breakdown = {
-        "system:U1": one_call_all_turns,
-        # F has no planner; free-text intent extraction remains visible in cost.
-        "system:F": text_turns * seed_count,
-        "system:A": routed_ceiling,
-        "system:O": routed_ceiling,
-        "ablation:no_user_model": routed_ceiling,
-        "ablation:no_collaborative": routed_ceiling,
-        "ablation:no_explicit_preference_state": routed_ceiling,
-        # This ablation is exactly the already scheduled A run.
-        "ablation:always_agent": 0,
-        "ablation:no_replanning": one_call_all_turns,
-    }
+    conditions = SYSTEMS + tuple(name for name in ABLATIONS if name != "always_agent")
+    per_seed_ceiling = {name: sum(episode_request_ceiling(name, episode)
+                                 for episode in episodes) for name in conditions}
+    breakdown = {("system:" if name in SYSTEMS else "ablation:") + name:
+                 ceiling * seed_count for name, ceiling in per_seed_ceiling.items()}
+    breakdown["ablation:always_agent"] = 0
     required = sum(breakdown.values())
-    per_seed_ceiling = {
-        "U1": all_turns,
-        "F": text_turns,
-        "A": all_turns * replanning_multiplier,
-        "O": all_turns * replanning_multiplier,
-        "no_user_model": all_turns * replanning_multiplier,
-        "no_collaborative": all_turns * replanning_multiplier,
-        "no_explicit_preference_state": all_turns * replanning_multiplier,
-        "no_replanning": all_turns,
-    }
     run_matrix = [
         {
             "run_id": "t19-{}-seed{}".format(condition, seed),
@@ -199,21 +182,28 @@ def build_dry_run(config_path):
                 condition, seed
             ),
         }
-        for condition in (
-            "U1", "F", "A", "O", "no_user_model", "no_collaborative",
-            "no_explicit_preference_state", "no_replanning",
-        )
+        for condition in conditions
         for seed in config.agent_seeds
     ]
     remaining = cap - used
     shortfall = max(0, required - remaining)
+    from .cost_limits import PER_REQUEST_COST_CNY
+    money_required = required * PER_REQUEST_COST_CNY
+    money_used = ledger.get("estimated_cost_cny_peak_ceiling")
+    if money_used is not None and (type(money_used) not in (int, float)
+                                  or not math.isfinite(money_used) or money_used < 0):
+        raise ValueError("authorization money ledger is invalid")
+    money_remaining = None if money_used is None else max(0, ledger["budget"]["money_budget"] - money_used)
+    money_shortfall = None if money_remaining is None else max(0, money_required - money_remaining)
+    paid_allowed = ledger["budget"].get("allow_paid_api") is True
+    authorized = not shortfall and money_shortfall == 0 and paid_allowed
     return {
         "schema_version": 1,
         "benchmark_id": config.benchmark_id,
-        "status": "READY" if not shortfall else "BLOCKED_AUTHORIZATION",
+        "status": "READY" if authorized else "BLOCKED_AUTHORIZATION",
         "dry_run": True,
         "remote_api_requests": 0,
-        "live_run_authorized": shortfall == 0,
+        "live_run_authorized": authorized,
         "test_private_loaded": False,
         "split": config.split,
         "episodes": len(episodes),
@@ -236,7 +226,13 @@ def build_dry_run(config_path):
             "requests_remaining": remaining,
             "request_shortfall": shortfall,
             "money_budget_cny_total": ledger["budget"]["money_budget"],
-            "money_budget_sufficiency": "NOT VERIFIED",
+            "paid_calls_allowed": paid_allowed,
+            "per_request_planning_ceiling_cny": PER_REQUEST_COST_CNY,
+            "money_required_cny_ceiling": money_required,
+            "money_used_cny_peak_estimate": money_used,
+            "money_remaining_cny_conservative": money_remaining,
+            "money_shortfall_cny": money_shortfall,
+            "money_budget_sufficiency": "NOT VERIFIED" if money_shortfall is None else "SUFFICIENT" if money_shortfall == 0 else "INSUFFICIENT",
         },
         "frozen_inputs": {
             "manifest_sha256": _sha256(manifest_path),
@@ -251,8 +247,9 @@ def build_dry_run(config_path):
         },
         "u0": "NOT_RUN_RESOURCE_SEMANTICS_UNVERIFIED",
         "note": (
-            "The ceiling reserves every public max_turn and one replan for A/O and "
-            "router ablations. Actual routed calls may be lower; authorization is "
+            "The ceiling counts system response turns, one text extraction for F, "
+            "and one replan for Agent routes; user feedback arrivals cost no request. "
+            "no_content corrects the required spec ablation omission. Authorization is "
             "checked against the ceiling so a paid batch cannot overrun mid-run."
         ),
     }
@@ -461,18 +458,17 @@ def write_partial_reports(plan, model_summary):
         "| F | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED |",
         "| A | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED |",
         "| O | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED |", "",
-        "The paid run is blocked before request 1: the audited ceiling is {:,} new requests, {:,} remain authorized, and the shortfall is {:,}.".format(
-            plan["required_new_requests_ceiling"],
-            plan["authorization"]["requests_remaining"],
-            plan["authorization"]["request_shortfall"],
-        ), "",
+        "Paid batch status: {}. Audited ceiling: {:,} requests; conservative monetary reservation: {:.6f} CNY. Budget/permission details: {}. These are planning bounds, not actual expenditure.".format(
+            plan["status"], plan["required_new_requests_ceiling"],
+            plan["authorization"]["money_required_cny_ceiling"],
+            json.dumps(plan["authorization"], sort_keys=True)), "",
         "Machine-readable local evidence: `artifacts/runs/t19/model_summary.json` and `artifacts/runs/t19/dry_run_plan.json`.", "",
     ])
     ablation_text = "\n".join([
         "# T19 Ablations (NOT EVALUATED)", "",
-        "The frozen ablations are `no_user_model`, `no_collaborative`, `no_explicit_preference_state`, `always_agent`, and `no_replanning`.", "",
+        "Required ablations: `no_user_model`, `no_content`, `no_explicit_preference_state`, `always_agent`, and `no_replanning`. The additional exploratory `no_collaborative` removes CF recall but keeps trained final scoring.", "",
         "No ablation metric has been produced. The dry-run reserves the same public episodes, seeds, DeepSeek model, 1,024-token output cap, tools, and hard constraints for each condition. `always_agent` reuses A rather than spending a duplicate run.", "",
-        "Live execution is **BLOCKED_AUTHORIZATION** with a request-cap shortfall of {:,}. No row may be filled until raw attempts are written and rescored by the evaluator-only targets.".format(plan["authorization"]["request_shortfall"]), "",
+        "Live execution status: **{}**; monetary sufficiency: {}. No row may be filled until raw attempts are written and rescored by the evaluator-only targets.".format(plan["status"], plan["authorization"]["money_budget_sufficiency"]), "",
     ])
     failure_text = "\n".join([
         "# T19 Failure Analysis (IN PROGRESS)", "",

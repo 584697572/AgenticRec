@@ -273,3 +273,13 @@
 - 决定：A/O 与 Agent 消融统一通过 `build_benchmark_agent_loop` 构造。唯一 `recommend` 工具只接受完整且精确的 `FixedRequest`/constraints 键集，解析后直接调用已冻结的 `FixedRecommendationPipeline`。planner 输出在 PlanExecutor 副作用前额外验证：文本输入绑定公开 `user_id/history_authorized`，结构化输入逐字段保持不变。planner system prompt 显式声明 public request 是数据、禁止 evaluator-only 字段；运行时校验仍为最终边界。
 - 可比性：A 使用 always-agent，O 和路由消融使用同一个 ours-router；`no_replanning` 只修改 planner/replan 上限。推荐模型或消融版本由调用方注入同一工具工厂，不给 O 独占能力。结构化 O 保持零 LLM 直接 fixed route；A 对相同请求计一次 planner 与一次工具调用。
 - 验证与影响：两套环境新增专项各11项、完整回归各223项。真实 LightGCN seed 42 smoke 中 A/O 返回相同 response SHA，3条推荐均满足 Action；身份篡改计划在工具调用前返回 `INVALID_PLAN`。下载0、真实请求0，效果指标保持 `NOT EVALUATED`。这完成 A/O 真实推荐工具工厂，不完成 U1 adapter、fault schedule 或正式 live benchmark。
+
+## ADR-033：T19 补齐规定消融、纠正响应次数上界并绑定真实调用证据
+
+- 日期：2026-10-10。原要求：规范 §10.6/T19 的内容-only、协同-only、无显式状态、always-agent、无重规划及三个 seeds；§3.3 要求具体请求/token/金额授权。发现：ADR-028/config 只有 no_collaborative，遗漏规定的 no_content；旧上界把用户反馈到达也当成模型响应，并给结构化 O 预留规划请求。修正的是本项目执行错误，规范保持不变。
+- 决定：新增 no_content，保留额外 no_collaborative 并标明它只去掉协同召回、仍保留训练模型最终排序；always_agent 复用 A。多轮为两次系统响应；F 只在首轮文本解析一次；O/路由消融结构化直接执行，文本最多一次重规划。27 个独立 run 的上界为 5,202 请求，三 seed 为 7/42/2026。各条件同一冻结公共输入/反馈/故障/推荐候选契约；未调整测试集、模型或路由阈值。
+- U1 边界：同一计费 ChatAdapter 抽取完整 FixedRequest 并生成 upstream tool_name/input JSON，先运行共同的冻结推荐流程，再执行固定原版 ToolBox/CandidateBuffer/MapTool。修改的是项目适配器和隔离 worker，不是 RecAI 原代码。它保留原 dict 按工具名覆盖行为；不调用原 CRSAgent 自由文本总结，不声称原 prompt、原资源或论文复现。U1 的子进程启动耗时计入延迟，延迟对比明确包含这项架构差异。
+- Fault：evaluator-only FaultSchedule 只保留 ranking_timeout 执行标志及 SHA；确定性本地故障后走同约束 content fallback，失败/回退都计工具次数，不向供应商制造 timeout/429。偏好 patch 与 fault 单独绑定 run identity；公开输入与 LLM prompt 不获得隐藏目标或 fault 标志。
+- 回归：先复现文本首轮请求未建立后续状态、直接 fixed 调用未计数、非思考参数缺失、fault contract 和响应次数错误；修正后通过。额外验证真实 U1 原组件调用、三项推荐消融与回退硬约束；provider audit 独立核对原始 attempt/token，拒绝 fixture、未决 intent、缺失/重复请求和 token 不一致。故障 unknown usage 保持 null。
+- 预算：历史 A1 仍保留 93/120 使用记录，不重置。用户在本轮选择“保持总预算30元，先完成工程并重新核算”，没有接受150元完整批次方案。公开 planning profile 保留6,000建议请求上限、1,024输出token、30 CNY，allow_paid_api=false，明确为工程核算而非正式批次授权。官方峰值2/8 CNY每百万输入/输出token，输入保守上界8,320，每请求预留0.024832 CNY，全批预留129.176064 CNY，较30元缺99.176064元。只算满输出上限也需42.614784元，无法仅缩小输入上界证明整个最坏批次可在30元内完成。该预留不是实际支出；实际使用量可能更低，供应商账单未查询。工程模式不启动付费批次。
+- 当前验收边界：工程与机械 fixture 证明控制流/隔离；真实系统效果、CI、消融和失败数量保持 NOT EVALUATED。T19 仍 IN PROGRESS，T04 blocker 不变。

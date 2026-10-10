@@ -24,6 +24,6 @@ Paired user bootstrap for LightGCN minus BPR-MF NDCG@10: mean -0.008631, 95% CI 
 | A | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED |
 | O | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED | NOT EVALUATED |
 
-The paid run is blocked before request 1: the audited ceiling is 8,649 new requests, 27 remain authorized, and the shortfall is 8,622.
+Paid batch status: BLOCKED_AUTHORIZATION. Audited ceiling: 5,202 requests; conservative monetary reservation: 129.176064 CNY. Budget/permission details: {"max_output_tokens": 1024, "model_id": "deepseek-flash", "money_budget_cny_total": 30, "money_budget_sufficiency": "INSUFFICIENT", "money_remaining_cny_conservative": 30, "money_required_cny_ceiling": 129.176064, "money_shortfall_cny": 99.176064, "money_used_cny_peak_estimate": 0, "paid_calls_allowed": false, "per_request_planning_ceiling_cny": 0.024832, "provider": "deepseek", "request_cap_total": 6000, "request_shortfall": 0, "requests_remaining": 6000, "requests_used": 0}. These are planning bounds, not actual expenditure.
 
 Machine-readable local evidence: `artifacts/runs/t19/model_summary.json` and `artifacts/runs/t19/dry_run_plan.json`.

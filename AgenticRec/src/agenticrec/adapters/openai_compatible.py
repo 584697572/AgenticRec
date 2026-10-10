@@ -75,9 +75,12 @@ class OpenAICompatibleTransport:
 
     is_live = True
 
-    def __init__(self, *, api_base, api_key, sender=None):
+    def __init__(self, *, api_base, api_key, sender=None, seed=None):
         self.api_base = _validate_base(api_base)
         self._api_key = _validate_key(api_key)
+        if seed is not None and (type(seed) is not int or seed < 0):
+            raise ValueError("seed must be a nonnegative integer or null")
+        self.seed = seed
         if sender is not None and not callable(sender):
             raise TypeError("sender must be callable")
         self._sender = sender or self._stdlib_send
@@ -107,7 +110,12 @@ class OpenAICompatibleTransport:
             "messages": _messages(messages),
             "max_tokens": max_output_tokens,
             "response_format": {"type": "json_object"},
+            "temperature": 0,
         }
+        if urlsplit(self.api_base).hostname == "api.deepseek.com":
+            payload["thinking"] = {"type": "disabled"}
+        if self.seed is not None:
+            payload["seed"] = self.seed
         body = json.dumps(
             payload, ensure_ascii=False, separators=(",", ":")
         ).encode("utf-8")

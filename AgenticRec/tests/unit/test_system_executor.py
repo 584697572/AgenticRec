@@ -165,7 +165,7 @@ def test_fixed_structured_path_has_zero_llm_calls():
     attempt = executor(structured_episode())
 
     assert attempt.status == "OK" and attempt.item_ids == (1,)
-    assert attempt.turns == 1 and attempt.tool_calls == 0
+    assert attempt.turns == 1 and attempt.tool_calls == 1
     assert attempt.request_count == 0 and fake.calls == []
     assert len(pipeline.requests) == 1
 
@@ -202,7 +202,7 @@ def test_always_agent_and_ours_use_distinct_routes_on_same_structured_input():
 
     assert attempt_a.item_ids == (2,) and len(fake_a.calls) == 1
     assert attempt_o.item_ids == (1,) and fake_o.calls == []
-    assert attempt_a.tool_calls == 1 and attempt_o.tool_calls == 0
+    assert attempt_a.tool_calls == 1 and attempt_o.tool_calls == 1
 
 
 def test_ours_text_is_interpreted_inside_the_planner_call():
