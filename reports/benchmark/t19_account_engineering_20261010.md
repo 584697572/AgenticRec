@@ -1,0 +1,15 @@
+# T19 account-balance execution preparation
+
+Date: 2026-10-10. T19 remains IN PROGRESS; formal test NOT STARTED at this snapshot.
+
+The latest user instruction authorizes using the existing DeepSeek account balance without a new monetary cap. Initial official balance lookup returned 5.10 CNY. No top-up is authorized or implemented. Execution stops when the finite required batch completes, balance is insufficient, or terminal provider failures prevent progress. It does not spend unused funds merely to empty the account. ADR-034 records this override of the earlier 30 CNY planning policy.
+
+The batch retains the frozen 150 episodes, all required ablations, and seeds 7/42/2026: 24 independent runs, 4,608 worst-case generation attempts. The additional exploratory no_collaborative condition was deferred before any formal test call. always_agent reuses A. Every response keeps the same 1,024 output-token maximum, disabled thinking and zero network retries. Internal runtime money/request numbers express this finite workload; they are not the account balance or additional spending authorization.
+
+Both isolated modern environments passed 249 full offline tests. After adding the 403 terminal-stop regression, the account/schema suite passed 10 tests in each environment; final planning/account/schema checks passed 15 tests and evidence/completion/budget checks passed 13 tests. compileall and git diff checks passed. Logs and their SHA256 values are in the companion generated JSON. RecAI remains pristine at 0959ecb05b0794748426e73e6efc1b6b35ec433d; the execution spec hash is unchanged.
+
+Real development-only preflight initially failed strict extraction because schema_version was the string "1.0" and exclude_seen was false. The failure remains in local evidence. A failing prompt-contract regression was saved before sharing the existing Agent version/default instructions with F; validation was not relaxed. The next four-system preflight passed using five real calls: F extraction, A planning, U1 original ToolBox/Buffer/Map, and O three-turn feedback. Six total development calls include the initial failed call. These are connection/contract/tool/state checks, not quality metrics. The provider balance still rounded to 5.10 CNY afterward; actual invoice cost remains null.
+
+U1 now prewarms a credential-free legacy process and recreates request state for each execution. Integration tests verify reset and credential stripping. Per-episode latency includes parsing, communication, tools and failures, excluding one-time model/worker warmup. This differs from prior engineering traces that included process import/startup, so those timings cannot be combined.
+
+Raw development traces, provider responses and ledgers are local ignored artifacts. Public evidence: `t19_account_engineering_20261010.json`. Formal quality, paired CI, ablation results and complete live report reconstruction remain NOT EVALUATED/NOT VERIFIED in this preparation snapshot. T04's resource-semantics/license and paper-condition blockers are unchanged.

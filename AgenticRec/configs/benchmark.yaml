@@ -2,7 +2,7 @@
   "schema_version": 1,
   "benchmark_id": "interactive-v1-t19",
   "eval_manifest": "artifacts/eval_manifest.json",
-  "authorization_ledger": "reproduction/t19_budget_20261010.json",
+  "authorization_ledger": "reproduction/t19_account_policy_20261010.json",
   "split": "test",
   "episodes": 150,
   "model_seeds": [7, 42, 2026],
@@ -10,7 +10,6 @@
   "systems": ["U1", "F", "A", "O"],
   "ablations": [
     "no_user_model",
-    "no_collaborative",
     "no_explicit_preference_state",
     "always_agent",
     "no_replanning",

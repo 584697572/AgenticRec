@@ -149,7 +149,14 @@ class OpenAICompatibleTransport:
                 status_code=response.status_code,
                 error_type="http_status",
             )
-        return self._decode(response.body)
+        reply = self._decode(response.body)
+        decoded = json.loads(response.body)
+        usage = decoded.get('usage') or {}
+        self.last_response_metadata = {
+            'response_model': decoded.get('model'), 'response_id': decoded.get('id'),
+            'prompt_cache_hit_tokens': usage.get('prompt_cache_hit_tokens'),
+            'prompt_cache_miss_tokens': usage.get('prompt_cache_miss_tokens')}
+        return reply
 
     @staticmethod
     def _decode(body):

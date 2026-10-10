@@ -252,7 +252,7 @@ def _report(spec, episodes, ceilings, completed, remote, *, status, resumed):
     }
 
 
-def run_benchmark(spec, journal_path, executor, *, dry_run=False):
+def run_benchmark(spec, journal_path, executor, *, dry_run=False, should_stop=None):
     if not isinstance(spec, RunSpec):
         raise TypeError("spec must be RunSpec")
     if not callable(executor):
@@ -328,6 +328,9 @@ def run_benchmark(spec, journal_path, executor, *, dry_run=False):
         for episode in episodes:
             if episode.episode_id in completed:
                 continue
+            if should_stop is not None and should_stop():
+                return _report(spec, episodes, ceilings, completed, remote,
+                               status='STOPPED', resumed=resumed)
             sequence = len(events) + 1
             previous_hash = _append_event(journal_path, {
                 "sequence": sequence,

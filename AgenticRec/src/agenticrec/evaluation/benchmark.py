@@ -26,6 +26,7 @@ ABLATIONS = (
     "no_replanning",
     "no_content",
 )
+REQUIRED_ABLATIONS = tuple(name for name in ABLATIONS if name != 'no_collaborative')
 PREREGISTERED_SEEDS = (7, 42, 2026)
 
 
@@ -97,7 +98,7 @@ class BenchmarkConfig:
             raise ValueError("pre-registered agent seeds must be [7, 42, 2026]")
         if self.systems != SYSTEMS:
             raise ValueError("systems must be the pre-registered U1/F/A/O order")
-        if self.ablations != ABLATIONS:
+        if self.ablations not in (ABLATIONS, REQUIRED_ABLATIONS):
             raise ValueError("required ablations must use the pre-registered order")
         if self.max_replans != 1 or type(self.max_replans) is not int:
             raise ValueError("max_replans must be integer 1")
@@ -165,7 +166,7 @@ def build_dry_run(config_path):
     from .runner import episode_request_ceiling
     all_turns = sum(item.max_turns for item in episodes)
     text_turns = sum(item.max_turns for item in episodes if item.layer == "text")
-    conditions = SYSTEMS + tuple(name for name in ABLATIONS if name != "always_agent")
+    conditions = config.systems + tuple(name for name in config.ablations if name != "always_agent")
     per_seed_ceiling = {name: sum(episode_request_ceiling(name, episode)
                                  for episode in episodes) for name in conditions}
     breakdown = {("system:" if name in SYSTEMS else "ablation:") + name:
@@ -196,7 +197,8 @@ def build_dry_run(config_path):
     money_remaining = None if money_used is None else max(0, ledger["budget"]["money_budget"] - money_used)
     money_shortfall = None if money_remaining is None else max(0, money_required - money_remaining)
     paid_allowed = ledger["budget"].get("allow_paid_api") is True
-    authorized = not shortfall and money_shortfall == 0 and paid_allowed
+    balance_policy = ledger.get('spending_policy') == 'account_balance'
+    authorized = not shortfall and (balance_policy or money_shortfall == 0) and paid_allowed
     return {
         "schema_version": 1,
         "benchmark_id": config.benchmark_id,
@@ -225,14 +227,15 @@ def build_dry_run(config_path):
             "requests_used": used,
             "requests_remaining": remaining,
             "request_shortfall": shortfall,
-            "money_budget_cny_total": ledger["budget"]["money_budget"],
+            "money_budget_cny_total": None if balance_policy else ledger["budget"]["money_budget"],
+            "spending_policy": 'account_balance' if balance_policy else 'fixed_money_budget',
             "paid_calls_allowed": paid_allowed,
             "per_request_planning_ceiling_cny": PER_REQUEST_COST_CNY,
             "money_required_cny_ceiling": money_required,
             "money_used_cny_peak_estimate": money_used,
-            "money_remaining_cny_conservative": money_remaining,
-            "money_shortfall_cny": money_shortfall,
-            "money_budget_sufficiency": "NOT VERIFIED" if money_shortfall is None else "SUFFICIENT" if money_shortfall == 0 else "INSUFFICIENT",
+            "money_remaining_cny_conservative": None if balance_policy else money_remaining,
+            "money_shortfall_cny": None if balance_policy else money_shortfall,
+            "money_budget_sufficiency": 'PROVIDER_BALANCE_CHECK_REQUIRED' if balance_policy else "NOT VERIFIED" if money_shortfall is None else "SUFFICIENT" if money_shortfall == 0 else "INSUFFICIENT",
         },
         "frozen_inputs": {
             "manifest_sha256": _sha256(manifest_path),

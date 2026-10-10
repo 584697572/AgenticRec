@@ -1,0 +1,93 @@
+{
+  "status": "ENGINEERING_AND_DEVELOPMENT_VERIFIED",
+  "task": "T19",
+  "formal_test": "NOT_STARTED",
+  "full_offline_tests": {
+    "dev": {
+      "passed": 249,
+      "elapsed_seconds": 109.31,
+      "path": "artifacts/runs/t19/engineering_account_20261010/pytest_dev.log",
+      "sha256": "6a35cca37d4acc67d0d359440c501422b0c1e4bbecdf51f480ba4b31cb786335"
+    },
+    "rebuild": {
+      "passed": 249,
+      "elapsed_seconds": 109.47,
+      "path": "artifacts/runs/t19/engineering_account_20261010/pytest_rebuild.log",
+      "sha256": "8a9c3df60a6608c8084ecbb1567d85cc9a1166d4ba1f0aac42a41be6ed7e3a91"
+    }
+  },
+  "development_preflights": [
+    {
+      "status": "BLOCKED_PREFLIGHT",
+      "remote_generation_requests": 1,
+      "rows": [
+        {
+          "episode_id": "development-018",
+          "input_tokens": 196,
+          "output_tokens": 95,
+          "requests": 1,
+          "status": "INVALID_PARSE",
+          "system": "F",
+          "tool_calls": 0,
+          "turns": 1
+        }
+      ],
+      "report_sha256": "349ca5e2e1c6500639ef253e3286a63462f615d82583a07fff9653aba29f9b57"
+    },
+    {
+      "status": "VERIFIED",
+      "remote_generation_requests": 5,
+      "rows": [
+        {
+          "episode_id": "development-018",
+          "input_tokens": 280,
+          "output_tokens": 93,
+          "requests": 1,
+          "status": "OK",
+          "system": "F",
+          "tool_calls": 1,
+          "turns": 1
+        },
+        {
+          "episode_id": "development-071",
+          "input_tokens": 378,
+          "output_tokens": 110,
+          "requests": 1,
+          "status": "OK",
+          "system": "A",
+          "tool_calls": 1,
+          "turns": 1
+        },
+        {
+          "episode_id": "development-028",
+          "input_tokens": 372,
+          "output_tokens": 128,
+          "requests": 1,
+          "status": "OK",
+          "system": "U1",
+          "tool_calls": 3,
+          "turns": 1
+        },
+        {
+          "episode_id": "development-006",
+          "input_tokens": 702,
+          "output_tokens": 222,
+          "requests": 2,
+          "status": "OK",
+          "system": "O",
+          "tool_calls": 1,
+          "turns": 3
+        }
+      ],
+      "report_sha256": "fda51d9f6e22bcadf8bc0b2163fe61df292e4da1e44674206981557158620bdc"
+    }
+  ],
+  "actual_cost_cny": null,
+  "actual_cost_reason": "provider_bill_not_queried",
+  "initial_balance_cny": "5.10",
+  "required_formal_runs": 24,
+  "required_call_ceiling": 4608,
+  "spending_policy": "account_balance",
+  "optional_no_collaborative": "NOT_RUN_PRETEST_BUDGET_CHOICE",
+  "spec_sha256": "d88f02c84855234673514519486e74e73c61ffd4e2ec75594020fdf9b8ebb677"
+}

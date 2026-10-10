@@ -60,3 +60,15 @@ def test_local_ranking_fault_uses_safe_content_fallback_and_preserves_exclusions
     assert pipeline.invocation_count == 2 and pipeline.fault_count == 1
     assert all(row.item_id not in (1, 2) and "Action" in row.genres for row in reply.recommendations)
     assert pipeline._active is None
+
+
+def test_persistent_original_worker_resets_each_request_and_strips_credentials():
+    from agenticrec.adapters.upstream_bridge import UpstreamWorkerSession, run_upstream_plan
+    from agenticrec.adapters.model import RouteResult
+    titles={1:'First',2:'Second',3:'Third'}
+    with UpstreamWorkerSession() as session:
+        for ranked in ([2,1],[3,2]):
+            route=RouteResult([1,2,3],[0.1,0.2,0.3],ranked,'cold_start',None)
+            value=run_upstream_plan(route,titles,top_k=2,session=session)
+            assert value['mapped_ids']==ranked
+            assert value['buffer_reset'] and not value['credential_env_present']

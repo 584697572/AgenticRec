@@ -219,6 +219,7 @@ class BenchmarkSystemExecutor:
         ledger,
         planned_cost_ceiling=0,
         clock=time.monotonic,
+        should_stop=None,
     ):
         if system not in SYSTEMS:
             raise ValueError("unsupported benchmark system")
@@ -267,6 +268,7 @@ class BenchmarkSystemExecutor:
         self.text_parser = text_parser
         self.agent_loop = agent_loop
         self.upstream_turn = upstream_turn
+        self.should_stop = should_stop
         self.feedback_source = feedback_source
         self.feedback_sha256 = (
             feedback_source.sha256
@@ -312,7 +314,7 @@ class BenchmarkSystemExecutor:
                 started, before, None, None,
             )
         total_tool_calls += first.tool_calls
-        if not episode.multi_turn:
+        if not episode.multi_turn or (self.should_stop is not None and self.should_stop()):
             return self._attempt(
                 episode, first.status, first.item_ids, turns, total_tool_calls,
                 started, before, None, first.fallback_kind,

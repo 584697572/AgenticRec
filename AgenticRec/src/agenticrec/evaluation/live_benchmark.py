@@ -7,9 +7,14 @@ import os
 from pathlib import Path
 import platform
 import time
+from functools import partial
 
 from ..adapters.llm import ChatAdapter
 from ..adapters.providers import build_live_chat_adapter
+from ..adapters.account_balance import BalanceClient, BalanceGuard, GuardedTransport
+from ..adapters.upstream_bridge import UpstreamWorkerSession, run_upstream_plan
+from ..adapters.model import RouteResult
+from ..runtime.secrets import read_api_key
 from ..agent.text_parser import TextRequestParser
 from ..config import LLMBudget
 from ..pipeline import FixedRecommendationPipeline
@@ -75,10 +80,12 @@ class AuditedTransport:
             reply = self.transport.chat(messages, **options)
         except Exception as error:
             append_json(self.path, {"event": "FAILED", "request_id": request_id,
-                "error_type": type(error).__name__, "elapsed_ms": (time.monotonic()-started)*1000})
+                "error_type": type(error).__name__, 'http_status': getattr(error,'status_code',None),
+                "elapsed_ms": (time.monotonic()-started)*1000})
             raise
         append_json(self.path, {"event": "COMPLETED", "request_id": request_id,
-            "reply": asdict(reply), "elapsed_ms": (time.monotonic()-started)*1000})
+            "reply": asdict(reply), 'provider_metadata':getattr(self.transport,'last_response_metadata',None),
+            "elapsed_ms": (time.monotonic()-started)*1000})
         if reply.usage is not None and reply.usage.prompt_tokens > MAX_INPUT_TOKEN_BOUND:
             raise RuntimeError("provider prompt usage exceeded the frozen monetary bound")
         return reply
@@ -114,7 +121,8 @@ def provenance(config_path, plan, schedule, faults):
         "input_token_planning_bound": MAX_INPUT_TOKEN_BOUND, "per_request_cost_ceiling_cny": PER_REQUEST_COST_CNY,
         "pricing_source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/", "price_checked_date": "2026-10-10",
         "peak_input_cny_per_million": INPUT_CNY_PER_MILLION, "peak_output_cny_per_million": OUTPUT_CNY_PER_MILLION,
-        "concurrency": 1, "latency_scope": "prewarmed model, serial episodes; U1 includes legacy subprocess startup",
+        "concurrency": 1, "latency_scope": "prewarmed model and U1 legacy worker, serial episodes; one-time warmup excluded",
+        'spending_policy':plan['authorization'].get('spending_policy','fixed_money_budget'),
         "authorization_ledger_sha256": plan["frozen_inputs"]["authorization_ledger_sha256"],
         "u1_scope": "rebuilt request/planner schema and frozen recommendation pipeline followed by original ToolBox/Buffer/Map; no LLM answer summarization",
         "hardware": {"system": platform.system(), "machine": platform.machine(), "cpu_count": os.cpu_count()}}
@@ -132,7 +140,8 @@ def prepare_batch(config_path, *, live, batch_dir=None):
                 and authorization.get("authorization_id")):
             raise ValueError("T19 requires explicit scoped batch authorization")
         required_money = plan["required_new_requests_ceiling"] * PER_REQUEST_COST_CNY
-        if not plan["live_run_authorized"] or required_money > authorization["budget"]["money_budget"]:
+        if not plan["live_run_authorized"] or (authorization.get('spending_policy') != 'account_balance'
+                and required_money > authorization["budget"]["money_budget"]):
             raise ValueError("request or money authorization cannot cover the full batch")
     _, manifest, _, public = _load_public_contract(config)
     private_path = ROOT / manifest["files"]["test_private"]["path"]
@@ -175,11 +184,20 @@ def run_batch(config_path, *, live=True, batch_dir=None, condition=None, seed=No
     config, plan, schedule, faults, specs, batch_dir = prepare_batch(config_path, live=live, batch_dir=batch_dir)
     bases = {}
     reports = []
+    guard = None
+    if live and plan['authorization'].get('spending_policy') == 'account_balance':
+        guard = BalanceGuard(BalanceClient(read_api_key()), observer=lambda row:append_json(batch_dir/'account_balance.jsonl',row))
+        guard.refresh()
+        if guard.should_stop():
+            write_json(batch_dir/'batch_status.json',{'status':'STOPPED','reason':guard.reason,'requests':0})
+            return {'status':'STOPPED','reason':guard.reason,'batch_dir':str(batch_dir.relative_to(ROOT)),'runs':[]}
     for spec, run_dir in specs:
         if condition is not None and spec.system != condition:
             continue
         if seed is not None and spec.seed != seed:
             continue
+        if guard is not None and guard.should_stop():
+            break
         run_dir.mkdir(parents=True, exist_ok=True)
         journal = run_dir / "predictions.jsonl"
         events = _load_events(journal)
@@ -201,17 +219,26 @@ def run_batch(config_path, *, live=True, batch_dir=None, condition=None, seed=No
         if live:
             adapter = build_live_chat_adapter(budget, seed=spec.seed)
             audit = AuditedTransport(adapter.transport, run_dir / "llm_attempts.jsonl")
-            adapter.transport = audit
+            adapter.transport = GuardedTransport(audit, guard) if guard is not None else audit
         else:
             adapter = ChatAdapter(PublicFixtureTransport(), budget)
             audit = None
         kwargs = {"fixed_pipeline": pipeline, "feedback_source": schedule,
                   "ledger": adapter.ledger, "planned_cost_ceiling": spec.per_request_cost_ceiling_cny}
+        if guard is not None:
+            kwargs['should_stop'] = lambda:guard.halted
+        session = None
         if spec.system == "F":
             kwargs["text_parser"] = TextRequestParser(adapter)
         elif spec.system == "U1":
+            if live:
+                session = UpstreamWorkerSession()
+                # Warm imports without any provider call; each execution builds new state.
+                warm = RouteResult([1,2,3],[0.0,0.0,0.0],[1,2],'cold_start',None)
+                run_upstream_plan(warm,{i:pipeline.retriever.catalog.items[i].title for i in (1,2,3)},top_k=2,session=session)
             kwargs["upstream_turn"] = UpstreamRebuiltTurn(adapter, pipeline,
-                planned_cost_ceiling=spec.per_request_cost_ceiling_cny)
+                planned_cost_ceiling=spec.per_request_cost_ceiling_cny,
+                bridge=partial(run_upstream_plan,session=session) if session else run_upstream_plan)
         else:
             kwargs["agent_loop"] = build_benchmark_agent_loop(spec.system, fixed_pipeline=pipeline,
                 planner=adapter, planned_cost_ceiling=spec.per_request_cost_ceiling_cny)
@@ -229,10 +256,21 @@ def run_batch(config_path, *, live=True, batch_dir=None, condition=None, seed=No
                     "status": attempt.status, "requests": attempt.request_count}), flush=True)
                 return attempt
         write_json(run_dir / "config.resolved.json", asdict(spec), immutable=True)
-        report = run_benchmark(spec, journal, TracedExecutor())
-        write_json(run_dir / "ledger.json", adapter.ledger.snapshot())
+        try:
+            report = run_benchmark(spec, journal, TracedExecutor(),should_stop=guard.should_stop if guard else None)
+        finally:
+            write_json(run_dir / "ledger.json", adapter.ledger.snapshot())
+            if session is not None:
+                session.close()
         write_json(run_dir / "run_report.json", report)
         reports.append(report)
         print(canonical({"run_id": spec.run_id, "status": report["status"],
                          "requests": report["remote_api_requests"]}), flush=True)
-    return {"status": "RUNS_COMPLETE", "live": live, "batch_dir": str(batch_dir.relative_to(ROOT)), "runs": reports}
+    stopped = guard is not None and guard.halted
+    if guard is not None:
+        guard.refresh()
+    result = {"status": "STOPPED" if stopped else "RUNS_COMPLETE",'reason':guard.reason if stopped else None,
+              "live": live, "batch_dir": str(batch_dir.relative_to(ROOT)), "runs": reports,
+              'current_process_generation_attempts':guard.requests if guard else None}
+    write_json(batch_dir/'batch_status.json',result)
+    return result

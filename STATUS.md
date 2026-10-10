@@ -1,8 +1,8 @@
 # 工作区状态入口
 
-最后更新：2026-10-10（Asia/Shanghai）。详细状态见 [AgenticRec/docs/STATUS.md](AgenticRec/docs/STATUS.md)，最新证据见 [T19 工程与30元预算核算](reports/benchmark/t19_engineering_20261010.md)。
+最后更新：2026-10-10（Asia/Shanghai）。详细状态见 [AgenticRec/docs/STATUS.md](AgenticRec/docs/STATUS.md)，支出策略见 DECISIONS.md ADR-034，旧30元工程核算保留为历史证据。
 
-当前阶段 G4，T19 IN PROGRESS。U1 原组件适配、隔离故障调度、规定消融、计费审计与批次 runner 已接通；两套环境完整回归各239项通过。用户选择总预算30元并先完成工程核算；5,202请求最坏预留129.176064元，当前 profile 禁止正式付费批次。本轮真实请求0，所有系统效果/消融/CI仍NOT EVALUATED，完整live报告重建仍NOT VERIFIED；T04原资源语义/许可 blocker 不变。下一步先在30元范围明确可执行的成本核算/停止策略，再运行同条件完整批次，不能删测试或消融凑预算。
+当前阶段 G4，T19 IN PROGRESS。用户最新授权按现有账户余额执行，余额不足停止提醒、不充值；官方余额初查5.10 CNY。四系统真实development联调通过5次请求，首批schema失败1次保留，共6次；正式test尚未开始。两套环境完整回归各249项通过，新增余额/403与schema专项各10项通过。正式工作保留全部规定消融和三个seed，仅推迟非规定额外no_collaborative，共24个run/4,608次请求最坏上界；不删测试、不改模型或路由阈值。完整系统效果/消融/CI仍NOT EVALUATED，报告重建NOT VERIFIED；T04 blocker不变。下一步执行已授权正式批次，余额不足时保持T19未完成。
 
 T06 DONE：官方稳定 MovieLens1M ZIP 的 MD5/CRC/SHA 验证通过；1,000,209 条评分按全局时间分成 800,164/100,024/100,021。训练期独立建立 5,351 个 warm 用户、3,469 个候选电影 ID、462,887 条正反馈图边；验证/测试冷启动与非正反馈保留计数。
 

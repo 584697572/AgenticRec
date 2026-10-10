@@ -89,6 +89,15 @@ def execute(payload):
 
 
 def main():
+    if '--server' in sys.argv:
+        for line in sys.stdin:
+            try:
+                with redirect_stdout(io.StringIO()):
+                    result = execute(json.loads(line))
+            except Exception as error:
+                result = {'worker_error': type(error).__name__}
+            print(json.dumps(result, ensure_ascii=True), flush=True)
+        return
     payload = json.load(sys.stdin)
     # Upstream imports and tools may print diagnostics; stdout remains one JSON record.
     with redirect_stdout(io.StringIO()):

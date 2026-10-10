@@ -3,6 +3,7 @@
 from copy import deepcopy
 
 from ..adapters.llm import ChatAdapter
+from ..agent.request_contract import FIXED_REQUEST_DEFAULTS
 from ..agent.executor import PlanExecutor, PlanValidationError, ToolDefinition
 from ..agent.loop import AgentLimits, AgentLoop
 from ..agent.router import (
@@ -35,13 +36,7 @@ PLANNER_INSTRUCTIONS = (
     "excluded_item_ids, exclude_seen, k, and required_fields. Never change the "
     "public user_id or history_authorized value. For structured input, copy the "
     "entire request exactly. Never use evaluator-only fields."
-    " schema_version is integer 1. Defaults for absent facts are user_id null, "
-    "history_authorized false, all ID/genre/required_fields arrays empty, "
-    "year_min/year_max null, exclude_seen true, k 5. Item ID references in text "
-    "become liked_item_ids for similar recommendations. Unknown requested fields "
-    "such as duration belong in required_fields. Preserve explicit conflicting "
-    "include/exclude conditions for deterministic clarification."
-)
+) + FIXED_REQUEST_DEFAULTS
 
 
 def _strict_fixed_request(payload):

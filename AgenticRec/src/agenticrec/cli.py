@@ -69,6 +69,9 @@ def main(argv=None):
                                   "reason": str(error)}, ensure_ascii=True))
                 return 3
             from .evaluation.system_reports import generate_system_reports
+            if result['status'] != 'RUNS_COMPLETE':
+                print(json.dumps(result,ensure_ascii=True,sort_keys=True))
+                return 3
             generate_system_reports(args.config, result["batch_dir"])
             print(json.dumps(result, ensure_ascii=True, sort_keys=True))
             return 0

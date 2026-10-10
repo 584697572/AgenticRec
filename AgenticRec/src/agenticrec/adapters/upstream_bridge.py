@@ -4,6 +4,8 @@ import math
 import os
 from pathlib import Path
 import subprocess
+import queue
+import threading
 
 from ..data import digest
 from ..training import ROOT
@@ -18,8 +20,74 @@ UPSTREAM_SOURCES = {
 UPSTREAM_SHA256 = UPSTREAM_SOURCES["llm4crs/agent_plan_first_openai.py"]
 
 
+def _legacy_environment(root):
+    env = {key: os.environ[key] for key in
+           ("SYSTEMROOT", "WINDIR", "TEMP", "TMP", "PATH", "COMSPEC") if key in os.environ}
+    profile = root / "reproduction/.runtime/isolated_profile"
+    profile.mkdir(parents=True, exist_ok=True)
+    env.update(DOMAIN="movie", PYTHONUTF8="1", PYTHONIOENCODING="utf-8",
+               USERPROFILE=str(profile), LOCALAPPDATA=str(profile / "AppData/Local"),
+               APPDATA=str(profile / "AppData/Roaming"),
+               PYTHONPATH=str(root / 'reproduction/.runtime/InteRecAgent-compat'),
+               HF_HUB_OFFLINE="1", TRANSFORMERS_OFFLINE="1",
+               HF_HUB_DISABLE_TELEMETRY="1", TOKENIZERS_PARALLELISM="false")
+    return env
+
+
+class UpstreamWorkerSession:
+    """Reuse imports only; execute() constructs fresh gallery/buffer/tools each time."""
+    def __init__(self, root=ROOT):
+        self.root = Path(root)
+        self.process = subprocess.Popen([
+            str(self.root / 'reproduction/.venv-legacy/Scripts/python.exe'),
+            str(self.root / 'reproduction/scripts/t10_upstream_worker.py'), '--server'],
+            cwd=self.root, env=_legacy_environment(self.root), stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True, encoding='utf-8',
+            creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
+        self.lines = queue.Queue()
+        def read():
+            for line in self.process.stdout:
+                self.lines.put(line)
+            self.lines.put(None)
+        self.reader = threading.Thread(target=read, daemon=True)
+        self.reader.start()
+
+    def transact(self, payload):
+        if self.process.poll() is not None:
+            raise RuntimeError('legacy worker is unavailable')
+        self.process.stdin.write(json.dumps(payload,ensure_ascii=True)+'\n')
+        self.process.stdin.flush()
+        try:
+            line = self.lines.get(timeout=90)
+        except queue.Empty:
+            self.close()
+            raise RuntimeError('legacy worker timed out') from None
+        if line is None:
+            raise RuntimeError('legacy worker stopped')
+        value = json.loads(line)
+        if 'worker_error' in value:
+            raise RuntimeError('legacy worker execution failed')
+        return value
+
+    def close(self):
+        if self.process.poll() is None:
+            self.process.stdin.close()
+            try:
+                self.process.wait(timeout=2)
+            except subprocess.TimeoutExpired:
+                self.process.terminate()
+                self.process.wait(timeout=5)
+        self.process.stdout.close()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *_):
+        self.close()
+
+
 def run_upstream_plan(route: RouteResult, titles_by_id, *, top_k=3, root=ROOT,
-                      tool_plan=None):
+                      tool_plan=None, session=None):
     root = Path(root)
     if type(top_k) is not int or not 1 <= top_k <= 20:
         raise ValueError("top_k must be in 1..20")
@@ -42,15 +110,7 @@ def run_upstream_plan(route: RouteResult, titles_by_id, *, top_k=3, root=ROOT,
     worker = root / "reproduction/scripts/t10_upstream_worker.py"
     if not python.is_file() or not worker.is_file():
         raise FileNotFoundError("Legacy bridge or its pinned environment missing")
-    env = {key: os.environ[key] for key in
-           ("SYSTEMROOT", "WINDIR", "TEMP", "TMP", "PATH", "COMSPEC") if key in os.environ}
-    profile = root / "reproduction/.runtime/isolated_profile"
-    profile.mkdir(parents=True, exist_ok=True)
-    env.update(DOMAIN="movie", PYTHONUTF8="1", PYTHONIOENCODING="utf-8",
-               USERPROFILE=str(profile), LOCALAPPDATA=str(profile / "AppData/Local"),
-               APPDATA=str(profile / "AppData/Roaming"),
-               PYTHONPATH=str(compat.parents[1]), HF_HUB_OFFLINE="1", TRANSFORMERS_OFFLINE="1",
-               HF_HUB_DISABLE_TELEMETRY="1", TOKENIZERS_PARALLELISM="false")
+    env = _legacy_environment(root)
     payload = {
         "candidate_ids": route.candidate_ids,
         "ranked_ids": route.ranked_ids,
@@ -71,12 +131,15 @@ def run_upstream_plan(route: RouteResult, titles_by_id, *, top_k=3, root=ROOT,
                 or tool_plan[0]["tool_name"] != "Movie Candidates Ranking Tool"):
             raise ValueError("unsafe upstream rebuilt plan")
         payload["tool_plan"] = tool_plan
-    completed = subprocess.run([str(python), str(worker)], input=json.dumps(payload),
-                               text=True, encoding="utf-8", capture_output=True,
-                               cwd=root, env=env, timeout=90, check=False)
-    if completed.returncode != 0:
-        raise RuntimeError("Legacy upstream worker failed: " + completed.stderr[-800:])
-    output = json.loads(completed.stdout)
+    if session is None:
+        completed = subprocess.run([str(python), str(worker)], input=json.dumps(payload),
+                                   text=True, encoding="utf-8", capture_output=True,
+                                   cwd=root, env=env, timeout=90, check=False)
+        if completed.returncode != 0:
+            raise RuntimeError("Legacy upstream worker failed: " + completed.stderr[-800:])
+        output = json.loads(completed.stdout)
+    else:
+        output = session.transact(payload)
     if (not output["toolbox_success"] or output["selected_ids"] != route.ranked_ids
             or output["mapped_ids"] != route.ranked_ids[:top_k]
             or not output["buffer_reset"] or output["credential_env_present"]):

@@ -5,7 +5,7 @@ import hashlib
 import json
 import statistics
 
-from .benchmark import ROOT, PREREGISTERED_SEEDS, paired_bootstrap_ci, _sha256
+from .benchmark import ROOT, BenchmarkConfig, PREREGISTERED_SEEDS, paired_bootstrap_ci, _sha256
 from .episodes import evaluate_episodes, load_public_episodes, load_private_episodes, score_episode
 from .live_benchmark import canonical, write_json
 from .runner import RunSpec, load_completed_attempts
@@ -108,8 +108,8 @@ def generate_system_reports(config_path, batch_dir):
     private = load_private_episodes(private_path)
     hidden = {item.episode_id: item for item in private}
     catalog = Catalog.from_frozen()
-    conditions = ("U1", "F", "A", "O", "no_user_model", "no_collaborative",
-                  "no_explicit_preference_state", "no_replanning", "no_content")
+    config = BenchmarkConfig.from_file(config_path)
+    conditions = config.systems + tuple(name for name in config.ablations if name != 'always_agent')
     results, raw_scores, evidence = {}, {}, []
     failures = {}
     for condition in conditions:
@@ -223,15 +223,20 @@ def _write_reports(summary):
         "H2 noninferiority at -0.02: " + ("supported" if summary["H2_noninferiority_supported"] else "NOT SUPPORTED; evidence is insufficient"), "",
         "Provider bill: NOT QUERIED. Peak-rate token estimate: {} CNY over {} request attempts; {} episodes have unknown usage. Conservative planning reservation: {:.6f} CNY. Unknown usage remains null; no partial token sum is presented as a total cost ceiling.".format(
             summary["estimated_cost_cny_peak_ceiling"], summary["requests"], summary["episodes_unknown_usage"], summary["cost_planning_reserved_cny"]), "",
-        "Latency includes parsing, tools and failures; serial episodes, prewarmed model. U1 includes legacy subprocess startup. This synthetic offline benchmark does not measure online satisfaction or CTR.", ""]
+        "Latency includes parsing, tools and failures; serial episodes, prewarmed model and U1 worker. One-time model/legacy-worker warmup is excluded; each U1 request still creates fresh candidate state. This synthetic offline benchmark does not measure online satisfaction or CTR.", ""]
     (directory / "benchmark.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
     lines = ["# T19 Ablations (COMPLETED)", "", "Same frozen episodes, three seeds, LLM, caps and hard constraints. always_agent reuses A.", "",
         "| Condition | Strict Success | Constraint Precision | Fill@K | Requests/run |",
         "|---|---:|---:|---:|---:|"]
     for name in ("O", "no_user_model", "no_content", "no_collaborative", "no_explicit_preference_state", "always_agent", "no_replanning"):
+        if name not in summary['aggregate']:
+            continue
         row = summary["aggregate"][name]
         lines.append("| {} | {} | {} | {} | {} |".format(name, *(formatted(row, field) for field in ("strict_success", "constraint_precision", "fill_at_k", "requests"))))
-    lines += ["", "no_user_model removes trained-user and collaborative scoring/recall, retaining content plus train-popularity fallback. no_content removes TF-IDF/genre seed scoring, retaining collaborative recall/rank plus the same fallback. no_collaborative is the additional exploratory condition removing CF recall while retaining trained final ranking.", "",
+    optional_note = ("no_collaborative is the additional exploratory condition removing CF recall while retaining trained final ranking."
+                     if 'no_collaborative' in summary['aggregate'] else
+                     "Additional exploratory no_collaborative: NOT RUN; deferred before test execution to prioritize required experiments with existing funds.")
+    lines += ["", "no_user_model removes trained-user and collaborative scoring/recall, retaining content plus train-popularity fallback. no_content removes TF-IDF/genre seed scoring, retaining collaborative recall/rank plus the same fallback. " + optional_note, "",
         "no_explicit_preference_state exposes current feedback but does not commit its patch. no_replanning permits one planner attempt. Deterministic ranking_timeout is a local execution fixture with a content fallback; no failures are deliberately sent to the provider.", "",
         "Paired confidence intervals are generated in the local summary.json; no gain is asserted when intervals are inconclusive.", ""]
     (directory / "ablations.md").write_text("\n".join(lines), encoding="utf-8", newline="\n")
