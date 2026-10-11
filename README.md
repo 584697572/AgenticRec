@@ -6,6 +6,8 @@ T19 完成 24 个系统/消融/seed run。在150条冻结合成test上，O与A�
 
 2026-10-11完成[候选融合技术研究](reports/technical_upgrade_20261011.md)：补齐冻结BPR/GCN三seed、内容负收益单变量控制、公开信号学习门控、外部冻结评价及失败案例。学习门控和GCN对强BPR均为 **NO VERIFIED GAIN**。目标一致的RRF在外部51相关暖用户上NDCG@10从旧无内容的0.1510到0.2106，但开发审计未显示稳定优势，次要对照区间未做多重校正；不作跨域、论文或线上提升主张。最终完整295项回归及新锁环境35项专项通过；[发布字节补充验收](reports/distribution_integrity_20261011.md)验证Git导出与实际证据SHA一致，保留之前292项时点报告。
 
+随后完成[LightGCN采样/聚合研究](reports/rec_baselines/lightgcn_optimization_20261011.md)：6条件×3seed/386epoch，准确率 **NO VERIFIED GAIN**；相同初始化与227更新的本机暖一轮训练计算37.67→5.36秒，未计加载/验证，仅一次配对，不称全训练/在线加速。311完整回归及既有独立锁环境16专项通过。新代码保留在实验分支，默认模型未替换。
+
 新增推理为显式选择，旧默认流程不变；需先按报告重建数据与训练已验证的checkpoint：
 
 ```powershell

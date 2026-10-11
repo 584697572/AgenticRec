@@ -437,21 +437,35 @@
   "active_followup": {
     "id": "LG-O01",
     "title": "Train-only user sampling and residual LightGCN factorial",
-    "status": "IN_PROGRESS",
+    "status": "DONE",
     "depends_on": [
       "LG-S01",
       "UP-P5"
     ],
     "plan": "AgenticRec/configs/lightgcn_optimization_20261011.json",
-    "evidence": "reports/lightgcn_optimization_protocol_20261011.md",
-    "scope": "Six conditions x three seeds; 384 development selection users, 97 development audit users; no test access",
+    "evidence": "reports/rec_baselines/lightgcn_optimization_20261011.md",
+    "scope": "Bounded development experiment completed, quality NO VERIFIED GAIN; serving unchanged",
     "verification": {
-      "specialized_tests_passed": 15,
-      "training": "NOT EVALUATED",
+      "training_runs": 18,
+      "actual_epochs": 386,
+      "raw_metric_values_rebuilt": 69264,
+      "full_tests_passed": 311,
+      "independent_locked_environment_tests": 16,
+      "historical_evidence_preserved": 480,
+      "historical_weights_preserved": 31,
       "quality_gain": "NO VERIFIED GAIN",
+      "epoch_loop_seconds": [
+        37.670237199999974,
+        5.3641881000003195
+      ],
+      "epoch_loop_scope": "Serialized warm one-epoch loop including sampling/tensors/loss/backward/optimizer; excludes data/model setup, validation and cold start",
+      "serving_replaced": false,
+      "test_evaluation": "NOT EVALUATED",
       "remote_api_requests": 0,
       "downloads": 0
-    }
+    },
+    "next_priority": "Preregister train-negative difficulty and temporal preference diagnostics; do not tune on this audit",
+    "branch": "research/lightgcn-sampling-20261011"
   },
   "followup_history": [
     {
@@ -756,21 +770,35 @@
     {
       "id": "LG-O01",
       "title": "Train-only user sampling and residual LightGCN factorial",
-      "status": "IN_PROGRESS",
+      "status": "DONE",
       "depends_on": [
         "LG-S01",
         "UP-P5"
       ],
       "plan": "AgenticRec/configs/lightgcn_optimization_20261011.json",
-      "evidence": "reports/lightgcn_optimization_protocol_20261011.md",
-      "scope": "Six conditions x three seeds; 384 development selection users, 97 development audit users; no test access",
+      "evidence": "reports/rec_baselines/lightgcn_optimization_20261011.md",
+      "scope": "Bounded development experiment completed, quality NO VERIFIED GAIN; serving unchanged",
       "verification": {
-        "specialized_tests_passed": 15,
-        "training": "NOT EVALUATED",
+        "training_runs": 18,
+        "actual_epochs": 386,
+        "raw_metric_values_rebuilt": 69264,
+        "full_tests_passed": 311,
+        "independent_locked_environment_tests": 16,
+        "historical_evidence_preserved": 480,
+        "historical_weights_preserved": 31,
         "quality_gain": "NO VERIFIED GAIN",
+        "epoch_loop_seconds": [
+          37.670237199999974,
+          5.3641881000003195
+        ],
+        "epoch_loop_scope": "Serialized warm one-epoch loop including sampling/tensors/loss/backward/optimizer; excludes data/model setup, validation and cold start",
+        "serving_replaced": false,
+        "test_evaluation": "NOT EVALUATED",
         "remote_api_requests": 0,
         "downloads": 0
-      }
+      },
+      "next_priority": "Preregister train-negative difficulty and temporal preference diagnostics; do not tune on this audit",
+      "branch": "research/lightgcn-sampling-20261011"
     }
   ]
 }

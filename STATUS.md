@@ -2,7 +2,9 @@
 
 ## 当前：LG-O01 LightGCN采样与层聚合优化（2026-10-11）
 
-IN_PROGRESS；用户明确启用新的有界模型实验。旧UP-P0—P5验收与原T04阻塞均保留。已注册4GCN+2BPR×3seed，384人选择、97人开发审计；历史test不用于选择或本轮评测。专项15项通过；正式训练NOT EVALUATED，收益NO VERIFIED GAIN。原默认与上游不改。下一步：真实图kernel数值/耗时检查、提交源码与计划后执行seed42开发对照。证据将写入artifacts/runs/lightgcn_optimization_20261011，新增API0/下载0。
+LG-O01 DONE（有界实验验收，推荐质量 **NO VERIFIED GAIN**）。18次真实训练/386epoch、4GCN条件与2BPR条件、三个seed、384人选择/97人开发审计、69264项原始指标重算完成；训练commit ed96ce6，全部训练开始时Git clean。原采样+均匀聚合仍按开发集选中；加权版本audit NDCG仅0.178813→0.179920，区间跨0，不据audit换赢家。
+
+计算改进：同初始化/样本/227更新的串行暖一轮训练循环37.67→5.36秒（约7.02倍、耗时减少85.76%），参数最大差异8.94e-8；仅一次本机CPU配对，不含准备/valid，不声称完整训练或在线加速。完整311项通过；既有独立锁环境16专项及真实checkpoint重载指标一致。480历史证据、31历史权重SHA保持；上游/原规范/默认模型不改，研究分支保留。新增API0/下载0。原T04阻塞不变；独立未暴露质量评价仍NOT EVALUATED。报告：[LG-O01](reports/rec_baselines/lightgcn_optimization_20261011.md)。下一优先：另行预登记训练负样本难度与时间偏好诊断，不能根据本次audit继续扩大网格。
 
 最后更新：2026-10-11（Asia/Shanghai）。**本轮有界技术升级验收完成**：UP-P0/P1/P2/P4/P5 DONE；P3条件审查DONE，额外SASRec/RL/工业模型未执行。原T04仍BLOCKED；T21及可选T22—T24没有由本轮替代验收。
 
