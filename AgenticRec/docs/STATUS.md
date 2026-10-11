@@ -12,6 +12,8 @@ Blocker/风险：原资源ID/许可/canonical论文条件仍BLOCKED；首轮lega
 
 发布补充：[../../reports/distribution_integrity_20261011.md](../../reports/distribution_integrity_20261011.md)验证14文件Git导出字节及4次训练计划SHA；早期292项报告保持历史时点，不覆盖。
 
+Git交付：已普通fast-forward合入master并推送origin；集成点cdedba3，研究分支research/adaptive-fusion-20261011同时保留。合入后14文件导出与480份历史证据校验再次通过。
+
 ## 历史状态快照（保留原日期）
 
 最后更新：2026-10-10（Asia/Shanghai）。LG-S01有限开发搜索 DONE：[真实结果](../../reports/rec_baselines/recommendation_search_20261010.md)。6个候选、seed42，仅train/valid；选中1层64维LightGCN，NDCG@10=0.148072（上一轮0.131417，相对+12.67%），HitRate=45.32%（上一轮42.41%，+2.91个百分点）。增强BPR NDCG=0.148613，未证明GCN优于增强BPR；HitRate提升区间含0。266项完整工程回归通过、55个历史文件SHA不变、报告字节一致重建、两模型配置已冻结。正式新test/三seed NOT EVALUATED，原服务模型未替换。T20/LG-D01 DONE，T21暂待，T04旧资源阻塞沿用；API/下载0。

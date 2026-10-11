@@ -446,7 +446,14 @@
       "T21 TODO",
       "T22-T24 optional TODO"
     ],
-    "publication_evidence": "reports/distribution_integrity_20261011.json"
+    "publication_evidence": "reports/distribution_integrity_20261011.json",
+    "integration_commit": "cdedba3",
+    "stable_branch": "master",
+    "pushed_branches": [
+      "master",
+      "research/adaptive-fusion-20261011"
+    ],
+    "push_verified": true
   },
   "followup_history": [
     {
