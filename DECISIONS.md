@@ -335,3 +335,12 @@
 - 有限开发收益：GCN比上一轮NDCG相对+12.67%；HitRate+2.91个百分点，其配对探索区间[0,0.058212]包含0。GCN与增强BPR的NDCG差值区间[-0.008046,0.007310]包含0，不称显著优于BPR，更不能称已达到新的test喜欢概率。全部区间来自481人、单seed、重复valid，未多重校正。
 - 验证：13项专项、266项完整工程回归（无失败，2条既有PyTorch警告）；6个checkpoint重载精确一致，私密预测独立重算与原始曲线核验通过，55个选定历史文件SHA不变，报告/冻结配置字节一致重建。额外验证缺一个结果时拒绝生成完整报告，日志保留；初始缺模块失败也保留。
 - 最终配置按预登记valid NDCG冻结到AgenticRec/configs/recommendation_search_selected_20261010.json；它是后续实验输入记录，不能直接传给现有原baseline CLI冒称兼容。原checkpoint、原T19表格和原演示推理不改。后续必须按冻结配置完成7/42/2026、统一全集评测/配对区间；三seed与新模型test仍NOT EVALUATED。API请求0、下载0，不以新模型结果重写原负实验。
+
+## ADR-038：技术升级、独立实验分支与门控融合预登记
+
+- 日期：2026-10-11。用户新指令明确授权按P0—P5开展技术研究、实际算法实现、严格实验及普通commit/push；原规范保持不变，T04不伪标完成，T21包装任务后置。
+- 状态审计：master与origin/master为905fa19，原上游0959ecb干净；历史LG-S01仅单seed，内容消融同时改变召回及匿名ranker。不能提前把组合负收益归因到召回或声称GCN胜出。
+- 主攻一个方向：公开源质量/用户状态驱动的轻量加权rank融合，先建立候选全链路诊断与单变量控制。研究一手2025—2026论文和作者代码，见research_landscape_2026；不引入大型生成模型、RL、多Agent、新框架或付费批次。
+- 开发协议和强对照见optimization_proposal。旧test标Previously Exposed Test；ML1M valid按用户分fit/select/audit，audit不是新盲测。外部官方100K冻结时间划分后，方法冻结前不读取test标签；外部真实评分与合成类型接受分开。公开输入不含评测目标。
+- 同时补冻结BPR32/GCN1层64 seed7/2026共4训练，不改20261010冻结选择、不加网格；复用seed42，最多128epoch。历史观测GCN21epoch约1623秒、BPR32epoch约140秒（并发开发观测），只作计算规划不是公平速度基准。2线程/worker最多4worker，API0；实际时间/失败原样保存。
+- 新研究分支隔离稳定master；所有新run拒绝覆盖。480个历史跟踪报告/复现证据与规范记录SHA保护清单。当前新方法NO VERIFIED GAIN，独立seed和外部评估NOT EVALUATED；只有验证有效才能集成，不以代码/测试数量代替收益。

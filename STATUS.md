@@ -135,3 +135,9 @@ Key仍按环境变量优先、根目录`.env`次之，不入Git/哈希清单。�
 ## T19 live batch started (2026-10-10)
 
 T19 IN PROGRESS. Engineering commit ad4d493 is frozen; formal run directory: artifacts/runs/t19/live_20261010. All 24 required system/ablation/seed runs are started by the same audited CLI. Initial provider balance 5.10 CNY; no top-ups. Progress evidence lives in per-run predictions.jsonl, llm_attempts.jsonl and account_balance.jsonl. First U1 test episode completed successfully. No complete quality/CI claim is made while the batch is running. Sources/configuration will not be tuned against these test observations.
+
+## 技术升级启动（2026-10-11）
+
+当前阶段 UP-P0 IN_PROGRESS。新用户指令启动深度技术研究，研究分支research/adaptive-fusion-20261011隔离master/905fa19；原规范与上游不变。三份研究/差距/预登记报告已建立；内容负收益组合消融存在ranker混杂，先诊断后验证。480个历史文件已记录保护SHA。
+
+下一项：官方100K最小资源与独立协议冻结、候选级诊断/单变量控制、冻结模型seed7/2026有限验证；API0，未启动付费批次。新方法NO VERIFIED GAIN，完整本轮回归/三seed/外部test NOT EVALUATED。T04旧资源阻塞不变。

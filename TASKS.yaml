@@ -433,40 +433,22 @@
     }
   ],
   "status_evidence_index": "AgenticRec/docs/STATUS.md",
-  "status_updated": "2026-10-10",
+  "status_updated": "2026-10-11",
   "active_followup": {
-    "id": "LG-S01",
-    "title": "LightGCN有限验证集联合搜索与可比BPR调参",
-    "status": "DONE",
-    "authorized_by": "2026-10-10 user: 重新检查并判断，继续改进",
+    "id": "UP-P0",
+    "title": "Audit and freeze deep algorithm upgrade",
+    "status": "IN_PROGRESS",
+    "authorized_by": "2026-10-11 user attachment: deep technical upgrade and algorithm research",
     "depends_on": [
-      "T09",
-      "T19",
       "T20",
-      "LG-D01"
+      "LG-S01"
     ],
-    "plan": "AgenticRec/configs/recommendation_search_20261010.json",
-    "scope": "6 finite train-valid-only candidates; NDCG selection, HitRate secondary; zero LLM; no new test evaluation",
-    "verification": {
-      "training_trials": 6,
-      "actual_epochs": 178,
-      "training_seed": 42,
-      "full_tests": {
-        "errors": 0,
-        "failures": 0,
-        "skipped": 0,
-        "tests": 266
-      },
-      "test_evaluation": "NOT EVALUATED",
-      "three_seed_evaluation": "NOT EVALUATED",
-      "remote_api_requests": 0,
-      "unchanged_historical_files": 55,
-      "report": "reports/rec_baselines/recommendation_search_20261010.json",
-      "report_sha256": "07e5cddb6dd9c2b4498138c75daff9fe6afd2c8e171009982557a4da6409fa93",
-      "selection_frozen": "AgenticRec/configs/recommendation_search_selected_20261010.json",
-      "byte_identical_report_rebuild": true
-    },
-    "next": "Use frozen GCN/BPR configs for three-seed comparison; preserve historical negative T19 and test-exposure disclosure; T21 pending"
+    "scope": "Primary-source research; source and negative-result audit; new protocol; adaptive fusion as sole main direction",
+    "evidence": [
+      "reports/technical_gap_analysis.md",
+      "reports/research_landscape_2026.md",
+      "reports/optimization_proposal.md"
+    ]
   },
   "followup_history": [
     {
@@ -497,6 +479,86 @@
         "report_sha256": "da8b11861b815dfb20965a0993e4a134f41f8298829a1e8940423781754876bd"
       },
       "next": "有限valid-only联合搜索，冻结后3seed；T21待续"
+    },
+    {
+      "id": "LG-S01",
+      "title": "LightGCN有限验证集联合搜索与可比BPR调参",
+      "status": "DONE",
+      "authorized_by": "2026-10-10 user: 重新检查并判断，继续改进",
+      "depends_on": [
+        "T09",
+        "T19",
+        "T20",
+        "LG-D01"
+      ],
+      "plan": "AgenticRec/configs/recommendation_search_20261010.json",
+      "scope": "6 finite train-valid-only candidates; NDCG selection, HitRate secondary; zero LLM; no new test evaluation",
+      "verification": {
+        "training_trials": 6,
+        "actual_epochs": 178,
+        "training_seed": 42,
+        "full_tests": {
+          "errors": 0,
+          "failures": 0,
+          "skipped": 0,
+          "tests": 266
+        },
+        "test_evaluation": "NOT EVALUATED",
+        "three_seed_evaluation": "NOT EVALUATED",
+        "remote_api_requests": 0,
+        "unchanged_historical_files": 55,
+        "report": "reports/rec_baselines/recommendation_search_20261010.json",
+        "report_sha256": "07e5cddb6dd9c2b4498138c75daff9fe6afd2c8e171009982557a4da6409fa93",
+        "selection_frozen": "AgenticRec/configs/recommendation_search_selected_20261010.json",
+        "byte_identical_report_rebuild": true
+      },
+      "next": "Use frozen GCN/BPR configs for three-seed comparison; preserve historical negative T19 and test-exposure disclosure; T21 pending"
+    }
+  ],
+  "upgrade_tasks": [
+    {
+      "id": "UP-P0",
+      "status": "IN_PROGRESS",
+      "depends_on": [
+        "T20",
+        "LG-S01"
+      ]
+    },
+    {
+      "id": "UP-P1",
+      "status": "TODO",
+      "depends_on": [
+        "UP-P0"
+      ]
+    },
+    {
+      "id": "UP-P2",
+      "status": "TODO",
+      "depends_on": [
+        "UP-P1"
+      ]
+    },
+    {
+      "id": "UP-P3",
+      "status": "TODO",
+      "depends_on": [
+        "UP-P2"
+      ],
+      "type": "conditional"
+    },
+    {
+      "id": "UP-P4",
+      "status": "TODO",
+      "depends_on": [
+        "UP-P2"
+      ]
+    },
+    {
+      "id": "UP-P5",
+      "status": "TODO",
+      "depends_on": [
+        "UP-P4"
+      ]
     }
   ]
 }
