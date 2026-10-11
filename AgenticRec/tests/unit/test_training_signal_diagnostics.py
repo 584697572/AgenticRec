@@ -55,6 +55,20 @@ def test_genre_total_variation_has_known_extremes_and_equal_item_mass():
     assert genre_distance([1],[1],genres) == 0
 
 
+def test_genre_distance_is_byte_stable_across_python_hash_seeds():
+    import os
+    import subprocess
+    import sys
+    code = """from agenticrec.training_signal_diagnostics import genre_distance
+import json
+genres={i:['g'+str((i+j)%19) for j in range(1+i%5)] for i in range(1,61)}
+print(json.dumps([genre_distance(list(range(1,n)),list(range(n,61)),genres) for n in range(10,40)]))
+"""
+    outputs=[subprocess.check_output([sys.executable,'-c',code],
+              env={**os.environ,'PYTHONHASHSEED':str(seed)}) for seed in (1,17)]
+    assert outputs[0] == outputs[1]
+
+
 def test_temporal_ties_are_kept_whole_without_item_id_pseudo_sequence():
     records=[(i, 4, 100) for i in range(1,21)]
     row=temporal_row(1,records,{i:['A'] for i in range(1,21)},20,5,42)

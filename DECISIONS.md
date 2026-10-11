@@ -2,6 +2,7 @@
 
 ## ADR-043：先检查未知负样本、明确低分与评分时间，不扩大旧实验
 
+- 可复现性修复补充：首次六模型原始记录跨锁环境均一致，但时间TV受Python集合遍历顺序影响，4935字段最大差3.33e-16，严格SHA核对FAILED。保留diagnosis/replay_locked及FAILED记录，先新增跨PYTHONHASHSEED回归实测失败，再对新诊断模块排序/fsum；在diagnosis_deterministic/replay_locked_deterministic另目录重跑，不覆盖首轮。原模型、训练器、数据和LG-O01源身份不变；结论不因舍入变化改变，不把差异当质量提升。
 - 用户2026-10-11要求按建议顺序检查。LG-O01质量NO VERIFIED GAIN，本次登记LG-D02独立诊断，使用其已冻结两个方法×三seed权重，只看train和既有元数据。新研究分支research/lightgcn-training-diagnostics-20261011；默认路径及历史结果不改。
 - 原规范§6.2/§6.4明确要求未知负采样排除全部已评分。实际代码遵守要求；低分未作为未知负样本不是bug。本轮仅量化显式低分信号，未来若使用它，单独登记监督目标及消融，不能偷偷改变旧训练契约。
 - 有界范围见[预登记](reports/lightgcn_training_diagnostics_protocol_20261011.md)：5351暖用户、每人最多8正片/每题8未知候选、六个冻结checkpoint；CPU2线程，API0/下载0/训练0。最高分负片的困难度变化属于构造结果，不能证明精度提升；评分时间需查同日补录和同值，不能当观影时间。

@@ -142,7 +142,9 @@ def genre_distance(left, right, genres):
                 counts[label] += 1/(len(items)*len(labels))
         return counts
     a, b = distribution(left), distribution(right)
-    return sum(abs(a[g]-b[g]) for g in set(a)|set(b))/2
+    # Python hash randomization changes set order; stable order and fsum preserve
+    # byte identity across interpreters as well as the mathematical definition.
+    return math.fsum(abs(a[g]-b[g]) for g in sorted(set(a)|set(b)))/2
 
 
 def temporal_row(user, records, genres, min_positives, min_group, seed):

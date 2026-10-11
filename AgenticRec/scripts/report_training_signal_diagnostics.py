@@ -44,12 +44,15 @@ def mean_std(values):
 
 
 def main():
-    original, checked = rebuild(BASE/'diagnosis')
+    original, checked = rebuild(BASE/'diagnosis_deterministic')
+    locked = json.loads((BASE/'locked_replay_deterministic_verification.json').read_text(encoding='utf-8'))
+    if locked['status'] != 'VERIFIED' or not all(locked['files_byte_identical'].values()):
+        raise ValueError('Locked environment replay has not passed')
     protected = json.loads((BASE/'preservation_before.json').read_text(encoding='utf-8'))
     for relative, sha in protected.items():
         if digest(ROOT/relative) != sha:
             raise ValueError('Historical evidence changed: '+relative)
-    junit = ET.parse(BASE/'full_tests.xml').getroot()
+    junit = ET.parse(BASE/'full_tests_deterministic.xml').getroot()
     suites = list(junit) if junit.tag == 'testsuites' else [junit]
     test_counts = {k:sum(int(s.get(k,0)) for s in suites) for k in ('tests','failures','errors','skipped')}
     if test_counts['failures'] or test_counts['errors']:
@@ -68,8 +71,9 @@ def main():
             key:mean_std([v['low']['pair'][key] for v in values]) for key in values[0]['low']['pair']}
     public = {**original,'seed_summaries':seed_summaries,
               'verification':{'raw_user_rows_rebuilt':checked,'historical_files_preserved':len(protected),
-                              'full_tests':test_counts,'report_script_sha256':digest(Path(__file__))},
-              'diagnostic_result_sha256':digest(BASE/'diagnosis/result.json')}
+                              'full_tests':test_counts,'locked_replay':locked,
+                              'report_script_sha256':digest(Path(__file__))},
+              'diagnostic_result_sha256':digest(BASE/'diagnosis_deterministic/result.json')}
     lines=['# LG-D02：LightGCN训练信号检查（2026-10-11）','',
            '本轮只做训练期诊断；没有重训、没有读取valid/test标签，没有替换默认模型。准确率改进 **NOT EVALUATED / NO VERIFIED GAIN**。', '',
            f"固定MovieLens1M：{original['train_users']}暖用户、{original['candidate_items']}候选、{original['train_positive_edges']}训练正边；每模型{original['sample_pairs']}配对题目，固定样本，6个既有checkpoint。用户宏平均后再给三个模型seed均值/标准差，不是独立测试。",'',
@@ -97,8 +101,9 @@ def main():
               '## 验证及贡献边界','',
               f"训练前提交{original['git_commit']}，Git dirty={original['git_dirty']}。来源/数据/权重SHA完整，私有{checked}条模型用户记录及时间/采样汇总重算一致；{len(protected)}历史文件SHA不变。完整测试{test_counts['tests']}项、失败{test_counts['failures']}、错误{test_counts['errors']}、跳过{test_counts['skipped']}。",'',
               '输入访问清单和身份在JSON。受控诊断使用Python/Arrow白名单读取，禁止全量交互与holdout，不是OS级安全隔离。完整工程测试会使用历史评测fixture，因此不声称全测试进程零holdout访问。API0、下载0、训练0。', '',
+              '首次跨环境模型记录全部一致，但时间TV有4935个字段出现≤3.33e-16的累加顺序差异。原attempt和FAILED核对均保留；先建立跨PYTHONHASHSEED失败回归，再固定排序/fsum并另目录完整重跑。修复后8份采样/时间/六模型原始记录跨锁环境字节一致；这是既有锁环境与共享数据回放，不是全新checkout或重训。', '',
               '## 复现','', '```powershell',
-              '& .\\AgenticRec\\.venv-t20\\Scripts\\python.exe -m agenticrec.training_signal_diagnostics --plan AgenticRec/configs/lightgcn_training_diagnostics_20261011.json --output artifacts/runs/lightgcn_training_diagnostics_20261011/diagnosis',
+              '& .\\AgenticRec\\.venv-t20\\Scripts\\python.exe -m agenticrec.training_signal_diagnostics --plan AgenticRec/configs/lightgcn_training_diagnostics_20261011.json --output artifacts/runs/lightgcn_training_diagnostics_20261011/diagnosis_deterministic',
               '& .\\AgenticRec\\.venv-t20\\Scripts\\python.exe AgenticRec/scripts/report_training_signal_diagnostics.py',
               '```', '', '需要既有冻结数据和LG-O01六个checkpoint；诊断输出目录必须不存在。报告只接受首次生成或字节完全一致的重建，不覆盖旧报告。新质量确认需要另行登记的有界训练和未参与调参的评价。','']
     outputs = {'reports/rec_baselines/lightgcn_training_diagnostics_20261011.json':json.dumps(public,sort_keys=True,indent=2,allow_nan=False)+'\n',
