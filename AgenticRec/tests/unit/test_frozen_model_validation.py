@@ -3,7 +3,7 @@ import json
 
 import pytest
 
-from agenticrec.frozen_model_validation import load_search_model, average_rows, clustered_pair
+from agenticrec.frozen_model_validation import load_search_model, average_rows, clustered_pair, output_path
 
 
 def test_modified_checkpoint_is_rejected_before_loading(tmp_path,monkeypatch):
@@ -28,3 +28,11 @@ def test_user_cluster_bootstrap_has_expected_constant_difference():
                           {'1':{'ndcg':.5},'2':{'ndcg':.25}},'ndcg',samples=100)
     assert result['difference']==.25 and result['ci95']==[.25,.25]
     assert result['users']==2
+
+
+def test_relative_output_is_resolved_and_foreign_target_rejected(monkeypatch,tmp_path):
+    import agenticrec.frozen_model_validation as module
+    monkeypatch.setattr(module,'ROOT',tmp_path)
+    monkeypatch.chdir(tmp_path)
+    assert output_path('runs/example')==tmp_path/'runs/example'
+    with pytest.raises(ValueError): output_path(tmp_path.parent/'foreign')

@@ -80,8 +80,14 @@ def strata(rows,seen):
     return result
 
 
+def output_path(output):
+    output=Path(output).resolve()
+    if not output.is_relative_to(ROOT): raise ValueError('Output must stay inside project root')
+    return output
+
+
 def run(output):
-    output=Path(output); output.mkdir(parents=True,exist_ok=False)
+    output=output_path(output); output.mkdir(parents=True,exist_ok=False)
     torch.set_num_threads(2)
     config_path=ROOT/'AgenticRec/configs/recommendation_search_selected_20261010.json'
     config=json.loads(config_path.read_text(encoding='utf-8'))
