@@ -2,6 +2,16 @@
 
 ## ADR-044：按训练信号检查启动混合困难负采样有界训练
 
+### 实际验收与结论
+
+- 预先提交c10f337后，12个正式运行均从clean工作树启动；实际316epoch/71732更新，未扩大四条件/三个seed/25%比例。seed42的384人NDCG选择仍为GCN uniform、BPR uniform，选择文件先冻结再补7/2026，最后执行97人开发审计。
+- 审计GCN NDCG均值0.179833→0.184476（点估计约+2.58%），配对差值CI[-0.002620,0.012401]；BPR 0.177236→0.186348（约+5.14%），CI[-0.000616,0.020008]。Hit均增加约2.06个百分点，但辅指标不替代主指标。两个主质量结论均NO VERIFIED GAIN，独立质量NOT EVALUATED；保持默认模型，不用审计数字重选。
+- 384人选择组GCN mixed25在三个seed都低于匹配uniform；BPR两个seed更高、seed42更低。训练容易题比例确有减少，并不证明偏好预测更准；不能把未知高分中的潜在真喜欢认定为已证实根因。只有训练难度假设得到机制验证，可靠推荐收益尚未得到验证。
+- 335完整测试、既有锁环境10专项和全部12个模型的真实选择/审计预测精确重载通过；46176原始指标、均值/区间/分层重算，912历史文件SHA不变，报告两次字节一致生成。既有环境共享checkout/data，不称全新checkout重训；完整测试可能访问历史fixture，训练/审计/报告不读取test标签。新增API/下载/云支出均0。
+- 结果见[正式报告](reports/rec_baselines/lightgcn_hard_negatives_20261011.md)、[解释](reports/lightgcn_hard_negative_findings_20261011.md)。LG-HN01 DONE仅为有界训练验收，不为质量成功。下一项显式低分监督须另立目标/协议/消融和未暴露评价，不能改变原未知负采样契约或根据本次audit继续扩比例；原T04阻塞保留。
+
+### 原预登记（保留）
+
 - 用户2026-10-11明确要求训练新模型。依赖LG-D02诊断，不重设计项目；新增research/lightgcn-hard-negatives-20261011分支。仅对train-unrated选择方式增加固定25%困难比例，保留75%随机；明确低分与时间监督本轮不加入。
 - [协议](reports/lightgcn_hard_negatives_protocol_20261011.md)登记四条件（GCN/BPR各uniform与mixed25）×三seed共12次/至多384epoch，384用户早停/seed42选择后冻结，97用户最后报告。所有valid以前暴露，test不用于开发，本轮新独立质量NOT EVALUATED。uniform是去掉困难选择的消融；两个模型享有相同更新预算，保留各自已选强维度。
 - 实现独立train-only Torch候选池，8候选互异、排除全部已评分/padding；矿选detach，数据loss及ego正则按原式。各条件相同初始化、正边/候选/掩码流及每epoch更新数，逐epoch哈希核验。随机流不同于旧共用Python RNG，因此重训匹配uniform，不能把新基线称旧checkpoint原样复现。

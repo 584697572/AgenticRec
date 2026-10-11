@@ -10,6 +10,8 @@ T19 完成 24 个系统/消融/seed run。在150条冻结合成test上，O与A�
 
 最新[训练信号诊断](reports/rec_baselines/lightgcn_training_diagnostics_20261011.md)只检查训练数据与六个冻结模型：随机负配对61.11%为容易题，低分覆盖5099/5351用户；95.25%用户至少半数评分同一天，因此先研究混合困难样本及独立低分监督，暂缓时间衰减。325完整回归、锁环境14专项和原始记录字节回放通过；新增训练/API/下载0，准确率 **NOT EVALUATED**。详见[诊断解释](reports/lightgcn_training_signal_findings_20261011.md)，保留研究分支，不替换默认模型。
 
+随后完成[混合困难负采样训练](reports/rec_baselines/lightgcn_hard_negatives_20261011.md)：GCN/BPR各有匹配随机基线与25%困难样本，四条件×三seed共12次/316epoch。97人开发审计上，GCN NDCG 0.179833→0.184476、BPR 0.177236→0.186348，但两者配对区间均跨0，结论 **NO VERIFIED GAIN**；开发选择仍保留随机基线。335完整回归、锁环境10专项和12个真实模型重载通过，API/下载0；不称独立测试或微软论文提升。见[结果解释](reports/lightgcn_hard_negative_findings_20261011.md)。
+
 新增推理为显式选择，旧默认流程不变；需先按报告重建数据与训练已验证的checkpoint：
 
 ```powershell

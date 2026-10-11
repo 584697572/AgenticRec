@@ -2,7 +2,9 @@
 
 ## 最新：LG-HN01混合困难负样本（2026-10-11）
 
-IN_PROGRESS：GCN/BPR匹配uniform/mixed25基线，三seed12次训练、至多384epoch。10项专项及train候选smoke通过，正式训练/新准确率尚未验证。只改未知负例选择，低分及时间另行研究；384人选中后冻结，97人仅已暴露开发审计，不看旧test调参。API/下载0，默认模型不改；[协议](../../reports/lightgcn_hard_negatives_protocol_20261011.md)、ADR-044。
+DONE仅指有界训练验收：c10f337、四条件×三个seed共12次真实训练，316epoch/71732更新，启动均Git clean。384人早停/seed42选择后冻结，GCN/BPR均仍选uniform；97人最后开发审计。GCN NDCG 0.179833→0.184476、差值CI[-0.002620,0.012401]；BPR 0.177236→0.186348、CI[-0.000616,0.020008]。均 **NO VERIFIED GAIN**，独立质量 **NOT EVALUATED**；不根据audit换赢家。
+
+335完整回归、既有锁环境10专项、12模型真实重载及46176原始指标重算通过，912历史文件SHA保持，报告两次字节一致重建。训练/审计/报告不读test标签，完整测试可能读取旧fixture。API/下载0，默认模型/上游/原规范不改，T04阻塞保留。见[结果](../../reports/rec_baselines/lightgcn_hard_negatives_20261011.md)、[解释](../../reports/lightgcn_hard_negative_findings_20261011.md)及ADR-044。下一项另行登记显式低分监督和未暴露评价，不在本次audit继续扩困难比例。
 
 ## 最新：LG-D02训练信号诊断（2026-10-11）
 

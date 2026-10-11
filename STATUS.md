@@ -2,7 +2,11 @@
 
 ## 当前：LG-HN01混合困难负样本训练（2026-10-11）
 
-IN_PROGRESS：用户要求根据LG-D02检查训练新模型。已登记GCN/BPR各uniform/mixed25、三seed共12运行，上限384epoch，最大2worker×2线程，API0/下载0。10项专项和真实train候选20batch smoke通过；正式训练尚未开始，质量NOT EVALUATED。低分/时间监督未加入；旧test不用作调参，384人早停/seed42选择后冻结再补其他seed，97人仅开发审计。默认模型/旧证据不改，历史912文件SHA已冻结；见[协议](reports/lightgcn_hard_negatives_protocol_20261011.md)、ADR-044。
+DONE仅指有界训练验收：训练commit c10f337，GCN/BPR各uniform/mixed25、三个seed的12次真实运行完成，共316epoch/71732更新；每次启动Git clean，最大2worker×2线程。384人早停/seed42选择均保留uniform，冻结后补齐其余seed，97人最后开发审计。GCN审计NDCG 0.179833→0.184476，差值95%CI[-0.002620,0.012401]；BPR 0.177236→0.186348，CI[-0.000616,0.020008]。两者质量均 **NO VERIFIED GAIN**，不依据audit换赢家；独立未暴露质量仍 **NOT EVALUATED**。
+
+完整335项、既有锁环境10专项及12个真实模型重载通过，46176项原始指标重算、912历史文件SHA保持，报告两次字节一致重建。训练/审计/报告没有读取test标签；完整工程测试可能用旧评测fixture。API0/下载0；低分/时间监督未加入，默认模型、旧权重、原上游和规范不改。见[真实结果](reports/rec_baselines/lightgcn_hard_negatives_20261011.md)、[结果解释](reports/lightgcn_hard_negative_findings_20261011.md)、[协议](reports/lightgcn_hard_negatives_protocol_20261011.md)及ADR-044。原T04阻塞保留。
+
+下一优先：另行预登记显式低分监督的单变量GCN/BPR对照，并在扩展研究前确定未暴露评价；不继续根据97人audit搜索困难比例。
 
 ## 当前：LG-D02训练信号诊断（2026-10-11）
 
