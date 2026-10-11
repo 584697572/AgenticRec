@@ -4,11 +4,13 @@
 
 完成：公开可靠性门控/一致融合/候选诊断、三seed冻结强基线、外部新协议、单变量控制、消融、真实失败案例和可选Agent接入。学习门控与GCN对强BPR均 **NO VERIFIED GAIN**。RRF仅在外部51相关暖用户上观测NDCG 0.151001→0.210644，开发审计对强基线区间跨0；次要对照未多重校正，不推广为跨域/线上收益。
 
-最后验证：完整292/292；新锁定离线环境35/35，真实推理和诊断逐项相同；42024项融合指标、8610条模型用户预测精确重算；480份历史证据SHA不变。API请求0，权重下载0，只补官方100K ZIP 4,924,029bytes和README；四训练109实际epoch、六checkpoint校验。旧默认流程保持稳定，失败门控只供实验选择。
+最后验证：完整295/295（含发布字节回归）；新锁定离线环境35/35，真实推理和诊断逐项相同；42024项融合指标、8610条模型用户预测精确重算；480份历史证据SHA不变。API请求0，权重下载0，只补官方100K ZIP 4,924,029bytes和README；四训练109实际epoch、六checkpoint校验。旧默认流程保持稳定，失败门控只供实验选择。
 
 Blocker/风险：原资源ID/许可/canonical论文条件仍BLOCKED；首轮legacy超时后单独与最终完整运行通过，根因NOT VERIFIED；本轮新完整checkout重训/GPU/Linux/非editable安装未验证。下一优先项是在新未暴露评价上检查跨域与反馈效果，不继续用本次external test调参。
 
 验收：[技术总报告](../../reports/technical_upgrade_20261011.md)、[融合](../../reports/fusion_research_20261011.md)、[强模型](../../reports/rec_baselines/frozen_model_validation_20261011.md)、[失败案例](../../reports/fusion_failure_cases_20261011.md)。
+
+发布补充：[../../reports/distribution_integrity_20261011.md](../../reports/distribution_integrity_20261011.md)验证14文件Git导出字节及4次训练计划SHA；早期292项报告保持历史时点，不覆盖。
 
 ## 历史状态快照（保留原日期）
 
