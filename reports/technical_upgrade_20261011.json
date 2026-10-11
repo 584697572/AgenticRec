@@ -1,0 +1,84 @@
+{
+  "algorithm_gate_conclusion": "NO VERIFIED GAIN",
+  "checkpoints_validated": 6,
+  "clean_checkout_full_retraining": "Prior T20 evidence retained; this round did not repeat a new full checkout training",
+  "conditional_frontier_review": "DONE: defer extra SASRec/RL/industrial foundation models; current sparse outcome coverage and CPU scope do not support justified comparative claims",
+  "date": "2026-10-11",
+  "file_sha256": {
+    "reports/fusion_research_20261011.json": "8f46fc368b283f2669f423006fd022a62d03c64ad5370d159ac94912730ad53b",
+    "reports/rec_baselines/frozen_model_validation_20261011.json": "fa67da165c44274cc6075f52f9f396c5e1bf38dcdbeeb42e426641a81de9531a",
+    "reports/t19_template_cluster_audit_20261011.json": "7ff1df40ccf94b656ffc6d33bbc932dc2023c87ef3406d82cfe4fdcf6474645a"
+  },
+  "first_failure": "Legacy U1 worker exceeded 90s boundary; isolated bridge and final full run passed; root cause NOT VERIFIED",
+  "first_regression": {
+    "errors": 0,
+    "failures": 1,
+    "skipped": 0,
+    "tests": 282
+  },
+  "fresh_environment": "New venv, exact lock, offline cache install; current checkout with existing frozen data/checkpoints",
+  "fresh_environment_tests": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 35
+  },
+  "fresh_inference_identical": true,
+  "full_regression": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 292
+  },
+  "gcn_vs_strong_bpr_conclusion": "NO VERIFIED GAIN",
+  "generator_sha256": "0bddb4b5958e3269471b4f0afd29351307a06a08503dcf9356d9624d780f9be4",
+  "method_execution_provenance": {
+    "development_commit": "f02b7c9",
+    "external_base_commit": "e1cb622",
+    "post_evaluation_integration_commit": "a782793",
+    "primary_source_sha256": {
+      "AgenticRec/src/agenticrec/evaluation/metrics.py": "8535156cec17bd1c256e91222e8605c7a0557f6146d48a3211464156f9d32325",
+      "AgenticRec/src/agenticrec/fusion_experiment.py": "43bd0480e0f23d21aa90f4253a6736a2428b8140e8c21590731900e00a4b5466",
+      "AgenticRec/src/agenticrec/fusion_pipeline.py": "ccbcad580c4487cf403819d40025e9b92c1f41b1de5f1b8f5c981ab5412fd686",
+      "AgenticRec/src/agenticrec/ranking/constraints.py": "310a5b8ce302eb337065636c8f6cff2d02c7e5aa48c40ce344be78b1f8a27125",
+      "AgenticRec/src/agenticrec/research_protocol.py": "cf09423411edd9b7125868a215d9f69eb262f9ab71f99ef04eb69534c806af33",
+      "AgenticRec/src/agenticrec/retrieval/adaptive.py": "1d2694cef7eac409d4c13aee58a1ba36fae1bfaa8f9f5092cd6b45ec92f69e58",
+      "AgenticRec/src/agenticrec/retrieval/sources.py": "ff6570fb12b23196c40b36db082600af06ba4b025fab90dd32128a0e085a3bad"
+    },
+    "ranking_math_changed_by_integration": false
+  },
+  "new_api_requests": 0,
+  "new_model_downloads": 0,
+  "new_training_actual_epochs": 109,
+  "new_training_runs": 4,
+  "official_external_zip_bytes": 4924029,
+  "preserved_historical_files": 480,
+  "raw_prediction_metric_checks": 50634,
+  "scope_status": "DONE: bounded preregistered research, evaluation and opt-in integration",
+  "secondary_external_rrf": {
+    "baseline_hit": 0.3986928104575163,
+    "baseline_ndcg": 0.15100097709593086,
+    "hit": 0.5359477124183006,
+    "ndcg": 0.2106436277007573,
+    "paired_ndcg": {
+      "bootstrap_samples": 2000,
+      "ci95": [
+        0.011644104460701129,
+        0.11266971147446116
+      ],
+      "difference": 0.059642650604826444,
+      "seed": 42,
+      "unit": "user after within-user seed average",
+      "users": 51
+    },
+    "relative_observed_difference": 0.39498188522936184
+  },
+  "source_commit_before_report": "a782793cc25408013e372ab54c2b82bc030a46a2",
+  "stable_adoption": "Additional opt-in modules only; original CLI defaults unchanged; learned gate experimental",
+  "statistics_limit": "95% pairwise intervals unadjusted for multiple secondary comparisons; exploratory and domain-limited",
+  "test_log_sha256": {
+    "clean_tests.xml": "b89436d3cef7d9a37d98bb813d1f762c8e2f59711799861f19575dd080dc1457",
+    "full.xml": "3525f8d03e0f894d133954c81d9093cd410dbaa855efef0f90181402b8806fdb",
+    "full_final.xml": "ec12e3de15c664f11b69cc4db6eb93996e53938b1e49fcf66059583b9f67b4a8"
+  }
+}

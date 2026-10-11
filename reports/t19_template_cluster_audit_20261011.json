@@ -1,0 +1,43 @@
+{
+  "comparisons": {
+    "O_minus_A": {
+      "bootstrap_samples": 2000,
+      "difference": 0.0,
+      "distinct_episodes": 150,
+      "limit": "Small number of related templates; not general population inference",
+      "seed": 42,
+      "template_cluster_ci95": [
+        0.0,
+        0.0
+      ],
+      "template_groups": 69
+    },
+    "O_minus_no_content": {
+      "bootstrap_samples": 2000,
+      "difference": -0.04666666666666667,
+      "distinct_episodes": 150,
+      "limit": "Small number of related templates; not general population inference",
+      "seed": 42,
+      "template_cluster_ci95": [
+        -0.0896551724137931,
+        -0.008403361344537815
+      ],
+      "template_groups": 69
+    }
+  },
+  "historical_test": "Previously Exposed Test",
+  "new_api_requests": 0,
+  "parser_confound": "F/U1 interface differences remain; O/A shared-interface comparison retained",
+  "raw_sha256": {
+    "artifacts\\runs\\t19\\live_20261010\\A\\seed_2026\\predictions.jsonl": "81b6c6e95b755a2d78a6544eed56a6e231cb3a988954e090ab488b8b3a3c5d75",
+    "artifacts\\runs\\t19\\live_20261010\\A\\seed_42\\predictions.jsonl": "fa82e408c0e0ea1778ea33c750c4d4359be7c033054f97d1d99c09cda436b99f",
+    "artifacts\\runs\\t19\\live_20261010\\A\\seed_7\\predictions.jsonl": "251e51edacf7766f8eacfa6e9071eb2a719d437e6e80f0f8d3bdc42f4e2a1597",
+    "artifacts\\runs\\t19\\live_20261010\\O\\seed_2026\\predictions.jsonl": "1e360eff7b2451296db9388a615b4fdffee057d9d9ebef7e7129cc1a15bdc2f0",
+    "artifacts\\runs\\t19\\live_20261010\\O\\seed_42\\predictions.jsonl": "3f2def7a19b1eef3c5ea7037d9a0859ddbf708dccfddc0c85ef35cd47e87cd0e",
+    "artifacts\\runs\\t19\\live_20261010\\O\\seed_7\\predictions.jsonl": "797d629901b6d515afb0a6fc73057bf292bbecc4883f594bd98882ef550e186c",
+    "artifacts\\runs\\t19\\live_20261010\\no_content\\seed_2026\\predictions.jsonl": "62dec47d3603084ad0c2e23479979f2a2e2434bcb53c1497cedbe2e439f0e24e",
+    "artifacts\\runs\\t19\\live_20261010\\no_content\\seed_42\\predictions.jsonl": "a09d762ca7ea732876099c442723ec1b90de0e961d42cf47baa8b053e40a3193",
+    "artifacts\\runs\\t19\\live_20261010\\no_content\\seed_7\\predictions.jsonl": "63367f8a099ee216620a6591a6f5fb22bd5629903fc7187d68f396de9dd49a73"
+  },
+  "replanning_quality": "NOT EVALUATED: original formal runs had zero replans"
+}
