@@ -435,15 +435,17 @@
   "status_evidence_index": "AgenticRec/docs/STATUS.md",
   "status_updated": "2026-10-11",
   "active_followup": {
-    "id": "UP-P1",
-    "title": "Implement reliability-gated fusion and validate frozen models",
-    "status": "IN_PROGRESS",
-    "depends_on": [
-      "UP-P0"
-    ],
-    "scope": "Finite train/valid selection, independent seeds and candidate diagnostics; 0 paid API",
-    "experiment_id": "fusion_20261011",
-    "test_access": "External only after method freeze; old test explicitly Previously Exposed Test"
+    "id": "UP-P5",
+    "title": "Bounded technical upgrade acceptance",
+    "status": "DONE",
+    "scope": "P0-P5 review, one main method evaluated, optional integration; no universal gain claim",
+    "evidence": "reports/technical_upgrade_20261011.md",
+    "next_priority": "Preregister a larger genuinely unseen cross-domain/feedback evaluation before any further gating tuning",
+    "original_tasks_remaining": [
+      "T04 BLOCKED",
+      "T21 TODO",
+      "T22-T24 optional TODO"
+    ]
   },
   "followup_history": [
     {
@@ -532,6 +534,101 @@
         "protocol": "reports/fusion_protocol_20261011.json",
         "scope": "Source audit, primary research, protocol integrity; not algorithm gain"
       }
+    },
+    {
+      "id": "UP-P1",
+      "status": "DONE",
+      "depends_on": [
+        "UP-P0"
+      ],
+      "scope": "Implemented public-signal gated fusion and validated six frozen checkpoints",
+      "evidence": [
+        "reports/fusion_research_20261011.json",
+        "reports/rec_baselines/frozen_model_validation_20261011.json"
+      ],
+      "verification": {
+        "new_training_runs": 4,
+        "actual_new_epochs": 109,
+        "checkpoints": 6,
+        "raw_model_predictions_rebuilt": 8610,
+        "gate_conclusion": "NO VERIFIED GAIN",
+        "gcn_vs_strong_bpr": "NO VERIFIED GAIN"
+      }
+    },
+    {
+      "id": "UP-P2",
+      "status": "DONE",
+      "depends_on": [
+        "UP-P1"
+      ],
+      "scope": "Frozen development/external comparisons, three gate seeds, controls, ablations and clustered statistics",
+      "evidence": [
+        "reports/fusion_research_20261011.json",
+        "reports/fusion_failure_cases_20261011.json",
+        "reports/t19_template_cluster_audit_20261011.json"
+      ],
+      "verification": {
+        "raw_fusion_metric_checks": 42024,
+        "external_relevant_users": 51,
+        "external_without_relevance": 694,
+        "states_clustered_by_user": true,
+        "template_groups": 69,
+        "multiple_comparison_adjustment": "NOT PERFORMED: secondary exploratory intervals disclosed"
+      }
+    },
+    {
+      "id": "UP-P3",
+      "status": "DONE",
+      "depends_on": [
+        "UP-P2"
+      ],
+      "type": "conditional",
+      "scope": "Conditional frontier review completed; no additional model training",
+      "decision": "Defer SASRec/RL/industrial foundation models; limited outcome coverage and CPU scope",
+      "extra_frontier_experiments": "NOT RUN: intentionally outside bounded protocol",
+      "evidence": [
+        "reports/research_landscape_2026.md",
+        "reports/technical_upgrade_20261011.md"
+      ]
+    },
+    {
+      "id": "UP-P4",
+      "status": "DONE",
+      "depends_on": [
+        "UP-P2"
+      ],
+      "scope": "Opt-in validated inference and existing Agent/state/tool integration; original defaults preserved",
+      "evidence": [
+        "reports/technical_upgrade_20261011.json"
+      ],
+      "verification": {
+        "full_tests_passed": 292,
+        "fresh_environment_tests_passed": 35,
+        "fresh_real_checkpoint_inference_identical": true,
+        "remote_api_requests": 0,
+        "legacy_timeout_root_cause": "NOT VERIFIED",
+        "failed_gate_default": false
+      }
+    },
+    {
+      "id": "UP-P5",
+      "status": "DONE",
+      "depends_on": [
+        "UP-P4"
+      ],
+      "scope": "Bounded technical acceptance, reproducible reports, contributions and honest limitations",
+      "evidence": [
+        "reports/technical_upgrade_20261011.json",
+        "reports/technical_upgrade_20261011.md",
+        "README.md"
+      ],
+      "verification": {
+        "historical_evidence_preserved": 480,
+        "original_spec_unchanged": true,
+        "upstream_pristine": true,
+        "new_paid_calls": 0,
+        "full_paper_reproduction": "BLOCKED: historical T04, unchanged"
+      }
     }
   ],
   "upgrade_tasks": [
@@ -551,39 +648,98 @@
     },
     {
       "id": "UP-P1",
-      "status": "IN_PROGRESS",
+      "status": "DONE",
       "depends_on": [
         "UP-P0"
-      ]
+      ],
+      "scope": "Implemented public-signal gated fusion and validated six frozen checkpoints",
+      "evidence": [
+        "reports/fusion_research_20261011.json",
+        "reports/rec_baselines/frozen_model_validation_20261011.json"
+      ],
+      "verification": {
+        "new_training_runs": 4,
+        "actual_new_epochs": 109,
+        "checkpoints": 6,
+        "raw_model_predictions_rebuilt": 8610,
+        "gate_conclusion": "NO VERIFIED GAIN",
+        "gcn_vs_strong_bpr": "NO VERIFIED GAIN"
+      }
     },
     {
       "id": "UP-P2",
-      "status": "TODO",
+      "status": "DONE",
       "depends_on": [
         "UP-P1"
-      ]
+      ],
+      "scope": "Frozen development/external comparisons, three gate seeds, controls, ablations and clustered statistics",
+      "evidence": [
+        "reports/fusion_research_20261011.json",
+        "reports/fusion_failure_cases_20261011.json",
+        "reports/t19_template_cluster_audit_20261011.json"
+      ],
+      "verification": {
+        "raw_fusion_metric_checks": 42024,
+        "external_relevant_users": 51,
+        "external_without_relevance": 694,
+        "states_clustered_by_user": true,
+        "template_groups": 69,
+        "multiple_comparison_adjustment": "NOT PERFORMED: secondary exploratory intervals disclosed"
+      }
     },
     {
       "id": "UP-P3",
-      "status": "TODO",
+      "status": "DONE",
       "depends_on": [
         "UP-P2"
       ],
-      "type": "conditional"
+      "type": "conditional",
+      "scope": "Conditional frontier review completed; no additional model training",
+      "decision": "Defer SASRec/RL/industrial foundation models; limited outcome coverage and CPU scope",
+      "extra_frontier_experiments": "NOT RUN: intentionally outside bounded protocol",
+      "evidence": [
+        "reports/research_landscape_2026.md",
+        "reports/technical_upgrade_20261011.md"
+      ]
     },
     {
       "id": "UP-P4",
-      "status": "TODO",
+      "status": "DONE",
       "depends_on": [
         "UP-P2"
-      ]
+      ],
+      "scope": "Opt-in validated inference and existing Agent/state/tool integration; original defaults preserved",
+      "evidence": [
+        "reports/technical_upgrade_20261011.json"
+      ],
+      "verification": {
+        "full_tests_passed": 292,
+        "fresh_environment_tests_passed": 35,
+        "fresh_real_checkpoint_inference_identical": true,
+        "remote_api_requests": 0,
+        "legacy_timeout_root_cause": "NOT VERIFIED",
+        "failed_gate_default": false
+      }
     },
     {
       "id": "UP-P5",
-      "status": "TODO",
+      "status": "DONE",
       "depends_on": [
         "UP-P4"
-      ]
+      ],
+      "scope": "Bounded technical acceptance, reproducible reports, contributions and honest limitations",
+      "evidence": [
+        "reports/technical_upgrade_20261011.json",
+        "reports/technical_upgrade_20261011.md",
+        "README.md"
+      ],
+      "verification": {
+        "historical_evidence_preserved": 480,
+        "original_spec_unchanged": true,
+        "upstream_pristine": true,
+        "new_paid_calls": 0,
+        "full_paper_reproduction": "BLOCKED: historical T04, unchanged"
+      }
     }
   ]
 }

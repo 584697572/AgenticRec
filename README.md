@@ -4,6 +4,16 @@
 
 T19 完成 24 个系统/消融/seed run。在150条冻结合成test上，O与A的Strict Success均为81.33%，O每seed请求从190降至99（减少47.89%）。失败、负结果与置信区间均保留。T20验证独立环境与发布材料；T04旧资源ID/许可及论文原条件仍BLOCKED。本项目不是微软官方实现，不声称论文全部复现或线上提升。
 
+2026-10-11完成[候选融合技术研究](reports/technical_upgrade_20261011.md)：补齐冻结BPR/GCN三seed、内容负收益单变量控制、公开信号学习门控、外部冻结评价及失败案例。学习门控和GCN对强BPR均为 **NO VERIFIED GAIN**。目标一致的RRF在外部51相关暖用户上NDCG@10从旧无内容的0.1510到0.2106，但开发审计未显示稳定优势，次要对照区间未做多重校正；不作跨域、论文或线上提升主张。完整292项回归及新锁环境35项专项通过。
+
+新增推理为显式选择，旧默认流程不变；需先按报告重建数据与训练已验证的checkpoint：
+
+```powershell
+& AgenticRec/.venv-t20/Scripts/python.exe -m agenticrec.fusion_demo --request AgenticRec/configs/fixed_request.example.json --model bpr --profile validated-20261011 --mode rrf
+```
+
+强基线见[三seed结果](reports/rec_baselines/frozen_model_validation_20261011.md)，融合见[指标与消融](reports/fusion_research_20261011.md)、[真实失败案例](reports/fusion_failure_cases_20261011.md)，近期方法核查见[一手研究](reports/research_landscape_2026.md)。本轮新增付费请求0，旧证据与权重不覆盖。
+
 ```powershell
 git clone https://github.com/584697572/AgenticRec.git
 cd AgenticRec

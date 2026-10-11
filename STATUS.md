@@ -1,5 +1,17 @@
 # 工作区状态入口
 
+最后更新：2026-10-11（Asia/Shanghai）。**本轮有界技术升级验收完成**：UP-P0/P1/P2/P4/P5 DONE；P3条件审查DONE，额外SASRec/RL/工业模型未执行。原T04仍BLOCKED；T21及可选T22—T24没有由本轮替代验收。
+
+完成：公开可靠性门控/一致融合/候选诊断、三seed冻结强基线、外部新协议、单变量控制、消融、真实失败案例和可选Agent接入。学习门控与GCN对强BPR均 **NO VERIFIED GAIN**。RRF仅在外部51相关暖用户上观测NDCG 0.151001→0.210644，开发审计对强基线区间跨0；次要对照未多重校正，不推广为跨域/线上收益。
+
+最后验证：完整292/292；新锁定离线环境35/35，真实推理和诊断逐项相同；42024项融合指标、8610条模型用户预测精确重算；480份历史证据SHA不变。API请求0，权重下载0，只补官方100K ZIP 4,924,029bytes和README；四训练109实际epoch、六checkpoint校验。旧默认流程保持稳定，失败门控只供实验选择。
+
+Blocker/风险：原资源ID/许可/canonical论文条件仍BLOCKED；首轮legacy超时后单独与最终完整运行通过，根因NOT VERIFIED；本轮新完整checkout重训/GPU/Linux/非editable安装未验证。下一优先项是在新未暴露评价上检查跨域与反馈效果，不继续用本次external test调参。
+
+验收：[技术总报告](reports/technical_upgrade_20261011.md)、[融合](reports/fusion_research_20261011.md)、[强模型](reports/rec_baselines/frozen_model_validation_20261011.md)、[失败案例](reports/fusion_failure_cases_20261011.md)。
+
+## 历史状态快照（保留原日期）
+
 最后更新：2026-10-10（Asia/Shanghai）。LG-S01有限开发搜索 DONE：[真实结果](reports/rec_baselines/recommendation_search_20261010.md)。6个候选、seed42，仅train/valid；选中1层64维LightGCN，NDCG@10=0.148072（上一轮0.131417，相对+12.67%），HitRate=45.32%（上一轮42.41%，+2.91个百分点）。增强BPR NDCG=0.148613，未证明GCN优于增强BPR；HitRate提升区间含0。266项完整工程回归通过、55个历史文件SHA不变、报告字节一致重建、两模型配置已冻结。正式新test/三seed NOT EVALUATED，原服务模型未替换。T20/LG-D01 DONE，T21暂待，T04旧资源阻塞沿用；API/下载0。
 
 ## 既往阶段记录
