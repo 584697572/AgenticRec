@@ -1,5 +1,13 @@
 # 重大决策
 
+## ADR-044：按训练信号检查启动混合困难负采样有界训练
+
+- 用户2026-10-11明确要求训练新模型。依赖LG-D02诊断，不重设计项目；新增research/lightgcn-hard-negatives-20261011分支。仅对train-unrated选择方式增加固定25%困难比例，保留75%随机；明确低分与时间监督本轮不加入。
+- [协议](reports/lightgcn_hard_negatives_protocol_20261011.md)登记四条件（GCN/BPR各uniform与mixed25）×三seed共12次/至多384epoch，384用户早停/seed42选择后冻结，97用户最后报告。所有valid以前暴露，test不用于开发，本轮新独立质量NOT EVALUATED。uniform是去掉困难选择的消融；两个模型享有相同更新预算，保留各自已选强维度。
+- 实现独立train-only Torch候选池，8候选互异、排除全部已评分/padding；矿选detach，数据loss及ego正则按原式。各条件相同初始化、正边/候选/掩码流及每epoch更新数，逐epoch哈希核验。随机流不同于旧共用Python RNG，因此重训匹配uniform，不能把新基线称旧checkpoint原样复现。
+- 开发阶段无云/API/下载，最多2worker×2CPU线程。10项损失全梯度/数据边界/计划预算/toy训练重载测试通过，真实train 20batch/40960配对候选smoke通过、无更新；保留最初缺新增模块的collection失败，不当原算法缺陷。历史912份报告/权重/研究元数据与规范已冻结。
+- 采样和哈希实现注意CPU开销：使用Torch uint8 view再批量tolist转bytes，避免逐byte遍历Storage；未新增NumPy依赖。正式训练前提交源码/协议/配置/测试；结果append-only，所有数字从真实输出重算。若主NDCG区间跨0保留NO VERIFIED GAIN，不以Hit或训练loss替换主指标，不在audit上继续扩网格，不自动上线。
+
 ## ADR-043：先检查未知负样本、明确低分与评分时间，不扩大旧实验
 
 - 验收补充：commit6b6ef11后两环境真实诊断均Git clean；5351用户/42699题目/6checkpoint、32106用户记录重算，8份采样/时间/模型记录跨既有锁环境字节一致，325全量及14锁环境专项通过。451份历史报告/权重/LG-O01元数据/原规范SHA保持；上游固定SHA及clean保持。公开诊断报告连续两次字节一致生成。LG-D02 DONE只表示诊断完成，训练/API/下载0，质量NOT EVALUATED。

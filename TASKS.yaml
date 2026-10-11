@@ -838,6 +838,25 @@
       ],
       "next_priority": "Preregister matched GCN/BPR mixed-hard-negative training; explicit-low supervision separately; defer time decay",
       "source_commit": "6b6ef110a0a88c9284056b920e0c8da81d84be77"
+    },
+    {
+      "id": "LG-HN01",
+      "title": "Matched BPR/LightGCN mixed hard-negative training",
+      "status": "IN_PROGRESS",
+      "depends_on": [
+        "LG-D02"
+      ],
+      "plan": "AgenticRec/configs/lightgcn_hard_negatives_20261011.json",
+      "protocol": "reports/lightgcn_hard_negatives_protocol_20261011.md",
+      "branch": "research/lightgcn-hard-negatives-20261011",
+      "verification": {
+        "unit_tests_passed": 10,
+        "real_train_sampler_smoke_pairs": 40960,
+        "training_runs": "NOT VERIFIED",
+        "quality_gain": "NOT EVALUATED",
+        "remote_api_requests": 0,
+        "downloads": 0
+      }
     }
   ]
 }
