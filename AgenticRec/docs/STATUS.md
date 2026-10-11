@@ -2,7 +2,9 @@
 
 ## 最新：LG-D02训练信号诊断（2026-10-11）
 
-IN_PROGRESS：按负样本难度→明确低分→评分时间顺序检查；仅train与既有冻结权重，训练/API/下载均0。13项专项通过，真实诊断/全量回归NOT VERIFIED，准确率NOT EVALUATED。默认模型、原未知采样契约和历史实验不改。见[协议](../../reports/lightgcn_training_diagnostics_protocol_20261011.md)及ADR-043。
+DONE仅指诊断：5351训练用户、两方法×三seed、每模型42699固定题目，32106用户记录重算。GCN随机负配对61.11%为容易题，8候选最高分15.39%；不是质量提升。5099人有低分、固定正/低分配对22.57%低分高于正片；95.25%用户半数以上评分集中同一天，暂缓时间衰减。原未知采样遵守规范，未来低分应单列监督目标。
+
+完整325项及锁环境14专项通过；TV集合顺序差异先失败回归后排序/fsum，原两次记录和FAILED核对保留；修复后8份私有记录跨既有锁环境字节一致，451历史文件SHA保持。报告字节一致重建两次，见[报告](../../reports/rec_baselines/lightgcn_training_diagnostics_20261011.md)、[解释](../../reports/lightgcn_training_signal_findings_20261011.md)及ADR-043。训练/API/下载0，默认模型不变；准确率NOT EVALUATED / NO VERIFIED GAIN。下一项另行预登记混合困难负采样同预算GCN/BPR对照；本轮没有启动新训练，独立未暴露评价尚缺。
 
 ## 最新：LG-O01采样与层聚合开发研究（2026-10-11）
 

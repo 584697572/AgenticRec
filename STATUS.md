@@ -2,7 +2,11 @@
 
 ## 当前：LG-D02训练信号诊断（2026-10-11）
 
-IN_PROGRESS：按用户要求先查未知负样本难度、1/2星低分信号、评分时间可解释性。仅train/元数据和LG-O01已冻结两方法×三seed权重；训练0/API0/下载0，不打开valid/test标签、不改变默认模型。13项专项通过，真实诊断及完整回归尚待执行；准确率NOT EVALUATED。协议见[LG-D02](reports/lightgcn_training_diagnostics_protocol_20261011.md)，决策ADR-043；历史451份文件SHA已冻结。
+DONE仅指诊断验收：5351暖用户、两个已冻结方法×三seed、每模型42699配对、32106模型用户记录重算一致。GCN均匀未知容易题61.11%，8候选取最高分降到15.39%；这是困难度构造结果，不是准确率提升。5099人有1/2星记录，GCN固定正/低分配对22.57%低分打分更高，支持研究独立显式监督；原未知采样器符合规范，不改契约。95.25%用户至少半数评分同一天，时间衰减暂缓。
+
+正式诊断commit6b6ef11、两个环境执行时Git clean；修复前跨hash种子TV最大3.33e-16差异及失败回归保留，修复后8份原始记录跨既有锁环境字节一致。完整325项、锁环境14专项通过，451份历史报告/权重/元数据/规范SHA保持；原上游clean及固定SHA保持。报告连续两次字节一致重建，见[可重算诊断](reports/rec_baselines/lightgcn_training_diagnostics_20261011.md)、[问题解释](reports/lightgcn_training_signal_findings_20261011.md)及ADR-043。训练/API/下载0；诊断未打开valid/test标签，完整测试不作全进程零holdout主张。准确率NOT EVALUATED / NO VERIFIED GAIN，默认模型不变，原T04阻塞保留。
+
+下一优先：另行预登记保留随机样本的混合困难负采样，对GCN/BPR同等预算和三seed；明确低分监督随后单变量验证，不依据旧audit扩网格。独立未暴露质量评价仍NOT EVALUATED，本轮没有启动新训练。
 
 ## 当前：LG-O01 LightGCN采样与层聚合优化（2026-10-11）
 

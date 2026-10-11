@@ -8,6 +8,8 @@ T19 完成 24 个系统/消融/seed run。在150条冻结合成test上，O与A�
 
 随后完成[LightGCN采样/聚合研究](reports/rec_baselines/lightgcn_optimization_20261011.md)：6条件×3seed/386epoch，准确率 **NO VERIFIED GAIN**；相同初始化与227更新的本机暖一轮训练计算37.67→5.36秒，未计加载/验证，仅一次配对，不称全训练/在线加速。311完整回归及既有独立锁环境16专项通过。新代码保留在实验分支，默认模型未替换。
 
+最新[训练信号诊断](reports/rec_baselines/lightgcn_training_diagnostics_20261011.md)只检查训练数据与六个冻结模型：随机负配对61.11%为容易题，低分覆盖5099/5351用户；95.25%用户至少半数评分同一天，因此先研究混合困难样本及独立低分监督，暂缓时间衰减。325完整回归、锁环境14专项和原始记录字节回放通过；新增训练/API/下载0，准确率 **NOT EVALUATED**。详见[诊断解释](reports/lightgcn_training_signal_findings_20261011.md)，保留研究分支，不替换默认模型。
+
 新增推理为显式选择，旧默认流程不变；需先按报告重建数据与训练已验证的checkpoint：
 
 ```powershell
