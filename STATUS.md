@@ -141,3 +141,9 @@ T19 IN PROGRESS. Engineering commit ad4d493 is frozen; formal run directory: art
 当前阶段 UP-P0 IN_PROGRESS。新用户指令启动深度技术研究，研究分支research/adaptive-fusion-20261011隔离master/905fa19；原规范与上游不变。三份研究/差距/预登记报告已建立；内容负收益组合消融存在ranker混杂，先诊断后验证。480个历史文件已记录保护SHA。
 
 下一项：官方100K最小资源与独立协议冻结、候选级诊断/单变量控制、冻结模型seed7/2026有限验证；API0，未启动付费批次。新方法NO VERIFIED GAIN，完整本轮回归/三seed/外部test NOT EVALUATED。T04旧资源阻塞不变。
+
+## UP-P0 验收 / UP-P1 进行中（2026-10-11）
+
+UP-P0 DONE：三份审计/研究/预登记报告；ML1M开发用户按288/96/97冻结；官方100K ZIP 4,924,029 bytes/CRC通过，独立全局时间划分及训练only映射已冻结。见reports/fusion_protocol_20261011.json。准备阶段发现空相关集合计数错误，先失败回归1项，再修复；首次错误摘要保留，新v2为正式输入。外部主测试有51个相关暖用户，694个无相关另计；不能把745人或重复状态当主要质量分母。
+
+新组件专项16项通过，旧完整与no_content在3个真实开发用户×3状态的18个输出对照完全一致（只是输出复现，非效果提升）。核心融合、诊断与实验runner已实现；UP-P1仍IN_PROGRESS，真实门控开发实验和外部test尚未运行。BPR新增两个seed已完成，GCN仍训练；全部训练完成及统一评测前不把三seed标DONE。新增API0，权重下载0；当前NO VERIFIED GAIN。

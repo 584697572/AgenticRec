@@ -344,3 +344,6 @@
 - 开发协议和强对照见optimization_proposal。旧test标Previously Exposed Test；ML1M valid按用户分fit/select/audit，audit不是新盲测。外部官方100K冻结时间划分后，方法冻结前不读取test标签；外部真实评分与合成类型接受分开。公开输入不含评测目标。
 - 同时补冻结BPR32/GCN1层64 seed7/2026共4训练，不改20261010冻结选择、不加网格；复用seed42，最多128epoch。历史观测GCN21epoch约1623秒、BPR32epoch约140秒（并发开发观测），只作计算规划不是公平速度基准。2线程/worker最多4worker，API0；实际时间/失败原样保存。
 - 新研究分支隔离稳定master；所有新run拒绝覆盖。480个历史跟踪报告/复现证据与规范记录SHA保护清单。当前新方法NO VERIFIED GAIN，独立seed和外部评估NOT EVALUATED；只有验证有效才能集成，不以代码/测试数量代替收益。
+
+- ADR-038追加：官方ZIP沙箱直连失败，授权范围内网络提升后成功，4,924,029 bytes，官方来源CRC通过。新数据准备首版把defaultdict补入的空用户键误计为有相关，已用自造fixture先复现1个失败；修复统计后另存v2，旧产物不覆盖，实际label/ID/源数据不变。v2外部test主相关暖用户51，无相关694；这是客观全局时间覆盖限制，不改为随机切分美化结果。
+- 新开发fit/select/audit用户288/96/97固定，状态重复在用户内聚合。外部manifest和划分先于真实门控训练冻结；源码基础控制输出与原完整/no_content比较18项精确一致。新方法基础专项16项通过不代表质量成功。训练count缓存只缓存图共现，不缓存用户状态/隐藏标签；测试确认itemCF算术、名次和截断与原实现一致。

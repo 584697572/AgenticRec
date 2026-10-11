@@ -435,20 +435,15 @@
   "status_evidence_index": "AgenticRec/docs/STATUS.md",
   "status_updated": "2026-10-11",
   "active_followup": {
-    "id": "UP-P0",
-    "title": "Audit and freeze deep algorithm upgrade",
+    "id": "UP-P1",
+    "title": "Implement reliability-gated fusion and validate frozen models",
     "status": "IN_PROGRESS",
-    "authorized_by": "2026-10-11 user attachment: deep technical upgrade and algorithm research",
     "depends_on": [
-      "T20",
-      "LG-S01"
+      "UP-P0"
     ],
-    "scope": "Primary-source research; source and negative-result audit; new protocol; adaptive fusion as sole main direction",
-    "evidence": [
-      "reports/technical_gap_analysis.md",
-      "reports/research_landscape_2026.md",
-      "reports/optimization_proposal.md"
-    ]
+    "scope": "Finite train/valid selection, independent seeds and candidate diagnostics; 0 paid API",
+    "experiment_id": "fusion_20261011",
+    "test_access": "External only after method freeze; old test explicitly Previously Exposed Test"
   },
   "followup_history": [
     {
@@ -513,20 +508,50 @@
         "byte_identical_report_rebuild": true
       },
       "next": "Use frozen GCN/BPR configs for three-seed comparison; preserve historical negative T19 and test-exposure disclosure; T21 pending"
+    },
+    {
+      "id": "UP-P0",
+      "title": "Audit and freeze deep algorithm upgrade",
+      "status": "DONE",
+      "authorized_by": "2026-10-11 user attachment: deep technical upgrade and algorithm research",
+      "depends_on": [
+        "T20",
+        "LG-S01"
+      ],
+      "scope": "Primary-source research; source and negative-result audit; new protocol; adaptive fusion as sole main direction",
+      "evidence": [
+        "reports/technical_gap_analysis.md",
+        "reports/research_landscape_2026.md",
+        "reports/optimization_proposal.md"
+      ],
+      "verification": {
+        "protocol_tests_passed": 4,
+        "baseline_output_equivalence_checks": 18,
+        "external_archive_crc_verified": true,
+        "external_download_bytes": 4924029,
+        "protocol": "reports/fusion_protocol_20261011.json",
+        "scope": "Source audit, primary research, protocol integrity; not algorithm gain"
+      }
     }
   ],
   "upgrade_tasks": [
     {
       "id": "UP-P0",
-      "status": "IN_PROGRESS",
+      "status": "DONE",
       "depends_on": [
         "T20",
         "LG-S01"
+      ],
+      "evidence": [
+        "reports/technical_gap_analysis.md",
+        "reports/research_landscape_2026.md",
+        "reports/optimization_proposal.md",
+        "reports/fusion_protocol_20261011.json"
       ]
     },
     {
       "id": "UP-P1",
-      "status": "TODO",
+      "status": "IN_PROGRESS",
       "depends_on": [
         "UP-P0"
       ]

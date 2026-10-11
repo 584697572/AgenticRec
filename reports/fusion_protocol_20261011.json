@@ -1,0 +1,104 @@
+{
+  "development": {
+    "audit_limit": "Original model hyperparameters used all valid; audit is development audit, not blind model test",
+    "constraints": "first genre of most recent positive seed; train/metadata only",
+    "data_manifest_sha256": "01cdaa8d1e39ec197536015aa72e6d2d8b756e5d7aed5feaba3aae6c011fa0be",
+    "development": "MovieLens1M original valid only",
+    "group_counts": {
+      "audit": 97,
+      "fit": 288,
+      "select": 96
+    },
+    "historical_test": "Previously Exposed Test",
+    "local_negative": "last train rating<=2 item, if any, concrete item denial only",
+    "no_relevant_after_constraint": "count separately, never fabricate acceptance",
+    "positive_seeds": "last three train rating>=4 items, timestamp/ID stable",
+    "protocol": "fusion-20261011",
+    "query_states": [
+      "positive_seeds",
+      "local_negative",
+      "genre_constraint"
+    ],
+    "remote_api_requests": 0,
+    "schema_version": 1,
+    "seeds": [
+      7,
+      42,
+      2026
+    ],
+    "user_groups_sha256": "70ee9f1454d26ff5e33f9f997d57707a07fde3add7dd5db47de97617c3a718e4",
+    "valid_sha256": "51db50cc5cfb3d9c4f060d71a0fa4ada4e74c6555c9dd4015be7f2a6a8bdfc93"
+  },
+  "development_manifest_sha256": "809bc7d0c3874b744b4b2d80304ba6cd9c24c536a479a2120ebe3d375255bbd6",
+  "external": {
+    "candidate_items": 1372,
+    "coverage": {
+      "test": {
+        "excluded": {
+          "cold_item": 37,
+          "cold_user": 4814,
+          "nonpositive": 4371
+        },
+        "observed_rows": 10000,
+        "users_with_relevance": 51,
+        "users_without_relevance": 694
+      },
+      "valid": {
+        "excluded": {
+          "cold_item": 13,
+          "cold_user": 4907,
+          "nonpositive": 4327
+        },
+        "observed_rows": 10001,
+        "users_with_relevance": 68,
+        "users_without_relevance": 677
+      }
+    },
+    "dataset": "MovieLens100K official release",
+    "dataset_redistributed": false,
+    "download_bytes": 4924029,
+    "files": {
+      "catalog.json": "8240dbb568d50eac008fb991749959486d4ecec73b51e381f2d15b2ab7013a6c",
+      "id_map.json": "494839e2be5b27fd123a2cf64162255eec67740fbaa4c231346bb2dfd5e9e6a7",
+      "test.json": "0d5da46bc7a35284868de10cba1fe0e8137f46449d8fb1a4c4793f9a6bc66add",
+      "train.json": "f9349b9b38d3169eeb4370c8c8fa098ffb157078c1e2c41453d9032f45ff49f2",
+      "train_positive.json": "b1efd0f443c3f82660f92cccc549dcf586dd3ee0f520779c9db7f9b7c2ef6aab",
+      "valid.json": "f8f9dfb92439cd39c9b7c38c9ccb465a98ec6aeae03591e0d65a1dd5597acfeb"
+    },
+    "independence_limit": "New external release; no guarantee of distinct real persons across MovieLens releases",
+    "method_development_test_access": false,
+    "raw_rows": 100000,
+    "schema_version": 1,
+    "source_crc_verified": true,
+    "source_url": "https://files.grouplens.org/datasets/movielens/ml-100k.zip",
+    "source_zip_sha256": "50d2a982c66986937beb9ffb3aa76efe955bf3d5c6b761f4e3a7cd717c6a3229",
+    "split_counts": {
+      "test": 10000,
+      "train": 79999,
+      "valid": 10001
+    },
+    "terms_sha256": "fc0be8d2cd0f597d904bcf74f792c58ae547f8588286f5f0f794c68578353310",
+    "time_bounds": {
+      "test": [
+        891382309,
+        893286638
+      ],
+      "train": [
+        874724710,
+        889237247
+      ],
+      "valid": [
+        889237269,
+        891382267
+      ]
+    },
+    "train_edges": 44060,
+    "warm_users": 745
+  },
+  "external_manifest_sha256": "f5be171a98d350aaffbb537e8aacec9691c345b32578b4be3ad115bd2ee4bc04",
+  "first_external_manifest_preserved": "data/eval_private/fusion-external-100k-20261011/manifest.json",
+  "paid_api_requests": 0,
+  "repair": "Coverage count regression 1 failed before fix; corrected version v2. Targets and source unchanged.",
+  "schema_version": 1,
+  "stage": "data frozen before method fitting"
+}
