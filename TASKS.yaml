@@ -435,25 +435,23 @@
   "status_evidence_index": "AgenticRec/docs/STATUS.md",
   "status_updated": "2026-10-11",
   "active_followup": {
-    "id": "UP-P5",
-    "title": "Bounded technical upgrade acceptance",
-    "status": "DONE",
-    "scope": "P0-P5 review, one main method evaluated, optional integration; no universal gain claim",
-    "evidence": "reports/technical_upgrade_20261011.md",
-    "next_priority": "Preregister a larger genuinely unseen cross-domain/feedback evaluation before any further gating tuning",
-    "original_tasks_remaining": [
-      "T04 BLOCKED",
-      "T21 TODO",
-      "T22-T24 optional TODO"
+    "id": "LG-O01",
+    "title": "Train-only user sampling and residual LightGCN factorial",
+    "status": "IN_PROGRESS",
+    "depends_on": [
+      "LG-S01",
+      "UP-P5"
     ],
-    "publication_evidence": "reports/distribution_integrity_20261011.json",
-    "integration_commit": "cdedba3",
-    "stable_branch": "master",
-    "pushed_branches": [
-      "master",
-      "research/adaptive-fusion-20261011"
-    ],
-    "push_verified": true
+    "plan": "AgenticRec/configs/lightgcn_optimization_20261011.json",
+    "evidence": "reports/lightgcn_optimization_protocol_20261011.md",
+    "scope": "Six conditions x three seeds; 384 development selection users, 97 development audit users; no test access",
+    "verification": {
+      "specialized_tests_passed": 15,
+      "training": "NOT EVALUATED",
+      "quality_gain": "NO VERIFIED GAIN",
+      "remote_api_requests": 0,
+      "downloads": 0
+    }
   },
   "followup_history": [
     {
@@ -751,6 +749,27 @@
         "git_export_exact_files": 14,
         "training_plan_sha_matches": 4,
         "final_full_tests_passed": 295
+      }
+    }
+  ],
+  "model_optimization_tasks": [
+    {
+      "id": "LG-O01",
+      "title": "Train-only user sampling and residual LightGCN factorial",
+      "status": "IN_PROGRESS",
+      "depends_on": [
+        "LG-S01",
+        "UP-P5"
+      ],
+      "plan": "AgenticRec/configs/lightgcn_optimization_20261011.json",
+      "evidence": "reports/lightgcn_optimization_protocol_20261011.md",
+      "scope": "Six conditions x three seeds; 384 development selection users, 97 development audit users; no test access",
+      "verification": {
+        "specialized_tests_passed": 15,
+        "training": "NOT EVALUATED",
+        "quality_gain": "NO VERIFIED GAIN",
+        "remote_api_requests": 0,
+        "downloads": 0
       }
     }
   ]

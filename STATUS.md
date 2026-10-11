@@ -1,5 +1,9 @@
 # 工作区状态入口
 
+## 当前：LG-O01 LightGCN采样与层聚合优化（2026-10-11）
+
+IN_PROGRESS；用户明确启用新的有界模型实验。旧UP-P0—P5验收与原T04阻塞均保留。已注册4GCN+2BPR×3seed，384人选择、97人开发审计；历史test不用于选择或本轮评测。专项15项通过；正式训练NOT EVALUATED，收益NO VERIFIED GAIN。原默认与上游不改。下一步：真实图kernel数值/耗时检查、提交源码与计划后执行seed42开发对照。证据将写入artifacts/runs/lightgcn_optimization_20261011，新增API0/下载0。
+
 最后更新：2026-10-11（Asia/Shanghai）。**本轮有界技术升级验收完成**：UP-P0/P1/P2/P4/P5 DONE；P3条件审查DONE，额外SASRec/RL/工业模型未执行。原T04仍BLOCKED；T21及可选T22—T24没有由本轮替代验收。
 
 完成：公开可靠性门控/一致融合/候选诊断、三seed冻结强基线、外部新协议、单变量控制、消融、真实失败案例和可选Agent接入。学习门控与GCN对强BPR均 **NO VERIFIED GAIN**。RRF仅在外部51相关暖用户上观测NDCG 0.151001→0.210644，开发审计对强基线区间跨0；次要对照未多重校正，不推广为跨域/线上收益。
