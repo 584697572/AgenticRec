@@ -35,6 +35,18 @@ class FusionPipeline(FixedRecommendationPipeline):
         super().__init__(retriever,RoutingScorer(retriever.known_user,session))
         self.mode,self.learned_gate,self.content_weight,self.protect_cf=mode,gate,content_weight,protect_cf
 
+    @classmethod
+    def from_frozen(cls,model_kind='lightgcn',seed=42,*,mode='no_content',profile='baseline',**kwargs):
+        # The parent factory passes a positional router, incompatible with this
+        # class's constructor. This post-evaluation factory changes no ranking math.
+        from .adapters.model import KnownUserScorer
+        from .adapters.validated import load_validated_scorer
+        from .retrieval.adaptive import CachedResearchRetriever
+        if profile not in ('baseline','validated-20261011'): raise ValueError('Unknown model profile')
+        known=(load_validated_scorer(model_kind,seed) if profile=='validated-20261011'
+               else KnownUserScorer.from_artifacts(model_kind,seed))
+        return cls(CachedResearchRetriever.from_frozen(known),mode=mode,**kwargs)
+
     def recommend(self,request):
         # Existing validation/error/clarification contract is preserved.
         from .pipeline import FixedRequest
