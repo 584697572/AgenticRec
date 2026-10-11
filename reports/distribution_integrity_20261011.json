@@ -1,0 +1,37 @@
+{
+  "archive_sha256": "f40c1494da451ab030fb083364b77a9155765dd553d18779e28b3dfdf0f50103",
+  "commit": "b0547b03a2d2021fb518c1509612481b19ff8bd7",
+  "date": "2026-10-11",
+  "exported_files": 14,
+  "file_sha256": {
+    ".gitattributes": "4cdd05d475a861dac2e59ca674c7ee288ba1a489efce02b8b1a12525308d0531",
+    "AgenticRec/configs/frozen_model_validation_20261011_seed_2026.json": "06995afc620a1642cee8b0c15be28820ce7631ece95acdd2fa72fc28c63f1938",
+    "AgenticRec/configs/frozen_model_validation_20261011_seed_7.json": "5864d33958f73b832cc107177ed8be429197393c7f0807f7a1cd1da0b0739126",
+    "AgenticRec/tests/regression/test_research_distribution.py": "e214ba1f814a893d38619404e1579c507b3a3b318310e78ea5710ded8b43a58c",
+    "reports/fusion_failure_cases_20261011.json": "ee5b646238b28e0a0185b9d3f52cef85af93b9bdd23964d3e16c8c8721b5e821",
+    "reports/fusion_failure_cases_20261011.md": "3a31781cfbe7ee1352a63bfd7fca72bd2a2fa3083b59b7c18b7fb55b265d3e16",
+    "reports/fusion_protocol_20261011.json": "e43d2279cd2077198aaa6c8c683418cedb055397217576838fffa72360c5acd0",
+    "reports/fusion_research_20261011.json": "8f46fc368b283f2669f423006fd022a62d03c64ad5370d159ac94912730ad53b",
+    "reports/fusion_research_20261011.md": "d8a5c3ecb2d40d4878f8ee55748942a1c75a6f97de22ea87ea213423268f8312",
+    "reports/rec_baselines/frozen_model_validation_20261011.json": "fa67da165c44274cc6075f52f9f396c5e1bf38dcdbeeb42e426641a81de9531a",
+    "reports/rec_baselines/frozen_model_validation_20261011.md": "3e4abd4f1d3440f488b3da7e99aa1c4b18504ed327a79e6ae72e9a86ae11ff0e",
+    "reports/t19_template_cluster_audit_20261011.json": "7ff1df40ccf94b656ffc6d33bbc932dc2023c87ef3406d82cfe4fdcf6474645a",
+    "reports/technical_upgrade_20261011.json": "5cdbbfd1e2ba5d746b6e13cd809f76945a617848e9b6f75a0a7e418636fb9bb6",
+    "reports/technical_upgrade_20261011.md": "978bb7527c22a1b5fa79f3f897e936fb259d0776aac75a1a47dd2c910638bfd4"
+  },
+  "final_full_tests": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 295
+  },
+  "final_test_xml_sha256": "6ef9c82e328b436ad4541dfe07b3f169c62c2c7fc1b20c83065e7e39a41bbac2",
+  "generator_sha256": "a49d26470b1b2fe5106788e4f77d006b04b0ad2a78ff23030c8b5671c4d59d70",
+  "historical_files_unchanged": 480,
+  "provenance_limit": "Early Git snapshots normalized new CRLF plans/reports to LF; this commit preserves the actually executed/recorded bytes",
+  "regression_red_failures": 3,
+  "remote_api_requests": 0,
+  "scope": "Fix publication byte normalization; no metric, model math or historical evidence changes",
+  "status": "VERIFIED",
+  "training_plan_identity_matches": 4
+}
