@@ -799,6 +799,26 @@
       },
       "next_priority": "Preregister train-negative difficulty and temporal preference diagnostics; do not tune on this audit",
       "branch": "research/lightgcn-sampling-20261011"
+    },
+    {
+      "id": "LG-D02",
+      "title": "Train-only negative difficulty, explicit low ratings and timestamp diagnostics",
+      "status": "IN_PROGRESS",
+      "depends_on": [
+        "LG-O01"
+      ],
+      "plan": "AgenticRec/configs/lightgcn_training_diagnostics_20261011.json",
+      "protocol": "reports/lightgcn_training_diagnostics_protocol_20261011.md",
+      "scope": "Six existing checkpoints; train-only diagnosis, zero retraining or holdout access",
+      "branch": "research/lightgcn-training-diagnostics-20261011",
+      "verification": {
+        "unit_tests_passed": 13,
+        "real_diagnostics": "NOT VERIFIED",
+        "accuracy_gain": "NOT EVALUATED",
+        "training_runs": 0,
+        "remote_api_requests": 0,
+        "downloads": 0
+      }
     }
   ]
 }

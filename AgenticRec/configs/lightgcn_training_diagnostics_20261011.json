@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "run_id": "lightgcn_training_diagnostics_20261011",
+  "seed": 42,
+  "model_seeds": [7, 42, 2026],
+  "models": ["gcn_edge_uniform", "bpr_edge"],
+  "positives_per_user": 8,
+  "negative_pool_size": 8,
+  "low_rating_max": 2,
+  "low_samples_per_user": 8,
+  "easy_gradient_below": 0.05,
+  "time_min_positives": 20,
+  "time_min_group": 5,
+  "top_k": 10,
+  "torch_threads": 2,
+  "score_batch_size": 128,
+  "train_only": true,
+  "training_runs": 0,
+  "remote_api_requests": 0,
+  "downloads": 0,
+  "source_plan": "AgenticRec/configs/lightgcn_optimization_20261011.json"
+}

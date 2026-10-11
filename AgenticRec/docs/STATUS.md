@@ -1,5 +1,9 @@
 # 项目状态
 
+## 最新：LG-D02训练信号诊断（2026-10-11）
+
+IN_PROGRESS：按负样本难度→明确低分→评分时间顺序检查；仅train与既有冻结权重，训练/API/下载均0。13项专项通过，真实诊断/全量回归NOT VERIFIED，准确率NOT EVALUATED。默认模型、原未知采样契约和历史实验不改。见[协议](../../reports/lightgcn_training_diagnostics_protocol_20261011.md)及ADR-043。
+
 ## 最新：LG-O01采样与层聚合开发研究（2026-10-11）
 
 DONE仅指有界实验验收，推荐质量NO VERIFIED GAIN：6条件×3seed、386真实epoch、384人选择/97人开发审计、69264原始指标重算。原采样均匀聚合按开发集选中，audit后不换赢家。CPU同样本227更新暖一轮计算37.67→5.36秒（一次配对，不含准备/valid，不是在线加速）；参数最大差异8.94e-8。完整311项、既有独立锁环境16专项、真实checkpoint重载通过。480旧证据/31旧权重SHA保持，API0/下载0；默认模型/上游/原规范不改。见[实验报告](../../reports/rec_baselines/lightgcn_optimization_20261011.md)。新独立质量测试NOT EVALUATED，T04旧资源阻塞不变；下一研究需先登记负样本难度/时间偏好对照。

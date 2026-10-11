@@ -1,5 +1,9 @@
 # 工作区状态入口
 
+## 当前：LG-D02训练信号诊断（2026-10-11）
+
+IN_PROGRESS：按用户要求先查未知负样本难度、1/2星低分信号、评分时间可解释性。仅train/元数据和LG-O01已冻结两方法×三seed权重；训练0/API0/下载0，不打开valid/test标签、不改变默认模型。13项专项通过，真实诊断及完整回归尚待执行；准确率NOT EVALUATED。协议见[LG-D02](reports/lightgcn_training_diagnostics_protocol_20261011.md)，决策ADR-043；历史451份文件SHA已冻结。
+
 ## 当前：LG-O01 LightGCN采样与层聚合优化（2026-10-11）
 
 LG-O01 DONE（有界实验验收，推荐质量 **NO VERIFIED GAIN**）。18次真实训练/386epoch、4GCN条件与2BPR条件、三个seed、384人选择/97人开发审计、69264项原始指标重算完成；训练commit ed96ce6，全部训练开始时Git clean。原采样+均匀聚合仍按开发集选中；加权版本audit NDCG仅0.178813→0.179920，区间跨0，不据audit换赢家。
