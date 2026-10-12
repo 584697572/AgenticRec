@@ -430,6 +430,25 @@
       "deliverables": "`上游补丁和测试；若已授权则附真实 PR链接`。",
       "acceptance": "不得把未提交/未合并写成被微软采纳。 按实际状态陈述贡献。",
       "checks": "`原始失败与修复后通过对照`。"
+    },
+    {
+      "id": "LG-LF01",
+      "title": "Matched explicit-low feedback objective",
+      "status": "IN PROGRESS",
+      "depends_on": [
+        "LG-D02",
+        "LG-HN01"
+      ],
+      "branch": "research/lightgcn-explicit-low-20261012",
+      "plan": "AgenticRec/configs/lightgcn_explicit_low_20261012.json",
+      "protocol": "reports/lightgcn_explicit_low_protocol_20261012.md",
+      "verification": {
+        "unit_tests_passed": 10,
+        "quality_gain": "NOT EVALUATED",
+        "independent_quality": "NOT EVALUATED",
+        "remote_api_requests": 0,
+        "downloads": 0
+      }
     }
   ],
   "status_evidence_index": "AgenticRec/docs/STATUS.md",
@@ -863,21 +882,34 @@
         "byte_identical_report_rebuild": "PASS",
         "quality_gain": "NO VERIFIED GAIN",
         "independent_quality": "NOT EVALUATED",
-        "selected_methods": {"lightgcn": "gcn_uniform", "bpr": "bpr_uniform"},
+        "selected_methods": {
+          "lightgcn": "gcn_uniform",
+          "bpr": "bpr_uniform"
+        },
         "remote_api_requests": 0,
         "downloads": 0
       },
       "source_commit": "c10f337aa51822eefae918709d92839cfbbd9a15",
-      "evidence": ["reports/rec_baselines/lightgcn_hard_negatives_20261011.md", "reports/rec_baselines/lightgcn_hard_negatives_20261011.json", "reports/lightgcn_hard_negative_findings_20261011.md"],
+      "evidence": [
+        "reports/rec_baselines/lightgcn_hard_negatives_20261011.md",
+        "reports/rec_baselines/lightgcn_hard_negatives_20261011.json",
+        "reports/lightgcn_hard_negative_findings_20261011.md"
+      ],
       "next_priority": "Preregister explicit-low supervision separately and establish unexposed quality evaluation; do not expand hard-negative ratios on current audit"
     },
     {
       "id": "EA01",
       "title": "Bounded original mapping, terms and evaluation evidence audit",
       "status": "DONE",
-      "depends_on": ["T03"],
+      "depends_on": [
+        "T03"
+      ],
       "branch": "audit/upstream-evidence-20261012",
-      "evidence": ["reports/upstream_evidence_20261012.md", "reports/upstream_evidence_20261012.json", "reports/upstream_material_request_20261012.md"],
+      "evidence": [
+        "reports/upstream_evidence_20261012.md",
+        "reports/upstream_evidence_20261012.json",
+        "reports/upstream_material_request_20261012.md"
+      ],
       "verification": {
         "upstream_current_head_matches_pin": true,
         "archived_http_requests": 18,

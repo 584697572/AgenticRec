@@ -1,0 +1,83 @@
+{
+  "group_sha256": "70ee9f1454d26ff5e33f9f997d57707a07fde3add7dd5db47de97617c3a718e4",
+  "negative_pool_size": 8,
+  "remote_api_requests": 0,
+  "run_id": "lightgcn_explicit_low_20261012",
+  "schema_version": 1,
+  "seeds": [
+    7,
+    42,
+    2026
+  ],
+  "selection_metric": "development_selection_ndcg_at_10",
+  "test_access": false,
+  "torch_threads": 2,
+  "trials": [
+    {
+      "batch_size": 2048,
+      "embedding_dim": 64,
+      "layer_weights": [
+        0.5,
+        0.5
+      ],
+      "layers": 1,
+      "learning_rate": 0.001,
+      "low_weight": 0.0,
+      "max_epochs": 32,
+      "model": "lightgcn",
+      "name": "gcn_uniform",
+      "patience": 8,
+      "regularization": 0.0001,
+      "sampling": "edge"
+    },
+    {
+      "batch_size": 2048,
+      "embedding_dim": 64,
+      "layer_weights": [
+        0.5,
+        0.5
+      ],
+      "layers": 1,
+      "learning_rate": 0.001,
+      "low_weight": 0.25,
+      "max_epochs": 32,
+      "model": "lightgcn",
+      "name": "gcn_low25",
+      "patience": 8,
+      "regularization": 0.0001,
+      "sampling": "edge"
+    },
+    {
+      "batch_size": 2048,
+      "embedding_dim": 32,
+      "layer_weights": [
+        1.0
+      ],
+      "layers": 0,
+      "learning_rate": 0.001,
+      "low_weight": 0.0,
+      "max_epochs": 32,
+      "model": "bpr",
+      "name": "bpr_uniform",
+      "patience": 8,
+      "regularization": 0.0001,
+      "sampling": "edge"
+    },
+    {
+      "batch_size": 2048,
+      "embedding_dim": 32,
+      "layer_weights": [
+        1.0
+      ],
+      "layers": 0,
+      "learning_rate": 0.001,
+      "low_weight": 0.25,
+      "max_epochs": 32,
+      "model": "bpr",
+      "name": "bpr_low25",
+      "patience": 8,
+      "regularization": 0.0001,
+      "sampling": "edge"
+    }
+  ]
+}
