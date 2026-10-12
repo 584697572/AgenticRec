@@ -13,7 +13,7 @@
 
 本地整合与验证 DONE：实体目录、报告和原数据按归属分离，15个旧测试临时目录全部归档，旧路径仅为被忽略的兼容入口。优化版350项、原版64项测试通过，原App离线入口和BPR/GCN已验证模型入口通过；695份原输入均保留原字节、363份数据/权重二进制哈希保持。公开源码718文件快照的fixture及当前导航链接通过，复用既有环境，不称空白机器全量重建。
 
-GitHub发布 PENDING：本地验收已完成，推送后核对默认分支远端SHA再记录发布完成。完整证据见 `optimized/reports/workspace_consolidation_20261012.md`。
+GitHub整合发布 DONE：结构提交 `f741a5fa5605b8489058be61fca974a5b517bfeb` 已推送master，`git ls-remote origin refs/heads/master` 与本地HEAD一致，工作树干净。此状态说明随后另作原子文档提交。完整证据见 `optimized/reports/workspace_consolidation_20261012.md`。
 
 本轮不训练、不请求真实LLM、不下载模型/数据。历史记录与权重不覆盖，密钥仍仅存在被忽略的根目录 `.env`，两个版本的辅助脚本直接读取该文件。
 

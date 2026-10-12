@@ -1,6 +1,6 @@
 # 两部分目录整合验收（2026-10-12）
 
-**本地整合与验证 DONE；GitHub发布 PENDING。** 本次是文件与发布管理变更，不是新的推荐质量实验。
+**本地整合与验证 DONE；GitHub整合发布 DONE。** 本次是文件与发布管理变更，不是新的推荐质量实验。
 
 ## 最终结构与归属
 
@@ -44,4 +44,6 @@
 
 ## 发布
 
-本地验收已完成。提交并推送master后核对远端SHA，随后记录GitHub发布结果；不使用force push，不删除历史分支。
+结构提交 `f741a5fa5605b8489058be61fca974a5b517bfeb` 已普通推送到 [公开仓库master](https://github.com/584697572/AgenticRec/tree/master)。`git ls-remote origin refs/heads/master` 与本地HEAD完全一致，工作树干净；此发布回执随后另作原子文档提交。保留历史分支，没有force push。
+
+最终暂存检查覆盖720个普通公开文件和1个固定子模块gitlink；只有original/optimized两处公开目录，无私密文件。后续工作以用户新目标为准，不由归档的旧任务顺序自动触发训练或API调用。
