@@ -1,0 +1,3 @@
+[submodule "microsoft-recai"]
+	path = original/RecAI
+	url = https://github.com/microsoft/RecAI.git

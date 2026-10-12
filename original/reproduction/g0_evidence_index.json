@@ -1,0 +1,360 @@
+{
+  "date": "2026-10-01",
+  "upstream_commit": "0959ecb05b0794748426e73e6efc1b6b35ec433d",
+  "task_states": {
+    "T00": "DONE",
+    "T01": "DONE",
+    "T03": "IN_PROGRESS"
+  },
+  "evidence": [
+    {
+      "path": ".gitattributes",
+      "sha256": "bcbd47ac6f4043818a76d25e359794b0b1b625a14bcd32664be14b470d5af71a",
+      "bytes": 224,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "3e982359fcda4949c259868f43ee460982aa3a8052ce62bd327dec52df5121b6",
+      "bytes": 235,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": "AgenticRec/docs/STATUS.md",
+      "sha256": "22779f13b2b72dee3ec75a8b61a654319b8d915deedd544603ec4f11892930e8",
+      "bytes": 3499,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": "AgenticRec/docs/source_walkthrough.md",
+      "sha256": "4af9db73f971be380f6de771979f7a6daf32ae9d8ee7fdff705593d3dcfc0ce7",
+      "bytes": 10396,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": "AgenticRec/docs/static_audit.md",
+      "sha256": "bdb12abf721681628dfe02ffb9eb04b32d0f7f18c5e4561a9e58614d54fbec35",
+      "bytes": 4363,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": "AgenticRec_完整复现与优化执行规范.md",
+      "sha256": "d88f02c84855234673514519486e74e73c61ffd4e2ec75594020fdf9b8ebb677",
+      "bytes": 75413,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": "DECISIONS.md",
+      "sha256": "189e6cb072065a6d2afa52ec9d78be9274a2b2562e79f534eb095fd5e40272ef",
+      "bytes": 2881,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": "LICENSE.txt",
+      "sha256": "9906940f61b1f0b533fa7d99baf55178b2808fbe113ea51dfbfad8572ccd5f2b",
+      "bytes": 1162,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": "STATUS.md",
+      "sha256": "c9f95d6397510a3fd777d42b71e53147e02afe55be79b3be5dd27880e355aeef",
+      "bytes": 328,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": "TASKS.yaml",
+      "sha256": "524ae1203019347c15eba0bdf9024c1504db8864250608f5e2c8b75f8eefad43",
+      "bytes": 17265,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": "reports/g0_first_batch.md",
+      "sha256": "0058f5f0934dca6c1b09eef1a7a605db414090876b05f479b375ad75ffdcbdc0",
+      "bytes": 4687,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": "reports/spec_issues.md",
+      "sha256": "81a62571abb86a4dd146ba547826e3140ee347e4dd9fd5f70cfde1297b0dc4bd",
+      "bytes": 1411,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": "reproduction/environment_inventory.json",
+      "sha256": "a82e91007ee29cf9dc42872b80eee307e00cfc57f1f11f24927fd00cf05c2a4c",
+      "bytes": 539,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": "reproduction/logs/g0/audit.exitcode.txt",
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04",
+      "bytes": 3,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/audit.stderr.log",
+      "sha256": "47802eb6c7e01503d58d9e8876e8e6a15b16900304d2082f18cbe962c683ee21",
+      "bytes": 14606,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/audit.stdout.log",
+      "sha256": "3dc9dcfd0d30412fac2b5cab73b2a6746eb9fd11c3c843b640b0f46b36addb96",
+      "bytes": 122,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/audit_result.json",
+      "sha256": "05a1b3b907f2852a3125260c683a60a9038e41755c0ab8eaa197de82eaa30a5f",
+      "bytes": 120,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/audit_v2.exitcode.txt",
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+      "bytes": 3,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/audit_v2.stderr.log",
+      "sha256": "5a68b4df51eb270dcb9056e24f221d07ef88ebd004b71f624d1e5b09de743671",
+      "bytes": 555,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/audit_v2.stdout.log",
+      "sha256": "8163dd01fd92ed347a2198df8ecd1d7533d9dfff2fe1b0fdb441689ee9706a49",
+      "bytes": 60,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/control_flow_trace.json",
+      "sha256": "562b14b9b331692d727930ba0062ef3e187913d14f5c166a50ebb890cf0dcea8",
+      "bytes": 1656,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/deliverables.exitcode.txt",
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+      "bytes": 3,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/deliverables.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/deliverables.stdout.log",
+      "sha256": "b4ab02670b1097f906ce8135ace3e9e135eb1f4fa5534b8b173c46c5a8544fce",
+      "bytes": 134,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/download/GoogleDriveDownload.response.txt",
+      "sha256": "bc7f4cd2b92e565a24daec5213041ea86eec43aaaf12254ab881c10041c1ea5b",
+      "bytes": 2434,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/download/resource_access.json",
+      "sha256": "da4b36685b496366c4d2c869a5b83b96ac04079d9377cb3d9be2e051f5fd50a1",
+      "bytes": 799,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/duplicate_observed.json",
+      "sha256": "70522194d68ce8301f1426e81d8d93f48484a8eb2272811673305fcc955631e9",
+      "bytes": 301,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/duplicate_requirement.exitcode.txt",
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04",
+      "bytes": 3,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/duplicate_requirement.stderr.log",
+      "sha256": "b3582001aed7c9bc12da789941fd18cdff7825e6f68c91de2588f6fb6dca12ad",
+      "bytes": 4348,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/duplicate_requirement.stdout.log",
+      "sha256": "3dc9dcfd0d30412fac2b5cab73b2a6746eb9fd11c3c843b640b0f46b36addb96",
+      "bytes": 122,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/duplicate_requirement_result.json",
+      "sha256": "390aa9528ce892f73cc3a5fc7e0243f56c3c2402e2b9b351bae1bcfeaaa12122",
+      "bytes": 120,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/duplicate_requirement_v2.exitcode.txt",
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04",
+      "bytes": 3,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/duplicate_requirement_v2.stderr.log",
+      "sha256": "fc36ab2ab7173a97035603b8107cf3ac2ba29d7b39e7793c35aa80bb29b4ab71",
+      "bytes": 1129,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/duplicate_requirement_v2.stdout.log",
+      "sha256": "8163dd01fd92ed347a2198df8ecd1d7533d9dfff2fe1b0fdb441689ee9706a49",
+      "bytes": 60,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/environment_commands.log",
+      "sha256": "081e1eba12e1891f9f065ec1b12fb1246a003ce4fecd3e21cb94f43d1cdfcea7",
+      "bytes": 211,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/git_verification.json",
+      "sha256": "e55aebb74a6232ccda8611658a8d55b88b62012e8943e781456c3006271fd2c5",
+      "bytes": 870,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/missing_settings.json",
+      "sha256": "6956c20fa1fe48cca916e85cd0d4b1a1d7fa6def930a8868169d4670dc87786a",
+      "bytes": 108,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/network/GoogleDrive.response.txt",
+      "sha256": "7c7870542f10ed52fac9ea350c0dfa3a13ba1fdeae21d4503a6426138e2f7880",
+      "bytes": 65536,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/network/Issue110.response.txt",
+      "sha256": "36a0683de8d8ab5e49cf16a87770800ba12b2afef2ca2aa6a214754e267e1d0e",
+      "bytes": 2639,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/network/RecDrive.response.txt",
+      "sha256": "b162676fa754e39bc67f40e772c0e21249f4e07ab0154ff51ada79d8c95575d7",
+      "bytes": 11683,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/network/resource_access.json",
+      "sha256": "0b7ae015518e85339eaaba1e5d0343755fe864a8222c3a2fda9fa41c729886d1",
+      "bytes": 2745,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/resource_access.json",
+      "sha256": "8d8222a9c163dd37892650784ceee7984f7139e829a934e71092accd43486134",
+      "bytes": 2139,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/resource_download.exitcode.txt",
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+      "bytes": 3,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/resource_download.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/resource_download.stdout.log",
+      "sha256": "ca7211de861257d63f5d6cffb516c55f449e11f67ac41211b57dba629f0059e0",
+      "bytes": 1424,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/resource_network.exitcode.txt",
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+      "bytes": 3,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/resource_network.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/resource_network.stdout.log",
+      "sha256": "d5cfff1e357812f477b047a1e36d8a8fe87e4316d0ae5f647a9c991c53333115",
+      "bytes": 4858,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/resource_probe.exitcode.txt",
+      "sha256": "13bf7b3039c63bf5a50491fa3cfd8eb4e699d1ba1436315aef9cbe5711530354",
+      "bytes": 3,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/resource_probe.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/resource_probe.stdout.log",
+      "sha256": "ab7637538ae2fc06bba13c1efb2aa80394a6e55cac4d0abac94e5c757251794f",
+      "bytes": 3462,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/logs/g0/verified_source_symbols.json",
+      "sha256": "fa8637ec47e75e401d2fdb22ef9f5f8b5839b71522c02d153904bf23c924713f",
+      "bytes": 1710,
+      "storage": "local_ignored_log"
+    },
+    {
+      "path": "reproduction/resource_manifest.json",
+      "sha256": "6fad7ef876adbae1f6b824f2e2a25dc6d61c7a0a5c61c2a0ca4ddb298533d688",
+      "bytes": 7309,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": "reproduction/route_decision.md",
+      "sha256": "c41171a12410668441cc5633ca900edb65ae60b7d48100893f2f814fad36100f",
+      "bytes": 1956,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": "reproduction/scripts/audit_upstream.py",
+      "sha256": "55f349229a40a3b054a276c95773286fb3b4dbd923fcace917a8e198d199bb4a",
+      "bytes": 12904,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": "reproduction/scripts/probe_resources.py",
+      "sha256": "7bcd0b42d88eb00b29a7f1f67b8dd94ec29d6ad81c8362675c33b1e57fa57049",
+      "bytes": 2787,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": "reproduction/scripts/verify_g0.py",
+      "sha256": "be229c8a36083cbd99928b0050a501ab8298ccf6652df09609908bf808fa0ac4",
+      "bytes": 5431,
+      "storage": "versioned_deliverable"
+    },
+    {
+      "path": "reproduction/upstream_lock.json",
+      "sha256": "0748827d565427547fe541461b22c453c929d9969de11c76013802277fc71779",
+      "bytes": 6994,
+      "storage": "versioned_deliverable"
+    }
+  ],
+  "note": "Index excludes its own hash. Raw logs remain local; shared reports cannot reproduce raw evidence without local logs."
+}

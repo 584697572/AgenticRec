@@ -1,0 +1,51 @@
+{
+  "candidate_count": 3469,
+  "data_manifest_sha256": "01cdaa8d1e39ec197536015aa72e6d2d8b756e5d7aed5feaba3aae6c011fa0be",
+  "dataset": "ml-1m-v1",
+  "holdout_labels_loaded": false,
+  "id_map_sha256": "19364182e1eccb53a978d10bf38a9d6dcd2f1f63f7ee8510f88aae6076269dac",
+  "per_route_cap": 100,
+  "private_trace_path": "artifacts/candidate_fusion/t11_trace_20261006.json",
+  "private_trace_sha256": "3a4335b8bb7ef538a340617497e0860f44b67dfa90ab8dd5832feb7e3d201539",
+  "recommendation_quality": "NOT EVALUATED",
+  "remote_api_requests": 0,
+  "rrf_constant": 60,
+  "scenarios": {
+    "anonymous_seed": {
+      "eligible_count": 709,
+      "final_count": 10,
+      "final_shortfall": 0,
+      "fused_count": 197,
+      "hard_violations": 0,
+      "profile_source": "cold_start",
+      "source_counts": {
+        "cf_item_item": 100,
+        "content": 100,
+        "popularity": 100
+      }
+    },
+    "known_user": {
+      "eligible_count": 703,
+      "final_count": 10,
+      "final_shortfall": 0,
+      "fused_count": 191,
+      "hard_violations": 0,
+      "profile_source": "known_user",
+      "source_counts": {
+        "cf_model": 100,
+        "content": 100,
+        "popularity": 100
+      }
+    }
+  },
+  "status": "PASS",
+  "structured_statuses": {
+    "conflict": "CLARIFY_CONFLICT",
+    "no_feasible": "NO_FEASIBLE_ITEMS",
+    "unsupported_field": "MISSING_FIELD"
+  },
+  "task": "T11",
+  "union_cap": 200,
+  "variant": "U1_upstream_rebuilt",
+  "warm_user_count": 5351
+}

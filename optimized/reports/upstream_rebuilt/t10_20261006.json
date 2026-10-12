@@ -1,0 +1,44 @@
+{
+  "agent_llm_planning": "NOT EVALUATED",
+  "candidate_count": 3469,
+  "checkpoint_sha256": "5d439abf641f3992a0c391917674f36d488bd49f47087adaf21422d66ff7679c",
+  "data_manifest_sha256": "01cdaa8d1e39ec197536015aa72e6d2d8b756e5d7aed5feaba3aae6c011fa0be",
+  "id_map_sha256": "19364182e1eccb53a978d10bf38a9d6dcd2f1f63f7ee8510f88aae6076269dac",
+  "known_user_count": 5351,
+  "model": "lightgcn_seed_42_selected_layer_3",
+  "original_app": "NOT VERIFIED",
+  "paper_reproduction": "NOT VERIFIED",
+  "plan_source": "scripted_offline_fixture_not_llm",
+  "private_trace_path": "artifacts/upstream_rebuilt/t10_trace_20261006.json",
+  "private_trace_sha256": "7aca715b295e9b229fbc2cfde049b61ab2f4c40b1d99f5babc40ab179d1eabab",
+  "remote_api_requests": 0,
+  "status": "PASS",
+  "task": "T10",
+  "traces": {
+    "anonymous_seed": {
+      "buffer_reset": true,
+      "credential_env_present": false,
+      "fallback_reason": "anonymous",
+      "mapped_count": 3,
+      "profile_source": "cold_start",
+      "selected_count": 10,
+      "toolbox_success": true
+    },
+    "known_user": {
+      "buffer_reset": true,
+      "credential_env_present": false,
+      "fallback_reason": null,
+      "mapped_count": 3,
+      "profile_source": "known_user",
+      "selected_count": 10,
+      "toolbox_success": true
+    }
+  },
+  "upstream_commit": "0959ecb05b0794748426e73e6efc1b6b35ec433d",
+  "upstream_source_sha256": {
+    "llm4crs/agent_plan_first_openai.py": "14f6598930e31ff7d78f2235b0e76680ca86985de875d3ae6fa00c59cc6c8bb3",
+    "llm4crs/buffer/base.py": "0a5739335a98071132470ef42861585aafd2d7eb0e623bedc61b6c9d8ba5682f",
+    "llm4crs/mapper/map_tool.py": "804fae0dadc9dc563b0cd1193fad1667f4146fe703def5c32466b1be86b20b28"
+  },
+  "variant": "U1_upstream_rebuilt"
+}

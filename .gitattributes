@@ -2,7 +2,7 @@
 * text=auto eol=lf
 # Preserve imported baseline files byte-for-byte on future checkouts.
 AgenticRec_完整复现与优化执行规范.md -text
-LICENSE.txt -text
+LICENSE.txt -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # Native outputs/configs are evidence; preserve their actual recorded bytes.
 reproduction/native_runs/** -text
 # New measured research artifacts retain their recorded Windows byte identity.
@@ -12,3 +12,7 @@ reports/*20261011.md -text whitespace=blank-at-eol,blank-at-eof,space-before-tab
 reports/rec_baselines/*20261011.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 reports/rec_baselines/*20261011.md -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 AgenticRec/configs/frozen_model_validation_20261011_seed_*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Relocation preserves recorded bytes, including old source and native outputs.
+original/reproduction/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+original/reports/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+optimized/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

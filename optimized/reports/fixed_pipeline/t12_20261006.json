@@ -1,0 +1,57 @@
+{
+  "candidate_count": 3469,
+  "cli": {
+    "recommendation_count": 3,
+    "status": "OK"
+  },
+  "data_manifest_sha256": "01cdaa8d1e39ec197536015aa72e6d2d8b756e5d7aed5feaba3aae6c011fa0be",
+  "dataset": "ml-1m-v1",
+  "holdout_labels_loaded": false,
+  "id_map_sha256": "19364182e1eccb53a978d10bf38a9d6dcd2f1f63f7ee8510f88aae6076269dac",
+  "input_mode": "structured_json",
+  "llm_requests": 0,
+  "natural_language_parsing": "NOT INVOKED; requires separately metered parser",
+  "planner": "not_invoked",
+  "private_trace_path": "artifacts/fixed_pipeline/t12_trace_20261006.json",
+  "private_trace_sha256": "385450f3fcef4c8954dbb6769364d03c9f76cbc146ab002939b1234e4af3b9ff",
+  "recommendation_quality": "NOT EVALUATED",
+  "remote_api_requests": 0,
+  "scenarios": {
+    "anonymous_seed": {
+      "fused_count": 200,
+      "metadata_evidence_complete": true,
+      "profile_source": "cold_start",
+      "recommendation_count": 5,
+      "shortfall": 0,
+      "status": "OK"
+    },
+    "explicit_exclusion": {
+      "fused_count": 100,
+      "metadata_evidence_complete": true,
+      "profile_source": "fallback_popularity",
+      "recommendation_count": 10,
+      "shortfall": 0,
+      "status": "OK"
+    },
+    "no_feasible": {
+      "fused_count": 0,
+      "metadata_evidence_complete": null,
+      "profile_source": "fallback_popularity",
+      "recommendation_count": 0,
+      "shortfall": 5,
+      "status": "NO_FEASIBLE_ITEMS"
+    },
+    "success_known_user": {
+      "fused_count": 192,
+      "metadata_evidence_complete": true,
+      "profile_source": "known_user",
+      "recommendation_count": 5,
+      "shortfall": 0,
+      "status": "OK"
+    }
+  },
+  "status": "PASS",
+  "task": "T12",
+  "variant": "F_fixed_pipeline",
+  "warm_user_count": 5351
+}
