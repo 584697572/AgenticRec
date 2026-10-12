@@ -43,10 +43,11 @@ python workspace.py status
 
 ## 当前真实效果
 
+- **实际原版/优化版同题对比：**60例、160轮、228次真实请求。请求148→80，总token减少85.17%；Hit@10在20个匿名历史用户上30%→45%，差值区间跨零；严格成功率31.67%→30%，未证明整体改善。详见[真实对比及失败分析](optimized/reports/original_comparison_20261012.md)。原资源/zero-demo运行配置、匿名路径及元数据限制均单独列明，不能称论文或纯LightGCN收益。
 - **Agent 效率：**冻结合成交互 benchmark 中，路由版与每次调用 Agent 的版本任务成功率均为 **81.33%**，每 seed 请求从 **190 降至 99，减少 47.89%**。不是线上用户效果。
 - **推荐准确率：**固定三 seed 的历史测试中，BPR NDCG@10 为 **0.228919**，LightGCN 为 **0.227695**，差异区间跨零；尚未证明 LightGCN 优于强 BPR。
 - **最新低分监督研究：**完成 12 次真实训练；LightGCN 完整验证 Hit@10 观测从 **44.98% 到 47.05%**，但审计表现不一致、区间跨零，结论仍为 **NO VERIFIED GAIN**，没有替换默认模型。
-- **工程验证：**整理前最新记录为 346 项完整测试通过。整理后的测试与文件完整性结果单独记录在 [迁移验收](optimized/reports/workspace_consolidation_20261012.md)。
+- **工程验证：**本轮完整套件365项通过，随后19项专项回归通过；旧布局文件完整性验收保留在 [迁移验收](optimized/reports/workspace_consolidation_20261012.md)。
 
 详见 [Agent 对照](optimized/reports/benchmark/t19_live_20261010.md)、[模型对照](optimized/reports/rec_baselines/frozen_model_validation_20261011.md)、[最新研究](optimized/reports/lightgcn_explicit_low_findings_20261012.md)、[原版证据](original/reports/upstream_evidence_20261012.md)。实验负结果和历史分支保留，没有把未验证方法自动切为默认方案。
 

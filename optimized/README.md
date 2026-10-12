@@ -10,6 +10,7 @@
 
 | 已做优化 | 当前结论 | 证据 |
 |---|---|---|
+| 实际双版本同题评测 | 请求减少45.95%、总token减少85.17%；命中正向但未证明稳定质量/整任务改善 | [真实对比](reports/original_comparison_20261012.md) |
 | Agent 请求路由 | 合成 benchmark 成功率同为81.33%，请求减少47.89% | [T19](reports/benchmark/t19_live_20261010.md) |
 | BPR / LightGCN 强基线 | 排序质量接近，未证明 GCN 优于 BPR | [三 seed](reports/rec_baselines/frozen_model_validation_20261011.md) |
 | RRF / 内容融合 / 学习门控 | RRF小样本外部结果正向；门控无可靠收益，内容消融有负结果 | [融合](reports/fusion_research_20261011.md) |
