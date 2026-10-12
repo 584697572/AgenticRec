@@ -1,0 +1,383 @@
+{
+  "archive_member_count": 15,
+  "archive_names": [
+    "beauty_product/columns.json",
+    "beauty_product/item_sim.npy",
+    "beauty_product/products.ftr",
+    "beauty_product/SASRec-SASRec.pth",
+    "beauty_product/settings.json",
+    "game/columns.json",
+    "game/games.ftr",
+    "game/item_sim.npy",
+    "game/SASRec-SASRec.pth",
+    "game/settings.json",
+    "movie/columns.json",
+    "movie/movie_sim.npy",
+    "movie/movies.ftr",
+    "movie/SASRec-SASRec.pth",
+    "movie/settings.json"
+  ],
+  "archived_http_body_bytes": 1170907,
+  "audit_date": "2026-10-12",
+  "audit_status": "VERIFIED",
+  "blockers": {
+    "A2_acceptance": "BLOCKED",
+    "canonical_movie_eval_files": "NOT VERIFIED",
+    "checkpoint_title_mapping": "NOT VERIFIED",
+    "matrix_row_mapping": "NOT VERIFIED",
+    "original_resource_independent_license": "NOT VERIFIED"
+  },
+  "checkpoint_static": {
+    "executed": false,
+    "mapping_or_position_string_keys": [
+      "use_pos_emb",
+      "use_position_emb",
+      "user_position_emb"
+    ],
+    "sha256": "814430acd5602e666b237c46c92ed48f56f2dce356da399af003a4b68ce1f678",
+    "unpickled": false
+  },
+  "collector_sha256": "daa87db9a6b6b53a9fff69cafab87bf61024f92862fe638d64a504e81e94ea1b",
+  "current_interecagent_files": 69,
+  "current_public_head": "0959ecb05b0794748426e73e6efc1b6b35ec433d",
+  "current_tree_paths": 504,
+  "discussions": {
+    "106": [
+      {
+        "association": "CONTRIBUTOR",
+        "body_sha256": "3e51d69f2c27a10eb0eda9b47f7a7d4db395878cc4aa3d6a4f7423b406615469",
+        "created_at": "2025-12-15T01:36:10Z",
+        "login": "Leavingseason",
+        "url": "https://github.com/microsoft/RecAI/issues/106#issuecomment-3652558330",
+        "urls": []
+      },
+      {
+        "association": "NONE",
+        "body_sha256": "17f78d7326660c33f79016cc41ad8ed36b48ec34359a541276fdd517de31c7d4",
+        "created_at": "2026-01-15T15:58:59Z",
+        "login": "bug1e55",
+        "url": "https://github.com/microsoft/RecAI/issues/106#issuecomment-3755561119",
+        "urls": []
+      },
+      {
+        "association": "CONTRIBUTOR",
+        "body_sha256": "5676e474f7a66884fbcef012974f0a68be04e901b7d3c466d0ae365edac5ba1a",
+        "created_at": "2026-01-16T12:20:07Z",
+        "login": "XuHwang",
+        "url": "https://github.com/microsoft/RecAI/issues/106#issuecomment-3759787039",
+        "urls": [
+          "https://www.kaggle.com/datasets/trolukovich/steam-games-complete-dataset",
+          "https://github.com/kang205/SASRec",
+          "http://cseweb.ucsd.edu/~wckang/steam_reviews.json.gz"
+        ]
+      }
+    ],
+    "107": [
+      {
+        "association": "NONE",
+        "body_sha256": "5ffacae7b455e780a523939f67a4fc46a97828a8a11296572491becbed6354ed",
+        "created_at": "2026-01-15T14:31:03Z",
+        "login": "bug1e55",
+        "url": "https://github.com/microsoft/RecAI/issues/107#issuecomment-3755164857",
+        "urls": []
+      }
+    ],
+    "75": [
+      {
+        "association": "CONTRIBUTOR",
+        "body_sha256": "a9898b3bec8217c7623258030708be71201d2cf225cd8054f87dc2f88e1c50f1",
+        "created_at": "2024-10-27T15:48:35Z",
+        "login": "XuHwang",
+        "url": "https://github.com/microsoft/RecAI/issues/75#issuecomment-2440073884",
+        "urls": [
+          "https://rec.ustc.edu.cn/share/580f7ee0-947a-11ef-943b-7fe7de57828a"
+        ]
+      },
+      {
+        "association": "NONE",
+        "body_sha256": "9e3eb0da66d24a8672fe2744b6a9d097191b063a2038415bfc34d1e04a1f5e48",
+        "created_at": "2024-11-05T08:15:32Z",
+        "login": "XueyangFeng",
+        "url": "https://github.com/microsoft/RecAI/issues/75#issuecomment-2456506639",
+        "urls": []
+      }
+    ]
+  },
+  "historical_blobs": 101,
+  "historical_distinct_paths": 69,
+  "historical_text_blobs_inspected": 98,
+  "http_errors": [
+    "paper_v4_html"
+  ],
+  "http_requests": 18,
+  "issue110": {
+    "comments": 0,
+    "state": "open",
+    "updated_at": "2026-04-27T03:21:02Z"
+  },
+  "issue_searches": {
+    "interecagent_issues": {
+      "items": [
+        {
+          "number": 110,
+          "title": "InteRecAgent resource download links unavailable",
+          "url": "https://github.com/microsoft/RecAI/issues/110"
+        },
+        {
+          "number": 106,
+          "title": "Issues with the dataset",
+          "url": "https://github.com/microsoft/RecAI/issues/106"
+        },
+        {
+          "number": 107,
+          "title": "issues with dataset",
+          "url": "https://github.com/microsoft/RecAI/issues/107"
+        },
+        {
+          "number": 101,
+          "title": "Run InteRecAgent run.sh return settings.json not found traceback",
+          "url": "https://github.com/microsoft/RecAI/issues/101"
+        },
+        {
+          "number": 78,
+          "title": "InteRecAgent return empty",
+          "url": "https://github.com/microsoft/RecAI/issues/78"
+        },
+        {
+          "number": 74,
+          "title": "InteRecAgent running error",
+          "url": "https://github.com/microsoft/RecAI/issues/74"
+        },
+        {
+          "number": 75,
+          "title": "InteRecAgent eval data missing",
+          "url": "https://github.com/microsoft/RecAI/issues/75"
+        },
+        {
+          "number": 67,
+          "title": "Request for Details on SFT LLMs for Tool Execution in InteRecAgent",
+          "url": "https://github.com/microsoft/RecAI/issues/67"
+        },
+        {
+          "number": 63,
+          "title": "URL RecLLaMA Checkpoint Not Working",
+          "url": "https://github.com/microsoft/RecAI/issues/63"
+        }
+      ],
+      "total_count": 9
+    },
+    "license_issues": {
+      "items": [],
+      "total_count": 0
+    },
+    "mapping_issues": {
+      "items": [
+        {
+          "number": 72,
+          "title": "questions about the inference procedure of sequential recommendation",
+          "url": "https://github.com/microsoft/RecAI/issues/72"
+        }
+      ],
+      "total_count": 1
+    }
+  },
+  "local_commits_available": 95,
+  "messages_sent": 0,
+  "models_trained": 0,
+  "network_scope": "collector only; web rendering/source verification is additional and not measured as HTTP bytes",
+  "notebook_versions_inspected": 5,
+  "paid_llm_requests": 0,
+  "paper_data_release": "NOT VERIFIED; 10M link/label conflicts with 27,042,493 interactions and CSV/latest preprocessing",
+  "paper_protocol": {
+    "dynamic_demos": 3,
+    "hard_candidates": 1000,
+    "initial_one_turn_samples": 500,
+    "k_core": 5,
+    "lifelong_samples": 100,
+    "llm": "gpt-4-0613",
+    "movielens_one_turn_rows_table_A1": 496,
+    "movielens_table_interactions": 27042493,
+    "movielens_table_items": 36255,
+    "movielens_table_users": 298074,
+    "ranker": "SASRec without positional embedding",
+    "ranking_metric": "NDCG@20; 19 sampled negatives + 1 positive",
+    "retrieval_metric": "Recall@5",
+    "simulator_samples": 1000,
+    "soft_retrieval": "ItemCF",
+    "soft_top_fraction": 0.05,
+    "split": "leave-one-out; tools trained on train+valid"
+  },
+  "paper_version": "2308.16505v3",
+  "partial_responses_excluded": [
+    "latest_commit",
+    "closed_issues_page1"
+  ],
+  "preserved_files": 692,
+  "report_generation_script_sha256": "e48bd05f6b49278918e515637cd04967b2fe548bd298eb46ab6cb5b4efc75039",
+  "scope": "bounded evidence search; no reproduction experiment",
+  "sources": [
+    {
+      "body_bytes": 131072,
+      "complete": false,
+      "error": "BODY_LIMIT_REACHED; no continuation or larger fetch",
+      "name": "latest_commit",
+      "sha256": "477616d35b7047a5b65c3dccbd52b930ae91438d6f8d7ee6074b6264183020bc",
+      "status": 200,
+      "url": "https://api.github.com/repos/microsoft/RecAI/commits/main"
+    },
+    {
+      "body_bytes": 2639,
+      "complete": true,
+      "error": null,
+      "name": "issue_110",
+      "sha256": "36a0683de8d8ab5e49cf16a87770800ba12b2afef2ca2aa6a214754e267e1d0e",
+      "status": 200,
+      "url": "https://api.github.com/repos/microsoft/RecAI/issues/110"
+    },
+    {
+      "body_bytes": 2,
+      "complete": true,
+      "error": null,
+      "name": "issue_110_comments",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "status": 200,
+      "url": "https://api.github.com/repos/microsoft/RecAI/issues/110/comments?per_page=100"
+    },
+    {
+      "body_bytes": 524288,
+      "complete": false,
+      "error": "BODY_LIMIT_REACHED; no continuation or larger fetch",
+      "name": "closed_issues_page1",
+      "sha256": "ce47399af2307a1bd8dfb80972054dab77c280710a525e92a1ecc1b604a82d61",
+      "status": 200,
+      "url": "https://api.github.com/repos/microsoft/RecAI/issues?state=closed&per_page=100"
+    },
+    {
+      "body_bytes": 44283,
+      "complete": true,
+      "error": null,
+      "name": "paper_abstract",
+      "sha256": "333502b6101b9c41a4a731706f9bd80f6ca6d6f35647afd660437d5c601bc4df",
+      "status": 200,
+      "url": "https://arxiv.org/abs/2308.16505"
+    },
+    {
+      "body_bytes": 259003,
+      "complete": true,
+      "error": null,
+      "name": "paper_v3_html",
+      "sha256": "ff82e69264e9590fe2d313b1ece3dad61aab8471597eba17999d731d29fdf54c",
+      "status": 200,
+      "url": "https://arxiv.org/html/2308.16505v3"
+    },
+    {
+      "body_bytes": 11576,
+      "complete": true,
+      "error": null,
+      "name": "movielens10m_terms",
+      "sha256": "46771ff7578af831cbebbecf4f714d229a521493b828f160424920b75586c487",
+      "status": 200,
+      "url": "https://files.grouplens.org/datasets/movielens/ml-10m-README.html"
+    },
+    {
+      "body_bytes": 4510,
+      "complete": true,
+      "error": null,
+      "name": "latest_commit_brief",
+      "sha256": "53294f08576fe83cbfaf2e608a6ec59ab3ac8f37aabe6a2b4f5123abccdbe238",
+      "status": 200,
+      "url": "https://api.github.com/repos/microsoft/RecAI/commits?sha=main&per_page=1"
+    },
+    {
+      "body_bytes": 123129,
+      "complete": true,
+      "error": null,
+      "name": "current_tree",
+      "sha256": "af0efc5ebb2171c5fe6bcb7de0a055582ae0ae36841be9b20122874cb0f2da31",
+      "status": 200,
+      "url": "https://api.github.com/repos/microsoft/RecAI/git/trees/0959ecb05b0794748426e73e6efc1b6b35ec433d?recursive=1"
+    },
+    {
+      "body_bytes": 10284,
+      "complete": true,
+      "error": null,
+      "name": "current_readme",
+      "sha256": "f4144c5428a6f83d04b3ef5742950ada52c789a3cf3ba994e977a27c9a6f5fcc",
+      "status": 200,
+      "url": "https://raw.githubusercontent.com/microsoft/RecAI/0959ecb05b0794748426e73e6efc1b6b35ec433d/InteRecAgent/README.md"
+    },
+    {
+      "body_bytes": 1141,
+      "complete": true,
+      "error": null,
+      "name": "current_license",
+      "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+      "status": 200,
+      "url": "https://raw.githubusercontent.com/microsoft/RecAI/0959ecb05b0794748426e73e6efc1b6b35ec433d/LICENSE.txt"
+    },
+    {
+      "body_bytes": 7715,
+      "complete": true,
+      "error": null,
+      "name": "paper_v4_html",
+      "sha256": "18795b1a217514b50f40c489557d134be1e20f33e943bafa1532b4223f3a9454",
+      "status": 404,
+      "url": "https://arxiv.org/html/2308.16505v4"
+    },
+    {
+      "body_bytes": 37436,
+      "complete": true,
+      "error": null,
+      "name": "interecagent_issues",
+      "sha256": "1528c54fa77f54bd2815950bdea7ce293b8ff0adecf7d6c272910ecf6f16c62c",
+      "status": 200,
+      "url": "https://api.github.com/search/issues?q=repo%3Amicrosoft%2FRecAI%20InteRecAgent%20is%3Aissue&per_page=20"
+    },
+    {
+      "body_bytes": 2684,
+      "complete": true,
+      "error": null,
+      "name": "mapping_issues",
+      "sha256": "8049a19cb775a1898610c893bbc9df60ddd3faebafdc62cf5dce85b792db659b",
+      "status": 200,
+      "url": "https://api.github.com/search/issues?q=repo%3Amicrosoft%2FRecAI%20mapping%20is%3Aissue&per_page=10"
+    },
+    {
+      "body_bytes": 79,
+      "complete": true,
+      "error": null,
+      "name": "license_issues",
+      "sha256": "c9938edecb99d754b2d039ac9eec320a94c769b6a6417921e2dcbef9e2fe01a0",
+      "status": 200,
+      "url": "https://api.github.com/search/issues?q=repo%3Amicrosoft%2FRecAI%20license%20is%3Aissue&per_page=10"
+    },
+    {
+      "body_bytes": 3532,
+      "complete": true,
+      "error": null,
+      "name": "issue_75_comments",
+      "sha256": "125c3645d87ebee2ec1569ffe5209171cbb17960029654015cc73ef6e21e99c9",
+      "status": 200,
+      "url": "https://api.github.com/repos/microsoft/RecAI/issues/75/comments?per_page=100"
+    },
+    {
+      "body_bytes": 1648,
+      "complete": true,
+      "error": null,
+      "name": "issue_107_comments",
+      "sha256": "c5beb9455bf683f4e93e1944e44842cb3cb04ef2669501675890a9073f00e435",
+      "status": 200,
+      "url": "https://api.github.com/repos/microsoft/RecAI/issues/107/comments?per_page=100"
+    },
+    {
+      "body_bytes": 5886,
+      "complete": true,
+      "error": null,
+      "name": "issue_106_comments",
+      "sha256": "bfd4dcce285d11fdc278f200d7d614b550e69ddf0163753325bcde5370b6ad00",
+      "status": 200,
+      "url": "https://api.github.com/repos/microsoft/RecAI/issues/106/comments?per_page=100"
+    }
+  ],
+  "upstream_pin": "0959ecb05b0794748426e73e6efc1b6b35ec433d"
+}

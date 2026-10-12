@@ -433,7 +433,7 @@
     }
   ],
   "status_evidence_index": "AgenticRec/docs/STATUS.md",
-  "status_updated": "2026-10-11",
+  "status_updated": "2026-10-12",
   "active_followup": {
     "id": "LG-O01",
     "title": "Train-only user sampling and residual LightGCN factorial",
@@ -870,6 +870,36 @@
       "source_commit": "c10f337aa51822eefae918709d92839cfbbd9a15",
       "evidence": ["reports/rec_baselines/lightgcn_hard_negatives_20261011.md", "reports/rec_baselines/lightgcn_hard_negatives_20261011.json", "reports/lightgcn_hard_negative_findings_20261011.md"],
       "next_priority": "Preregister explicit-low supervision separately and establish unexposed quality evaluation; do not expand hard-negative ratios on current audit"
+    },
+    {
+      "id": "EA01",
+      "title": "Bounded original mapping, terms and evaluation evidence audit",
+      "status": "DONE",
+      "depends_on": ["T03"],
+      "branch": "audit/upstream-evidence-20261012",
+      "evidence": ["reports/upstream_evidence_20261012.md", "reports/upstream_evidence_20261012.json", "reports/upstream_material_request_20261012.md"],
+      "verification": {
+        "upstream_current_head_matches_pin": true,
+        "archived_http_requests": 18,
+        "archived_http_body_bytes": 1170907,
+        "historical_blobs_inspected": 101,
+        "historical_text_blobs_inspected": 98,
+        "notebook_versions_inspected": 5,
+        "reproduction_tests_passed": 64,
+        "preserved_files": 692,
+        "byte_identical_summary_rebuild": "PASS",
+        "checkpoint_title_mapping": "NOT VERIFIED",
+        "matrix_row_mapping": "NOT VERIFIED",
+        "original_resource_independent_license": "NOT VERIFIED",
+        "canonical_movie_eval_files": "NOT VERIFIED",
+        "A2_acceptance": "BLOCKED",
+        "models_trained": 0,
+        "paid_llm_requests": 0,
+        "data_or_weight_downloads": 0,
+        "messages_sent": 0,
+        "author_request": "NOT SENT"
+      },
+      "next_priority": "Obtain exact authorized mapping, terms and movie evaluation artifacts; stop expanding search without new evidence"
     }
   ]
 }

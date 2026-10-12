@@ -1,5 +1,13 @@
 # 工作区状态入口
 
+## 当前：EA01原版证据有界补齐（2026-10-12）
+
+DONE仅指补证调查：官方当前HEAD仍0959ecb，完整504节点树及69个当前子项目文件核验；95本地commit/101可达blob/98文本/5相关notebook版本，git log历史路径70（对象路径69）。18次只读归档HTTP/1,170,907bytes，无数据包/权重下载、无训练/付费LLM请求/外发消息。64复现测试及692份旧文件/五原资源/12新权重SHA通过，离线摘要字节一致重建。
+
+已补齐v3明确条件：无位置嵌入SASRec、GPT-4-0613、leave-one-out/train+valid、电影单轮496、排序19负+1正；50是ReDial代码截断，不是论文canonical样本数。作者#75仅分享Steam评测链接，#110仍open/0评论；旧rawID映射、movie矩阵行标签、原包独立许可、电影canonical文件仍NOT VERIFIED，T04/A2仍BLOCKED。发现生成cell37的history覆盖风险，未证明正式实验采用该段，不执行或伪补canonical。TOIS修订版等价性未核实。
+
+见[补证报告](reports/upstream_evidence_20261012.md)、[机器摘要](reports/upstream_evidence_20261012.json)、[材料请求草稿](reports/upstream_material_request_20261012.md)和ADR-045；草稿NOT SENT。原规范/upstream/旧报告/模型/指标保持。下一项有新材料才继续原版验收，否则停止扩搜；独立低分监督研究需另行登记未暴露评价。
+
 ## 当前：LG-HN01混合困难负样本训练（2026-10-11）
 
 DONE仅指有界训练验收：训练commit c10f337，GCN/BPR各uniform/mixed25、三个seed的12次真实运行完成，共316epoch/71732更新；每次启动Git clean，最大2worker×2线程。384人早停/seed42选择均保留uniform，冻结后补齐其余seed，97人最后开发审计。GCN审计NDCG 0.179833→0.184476，差值95%CI[-0.002620,0.012401]；BPR 0.177236→0.186348，CI[-0.000616,0.020008]。两者质量均 **NO VERIFIED GAIN**，不依据audit换赢家；独立未暴露质量仍 **NOT EVALUATED**。

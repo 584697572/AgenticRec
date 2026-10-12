@@ -1,5 +1,15 @@
 # 重大决策
 
+## ADR-045：集中、有限原版补证，明确论文v3与历史输入边界
+
+- 用户2026-10-12授权一次有界证据补齐。分支audit/upstream-evidence-20261012，只读本地历史/公开资料，最多18受控HTTP/4MiB正文；不训练、调用付费LLM、重下资源包、修改原规范/upstream，或发邮件/Issue。正常commit/push沿用已有授权。
+- 官方实时HEAD仍固定0959ecb，tree非truncated/504节点，README与LICENSE逐字节匹配本地。#110 open/0评论；9条InteRecAgent Issue中#75贡献者只发布Steam链接，#107提问者称有脚本但没有movie输入，#106补Steam元数据来源。精确mapping/license检索不是全网不存在证明，已达18次后停止。
+- 原要求是权威共同ID和原实验可对齐。实际检查101blob/98文本/5相关notebook，原包15成员及checkpoint静态pickle；仍缺rawID↔checkpoint行/矩阵行。论文表27,042,493交互与10M链接/label、CSV/latest源码的差异无法唯一确定release；不下载多个大版本猜映射。旧checkpoint无位置embedding标志均0与论文相容，但不证明行标签。
+- 论文v3明确电影单轮表A1为496（初采500），不是ReDial源码的50前缀。此前“canonical 50”应纠正为历史A1小批来源；45真实结果保留。v3协议为5-core/leave-one-out/train+valid、无位置嵌入SASRec、GPT4-0613、动态示例3、候选1000/软前5%、排序19负+1正NDCG20。新ML1M/train-only协议不改，不把它与原数字比较；TOIS修订版条件尚未核实。
+- 安全发现：movies cell37的第二次history赋值包含末项target；不能据此断言作者正式实验有泄漏。记录源码风险，不执行/修复该段来冒充原数据。独立修复需先回归及另立协议，不在补证轮改基线。
+- 两个HTTP大响应触及上限保留截断前缀，改小型接口和精确搜索；v4探测404保留。初始本地1MiB文本边界拒绝约2.2MB notebook，失败日志保留，改3MiB本地限额；网络预算未扩大。最终18次/1,170,907bytes、64既有复现测试、692文件/资源/权重保护检查与离线字节重建通过。
+- [报告](reports/upstream_evidence_20261012.md)、[请求草稿](reports/upstream_material_request_20261012.md)只提交代码/摘要。草稿NOT SENT；旧语义、原包独立许可、movie canonical仍NOT VERIFIED，T04/A2 BLOCKED；EA01 DONE仅指调查验收。没有改变实验可比性或指标。下一步有材料才继续原版验证；独立研究可继续，不能等同原论文复现。
+
 ## ADR-044：按训练信号检查启动混合困难负采样有界训练
 
 ### 实际验收与结论

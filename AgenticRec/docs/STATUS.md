@@ -1,5 +1,11 @@
 # 项目状态
 
+## 最新：EA01原版证据补齐（2026-10-12）
+
+DONE仅指有界调查；T04/A2仍BLOCKED。18只读HTTP/1,170,907bytes，官方HEAD未变；101历史blob/98文本/5相关notebook，64复现测试/692文件SHA通过，报告字节一致重建。映射、原包独立许可和movie canonical文件仍NOT VERIFIED。v3无位置嵌入SASRec、GPT-4-0613、电影单轮496与19负+1正排序条件已核查；ReDial截断50不是论文canonical数量。Steam作者链接不当movie资源；生成history覆盖风险仅静态记录，未归因论文。
+
+训练/付费LLM/数据包或权重下载/外发消息均0，默认及上游不改。[报告](../../reports/upstream_evidence_20261012.md)、[请求草稿](../../reports/upstream_material_request_20261012.md)NOT SENT，ADR-045记录边界。下一项等待准确材料与有权发布者说明；不无限下载，独立研究继续按单独协议。
+
 ## 最新：LG-HN01混合困难负样本（2026-10-11）
 
 DONE仅指有界训练验收：c10f337、四条件×三个seed共12次真实训练，316epoch/71732更新，启动均Git clean。384人早停/seed42选择后冻结，GCN/BPR均仍选uniform；97人最后开发审计。GCN NDCG 0.179833→0.184476、差值CI[-0.002620,0.012401]；BPR 0.177236→0.186348、CI[-0.000616,0.020008]。均 **NO VERIFIED GAIN**，独立质量 **NOT EVALUATED**；不根据audit换赢家。
