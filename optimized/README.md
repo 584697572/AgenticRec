@@ -10,6 +10,7 @@
 
 | 已做优化 | 当前结论 | 证据 |
 |---|---|---|
+| 四组准确率优先路线 | C1/C2/C3严格成功95.83%、C4为95%；学习模块未证明增益，C1候选增加token43.68% | [完整比较与消融](reports/frontier_validation_20261012.md) |
 | 实际双版本同题评测 | 请求减少45.95%、总token减少85.17%；命中正向但未证明稳定质量/整任务改善 | [真实对比](reports/original_comparison_20261012.md) |
 | Agent 请求路由 | 合成 benchmark 成功率同为81.33%，请求减少47.89% | [T19](reports/benchmark/t19_live_20261010.md) |
 | BPR / LightGCN 强基线 | 排序质量接近，未证明 GCN 优于 BPR | [三 seed](reports/rec_baselines/frozen_model_validation_20261011.md) |
@@ -19,6 +20,8 @@
 | 最新显式低分监督 | 12次训练，完整valid有观测提升，audit不一致，NO VERIFIED GAIN | [低分监督](reports/lightgcn_explicit_low_findings_20261012.md) |
 
 研究实现完整保留，但不因“最新”而默认启用。既有模型和实验不会被新研究覆盖。81.33%任务成功率、历史test约65% Hit@10、最新valid约47% Hit@10属于不同指标/人群，不能直接混比。
+
+四组新实验入口是 `python -m agenticrec.evaluation.frontier_experiment`，顺序及范围见[预测前协议](reports/frontier_validation_protocol_20261012.md)。三seed小状态策略、语义GRU/联合精排、目录ID生成器确实训练，四组都进行了真实LLM正式运行；三seed组件对照及18组消融复用已记录解析，没有新增API。C1的Hit@10为45%，C2相同、C3为32.5%、C4为40%；与此前版本42.5%相比尚未证明更懂用户偏好。主要验证了来源目录、过滤及状态继承的作用，不能归因到LightGCN或完整Rank-GRPO/OpenOneRec。[评分/请求独立审计](reports/frontier_independent_audit_20261012.json)、[训练聚合](reports/frontier_training_20261012.json)保留核验依据。
 
 ## 当前本地运行
 
@@ -39,6 +42,6 @@ Push-Location optimized/AgenticRec
 Pop-Location
 ```
 
-新 clone 的安装、数据与模型准备见 [运行指南](AgenticRec/docs/REPRODUCE.md)。Windows/CPU为当前验证范围；GPU/Linux及真实用户满意度没有由此次整理补齐。真实LLM预算配置与 `.env` 保持现有机制，本次整理新增请求0。
+新 clone 的安装、数据与模型准备见 [运行指南](AgenticRec/docs/REPRODUCE.md)。Windows/CPU为当前验证范围；GPU/Linux及真实用户满意度没有由此次整理补齐。密钥从被忽略的根 `.env` 读取；新路线按当前用户授权调用并监控真实余额，余额不足停止。本批校准及正式合计1,200次请求，余额窗口减少1.28元，逐版本账单成本未知；四组比较完成后已停止新增调用。
 
 最新迁移验收见 [workspace_consolidation](reports/workspace_consolidation_20261012.md)，当前全局状态见 [STATUS](../STATUS.md)。

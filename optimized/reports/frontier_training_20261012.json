@@ -1,0 +1,572 @@
+{
+  "elapsed_seconds": 83.7530584000051,
+  "generator": [
+    {
+      "architecture": "32-dimensional catalog-ID semantic GRU autoregression; not an LLM",
+      "curves": [
+        {
+          "epoch": 0,
+          "mean_batch_loss": 11.45741361252805,
+          "stage": "sft"
+        },
+        {
+          "epoch": 1,
+          "mean_batch_loss": 10.31207009579273,
+          "stage": "sft"
+        },
+        {
+          "epoch": 2,
+          "mean_batch_loss": 9.889403535964641,
+          "stage": "sft"
+        },
+        {
+          "epoch": 3,
+          "mean_batch_loss": 9.639764197329258,
+          "stage": "sft"
+        },
+        {
+          "loss": -0.0,
+          "mean_reward": 1.0499999523162842,
+          "stage": "reinforce",
+          "step": 0,
+          "strict_slate_reward": 1.0
+        },
+        {
+          "loss": -0.00026026368141174316,
+          "mean_reward": 1.054166555404663,
+          "stage": "reinforce",
+          "step": 10,
+          "strict_slate_reward": 1.0
+        },
+        {
+          "loss": 0.003856644034385681,
+          "mean_reward": 1.054166555404663,
+          "stage": "reinforce",
+          "step": 20,
+          "strict_slate_reward": 1.0
+        },
+        {
+          "loss": -0.02139158360660076,
+          "mean_reward": 1.0520832538604736,
+          "stage": "reinforce",
+          "step": 30,
+          "strict_slate_reward": 1.0
+        },
+        {
+          "loss": -0.03540227934718132,
+          "mean_reward": 1.0520832538604736,
+          "stage": "reinforce",
+          "step": 40,
+          "strict_slate_reward": 1.0
+        },
+        {
+          "loss": -0.021342476829886436,
+          "mean_reward": 1.056249976158142,
+          "stage": "reinforce",
+          "step": 50,
+          "strict_slate_reward": 1.0
+        }
+      ],
+      "examples": 9000,
+      "excluded_user_count": 84,
+      "parameter_l2_change": 6.930806047674439,
+      "rl_checkpoint_sha256": "d87b3e70e9db563da9a07493306a4b3acc8adf17c153493f7ed2365c7747c629",
+      "rl_steps": 60,
+      "seed": 42,
+      "sft_checkpoint_sha256": "c03cb0943dd3e36bb0841a86a78279a4100b0151876e829bbaf3163abe6901bd",
+      "sft_steps": 376,
+      "training_source": "train.parquet only; chronological positive continuations; formal users excluded"
+    },
+    {
+      "architecture": "32-dimensional catalog-ID semantic GRU autoregression; not an LLM",
+      "curves": [
+        {
+          "epoch": 0,
+          "mean_batch_loss": 11.425405431301035,
+          "stage": "sft"
+        },
+        {
+          "epoch": 1,
+          "mean_batch_loss": 10.276607726482634,
+          "stage": "sft"
+        },
+        {
+          "epoch": 2,
+          "mean_batch_loss": 9.863441883249486,
+          "stage": "sft"
+        },
+        {
+          "epoch": 3,
+          "mean_batch_loss": 9.606975322074078,
+          "stage": "sft"
+        },
+        {
+          "loss": -0.003300867974758148,
+          "mean_reward": 1.0520832538604736,
+          "stage": "reinforce",
+          "step": 0,
+          "strict_slate_reward": 1.0
+        },
+        {
+          "loss": -0.019565872848033905,
+          "mean_reward": 1.054166555404663,
+          "stage": "reinforce",
+          "step": 10,
+          "strict_slate_reward": 1.0
+        },
+        {
+          "loss": -0.006399767939001322,
+          "mean_reward": 1.054166555404663,
+          "stage": "reinforce",
+          "step": 20,
+          "strict_slate_reward": 1.0
+        },
+        {
+          "loss": -0.0,
+          "mean_reward": 1.0499999523162842,
+          "stage": "reinforce",
+          "step": 30,
+          "strict_slate_reward": 1.0
+        },
+        {
+          "loss": -0.0093544228002429,
+          "mean_reward": 1.056249976158142,
+          "stage": "reinforce",
+          "step": 40,
+          "strict_slate_reward": 1.0
+        },
+        {
+          "loss": -0.030085936188697815,
+          "mean_reward": 1.054166555404663,
+          "stage": "reinforce",
+          "step": 50,
+          "strict_slate_reward": 1.0
+        }
+      ],
+      "examples": 9000,
+      "excluded_user_count": 84,
+      "parameter_l2_change": 7.712982549123193,
+      "rl_checkpoint_sha256": "f5eb6d1ae7b232015d5a94064b3a055e284ee091964f4352ac53f3d237250926",
+      "rl_steps": 60,
+      "seed": 2024,
+      "sft_checkpoint_sha256": "cbd641680457a549ccd46bab4d04f33b8c3dcdc2825c8f2bce931d0c8cd08285",
+      "sft_steps": 376,
+      "training_source": "train.parquet only; chronological positive continuations; formal users excluded"
+    },
+    {
+      "architecture": "32-dimensional catalog-ID semantic GRU autoregression; not an LLM",
+      "curves": [
+        {
+          "epoch": 0,
+          "mean_batch_loss": 11.444754072960388,
+          "stage": "sft"
+        },
+        {
+          "epoch": 1,
+          "mean_batch_loss": 10.290282361050869,
+          "stage": "sft"
+        },
+        {
+          "epoch": 2,
+          "mean_batch_loss": 9.865964727198824,
+          "stage": "sft"
+        },
+        {
+          "epoch": 3,
+          "mean_batch_loss": 9.61708662357736,
+          "stage": "sft"
+        },
+        {
+          "loss": -0.0,
+          "mean_reward": 1.0499999523162842,
+          "stage": "reinforce",
+          "step": 0,
+          "strict_slate_reward": 1.0
+        },
+        {
+          "loss": -0.00522083044052124,
+          "mean_reward": 1.0520833730697632,
+          "stage": "reinforce",
+          "step": 10,
+          "strict_slate_reward": 1.0
+        },
+        {
+          "loss": -0.03490632772445679,
+          "mean_reward": 1.0541666746139526,
+          "stage": "reinforce",
+          "step": 20,
+          "strict_slate_reward": 1.0
+        },
+        {
+          "loss": -0.02531682886183262,
+          "mean_reward": 1.0583332777023315,
+          "stage": "reinforce",
+          "step": 30,
+          "strict_slate_reward": 1.0
+        },
+        {
+          "loss": -0.014626708813011646,
+          "mean_reward": 1.054166555404663,
+          "stage": "reinforce",
+          "step": 40,
+          "strict_slate_reward": 1.0
+        },
+        {
+          "loss": -0.039343345910310745,
+          "mean_reward": 1.0520833730697632,
+          "stage": "reinforce",
+          "step": 50,
+          "strict_slate_reward": 1.0
+        }
+      ],
+      "examples": 9000,
+      "excluded_user_count": 84,
+      "parameter_l2_change": 8.20392064812702,
+      "rl_checkpoint_sha256": "d6a814ec0a7ad9594ce9ea9f7c815253aea9b439dde58c7626c57198d15223e2",
+      "rl_steps": 60,
+      "seed": 2025,
+      "sft_checkpoint_sha256": "ed8c257fc3b9c7e4d7c38b19321906f66004f4cc2237657fa90737f9404c02c3",
+      "sft_steps": 376,
+      "training_source": "train.parquet only; chronological positive continuations; formal users excluded"
+    }
+  ],
+  "policy": [
+    {
+      "algorithm": "sampled REINFORCE on binary full-state correctness, not Rank-GRPO",
+      "audit_generated_state_success": 1.0,
+      "curves": [
+        {
+          "loss": 1.0659393072128296,
+          "stage": "sft",
+          "step": 0
+        },
+        {
+          "loss": 0.2048565000295639,
+          "stage": "sft",
+          "step": 20
+        },
+        {
+          "loss": 0.015836317092180252,
+          "stage": "sft",
+          "step": 40
+        },
+        {
+          "loss": 0.004586008843034506,
+          "stage": "sft",
+          "step": 60
+        },
+        {
+          "loss": 0.0028735490050166845,
+          "stage": "sft",
+          "step": 80
+        },
+        {
+          "loss": 0.00218465318903327,
+          "stage": "sft",
+          "step": 100
+        },
+        {
+          "loss": -0.007144424133002758,
+          "sampled_reward": 0.9988889098167419,
+          "stage": "reinforce",
+          "step": 0
+        },
+        {
+          "loss": -0.00794606190174818,
+          "sampled_reward": 0.9988889098167419,
+          "stage": "reinforce",
+          "step": 20
+        },
+        {
+          "loss": -0.025454141199588776,
+          "sampled_reward": 0.996666669845581,
+          "stage": "reinforce",
+          "step": 40
+        },
+        {
+          "loss": -3.7967485695844516e-05,
+          "sampled_reward": 1.0,
+          "stage": "reinforce",
+          "step": 60
+        },
+        {
+          "loss": -0.00912817008793354,
+          "sampled_reward": 0.9988889098167419,
+          "stage": "reinforce",
+          "step": 80
+        }
+      ],
+      "parameter_l2_change": 0.4095046517184188,
+      "rl_checkpoint_sha256": "6d038be82cc329fa2bac55803c59f7df61a672eb7d57f16c4a34bd94aba27410",
+      "rl_steps": 100,
+      "seed": 42,
+      "sft_checkpoint_sha256": "7e1bedf2b8ab7761543cb1f12af9bd56c2ca5da3e70d4c72e07a45bae9996b51",
+      "sft_steps": 120,
+      "training_states": 900
+    },
+    {
+      "algorithm": "sampled REINFORCE on binary full-state correctness, not Rank-GRPO",
+      "audit_generated_state_success": 1.0,
+      "curves": [
+        {
+          "loss": 1.1433157920837402,
+          "stage": "sft",
+          "step": 0
+        },
+        {
+          "loss": 0.23950234055519104,
+          "stage": "sft",
+          "step": 20
+        },
+        {
+          "loss": 0.01835985854268074,
+          "stage": "sft",
+          "step": 40
+        },
+        {
+          "loss": 0.004860112443566322,
+          "stage": "sft",
+          "step": 60
+        },
+        {
+          "loss": 0.0029581040143966675,
+          "stage": "sft",
+          "step": 80
+        },
+        {
+          "loss": 0.002232200000435114,
+          "stage": "sft",
+          "step": 100
+        },
+        {
+          "loss": -3.81032659788616e-05,
+          "sampled_reward": 1.0,
+          "stage": "reinforce",
+          "step": 0
+        },
+        {
+          "loss": -4.103875471628271e-05,
+          "sampled_reward": 1.0,
+          "stage": "reinforce",
+          "step": 20
+        },
+        {
+          "loss": -0.016753176227211952,
+          "sampled_reward": 0.9977777600288391,
+          "stage": "reinforce",
+          "step": 40
+        },
+        {
+          "loss": -5.3248615586198866e-05,
+          "sampled_reward": 1.0,
+          "stage": "reinforce",
+          "step": 60
+        },
+        {
+          "loss": -4.69620936200954e-05,
+          "sampled_reward": 1.0,
+          "stage": "reinforce",
+          "step": 80
+        }
+      ],
+      "parameter_l2_change": 0.42177581354115046,
+      "rl_checkpoint_sha256": "0e24d5fcb7888cb9972d309d255b0dc1193589d67a33190e219e8c8b10626c78",
+      "rl_steps": 100,
+      "seed": 2024,
+      "sft_checkpoint_sha256": "cefcaeef5cfc63fc2627c31662a731799330b302ad17e5bac92f32d08e75105f",
+      "sft_steps": 120,
+      "training_states": 900
+    },
+    {
+      "algorithm": "sampled REINFORCE on binary full-state correctness, not Rank-GRPO",
+      "audit_generated_state_success": 1.0,
+      "curves": [
+        {
+          "loss": 1.1416786909103394,
+          "stage": "sft",
+          "step": 0
+        },
+        {
+          "loss": 0.28155916929244995,
+          "stage": "sft",
+          "step": 20
+        },
+        {
+          "loss": 0.020790524780750275,
+          "stage": "sft",
+          "step": 40
+        },
+        {
+          "loss": 0.005107192322611809,
+          "stage": "sft",
+          "step": 60
+        },
+        {
+          "loss": 0.0030289695132523775,
+          "stage": "sft",
+          "step": 80
+        },
+        {
+          "loss": 0.002272311132401228,
+          "stage": "sft",
+          "step": 100
+        },
+        {
+          "loss": -0.021260986104607582,
+          "sampled_reward": 0.996666669845581,
+          "stage": "reinforce",
+          "step": 0
+        },
+        {
+          "loss": -0.016029709950089455,
+          "sampled_reward": 0.9977777600288391,
+          "stage": "reinforce",
+          "step": 20
+        },
+        {
+          "loss": -7.185126742115244e-05,
+          "sampled_reward": 1.0,
+          "stage": "reinforce",
+          "step": 40
+        },
+        {
+          "loss": -0.009858615696430206,
+          "sampled_reward": 0.9988889098167419,
+          "stage": "reinforce",
+          "step": 60
+        },
+        {
+          "loss": -0.017028875648975372,
+          "sampled_reward": 0.9977777600288391,
+          "stage": "reinforce",
+          "step": 80
+        }
+      ],
+      "parameter_l2_change": 0.5622575017484364,
+      "rl_checkpoint_sha256": "6d39aa783900c1438a127bb2ee8bb788d51e9d474c2a2f6cad0715cef9b3bc13",
+      "rl_steps": 100,
+      "seed": 2025,
+      "sft_checkpoint_sha256": "d147c82ed7416b91c680a7856132209c25ab65711cd3092e1897e082a7f694ff",
+      "sft_steps": 120,
+      "training_states": 900
+    }
+  ],
+  "ranker": [
+    {
+      "algorithm": "learned candidate-group softmax ranking, not LLM2Rec/CCFRec reproduction",
+      "checkpoint_sha256": "c9b57eb249eeaa1d7b30c210073c3966b734d514bc43b8c6f657ce6b28cd9c48",
+      "curves": [
+        {
+          "loss": 4.182004928588867,
+          "step": 0
+        },
+        {
+          "loss": 2.148521900177002,
+          "step": 30
+        },
+        {
+          "loss": 1.9244797229766846,
+          "step": 60
+        },
+        {
+          "loss": 1.80269193649292,
+          "step": 90
+        },
+        {
+          "loss": 1.7481986284255981,
+          "step": 120
+        }
+      ],
+      "features": [
+        "train_itemCF",
+        "train_text_tfidf",
+        "train_popularity",
+        "sequence_logit",
+        "sequence_probability",
+        "genre_overlap"
+      ],
+      "negatives_per_group": 63,
+      "seed": 42,
+      "steps": 150,
+      "train_groups": 360
+    },
+    {
+      "algorithm": "learned candidate-group softmax ranking, not LLM2Rec/CCFRec reproduction",
+      "checkpoint_sha256": "9b1bd2c1653d998c7d42c32749b61cb667cc75fa5a0c7f8e37129cedea1e7fac",
+      "curves": [
+        {
+          "loss": 4.441622734069824,
+          "step": 0
+        },
+        {
+          "loss": 2.4077303409576416,
+          "step": 30
+        },
+        {
+          "loss": 2.13525128364563,
+          "step": 60
+        },
+        {
+          "loss": 1.9809694290161133,
+          "step": 90
+        },
+        {
+          "loss": 1.9204535484313965,
+          "step": 120
+        }
+      ],
+      "features": [
+        "train_itemCF",
+        "train_text_tfidf",
+        "train_popularity",
+        "sequence_logit",
+        "sequence_probability",
+        "genre_overlap"
+      ],
+      "negatives_per_group": 63,
+      "seed": 2024,
+      "steps": 150,
+      "train_groups": 360
+    },
+    {
+      "algorithm": "learned candidate-group softmax ranking, not LLM2Rec/CCFRec reproduction",
+      "checkpoint_sha256": "1559716263ba732d8154caf090f6b7c94df86cb99c31c029d56f31566c1d5337",
+      "curves": [
+        {
+          "loss": 4.2930426597595215,
+          "step": 0
+        },
+        {
+          "loss": 2.2616827487945557,
+          "step": 30
+        },
+        {
+          "loss": 1.9742387533187866,
+          "step": 60
+        },
+        {
+          "loss": 1.8459194898605347,
+          "step": 90
+        },
+        {
+          "loss": 1.785305142402649,
+          "step": 120
+        }
+      ],
+      "features": [
+        "train_itemCF",
+        "train_text_tfidf",
+        "train_popularity",
+        "sequence_logit",
+        "sequence_probability",
+        "genre_overlap"
+      ],
+      "negatives_per_group": 63,
+      "seed": 2025,
+      "steps": 150,
+      "train_groups": 360
+    }
+  ],
+  "status": "COMPLETED",
+  "train_sha256": "d79737745064a3d43b3df42e34c3702bdce83ce84b9dddd349b2ec66f9be4f75"
+}

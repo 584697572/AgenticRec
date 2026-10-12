@@ -1,0 +1,18 @@
+{
+  "all_predicates_and_quality_recomputed": true,
+  "auditor_sha256": "9f2e32a32fe5d9114f7a97e5cf0a44e237d8d62a82c3338304c8db4a1b636333",
+  "episodes": 720,
+  "episodes_sha256": "1e334f7484e479873b3627c90437305689e75862a9ac6d9ef064c635e9c115f3",
+  "generation_requests": 1156,
+  "invoice_cost_cny": null,
+  "observed_balance_decrease_cny": "1.24",
+  "planner_target_field_scan": "PASS",
+  "protocol_sha256": "b6ef2c1db67e806fde54eb9c45035724fa1f4f1c94368d034de421f38d6bd1a5",
+  "provider_sha256": "db2f2493e0b45aee7c104ac8fe05d9bbed554db03dc8286f101427ccd6d1ac66",
+  "requests_and_tokens_reconciled": true,
+  "source_and_input_hashes": "PASS",
+  "status": "VERIFIED",
+  "structured_delivery_identity_checked": 619,
+  "turns": 960,
+  "unresolved_request_intents": 0
+}
