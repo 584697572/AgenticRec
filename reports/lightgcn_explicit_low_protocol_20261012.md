@@ -28,6 +28,6 @@
 
 ## 验收
 
-独立 dense 梯度/损失 oracle，空低分和padding、train映射/阈值/篡改、RNG配对、toy训练/重载/拒绝覆盖先测试；源码及配置在真实训练前提交，记录Git状态及源SHA。12checkpoint三环境身份字段检查、原始预测四指标重建、6配对流校验、旧文件/规范/权重SHA保护、完整工程回归及已有锁环境专项。第二环境复用checkout及资源，不冒称全新机器训练。
+独立 dense 梯度/损失 oracle，空低分和padding、train映射/阈值/篡改、RNG配对、toy训练/重载/拒绝覆盖先测试；源码及配置在真实训练前提交，记录Git状态及源SHA。12checkpoint两环境身份字段检查、原始预测四指标重建、6配对流校验、旧文件/规范/权重SHA保护、完整工程回归及已有锁环境专项。第二环境复用checkout及资源，不冒称全新机器训练。
 
 DONE只表示完成本有限研究验收。质量须单独记录，未暴露质量保持 NOT EVALUATED；开发CI包含0或下降记 NO VERIFIED GAIN。默认模型不替换，原规范/upstream/旧报告及权重不改。

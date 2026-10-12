@@ -434,7 +434,7 @@
     {
       "id": "LG-LF01",
       "title": "Matched explicit-low feedback objective",
-      "status": "IN PROGRESS",
+      "status": "DONE",
       "depends_on": [
         "LG-D02",
         "LG-HN01"
@@ -443,12 +443,31 @@
       "plan": "AgenticRec/configs/lightgcn_explicit_low_20261012.json",
       "protocol": "reports/lightgcn_explicit_low_protocol_20261012.md",
       "verification": {
-        "unit_tests_passed": 10,
-        "quality_gain": "NOT EVALUATED",
+        "unit_tests_passed": 11,
+        "full_tests_passed": 346,
+        "locked_tests_passed": 11,
+        "training_runs": 12,
+        "actual_epochs": 330,
+        "optimizer_steps": 74910,
+        "locked_real_model_reloads": 12,
+        "raw_metric_values_rebuilt": 46176,
+        "matched_random_streams": 6,
+        "historical_files_preserved": 820,
+        "byte_identical_report_rebuild": "PASS",
+        "quality_gain": "NO VERIFIED GAIN",
         "independent_quality": "NOT EVALUATED",
         "remote_api_requests": 0,
-        "downloads": 0
-      }
+        "dataset_or_weight_downloads": 0,
+        "source_metadata_bytes": 8105,
+        "serving_default_changed": false
+      },
+      "source_commit": "483a036bffdca83c62408444bce81f28ce4fcc7b",
+      "evidence": [
+        "reports/rec_baselines/lightgcn_explicit_low_20261012.md",
+        "reports/rec_baselines/lightgcn_explicit_low_20261012.json",
+        "reports/lightgcn_explicit_low_findings_20261012.md"
+      ],
+      "next_priority": "Establish unexposed evaluation coverage and cross-user temporal boundaries before finite frozen comparisons; no old-audit alpha search"
     }
   ],
   "status_evidence_index": "AgenticRec/docs/STATUS.md",

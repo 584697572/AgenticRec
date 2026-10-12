@@ -134,3 +134,19 @@ def test_train_low_loader_rejects_changed_train_artifact(tmp_path,monkeypatch):
     path.write_bytes(b'tampered')
     contract=({'files':{'train.parquet':{'sha256':'wrong'}}},1,2,{1:{1}},[(1,1)])
     with pytest.raises(ValueError,match='SHA'):module.load_lows(contract)
+
+
+def test_runner_initializes_fresh_directory_and_preserves_existing_ledger(tmp_path,monkeypatch):
+    import importlib.util
+    path=Path(__file__).parents[2]/'scripts/run_explicit_low_study.py'
+    spec=importlib.util.spec_from_file_location('explicit_low_runner',path)
+    runner=importlib.util.module_from_spec(spec);spec.loader.exec_module(runner)
+    monkeypatch.setattr(runner,'ROOT',tmp_path)
+    monkeypatch.setattr(runner,'BASE',tmp_path/'artifacts/runs/new')
+    (tmp_path/'old.py').write_text('original baseline')
+    (tmp_path/'STATUS.md').write_text('mutable status')
+    monkeypatch.setattr(runner.subprocess,'check_output',lambda *a,**kw:'old.py\nSTATUS.md\n')
+    runner.initialize()
+    snapshot=runner.BASE/'preservation_before.json';raw=snapshot.read_bytes()
+    assert json.loads(raw)=={'old.py':runner.digest(tmp_path/'old.py')}
+    runner.initialize();assert snapshot.read_bytes()==raw

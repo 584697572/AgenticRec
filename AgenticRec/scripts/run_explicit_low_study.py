@@ -12,6 +12,23 @@ from agenticrec.explicit_low_training import BASE, ROOT, code_identity, plan_and
 PLAN=ROOT/'AgenticRec/configs/lightgcn_explicit_low_20261012.json'
 
 
+def initialize():
+    """Create an append-only run root and protection ledger without manual setup."""
+    BASE.mkdir(parents=True,exist_ok=True)
+    ledger=BASE/'preservation_before.json'
+    if ledger.exists():return
+    paths=set(subprocess.check_output(['git','-c','core.quotepath=false','ls-files'],
+                                     cwd=ROOT,text=True,encoding='utf-8').splitlines())
+    previous=ROOT/'artifacts/runs/upstream_evidence_20261012/preservation_before.json'
+    if previous.exists():paths.update(json.loads(previous.read_text(encoding='utf-8')))
+    paths.update(p.relative_to(ROOT).as_posix() for p in (ROOT/'artifacts').rglob('best.pt'))
+    paths-={'STATUS.md','AgenticRec/docs/STATUS.md','TASKS.yaml','DECISIONS.md','reports/spec_issues.md'}
+    protected={name:digest(ROOT/name) for name in sorted(paths)
+               if (ROOT/name).is_file() and not Path(name).name.startswith('.env')}
+    with ledger.open('x',encoding='utf-8',newline='\n') as f:
+        json.dump(protected,f,indent=2,sort_keys=True);f.write('\n')
+
+
 def execute(trial,seed):
     target=BASE/f'seed_{seed}'/trial
     if (target/'result.json').exists():
@@ -52,6 +69,7 @@ def action(name):
 
 def main():
     plan,_=plan_and_groups(PLAN)
+    initialize()
     phase([(t['name'],42) for t in plan['trials']])
     if not (BASE/'selection_frozen.json').exists():action('freeze')
     frozen=json.loads((BASE/'selection_frozen.json').read_text(encoding='utf-8'))
