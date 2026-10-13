@@ -1,0 +1,9 @@
+{
+  "status": "VERIFIED",
+  "frozen_model_full_rankings_replayed": 1080,
+  "independently_rebuilt_baseline_full_rankings": 720,
+  "mixed_candidate_unions_rebuilt": 180,
+  "api_requests": 0,
+  "auditor_sha256": "2edc945f3e39a3321574206ca7cfd419ea476c3bf34bfb1aeeb65520e88d9278",
+  "rankings_sha256": "b4258d0c80daba59db61fc1897e46ec764dc3d59f806b00e6e062b03eceeb139"
+}

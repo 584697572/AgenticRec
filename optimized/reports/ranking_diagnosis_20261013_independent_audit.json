@@ -1,0 +1,12 @@
+{
+  "status": "VERIFIED",
+  "independent_scores": 1800,
+  "full_catalog_permutations_checked": 1800,
+  "historical_top10_matched": 1260,
+  "training_samples_rebuilt": 15267,
+  "hidden_history_oracles_evaluator_only": true,
+  "source_hashes_verified": true,
+  "api_requests": 0,
+  "report_sha256": "c2233d3aec7c41ffcec868e0fa6fbc36e28669bee4da1971f51d13ac79130f57",
+  "auditor_sha256": "37b4a49ba52fc230265b73b61a40a495994d81690e6bebf3c6b2094af1b7c8ef"
+}

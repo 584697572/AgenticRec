@@ -1,0 +1,37 @@
+{
+  "status": "VERIFIED",
+  "scope": "descriptive_temporal_mismatch",
+  "training_distinct_users": 5089,
+  "training_last_input_to_first_target_days": {
+    "n": 5089,
+    "median": 0.0002314814814814815,
+    "p90": 0.0011921296296296296,
+    "mean": 0.11007233512004834,
+    "min": 0.0,
+    "max": 139.50074074074075
+  },
+  "training_last_input_to_last_target_days": {
+    "n": 5089,
+    "median": 0.006030092592592593,
+    "p90": 12.175254629629627,
+    "mean": 6.770074034045844,
+    "min": 0.0,
+    "max": 206.3542824074074
+  },
+  "training_first_target_within_one_hour_users": 5027,
+  "training_first_target_same_timestamp_users": 2105,
+  "training_last_target_within_one_hour_users": 3829,
+  "test_last_input_to_first_target_days": {
+    "n": 180,
+    "median": 180.16791666666666,
+    "p90": 523.3547129629628,
+    "mean": 239.77358352623452,
+    "min": 30.009641203703705,
+    "max": 978.7045717592592
+  },
+  "test_first_target_within_one_hour_users": 0,
+  "api_requests": 0,
+  "auditor_sha256": "dc189aef63361bef054b095f2ec24e829430a50f319b07738437d852a0eb655a",
+  "raw_and_processed_train_sequences_matched": true,
+  "source_hashes_verified": true
+}
