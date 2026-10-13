@@ -1,0 +1,403 @@
+{
+  "status": "COMPLETED",
+  "summary": {
+    "actual_invoice_cost_cny": null,
+    "paired": {
+      "C1-minus-historical_best": {
+        "by_category": {
+          "constraints": {
+            "ci95": [
+              0.75,
+              0.9333333333333333
+            ],
+            "mean": 0.85,
+            "n": 60
+          },
+          "feedback": {
+            "ci95": [
+              0.5833333333333334,
+              0.8166666666666667
+            ],
+            "mean": 0.7,
+            "n": 60
+          },
+          "session_quality": {
+            "ci95": [
+              0.4666666666666667,
+              0.6111111111111112
+            ],
+            "mean": 0.5388888888888889,
+            "n": 180
+          }
+        },
+        "discordance": {
+          "holm_p": 2.5489470578119236e-57,
+          "losses": 0,
+          "p": 1.2744735289059618e-57,
+          "wins": 190
+        },
+        "hit": {
+          "ci95": [
+            -0.03888888888888889,
+            0.09444444444444444
+          ],
+          "mean": 0.027777777777777776,
+          "n": 180
+        },
+        "mrr": {
+          "ci95": [
+            -0.010099922839506174,
+            0.0663514660493827
+          ],
+          "mean": 0.02680335097001764,
+          "n": 180
+        },
+        "ndcg": {
+          "ci95": [
+            -0.0020426885618793082,
+            0.023208302046653084
+          ],
+          "mean": 0.010411607290793354,
+          "n": 180
+        },
+        "recall": {
+          "ci95": [
+            -0.020017166956599736,
+            0.003671600433617313
+          ],
+          "mean": -0.005842609353618238,
+          "n": 180
+        },
+        "strict_success": {
+          "ci95": [
+            0.58,
+            0.6866666666666666
+          ],
+          "mean": 0.6333333333333333,
+          "n": 300
+        }
+      },
+      "C1-minus-original": {
+        "by_category": {
+          "constraints": {
+            "ci95": [
+              0.43333333333333335,
+              0.6833333333333333
+            ],
+            "mean": 0.5666666666666667,
+            "n": 60
+          },
+          "feedback": {
+            "ci95": [
+              0.4166666666666667,
+              0.7
+            ],
+            "mean": 0.5666666666666667,
+            "n": 60
+          },
+          "session_quality": {
+            "ci95": [
+              0.5444444444444444,
+              0.6833333333333333
+            ],
+            "mean": 0.6166666666666667,
+            "n": 180
+          }
+        },
+        "discordance": {
+          "holm_p": 2.746663783192279e-51,
+          "losses": 2,
+          "p": 2.746663783192279e-51,
+          "wins": 181
+        },
+        "hit": {
+          "ci95": [
+            -0.08333333333333333,
+            0.06666666666666667
+          ],
+          "mean": -0.011111111111111112,
+          "n": 180
+        },
+        "mrr": {
+          "ci95": [
+            -0.028313547178130505,
+            0.053005291005290986
+          ],
+          "mean": 0.012255291005291009,
+          "n": 180
+        },
+        "ndcg": {
+          "ci95": [
+            -0.016576720480784932,
+            0.013783436546842612
+          ],
+          "mean": -0.0014763976336669427,
+          "n": 180
+        },
+        "recall": {
+          "ci95": [
+            -0.02738111217567145,
+            0.006046532131841709
+          ],
+          "mean": -0.009340835951134881,
+          "n": 180
+        },
+        "strict_success": {
+          "ci95": [
+            0.54,
+            0.6533333333333333
+          ],
+          "mean": 0.5966666666666667,
+          "n": 300
+        }
+      }
+    },
+    "systems": {
+      "C1": {
+        "categories": {
+          "constraints": {
+            "n": 60,
+            "success": 60
+          },
+          "feedback": {
+            "n": 60,
+            "success": 44
+          },
+          "session_quality": {
+            "n": 180,
+            "success": 180
+          },
+          "unanswerable": {
+            "n": 20,
+            "success": 20
+          }
+        },
+        "completed": 320,
+        "constraint_precision": 0.9578947368421052,
+        "duplicate_items": 0,
+        "failure_statuses": {
+          "EXECUTION_FAILURE": 16
+        },
+        "feedback_by_turns": {
+          "2": {
+            "n": 40,
+            "success": 34
+          },
+          "3": {
+            "n": 20,
+            "success": 10
+          }
+        },
+        "identity_errors": 0,
+        "input_tokens": 305175,
+        "latency_p50_seconds": 1.405633400005172,
+        "latency_p95_seconds": 5.072568499998306,
+        "main_n": 300,
+        "main_successes": 284,
+        "output_tokens": 76480,
+        "quality": {
+          "hit": 0.35,
+          "mrr": 0.1327402998236331,
+          "ndcg": 0.06182501797521393,
+          "recall": 0.02108891731590218
+        },
+        "quality_by_history": {
+          "10": {
+            "hit": 0.3,
+            "n": 60,
+            "ndcg": 0.03751996987286385
+          },
+          "3": {
+            "hit": 0.25,
+            "n": 60,
+            "ndcg": 0.05710814952827004
+          },
+          "5": {
+            "hit": 0.5,
+            "n": 60,
+            "ndcg": 0.0908469345245078
+          }
+        },
+        "quality_n": 180,
+        "quantity_wrong_turns": 16,
+        "refusal": {
+          "correct_refusal": 1.0,
+          "explanatory_refusal": 0.0,
+          "safe_non_delivery": 1.0
+        },
+        "requests": 446,
+        "strict_success": 0.9466666666666667
+      },
+      "historical_best": {
+        "categories": {
+          "constraints": {
+            "n": 60,
+            "success": 9
+          },
+          "feedback": {
+            "n": 60,
+            "success": 2
+          },
+          "session_quality": {
+            "n": 180,
+            "success": 83
+          },
+          "unanswerable": {
+            "n": 20,
+            "success": 20
+          }
+        },
+        "completed": 320,
+        "constraint_precision": 0.8748945279866335,
+        "duplicate_items": 0,
+        "failure_statuses": {
+          "INVALID_PLAN": 1,
+          "OK": 262
+        },
+        "feedback_by_turns": {
+          "2": {
+            "n": 40,
+            "success": 2
+          },
+          "3": {
+            "n": 20,
+            "success": 0
+          }
+        },
+        "identity_errors": 198,
+        "input_tokens": 218785,
+        "latency_p50_seconds": 1.2874579999916023,
+        "latency_p95_seconds": 3.746353200027079,
+        "main_n": 300,
+        "main_successes": 94,
+        "output_tokens": 54396,
+        "quality": {
+          "hit": 0.32222222222222224,
+          "mrr": 0.10593694885361547,
+          "ndcg": 0.05141341068442055,
+          "recall": 0.02693152666952041
+        },
+        "quality_by_history": {
+          "10": {
+            "hit": 0.3,
+            "n": 60,
+            "ndcg": 0.03987343655863205
+          },
+          "3": {
+            "hit": 0.2833333333333333,
+            "n": 60,
+            "ndcg": 0.05619046168592298
+          },
+          "5": {
+            "hit": 0.38333333333333336,
+            "n": 60,
+            "ndcg": 0.058176333808706585
+          }
+        },
+        "quality_n": 180,
+        "quantity_wrong_turns": 5,
+        "refusal": {
+          "correct_refusal": 1.0,
+          "explanatory_refusal": 1.0,
+          "safe_non_delivery": 1.0
+        },
+        "requests": 400,
+        "strict_success": 0.31333333333333335
+      },
+      "original": {
+        "categories": {
+          "constraints": {
+            "n": 60,
+            "success": 26
+          },
+          "feedback": {
+            "n": 60,
+            "success": 10
+          },
+          "session_quality": {
+            "n": 180,
+            "success": 69
+          },
+          "unanswerable": {
+            "n": 20,
+            "success": 20
+          }
+        },
+        "completed": 320,
+        "constraint_precision": 0.7739473684210532,
+        "duplicate_items": 0,
+        "failure_statuses": {
+          "ERROR": 6,
+          "OK": 233
+        },
+        "feedback_by_turns": {
+          "2": {
+            "n": 40,
+            "success": 7
+          },
+          "3": {
+            "n": 20,
+            "success": 3
+          }
+        },
+        "identity_errors": 244,
+        "input_tokens": 1601107,
+        "latency_p50_seconds": 4.729952649999177,
+        "latency_p95_seconds": 13.68674051000853,
+        "main_n": 300,
+        "main_successes": 105,
+        "output_tokens": 203847,
+        "quality": {
+          "hit": 0.3611111111111111,
+          "mrr": 0.12048500881834215,
+          "ndcg": 0.06330141560888086,
+          "recall": 0.030429753267037056
+        },
+        "quality_by_history": {
+          "10": {
+            "hit": 0.25,
+            "n": 60,
+            "ndcg": 0.03873545400479742
+          },
+          "3": {
+            "hit": 0.35,
+            "n": 60,
+            "ndcg": 0.06562404417335252
+          },
+          "5": {
+            "hit": 0.48333333333333334,
+            "n": 60,
+            "ndcg": 0.08554474864849261
+          }
+        },
+        "quality_n": 180,
+        "quantity_wrong_turns": 42,
+        "refusal": {
+          "correct_refusal": 1.0,
+          "explanatory_refusal": 1.0,
+          "safe_non_delivery": 1.0
+        },
+        "requests": 768,
+        "strict_success": 0.35
+      }
+    }
+  },
+  "verification": {
+    "actual_invoice_cost_cny": null,
+    "all_usage_reconciled": true,
+    "episodes_sha256": "8fa88df3e9fe8d244de68866cf911278f0c3b63d4e62643317103d0829eb7187",
+    "frozen_hashes_verified": true,
+    "observed_formal_balance_decrease_cny": "2.19",
+    "private_targets_field_scan": "PASS",
+    "protocol_sha256": "643507ca9d28352711317010f96ab2ce37564b2d23de94950713ec14cd7e812d",
+    "provider_failed_attempts": 0,
+    "provider_sha256": "5f6ea626607562141c31f241c280737303fddef44191a616f982afa88bdbee8d",
+    "requests": 1614,
+    "source_commit": "b7c1cc504a216e2e7340a862a6c27829062b612e",
+    "status": "VERIFIED",
+    "task_executions": 960,
+    "turns_recomputed": 1200,
+    "unknown_usage_attempts": 0,
+    "unresolved_intents": 0
+  }
+}

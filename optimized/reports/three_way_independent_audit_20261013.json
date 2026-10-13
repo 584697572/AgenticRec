@@ -1,0 +1,229 @@
+{
+  "status": "VERIFIED",
+  "feasible_turns_independently_recomputed": 1140,
+  "refusal_turns_invariants_checked": 60,
+  "metrics": [
+    "strict_success",
+    "Hit@10",
+    "Recall@10",
+    "NDCG@10",
+    "MRR@10"
+  ],
+  "failure_counts": {
+    "original": {
+      "duplicate_items": 0,
+      "quantity_wrong_turns": 42,
+      "status_not_ok_turns": 6,
+      "unverified_extraction_turns": 22,
+      "missing_required_genre_items": 240,
+      "unknown_identity_items": 244,
+      "excluded_item_deliveries": 22,
+      "forbidden_genre_items": 4,
+      "year_violation_items": 9
+    },
+    "historical_best": {
+      "duplicate_items": 0,
+      "quantity_wrong_turns": 5,
+      "status_not_ok_turns": 1,
+      "unverified_extraction_turns": 0,
+      "missing_required_genre_items": 171,
+      "forbidden_genre_items": 12,
+      "unknown_identity_items": 198,
+      "excluded_item_deliveries": 92
+    },
+    "C1": {
+      "duplicate_items": 0,
+      "quantity_wrong_turns": 16,
+      "status_not_ok_turns": 16,
+      "unverified_extraction_turns": 16
+    }
+  },
+  "failure_count_note": "Non-exclusive; one item/turn may violate several predicates.",
+  "by_scenario": {
+    "original": {
+      "constraint:0": {
+        "n": 20,
+        "success": 13
+      },
+      "constraint:1": {
+        "n": 20,
+        "success": 0
+      },
+      "constraint:2": {
+        "n": 20,
+        "success": 13
+      },
+      "history:3": {
+        "n": 60,
+        "success": 27
+      },
+      "history:5": {
+        "n": 60,
+        "success": 13
+      },
+      "history:10": {
+        "n": 60,
+        "success": 29
+      },
+      "feedback:0": {
+        "n": 10,
+        "success": 3
+      },
+      "feedback:1": {
+        "n": 10,
+        "success": 0
+      },
+      "feedback:2": {
+        "n": 10,
+        "success": 3
+      },
+      "feedback:3": {
+        "n": 10,
+        "success": 1
+      },
+      "feedback:4": {
+        "n": 10,
+        "success": 1
+      },
+      "feedback:5": {
+        "n": 10,
+        "success": 2
+      }
+    },
+    "historical_best": {
+      "constraint:0": {
+        "n": 20,
+        "success": 3
+      },
+      "constraint:1": {
+        "n": 20,
+        "success": 2
+      },
+      "constraint:2": {
+        "n": 20,
+        "success": 4
+      },
+      "history:3": {
+        "n": 60,
+        "success": 30
+      },
+      "history:5": {
+        "n": 60,
+        "success": 28
+      },
+      "history:10": {
+        "n": 60,
+        "success": 25
+      },
+      "feedback:0": {
+        "n": 10,
+        "success": 1
+      },
+      "feedback:1": {
+        "n": 10,
+        "success": 0
+      },
+      "feedback:2": {
+        "n": 10,
+        "success": 1
+      },
+      "feedback:3": {
+        "n": 10,
+        "success": 0
+      },
+      "feedback:4": {
+        "n": 10,
+        "success": 0
+      },
+      "feedback:5": {
+        "n": 10,
+        "success": 0
+      }
+    },
+    "C1": {
+      "constraint:0": {
+        "n": 20,
+        "success": 20
+      },
+      "constraint:1": {
+        "n": 20,
+        "success": 20
+      },
+      "constraint:2": {
+        "n": 20,
+        "success": 20
+      },
+      "history:3": {
+        "n": 60,
+        "success": 60
+      },
+      "history:5": {
+        "n": 60,
+        "success": 60
+      },
+      "history:10": {
+        "n": 60,
+        "success": 60
+      },
+      "feedback:0": {
+        "n": 10,
+        "success": 10
+      },
+      "feedback:1": {
+        "n": 10,
+        "success": 4
+      },
+      "feedback:2": {
+        "n": 10,
+        "success": 10
+      },
+      "feedback:3": {
+        "n": 10,
+        "success": 10
+      },
+      "feedback:4": {
+        "n": 10,
+        "success": 10
+      },
+      "feedback:5": {
+        "n": 10,
+        "success": 0
+      }
+    }
+  },
+  "quality_delivery_counts": {
+    "original": {
+      "n": 180,
+      "hit": 65.0,
+      "recall": 5.47735558806667,
+      "ndcg": 11.394254809598555,
+      "mrr": 21.687301587301587,
+      "successful_delivery_n": 69,
+      "successful_delivery_hits": 31.0
+    },
+    "historical_best": {
+      "n": 180,
+      "hit": 58.0,
+      "recall": 4.847674800513674,
+      "ndcg": 9.254413923195699,
+      "mrr": 19.068650793650786,
+      "successful_delivery_n": 83,
+      "successful_delivery_hits": 27.0
+    },
+    "C1": {
+      "n": 180,
+      "hit": 63.0,
+      "recall": 3.7960051168623927,
+      "ndcg": 11.128503235538508,
+      "mrr": 23.893253968253962,
+      "successful_delivery_n": 180,
+      "successful_delivery_hits": 63.0
+    }
+  },
+  "conditional_metric_note": "Successful-delivery counts are supplemental; headline denominator remains all 180 users.",
+  "frozen_inputs_sources_weights": "PASS",
+  "protocol_sha256": "643507ca9d28352711317010f96ab2ce37564b2d23de94950713ec14cd7e812d",
+  "episodes_sha256": "8fa88df3e9fe8d244de68866cf911278f0c3b63d4e62643317103d0829eb7187",
+  "auditor_sha256": "9b8f14aea7a548d688175fe98f7dcf2ed992b9c65c82dbd7a45cf911eaabd8fd",
+  "provider_calls_by_auditor": 0
+}
