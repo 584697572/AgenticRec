@@ -1,10 +1,14 @@
 # 当前项目状态（2026-10-13）
 
-## 训练监督与排序修正：IN PROGRESS / NOT EVALUATED
+## 训练监督与排序修正：DONE / VERIFIED，NO VERIFIED QUALITY GAIN
 
 用户已授权修正。新协议optimized/reports/temporal_repair_protocol_20261013.md，原默认/映射/目录/180人目标/历史代码均保留。新目录optimized/artifacts/comparison/temporal_repair_20261013已冻结，原ordinal15267例＋真实long6687例（30天4899、90天1788，471用户）。同时间戳批次完整切点，完整过去正反馈屏蔽；两实训序列版本，各三seed/10epoch，开发12配置。接着独立训练真实prefix图的MLP候选重排器，开发8配置；仅原150 valid用户选择，随后冻结再一次生成原180人复测预测。旧180人已暴露，不称盲测，不读隐藏历史作运行过滤；LLM/下载0。
 
-新增4项回归覆盖真实间隔、同批完整/去重、mask零梯度/冲突、候选loss和采样权重；相关33项一次通过。当前正在训练阶段A；模型效果NOT EVALUATED，后续须完成阶段B、冻结、正式复测、独立审计才可标记DONE。Blocker：None。
+新增4项回归覆盖真实间隔、同批完整/去重、mask零梯度/冲突、候选loss和采样权重；相关33项一次通过。六次序列10轮＋三次重排20轮全部完成，120epoch损失有限。长期例实际间隔最少30天、中位62.13天；原15267辅助短时例保留，不能称已完全匹配180天测试。阶段A开发选long_mixed/epoch5/alpha.5，阶段B选epoch10/alpha1/无并入sequence，最终valid选阶段A，不按test更改。
+
+原180人：旧混排/热门72人40%，旧短序列75人41.67%；修正序列主seed42仍75人41.67%，另两seed76/86人（42.22%/47.78%），三seed均值42.78%→43.89%只是描述性。主模型对旧序列差值0，区间[-7.22,+7.22]、Holm p=1；对混排+1.67百分点，区间[-6.11,+9.44]、Holm p=1。21位旧未命中变命中、21位反向变化；Recall略降、NDCG/MRR略升且区间均跨零，没有稳定质量收益。重排主版67人37.22%，其他seed70/69人，未改善，负结果保留。不切默认，不声称47.78%是主结果。
+
+独立从raw train重建15267/6687两组样本、两个past-only图及未来监督、9000开发评分/20配置选择、180公开输入/test目标、1980正式评分、1080新预测重放、900历史匹配、冻结SHA及配对bootstrap/精确检验/Holm均通过。报告optimized/reports/temporal_repair_20261013_validation.md/json及独立审计/开发训练聚合公开。工程commit be59b15，报告提交随后同步。Blocker：None。API/下载0，严格Agent任务NOT EVALUATED。下一候选要解决公开历史不足、评分批次并非观看顺序及新开发/验证设计；不继续用这180人追加搜索冒称盲测，本批完成即停止。
 
 ## 原40%队列失败诊断：DONE / VERIFIED，新优化 NOT EVALUATED
 
