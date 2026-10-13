@@ -1,0 +1,20 @@
+{
+  "api_requests": 0,
+  "auditor_sha256": "201c87ad1b2987ae4bd8acf7fbcbb858320f69d2f4c29113c61ecbf75bb2a352",
+  "brute_force_cosine_itemcf_rankings": 180,
+  "hits": {
+    "C1": 65,
+    "candidate": 72,
+    "content": 33,
+    "itemcf": 59,
+    "popular": 72
+  },
+  "independent_popular_rankings": 180,
+  "independent_quality_scores": 900,
+  "predictions_sha256": "170c63fc4859f7aee40f65b78541140ebbe6c570ff242f8fa6a0d7201f21ee05",
+  "protocol_sha256": "a4d71366d49dd665ce1a50c514087f3f6bd77be0dcdc40a646cec9ebde4cb7a6",
+  "replayed_real_live_rankings": 360,
+  "scoring_helper_sha256": "9b8f14aea7a548d688175fe98f7dcf2ed992b9c65c82dbd7a45cf911eaabd8fd",
+  "source_hashes_verified": true,
+  "status": "VERIFIED"
+}
