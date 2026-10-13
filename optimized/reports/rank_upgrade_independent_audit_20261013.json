@@ -1,0 +1,23 @@
+{
+  "status": "VERIFIED",
+  "raw_ratings": 855598,
+  "catalog_items": 7541,
+  "training_users": 414,
+  "development_users": 180,
+  "test_users": 300,
+  "training_examples": 1242,
+  "raw_mapping_and_temporal_splits_verified": true,
+  "independent_quality_scores": 4500,
+  "independent_popular_rankings": 300,
+  "configurations_verified": 66,
+  "independent_itemcf_rankings": 300,
+  "all_training_checkpoints_verified": true,
+  "source_and_frozen_hashes_verified": true,
+  "user_mean_seed_aggregation_verified": true,
+  "api_requests": 0,
+  "independent_bootstrap_permutation_holm_verified": true,
+  "routes_verified_above_popular": [],
+  "auditor_sha256": "1d3f0ad58ab8f02938d1661ee28c39a4f323c5fb5706150ac5c79dba0094dca6",
+  "scoring_helper_sha256": "9b8f14aea7a548d688175fe98f7dcf2ed992b9c65c82dbd7a45cf911eaabd8fd",
+  "report_sha256": "ead188007d701f4539b01dd041ae28a46caf18ac2080ef3322f2086e9d85c509"
+}

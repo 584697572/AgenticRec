@@ -1,0 +1,27 @@
+{
+  "api_requests": 0,
+  "audit_first_attempt": {
+    "final_audit": "VERIFIED",
+    "fix_scope": "auditor only; frozen training code and predictions unchanged",
+    "reason": "Windows native path separators differ from auditor literal slash checkpoint key",
+    "status": "FAILED"
+  },
+  "audit_tests_passed": 6,
+  "component_and_control_tests_passed": 18,
+  "full_suite": {
+    "command": "python -m pytest tests -q --basetemp D:/AgenticRec/optimized/artifacts/test_runs/rank_upgrade_full_20261013",
+    "elapsed_seconds": 186.62,
+    "failed": 0,
+    "passed": 436,
+    "warnings": 4
+  },
+  "post_auditor_path_fix_tests": {
+    "command": "python -m pytest tests/test_rank_upgrade_audit.py -q --basetemp D:/AgenticRec/optimized/artifacts/test_runs/rank_upgrade_audit_postfix_20261013",
+    "elapsed_seconds": 2.72,
+    "failed": 0,
+    "passed": 6
+  },
+  "status": "VERIFIED",
+  "upstream_clean": true,
+  "upstream_commit": "0959ecb05b0794748426e73e6efc1b6b35ec433d"
+}
