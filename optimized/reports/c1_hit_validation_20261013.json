@@ -1,0 +1,848 @@
+{
+  "audit": {
+    "frozen_hashes_verified": true,
+    "http200_known_usage": 613,
+    "recomputed_turns": 568,
+    "offline_live_exact_ranking_agreements": 360
+  },
+  "balance_observations": 32,
+  "development": [
+    {
+      "configuration": {
+        "name": "rrf-0",
+        "weights": {
+          "cf": 1,
+          "content": 1,
+          "popularity": 1
+        }
+      },
+      "hit": 0.22666666666666666,
+      "mrr": 0.08524338624338623,
+      "n": 150,
+      "ndcg": 0.04485921329825166,
+      "recall": 0.02079143193789873
+    },
+    {
+      "configuration": {
+        "name": "rrf-1",
+        "weights": {
+          "cf": 1,
+          "content": 0,
+          "popularity": 0
+        }
+      },
+      "hit": 0.21333333333333335,
+      "mrr": 0.06804497354497355,
+      "n": 150,
+      "ndcg": 0.0426101696262744,
+      "recall": 0.02176946637637495
+    },
+    {
+      "configuration": {
+        "name": "rrf-2",
+        "weights": {
+          "cf": 1,
+          "content": 0.25,
+          "popularity": 0
+        }
+      },
+      "hit": 0.20666666666666667,
+      "mrr": 0.08471164021164021,
+      "n": 150,
+      "ndcg": 0.0439100120532448,
+      "recall": 0.016500820906806362
+    },
+    {
+      "configuration": {
+        "name": "rrf-3",
+        "weights": {
+          "cf": 1,
+          "content": 0.25,
+          "popularity": 0.1
+        }
+      },
+      "hit": 0.20666666666666667,
+      "mrr": 0.08466402116402116,
+      "n": 150,
+      "ndcg": 0.04420235131995608,
+      "recall": 0.01932301861303343
+    },
+    {
+      "configuration": {
+        "name": "rrf-4",
+        "weights": {
+          "cf": 1,
+          "content": 0.5,
+          "popularity": 0.1
+        }
+      },
+      "hit": 0.21333333333333335,
+      "mrr": 0.08823809523809527,
+      "n": 150,
+      "ndcg": 0.04450439105949618,
+      "recall": 0.020133259243535498
+    },
+    {
+      "configuration": {
+        "name": "rrf-5",
+        "weights": {
+          "cf": 1,
+          "content": 0,
+          "popularity": 0.1
+        }
+      },
+      "hit": 0.22,
+      "mrr": 0.07340476190476189,
+      "n": 150,
+      "ndcg": 0.04219704672970647,
+      "recall": 0.02105710037972605
+    },
+    {
+      "configuration": {
+        "name": "rrf-6",
+        "weights": {
+          "cf": 1,
+          "content": 0.5,
+          "popularity": 0.25
+        }
+      },
+      "hit": 0.24,
+      "mrr": 0.09033862433862434,
+      "n": 150,
+      "ndcg": 0.047117483373869985,
+      "recall": 0.02208019897480073
+    },
+    {
+      "configuration": {
+        "name": "rrf-7",
+        "weights": {
+          "cf": 1,
+          "content": 1,
+          "popularity": 0.25
+        }
+      },
+      "hit": 0.19333333333333333,
+      "mrr": 0.07711904761904761,
+      "n": 150,
+      "ndcg": 0.03984439005070173,
+      "recall": 0.016038393297568034
+    },
+    {
+      "configuration": {
+        "checkpoint": "models\\ease_10.pt",
+        "model": "ease",
+        "name": "ease-10-cf0",
+        "regularization": 10,
+        "weights": {
+          "cf": 0,
+          "content": 0.0,
+          "learned": 1.0,
+          "popularity": 0.0
+        }
+      },
+      "hit": 0.22,
+      "mrr": 0.07502380952380952,
+      "n": 150,
+      "ndcg": 0.03842487622304072,
+      "recall": 0.019228252496409505
+    },
+    {
+      "configuration": {
+        "checkpoint": "models\\ease_10.pt",
+        "model": "ease",
+        "name": "ease-10-cf0.25",
+        "regularization": 10,
+        "weights": {
+          "cf": 0.25,
+          "content": 0.0,
+          "learned": 1.0,
+          "popularity": 0.0
+        }
+      },
+      "hit": 0.21333333333333335,
+      "mrr": 0.08141534391534391,
+      "n": 150,
+      "ndcg": 0.03920793058113045,
+      "recall": 0.018223217426402528
+    },
+    {
+      "configuration": {
+        "checkpoint": "models\\ease_100.pt",
+        "model": "ease",
+        "name": "ease-100-cf0",
+        "regularization": 100,
+        "weights": {
+          "cf": 0,
+          "content": 0.0,
+          "learned": 1.0,
+          "popularity": 0.0
+        }
+      },
+      "hit": 0.2,
+      "mrr": 0.07084920634920634,
+      "n": 150,
+      "ndcg": 0.03865363348858019,
+      "recall": 0.02606790684150499
+    },
+    {
+      "configuration": {
+        "checkpoint": "models\\ease_100.pt",
+        "model": "ease",
+        "name": "ease-100-cf0.25",
+        "regularization": 100,
+        "weights": {
+          "cf": 0.25,
+          "content": 0.0,
+          "learned": 1.0,
+          "popularity": 0.0
+        }
+      },
+      "hit": 0.18,
+      "mrr": 0.06699735449735449,
+      "n": 150,
+      "ndcg": 0.034334454169617355,
+      "recall": 0.012417870559371923
+    },
+    {
+      "configuration": {
+        "checkpoint": "models\\ease_1000.pt",
+        "model": "ease",
+        "name": "ease-1000-cf0",
+        "regularization": 1000,
+        "weights": {
+          "cf": 0,
+          "content": 0.0,
+          "learned": 1.0,
+          "popularity": 0.0
+        }
+      },
+      "hit": 0.18666666666666668,
+      "mrr": 0.0739153439153439,
+      "n": 150,
+      "ndcg": 0.042818722656386525,
+      "recall": 0.02523125193631432
+    },
+    {
+      "configuration": {
+        "checkpoint": "models\\ease_1000.pt",
+        "model": "ease",
+        "name": "ease-1000-cf0.25",
+        "regularization": 1000,
+        "weights": {
+          "cf": 0.25,
+          "content": 0.0,
+          "learned": 1.0,
+          "popularity": 0.0
+        }
+      },
+      "hit": 0.17333333333333334,
+      "mrr": 0.08392328042328041,
+      "n": 150,
+      "ndcg": 0.04021842483204034,
+      "recall": 0.013440402263111703
+    },
+    {
+      "configuration": {
+        "checkpoint": "models\\short_history_ridge_10.pt",
+        "model": "short_history_ridge",
+        "name": "short_history_ridge-10-cf0",
+        "regularization": 10,
+        "weights": {
+          "cf": 0,
+          "content": 0.0,
+          "learned": 1.0,
+          "popularity": 0.0
+        }
+      },
+      "hit": 0.18666666666666668,
+      "mrr": 0.07192328042328042,
+      "n": 150,
+      "ndcg": 0.04070440347693316,
+      "recall": 0.016510581881156176
+    },
+    {
+      "configuration": {
+        "checkpoint": "models\\short_history_ridge_10.pt",
+        "model": "short_history_ridge",
+        "name": "short_history_ridge-10-cf0.25",
+        "regularization": 10,
+        "weights": {
+          "cf": 0.25,
+          "content": 0.0,
+          "learned": 1.0,
+          "popularity": 0.0
+        }
+      },
+      "hit": 0.21333333333333335,
+      "mrr": 0.09685185185185186,
+      "n": 150,
+      "ndcg": 0.049937342321726606,
+      "recall": 0.02578151056739584
+    },
+    {
+      "configuration": {
+        "checkpoint": "models\\short_history_ridge_100.pt",
+        "model": "short_history_ridge",
+        "name": "short_history_ridge-100-cf0",
+        "regularization": 100,
+        "weights": {
+          "cf": 0,
+          "content": 0.0,
+          "learned": 1.0,
+          "popularity": 0.0
+        }
+      },
+      "hit": 0.22,
+      "mrr": 0.09266666666666667,
+      "n": 150,
+      "ndcg": 0.05321828016163066,
+      "recall": 0.02002434438536385
+    },
+    {
+      "configuration": {
+        "checkpoint": "models\\short_history_ridge_100.pt",
+        "model": "short_history_ridge",
+        "name": "short_history_ridge-100-cf0.25",
+        "regularization": 100,
+        "weights": {
+          "cf": 0.25,
+          "content": 0.0,
+          "learned": 1.0,
+          "popularity": 0.0
+        }
+      },
+      "hit": 0.20666666666666667,
+      "mrr": 0.12496031746031747,
+      "n": 150,
+      "ndcg": 0.05798978536511225,
+      "recall": 0.020059064695302928
+    },
+    {
+      "configuration": {
+        "checkpoint": "models\\short_history_ridge_1000.pt",
+        "model": "short_history_ridge",
+        "name": "short_history_ridge-1000-cf0",
+        "regularization": 1000,
+        "weights": {
+          "cf": 0,
+          "content": 0.0,
+          "learned": 1.0,
+          "popularity": 0.0
+        }
+      },
+      "hit": 0.20666666666666667,
+      "mrr": 0.09129629629629629,
+      "n": 150,
+      "ndcg": 0.05270959423615654,
+      "recall": 0.016905410025059655
+    },
+    {
+      "configuration": {
+        "checkpoint": "models\\short_history_ridge_1000.pt",
+        "model": "short_history_ridge",
+        "name": "short_history_ridge-1000-cf0.25",
+        "regularization": 1000,
+        "weights": {
+          "cf": 0.25,
+          "content": 0.0,
+          "learned": 1.0,
+          "popularity": 0.0
+        }
+      },
+      "hit": 0.19333333333333333,
+      "mrr": 0.11102645502645501,
+      "n": 150,
+      "ndcg": 0.052945522645206404,
+      "recall": 0.013703641763136822
+    }
+  ],
+  "diagnosis": {
+    "api_requests": 0,
+    "baseline_exact_equivalence_users": 180,
+    "counts": {
+      "c1_hit10": 63,
+      "feasible_oracle_hit": 180,
+      "miss_has_relevant_in_union": 98,
+      "miss_no_relevant_in_union": 19,
+      "union100_oracle_hit": 161,
+      "users": 180
+    },
+    "routes": {
+      "cf": {
+        "hit10": 62,
+        "oracle_hit100": 147
+      },
+      "content": {
+        "hit10": 31,
+        "oracle_hit100": 101
+      },
+      "popularity": {
+        "hit10": 59,
+        "oracle_hit100": 149
+      }
+    },
+    "scope": "historical diagnostic only; not parameter selection"
+  },
+  "execution": {
+    "completed_system_tasks": 488,
+    "failure": null,
+    "protocol_sha256": "ab2470152156630966ec2d6d1f95ab486c224715bc3bbaf8f3ed5d934a26bddf",
+    "remote_requests": 613,
+    "status": "COMPLETE"
+  },
+  "live_quality": {
+    "C1": {
+      "history": {
+        "10": {
+          "hit": 0.31666666666666665,
+          "n": 60
+        },
+        "3": {
+          "hit": 0.38333333333333336,
+          "n": 60
+        },
+        "5": {
+          "hit": 0.38333333333333336,
+          "n": 60
+        }
+      },
+      "hit": 0.3611111111111111,
+      "mrr": 0.14964506172839503,
+      "n": 180,
+      "ndcg": 0.08041775155370223,
+      "recall": 0.024753011935156468
+    },
+    "candidate": {
+      "history": {
+        "10": {
+          "hit": 0.4,
+          "n": 60
+        },
+        "3": {
+          "hit": 0.4166666666666667,
+          "n": 60
+        },
+        "5": {
+          "hit": 0.38333333333333336,
+          "n": 60
+        }
+      },
+      "hit": 0.4,
+      "mrr": 0.15246252204585536,
+      "n": 180,
+      "ndcg": 0.08353385402175675,
+      "recall": 0.029605048651076542
+    },
+    "paired_candidate_minus_C1": {
+      "hit": {
+        "ci95": [
+          -0.005555555555555556,
+          0.08333333333333333
+        ],
+        "mean": 0.03888888888888889
+      },
+      "mrr": {
+        "ci95": [
+          -0.014264770723104059,
+          0.02151300705467372
+        ],
+        "mean": 0.002817460317460316
+      },
+      "ndcg": {
+        "ci95": [
+          -0.005241265340592357,
+          0.013287020886807728
+        ],
+        "mean": 0.0031161024680545005
+      },
+      "recall": {
+        "ci95": [
+          -0.0005756823847154151,
+          0.012188723024675645
+        ],
+        "mean": 0.004852036715920069
+      }
+    }
+  },
+  "live_systems": {
+    "C1": {
+      "errors": {
+        "": 10,
+        "Three semantic parses failed: Missing current-message evidence: year_min": 3,
+        "Three semantic parses failed: Numeric delta lacks supporting boundary": 5
+      },
+      "input_tokens": 203930,
+      "output_tokens": 55554,
+      "requests": 304,
+      "strict_n": 234,
+      "strict_passed": 226,
+      "strict_success": 0.9658119658119658,
+      "structural_refusal_passed": 10,
+      "turn_latency_p50": 1.3793072999978904,
+      "turn_latency_p95": 2.2407608049863454
+    },
+    "candidate": {
+      "errors": {
+        "": 10,
+        "Three semantic parses failed: Missing current-message evidence: year_min": 3,
+        "Three semantic parses failed: Numeric delta lacks supporting boundary": 7
+      },
+      "input_tokens": 207857,
+      "output_tokens": 57626,
+      "requests": 309,
+      "strict_n": 234,
+      "strict_passed": 224,
+      "strict_success": 0.9572649572649573,
+      "structural_refusal_passed": 10,
+      "turn_latency_p50": 1.4280383000004804,
+      "turn_latency_p95": 2.4976538250179128
+    }
+  },
+  "observed_balance_delta_cny": "1.15",
+  "offline_quality": {
+    "C1": {
+      "history": {
+        "10": {
+          "hit": 0.31666666666666665,
+          "n": 60
+        },
+        "3": {
+          "hit": 0.38333333333333336,
+          "n": 60
+        },
+        "5": {
+          "hit": 0.38333333333333336,
+          "n": 60
+        }
+      },
+      "hit": 0.3611111111111111,
+      "mrr": 0.14964506172839503,
+      "n": 180,
+      "ndcg": 0.08041775155370223,
+      "recall": 0.024753011935156468
+    },
+    "candidate": {
+      "history": {
+        "10": {
+          "hit": 0.4,
+          "n": 60
+        },
+        "3": {
+          "hit": 0.4166666666666667,
+          "n": 60
+        },
+        "5": {
+          "hit": 0.38333333333333336,
+          "n": 60
+        }
+      },
+      "hit": 0.4,
+      "mrr": 0.15246252204585536,
+      "n": 180,
+      "ndcg": 0.08353385402175675,
+      "recall": 0.029605048651076542
+    },
+    "paired_candidate_minus_C1": {
+      "hit": {
+        "ci95": [
+          -0.005555555555555556,
+          0.08333333333333333
+        ],
+        "mean": 0.03888888888888889
+      },
+      "mrr": {
+        "ci95": [
+          -0.014264770723104059,
+          0.02151300705467372
+        ],
+        "mean": 0.002817460317460316
+      },
+      "ndcg": {
+        "ci95": [
+          -0.005241265340592357,
+          0.013287020886807728
+        ],
+        "mean": 0.0031161024680545005
+      },
+      "recall": {
+        "ci95": [
+          -0.0005756823847154151,
+          0.012188723024675645
+        ],
+        "mean": 0.004852036715920069
+      }
+    }
+  },
+  "provider_invoice_cost_cny": null,
+  "selected": {
+    "name": "rrf-6",
+    "weights": {
+      "cf": 1,
+      "content": 0.5,
+      "popularity": 0.25
+    }
+  },
+  "strict_noninferiority_established": false,
+  "strict_paired": {
+    "ci95": [
+      -0.021367521367521368,
+      0.0
+    ],
+    "mean": -0.008547008547008548
+  },
+  "training": {
+    "models": [
+      {
+        "model": "ease",
+        "regularization": 10,
+        "statistics": {
+          "training_users": 5351,
+          "training_pairs": 462887,
+          "simulated_rows": 0
+        },
+        "statistics_seconds": 3.4803307999973185,
+        "solve_seconds": 3.4724761999968905,
+        "off_diagonal_relative_residual": 2.9090317535040006e-15
+      },
+      {
+        "model": "ease",
+        "regularization": 100,
+        "statistics": {
+          "training_users": 5351,
+          "training_pairs": 462887,
+          "simulated_rows": 0
+        },
+        "statistics_seconds": 3.4803307999973185,
+        "solve_seconds": 3.6327808999922127,
+        "off_diagonal_relative_residual": 3.894348960336001e-15
+      },
+      {
+        "model": "ease",
+        "regularization": 1000,
+        "statistics": {
+          "training_users": 5351,
+          "training_pairs": 462887,
+          "simulated_rows": 0
+        },
+        "statistics_seconds": 3.4803307999973185,
+        "solve_seconds": 3.5968086999782827,
+        "off_diagonal_relative_residual": 3.565909891392001e-15
+      },
+      {
+        "model": "short_history_ridge",
+        "regularization": 10,
+        "statistics": {
+          "training_users": 5089,
+          "training_pairs": 462887,
+          "simulated_rows": 15267,
+          "history_lengths": [
+            3,
+            5,
+            10
+          ],
+          "mask": "80% ordinal chronological prefix, remainder target, all inside train"
+        },
+        "statistics_seconds": 21.37818420000258,
+        "solve_seconds": 3.448281999997562,
+        "off_diagonal_relative_residual": 2.1165102767322132e-15
+      },
+      {
+        "model": "short_history_ridge",
+        "regularization": 100,
+        "statistics": {
+          "training_users": 5089,
+          "training_pairs": 462887,
+          "simulated_rows": 15267,
+          "history_lengths": [
+            3,
+            5,
+            10
+          ],
+          "mask": "80% ordinal chronological prefix, remainder target, all inside train"
+        },
+        "statistics_seconds": 21.37818420000258,
+        "solve_seconds": 3.940106599999126,
+        "off_diagonal_relative_residual": 2.721227498655703e-15
+      },
+      {
+        "model": "short_history_ridge",
+        "regularization": 1000,
+        "statistics": {
+          "training_users": 5089,
+          "training_pairs": 462887,
+          "simulated_rows": 15267,
+          "history_lengths": [
+            3,
+            5,
+            10
+          ],
+          "mask": "80% ordinal chronological prefix, remainder target, all inside train"
+        },
+        "statistics_seconds": 21.37818420000258,
+        "solve_seconds": 3.534531799989054,
+        "off_diagonal_relative_residual": 3.17476541509832e-15
+      }
+    ],
+    "checkpoint_bytes": 288883803
+  },
+  "independent_audit": {
+    "status": "VERIFIED",
+    "independent_feasible_turns": 548,
+    "refusal_turns": 20,
+    "distinct_paired_tasks": 244,
+    "quality_users_per_system": 180,
+    "http200_known_usage": 613,
+    "counts": {
+      "C1": {
+        "input_tokens": 203930,
+        "output_tokens": 55554,
+        "requests": 304,
+        "quality_users": 180,
+        "hit": 65.0,
+        "recall": 4.455542148328164,
+        "ndcg": 14.475195279666401,
+        "mrr": 26.936111111111106,
+        "main_tasks": 234,
+        "main_passed": 226,
+        "refusal_passed": 10
+      },
+      "candidate": {
+        "input_tokens": 207857,
+        "output_tokens": 57626,
+        "requests": 309,
+        "quality_users": 180,
+        "hit": 72.0,
+        "recall": 5.328908757193777,
+        "ndcg": 15.036093723916215,
+        "mrr": 27.443253968253966,
+        "main_tasks": 234,
+        "main_passed": 224,
+        "refusal_passed": 10
+      }
+    },
+    "failure_counts": {
+      "C1": {
+        "duplicate_items": 0,
+        "quantity_wrong_turns": 8,
+        "status_not_ok_turns": 8,
+        "unverified_extraction_turns": 8
+      },
+      "candidate": {
+        "duplicate_items": 0,
+        "quantity_wrong_turns": 10,
+        "status_not_ok_turns": 10,
+        "unverified_extraction_turns": 10
+      }
+    },
+    "scenarios": {
+      "C1": {
+        "history:3": {
+          "n": 60,
+          "passed": 60
+        },
+        "history:5": {
+          "n": 60,
+          "passed": 60
+        },
+        "history:10": {
+          "n": 60,
+          "passed": 60
+        },
+        "feedback:0": {
+          "n": 5,
+          "passed": 5
+        },
+        "feedback:1": {
+          "n": 5,
+          "passed": 2
+        },
+        "feedback:2": {
+          "n": 5,
+          "passed": 5
+        },
+        "feedback:3": {
+          "n": 5,
+          "passed": 5
+        },
+        "feedback:4": {
+          "n": 5,
+          "passed": 5
+        },
+        "feedback:5": {
+          "n": 5,
+          "passed": 0
+        },
+        "constraint:0": {
+          "n": 8,
+          "passed": 8
+        },
+        "constraint:1": {
+          "n": 8,
+          "passed": 8
+        },
+        "constraint:2": {
+          "n": 8,
+          "passed": 8
+        }
+      },
+      "candidate": {
+        "history:3": {
+          "n": 60,
+          "passed": 60
+        },
+        "history:5": {
+          "n": 60,
+          "passed": 60
+        },
+        "history:10": {
+          "n": 60,
+          "passed": 60
+        },
+        "feedback:0": {
+          "n": 5,
+          "passed": 5
+        },
+        "feedback:1": {
+          "n": 5,
+          "passed": 0
+        },
+        "feedback:2": {
+          "n": 5,
+          "passed": 5
+        },
+        "feedback:3": {
+          "n": 5,
+          "passed": 5
+        },
+        "feedback:4": {
+          "n": 5,
+          "passed": 5
+        },
+        "feedback:5": {
+          "n": 5,
+          "passed": 0
+        },
+        "constraint:0": {
+          "n": 8,
+          "passed": 8
+        },
+        "constraint:1": {
+          "n": 8,
+          "passed": 8
+        },
+        "constraint:2": {
+          "n": 8,
+          "passed": 8
+        }
+      }
+    },
+    "development_formal_users_disjoint": true,
+    "frozen_hashes_verified": true,
+    "protocol_sha256": "ab2470152156630966ec2d6d1f95ab486c224715bc3bbaf8f3ed5d934a26bddf",
+    "episodes_sha256": "653cffe83aa19332b627f5e8d4a375f392b2c3402fb6e215cc16e427137d8777",
+    "auditor_sha256": "8ebf5f0334d14e0648e89ea3bb5cd2e2a9eb797663a7707d4e5dc9f022c8ab7f",
+    "scoring_helper_sha256": "9b8f14aea7a548d688175fe98f7dcf2ed992b9c65c82dbd7a45cf911eaabd8fd",
+    "provider_calls_by_auditor": 0
+  },
+  "conclusion": "NO VERIFIED QUALITY GAIN; strict noninferiority NOT ESTABLISHED; defaults unchanged"
+}

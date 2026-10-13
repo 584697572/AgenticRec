@@ -1,0 +1,159 @@
+{
+  "status": "VERIFIED",
+  "independent_feasible_turns": 548,
+  "refusal_turns": 20,
+  "distinct_paired_tasks": 244,
+  "quality_users_per_system": 180,
+  "http200_known_usage": 613,
+  "counts": {
+    "C1": {
+      "input_tokens": 203930,
+      "output_tokens": 55554,
+      "requests": 304,
+      "quality_users": 180,
+      "hit": 65.0,
+      "recall": 4.455542148328164,
+      "ndcg": 14.475195279666401,
+      "mrr": 26.936111111111106,
+      "main_tasks": 234,
+      "main_passed": 226,
+      "refusal_passed": 10
+    },
+    "candidate": {
+      "input_tokens": 207857,
+      "output_tokens": 57626,
+      "requests": 309,
+      "quality_users": 180,
+      "hit": 72.0,
+      "recall": 5.328908757193777,
+      "ndcg": 15.036093723916215,
+      "mrr": 27.443253968253966,
+      "main_tasks": 234,
+      "main_passed": 224,
+      "refusal_passed": 10
+    }
+  },
+  "failure_counts": {
+    "C1": {
+      "duplicate_items": 0,
+      "quantity_wrong_turns": 8,
+      "status_not_ok_turns": 8,
+      "unverified_extraction_turns": 8
+    },
+    "candidate": {
+      "duplicate_items": 0,
+      "quantity_wrong_turns": 10,
+      "status_not_ok_turns": 10,
+      "unverified_extraction_turns": 10
+    }
+  },
+  "scenarios": {
+    "C1": {
+      "history:3": {
+        "n": 60,
+        "passed": 60
+      },
+      "history:5": {
+        "n": 60,
+        "passed": 60
+      },
+      "history:10": {
+        "n": 60,
+        "passed": 60
+      },
+      "feedback:0": {
+        "n": 5,
+        "passed": 5
+      },
+      "feedback:1": {
+        "n": 5,
+        "passed": 2
+      },
+      "feedback:2": {
+        "n": 5,
+        "passed": 5
+      },
+      "feedback:3": {
+        "n": 5,
+        "passed": 5
+      },
+      "feedback:4": {
+        "n": 5,
+        "passed": 5
+      },
+      "feedback:5": {
+        "n": 5,
+        "passed": 0
+      },
+      "constraint:0": {
+        "n": 8,
+        "passed": 8
+      },
+      "constraint:1": {
+        "n": 8,
+        "passed": 8
+      },
+      "constraint:2": {
+        "n": 8,
+        "passed": 8
+      }
+    },
+    "candidate": {
+      "history:3": {
+        "n": 60,
+        "passed": 60
+      },
+      "history:5": {
+        "n": 60,
+        "passed": 60
+      },
+      "history:10": {
+        "n": 60,
+        "passed": 60
+      },
+      "feedback:0": {
+        "n": 5,
+        "passed": 5
+      },
+      "feedback:1": {
+        "n": 5,
+        "passed": 0
+      },
+      "feedback:2": {
+        "n": 5,
+        "passed": 5
+      },
+      "feedback:3": {
+        "n": 5,
+        "passed": 5
+      },
+      "feedback:4": {
+        "n": 5,
+        "passed": 5
+      },
+      "feedback:5": {
+        "n": 5,
+        "passed": 0
+      },
+      "constraint:0": {
+        "n": 8,
+        "passed": 8
+      },
+      "constraint:1": {
+        "n": 8,
+        "passed": 8
+      },
+      "constraint:2": {
+        "n": 8,
+        "passed": 8
+      }
+    }
+  },
+  "development_formal_users_disjoint": true,
+  "frozen_hashes_verified": true,
+  "protocol_sha256": "ab2470152156630966ec2d6d1f95ab486c224715bc3bbaf8f3ed5d934a26bddf",
+  "episodes_sha256": "653cffe83aa19332b627f5e8d4a375f392b2c3402fb6e215cc16e427137d8777",
+  "auditor_sha256": "8ebf5f0334d14e0648e89ea3bb5cd2e2a9eb797663a7707d4e5dc9f022c8ab7f",
+  "scoring_helper_sha256": "9b8f14aea7a548d688175fe98f7dcf2ed992b9c65c82dbd7a45cf911eaabd8fd",
+  "provider_calls_by_auditor": 0
+}
