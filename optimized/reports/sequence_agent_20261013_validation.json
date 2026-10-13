@@ -1,0 +1,372 @@
+{
+  "comparisons": {
+    "sequence_minus_itemcf": {
+      "hit_holm_p": 0.9404059594040596,
+      "hit_permutation_p": 0.3134686531346865,
+      "quality": {
+        "hit": {
+          "ci95": [
+            -0.125,
+            0.025
+          ],
+          "mean": -0.05
+        },
+        "mrr": {
+          "ci95": [
+            -0.05769874338624338,
+            0.03941493055555555
+          ],
+          "mean": -0.008819444444444444
+        },
+        "ndcg": {
+          "ci95": [
+            -0.03797496050939289,
+            0.003357331680227129
+          ],
+          "mean": -0.016457471178047346
+        },
+        "recall": {
+          "ci95": [
+            -0.023043198359007172,
+            -0.00012045579023508737
+          ],
+          "mean": -0.010928078830494795
+        }
+      },
+      "quality_paired_users": 120
+    },
+    "sequence_minus_mixed": {
+      "hit_holm_p": 0.9404059594040596,
+      "hit_permutation_p": 0.34926507349265073,
+      "quality": {
+        "hit": {
+          "ci95": [
+            -0.13333333333333333,
+            0.03333333333333333
+          ],
+          "mean": -0.05
+        },
+        "mrr": {
+          "ci95": [
+            -0.1041746031746032,
+            0.013061590608465519
+          ],
+          "mean": -0.045327380952380945
+        },
+        "ndcg": {
+          "ci95": [
+            -0.04936649517944913,
+            -0.0023875957307815084
+          ],
+          "mean": -0.02541763358131758
+        },
+        "recall": {
+          "ci95": [
+            -0.028808348184642854,
+            -0.003349548563787061
+          ],
+          "mean": -0.015669470359854124
+        }
+      },
+      "quality_paired_users": 120
+    },
+    "sequence_minus_popular": {
+      "hit_holm_p": 0.9404059594040596,
+      "hit_permutation_p": 0.8453154684531546,
+      "quality": {
+        "hit": {
+          "ci95": [
+            -0.06666666666666667,
+            0.1
+          ],
+          "mean": 0.016666666666666666
+        },
+        "mrr": {
+          "ci95": [
+            -0.0743655753968254,
+            0.0409583333333333
+          ],
+          "mean": -0.015324074074074075
+        },
+        "ndcg": {
+          "ci95": [
+            -0.0509640667944976,
+            0.00793996300139755
+          ],
+          "mean": -0.019905496578165715
+        },
+        "recall": {
+          "ci95": [
+            -0.043101243752178615,
+            0.0015785629283598314
+          ],
+          "mean": -0.017579280777673227
+        }
+      },
+      "quality_paired_users": 120
+    }
+  },
+  "default_changed": false,
+  "formal_requests": 968,
+  "formal_tasks": 728,
+  "formal_turns": 888,
+  "frozen_sha256": "0cee6cfd066938166984ff3f517f116faab9edf8652b272f89a41e1ee98621e6",
+  "new_download_bytes": 0,
+  "new_training": false,
+  "observed_formal_balance_delta_cny": "0.86",
+  "primary_sequence_seed": 42,
+  "provider_invoice_cost_cny": null,
+  "scope": "four ranking hooks inside same actual C1 text/state runtime on new HetRec users",
+  "status": "EVALUATED",
+  "strict_noninferiority_established": true,
+  "strict_sequence_minus_mixed": {
+    "ci95": [
+      -0.017241379310344827,
+      0.0
+    ],
+    "mean": -0.005747126436781609
+  },
+  "systems": {
+    "itemcf": {
+      "categories": {
+        "constraints": {
+          "n": 24,
+          "passed": 24
+        },
+        "feedback": {
+          "n": 30,
+          "passed": 27
+        },
+        "session_quality": {
+          "n": 120,
+          "passed": 119
+        },
+        "unanswerable": {
+          "n": 8,
+          "passed": 8
+        }
+      },
+      "correct_refusals": 8,
+      "errors": {
+        "Three semantic parses failed: EXPLICIT_WATCHED_ITEMS_OMITTED,EXPLICIT_LIKED_ITEMS_OMITTED": 1,
+        "Three semantic parses failed: Numeric delta lacks supporting boundary": 3
+      },
+      "explained_refusals": 0,
+      "history": {
+        "10": {
+          "hits": 12,
+          "n": 40
+        },
+        "3": {
+          "hits": 16,
+          "n": 40
+        },
+        "5": {
+          "hits": 15,
+          "n": 40
+        }
+      },
+      "input_tokens": 163376,
+      "output_tokens": 39082,
+      "quality": {
+        "hit": 0.35833333333333334,
+        "mrr": 0.1373346560846561,
+        "ndcg": 0.07732880428422016,
+        "recall": 0.027499915172850938
+      },
+      "quality_hits": 43,
+      "quality_n": 120,
+      "ranking_latency_p50": 0.009935199996107258,
+      "ranking_latency_p95": 0.048219374989274956,
+      "requests": 240,
+      "semantic_repair_requests": 18,
+      "strict_n": 174,
+      "strict_passed": 170,
+      "strict_success": 0.9770114942528736,
+      "tool_calls": 436,
+      "turn_latency_p50": 1.3861792000097921,
+      "turn_latency_p95": 2.0498980499934985
+    },
+    "mixed": {
+      "categories": {
+        "constraints": {
+          "n": 24,
+          "passed": 24
+        },
+        "feedback": {
+          "n": 30,
+          "passed": 26
+        },
+        "session_quality": {
+          "n": 120,
+          "passed": 119
+        },
+        "unanswerable": {
+          "n": 8,
+          "passed": 8
+        }
+      },
+      "correct_refusals": 8,
+      "errors": {
+        "Three semantic parses failed: EXPLICIT_WATCHED_ITEMS_OMITTED,EXPLICIT_LIKED_ITEMS_OMITTED": 1,
+        "Three semantic parses failed: Numeric delta lacks supporting boundary": 4
+      },
+      "explained_refusals": 0,
+      "history": {
+        "10": {
+          "hits": 12,
+          "n": 40
+        },
+        "3": {
+          "hits": 16,
+          "n": 40
+        },
+        "5": {
+          "hits": 15,
+          "n": 40
+        }
+      },
+      "input_tokens": 163146,
+      "output_tokens": 39768,
+      "quality": {
+        "hit": 0.35833333333333334,
+        "mrr": 0.17384259259259258,
+        "ndcg": 0.08628896668749039,
+        "recall": 0.03224130670221026
+      },
+      "quality_hits": 43,
+      "quality_n": 120,
+      "ranking_latency_p50": 0.07527380000101402,
+      "ranking_latency_p95": 0.16086474002222523,
+      "requests": 241,
+      "semantic_repair_requests": 19,
+      "strict_n": 174,
+      "strict_passed": 169,
+      "strict_success": 0.9712643678160919,
+      "tool_calls": 434,
+      "turn_latency_p50": 1.465670699995826,
+      "turn_latency_p95": 2.2201218849935676
+    },
+    "popular": {
+      "categories": {
+        "constraints": {
+          "n": 24,
+          "passed": 24
+        },
+        "feedback": {
+          "n": 30,
+          "passed": 26
+        },
+        "session_quality": {
+          "n": 120,
+          "passed": 119
+        },
+        "unanswerable": {
+          "n": 8,
+          "passed": 8
+        }
+      },
+      "correct_refusals": 8,
+      "errors": {
+        "Three semantic parses failed: EXPLICIT_WATCHED_ITEMS_OMITTED,EXPLICIT_LIKED_ITEMS_OMITTED": 1,
+        "Three semantic parses failed: Numeric delta lacks supporting boundary": 4
+      },
+      "explained_refusals": 0,
+      "history": {
+        "10": {
+          "hits": 10,
+          "n": 40
+        },
+        "3": {
+          "hits": 13,
+          "n": 40
+        },
+        "5": {
+          "hits": 12,
+          "n": 40
+        }
+      },
+      "input_tokens": 164625,
+      "output_tokens": 39555,
+      "quality": {
+        "hit": 0.2916666666666667,
+        "mrr": 0.14383928571428573,
+        "ndcg": 0.08077682968433852,
+        "recall": 0.03415111712002935
+      },
+      "quality_hits": 35,
+      "quality_n": 120,
+      "ranking_latency_p50": 0.00869409998995252,
+      "ranking_latency_p95": 0.0930153599998448,
+      "requests": 242,
+      "semantic_repair_requests": 20,
+      "strict_n": 174,
+      "strict_passed": 169,
+      "strict_success": 0.9712643678160919,
+      "tool_calls": 434,
+      "turn_latency_p50": 1.3851921500172466,
+      "turn_latency_p95": 2.5009238950107826
+    },
+    "sequence": {
+      "categories": {
+        "constraints": {
+          "n": 24,
+          "passed": 24
+        },
+        "feedback": {
+          "n": 30,
+          "passed": 25
+        },
+        "session_quality": {
+          "n": 120,
+          "passed": 119
+        },
+        "unanswerable": {
+          "n": 8,
+          "passed": 8
+        }
+      },
+      "correct_refusals": 8,
+      "errors": {
+        "Three semantic parses failed: EXPLICIT_WATCHED_ITEMS_OMITTED,EXPLICIT_LIKED_ITEMS_OMITTED": 1,
+        "Three semantic parses failed: Numeric delta lacks supporting boundary": 5
+      },
+      "explained_refusals": 0,
+      "history": {
+        "10": {
+          "hits": 10,
+          "n": 40
+        },
+        "3": {
+          "hits": 14,
+          "n": 40
+        },
+        "5": {
+          "hits": 13,
+          "n": 40
+        }
+      },
+      "input_tokens": 168475,
+      "output_tokens": 40369,
+      "quality": {
+        "hit": 0.30833333333333335,
+        "mrr": 0.12851521164021162,
+        "ndcg": 0.060871333106172806,
+        "recall": 0.016571836342356133
+      },
+      "quality_hits": 37,
+      "quality_n": 120,
+      "ranking_latency_p50": 0.010914049998973496,
+      "ranking_latency_p95": 0.08777427500899648,
+      "requests": 245,
+      "semantic_repair_requests": 23,
+      "strict_n": 174,
+      "strict_passed": 168,
+      "strict_success": 0.9655172413793104,
+      "tool_calls": 432,
+      "turn_latency_p50": 1.3591631499875803,
+      "turn_latency_p95": 2.428511875010735
+    }
+  },
+  "verified_quality_gain_over_mixed": false
+}

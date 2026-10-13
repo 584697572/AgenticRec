@@ -1,0 +1,18 @@
+{
+  "status": "VERIFIED",
+  "phase": "calibration",
+  "system_tasks": 48,
+  "turns": 80,
+  "http200_known_usage": 93,
+  "actual_ranking_replays": 78,
+  "preserved_parse_errors": 2,
+  "strict_passed": {
+    "sequence": 11,
+    "mixed": 12,
+    "itemcf": 12,
+    "popular": 11
+  },
+  "no_failed_case_replay": true,
+  "api_requests_added_by_audit": 0,
+  "auditor_sha256": "4f84157e2a92f5fe37d8fe60adc9720853af7b813144bd5cd53fdcdb561e41f0"
+}

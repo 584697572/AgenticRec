@@ -1,0 +1,89 @@
+{
+  "status": "VERIFIED",
+  "unused_eligible_users": 164,
+  "formal_unique_users": 150,
+  "calibration_unique_users": 9,
+  "formal_quality_users": 120,
+  "source_identity_and_temporal_cohort_verified": true,
+  "system_tasks": 728,
+  "turns": 888,
+  "http200_known_usage": 968,
+  "actual_ranking_replays": 868,
+  "preserved_parse_errors": 20,
+  "frozen_hashes_verified": true,
+  "offline_independent_scores": 720,
+  "offline_quality": {
+    "sequence:42": {
+      "n": 120,
+      "hits": 37,
+      "metrics": {
+        "hit": 0.30833333333333335,
+        "recall": 0.016571836342356133,
+        "ndcg": 0.060871333106172806,
+        "mrr": 0.12851521164021162
+      }
+    },
+    "sequence:7": {
+      "n": 120,
+      "hits": 41,
+      "metrics": {
+        "hit": 0.3416666666666667,
+        "recall": 0.022191631369734285,
+        "ndcg": 0.07090034332197247,
+        "mrr": 0.1394775132275132
+      }
+    },
+    "sequence:2026": {
+      "n": 120,
+      "hits": 43,
+      "metrics": {
+        "hit": 0.35833333333333334,
+        "recall": 0.02691008581614435,
+        "ndcg": 0.06863662281227495,
+        "mrr": 0.14091931216931214
+      }
+    },
+    "mixed:None": {
+      "n": 120,
+      "hits": 43,
+      "metrics": {
+        "hit": 0.35833333333333334,
+        "recall": 0.03224130670221026,
+        "ndcg": 0.08628896668749039,
+        "mrr": 0.17384259259259258
+      }
+    },
+    "itemcf:None": {
+      "n": 120,
+      "hits": 43,
+      "metrics": {
+        "hit": 0.35833333333333334,
+        "recall": 0.027499915172850938,
+        "ndcg": 0.07732880428422016,
+        "mrr": 0.1373346560846561
+      }
+    },
+    "popular:None": {
+      "n": 120,
+      "hits": 35,
+      "metrics": {
+        "hit": 0.2916666666666667,
+        "recall": 0.03415111712002935,
+        "ndcg": 0.08077682968433852,
+        "mrr": 0.14383928571428573
+      }
+    }
+  },
+  "live_quality_matches_direct_ranking": {
+    "sequence": 119,
+    "mixed": 119,
+    "itemcf": 119,
+    "popular": 119
+  },
+  "independent_metrics_and_statistics_verified": true,
+  "provider_usage_reconciled": true,
+  "auditor_sha256": "43a6c3bb4de8054dc64066b9123a07c8461e45392a17db30108eb1dc75fa0196",
+  "scoring_helper_sha256": "9b8f14aea7a548d688175fe98f7dcf2ed992b9c65c82dbd7a45cf911eaabd8fd",
+  "report_sha256": "6811ff4093f204431d72c1ffc32c133d782256968915b15176c6116a72c23beb",
+  "api_requests_added_by_audit": 0
+}

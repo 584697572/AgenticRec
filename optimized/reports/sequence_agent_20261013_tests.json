@@ -1,0 +1,50 @@
+{
+  "status": "VERIFIED",
+  "component_tests": {
+    "passed": 22,
+    "failed": 0,
+    "elapsed_seconds": 3.36
+  },
+  "full_suite": {
+    "passed": 443,
+    "failed": 0,
+    "warnings": 4,
+    "elapsed_seconds": 168.82,
+    "command": "python -m pytest tests -q --basetemp D:/AgenticRec/optimized/artifacts/test_runs/sequence_agent_full_20261013"
+  },
+  "additional_auditor_tests": {
+    "passed": 9,
+    "failed": 0,
+    "elapsed_seconds": 3.94,
+    "command": "python -m pytest tests/test_sequence_agent_audit.py -q --basetemp D:/AgenticRec/optimized/artifacts/test_runs/sequence_agent_audit_final_20261013"
+  },
+  "ranking_regression": {
+    "api_requests": 0,
+    "labels_used": false,
+    "status": "VERIFIED",
+    "unchanged_previous_rankings": {
+      "itemcf": 300,
+      "mixed": 300,
+      "popular": 300,
+      "sequence": 300
+    }
+  },
+  "calibration_audit": {
+    "status": "VERIFIED",
+    "phase": "calibration",
+    "system_tasks": 48,
+    "turns": 80,
+    "http200_known_usage": 93,
+    "actual_ranking_replays": 78,
+    "preserved_parse_errors": 2,
+    "strict_passed": {
+      "sequence": 11,
+      "mixed": 12,
+      "itemcf": 12,
+      "popular": 11
+    },
+    "no_failed_case_replay": true,
+    "api_requests_added_by_audit": 0,
+    "auditor_sha256": "4f84157e2a92f5fe37d8fe60adc9720853af7b813144bd5cd53fdcdb561e41f0"
+  }
+}
