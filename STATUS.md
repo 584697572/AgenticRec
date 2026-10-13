@@ -1,5 +1,9 @@
 # 当前项目状态（2026-10-13）
 
+## 短序列接入实际Agent：IN PROGRESS / NOT EVALUATED
+
+用户授权开始真实系统同场验证。沿用冻结epoch10/alpha.5、seed42短序列，与现有混排、标准ItemCF、热门四钩子比较；共用实际C1文本解析、证据验证、状态与硬条件。剩余164位完全未参与旧训练监督/开发/最终评价的合格用户；固定9校准用户、150正式用户，正式120单轮质量＋30反馈＋24条件＋8拒绝，182题/版、222轮/版。协议 `optimized/reports/sequence_agent_protocol_20261013.md` 已写入；新数据下载/训练0，默认不替换。22项相关测试通过，Key存在且余额可用，真实批次仍NOT EVALUATED；先300旧输出等价检查、校准、冻结再正式。
+
 ## 四条排序路线新数据验证：DONE / VERIFIED，NO VERIFIED GAIN
 
 用户授权依次验证学习排序、改进ItemCF、短序列、LightGCN匿名适配。新协议 `optimized/reports/rank_upgrade_protocol_20261013.md` 固定66个开发配置、三个seed、统一训练/开发/最终时间边界。官方HetRec原zip地址实际为256字节说明，查官方目录后下载有效v2，18856822字节、SHA与ZIP CRC通过；许可为非商业研究，数据不分发。没有使用可变latest-small资源，原1M及180人不再用于调参。
