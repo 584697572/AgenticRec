@@ -1,0 +1,1267 @@
+{
+  "api_requests": 0,
+  "curves": [
+    {
+      "epoch": 1,
+      "loss": 0.30531788862348647,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 2,
+      "loss": 0.2441573987457162,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 3,
+      "loss": 0.21307622067833654,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 4,
+      "loss": 0.20424653772641052,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 5,
+      "loss": 0.2025569284472953,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 6,
+      "loss": 0.20190455154533835,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 7,
+      "loss": 0.20225254298372056,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 8,
+      "loss": 0.2017070589597659,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 9,
+      "loss": 0.20083532257139894,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 10,
+      "loss": 0.20097953344938885,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 11,
+      "loss": 0.200335569914375,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 12,
+      "loss": 0.20051691993745246,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 13,
+      "loss": 0.20023410097468167,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 14,
+      "loss": 0.2002461471065305,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 15,
+      "loss": 0.19936053627569647,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 16,
+      "loss": 0.19911039805459657,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 17,
+      "loss": 0.19886411666083015,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 18,
+      "loss": 0.19904830929416437,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 19,
+      "loss": 0.19887114537974374,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 20,
+      "loss": 0.1989477325685578,
+      "queries": 770,
+      "route": "linear_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 1,
+      "loss": 0.29056099420747333,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 2,
+      "loss": 0.22177788510230553,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 3,
+      "loss": 0.2076758375177756,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 4,
+      "loss": 0.2047073068778617,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 5,
+      "loss": 0.20297719900115352,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 6,
+      "loss": 0.20222370339880066,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 7,
+      "loss": 0.20139184081622408,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 8,
+      "loss": 0.20066442592265346,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 9,
+      "loss": 0.20133133419665866,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 10,
+      "loss": 0.20101956453453934,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 11,
+      "loss": 0.19910529094253246,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 12,
+      "loss": 0.19970708369336473,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 13,
+      "loss": 0.19983010484166458,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 14,
+      "loss": 0.1992205214466223,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 15,
+      "loss": 0.19813940053893825,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 16,
+      "loss": 0.20002957273316707,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 17,
+      "loss": 0.19729107464198561,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 18,
+      "loss": 0.197542571315953,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 19,
+      "loss": 0.19859954484676898,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 20,
+      "loss": 0.1982384671789718,
+      "queries": 770,
+      "route": "mlp_boundary",
+      "seed": 7
+    },
+    {
+      "epoch": 1,
+      "loss": 3.6540009497857024,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 2,
+      "loss": 3.607690971866589,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 3,
+      "loss": 3.576720312044592,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 4,
+      "loss": 3.560361941724753,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 5,
+      "loss": 3.548683848028278,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 6,
+      "loss": 3.537490202513576,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 7,
+      "loss": 3.5353662862337805,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 8,
+      "loss": 3.526318934623034,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 9,
+      "loss": 3.5255224080397967,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 10,
+      "loss": 3.51883910132844,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 11,
+      "loss": 3.5074993435920563,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 12,
+      "loss": 3.5120504744730443,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 13,
+      "loss": 3.5016948075829397,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 14,
+      "loss": 3.501947805135571,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 15,
+      "loss": 3.4998147691332107,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 16,
+      "loss": 3.496882496369846,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 17,
+      "loss": 3.495657384549881,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 18,
+      "loss": 3.485361111850075,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 19,
+      "loss": 3.4865989181529495,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 20,
+      "loss": 3.4895898966214522,
+      "queries": 770,
+      "route": "mlp_mass",
+      "seed": 7
+    },
+    {
+      "epoch": 1,
+      "loss": 0.2933740770501672,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 2,
+      "loss": 0.2358457232516639,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 3,
+      "loss": 0.20757323663780283,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 4,
+      "loss": 0.20414840422696512,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 5,
+      "loss": 0.20256413776990131,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 6,
+      "loss": 0.20216701729403116,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 7,
+      "loss": 0.20180935342549217,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 8,
+      "loss": 0.2011033362909563,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 9,
+      "loss": 0.20162151057148117,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 10,
+      "loss": 0.2001936784559962,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 11,
+      "loss": 0.1996979165350044,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 12,
+      "loss": 0.19925959421759523,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 13,
+      "loss": 0.20067625549957055,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 14,
+      "loss": 0.19847596155972427,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 15,
+      "loss": 0.1984181459132678,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 16,
+      "loss": 0.19820279950160613,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 17,
+      "loss": 0.1977726871651558,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 18,
+      "loss": 0.19722337571394422,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 19,
+      "loss": 0.19659355812218823,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 20,
+      "loss": 0.1969072425900015,
+      "queries": 772,
+      "route": "linear_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 1,
+      "loss": 0.2886280263222542,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 2,
+      "loss": 0.2203619900633344,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 3,
+      "loss": 0.20842676308280716,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 4,
+      "loss": 0.2040027372949926,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 5,
+      "loss": 0.20427960474978135,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 6,
+      "loss": 0.20134454027992058,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 7,
+      "loss": 0.20100626138621328,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 8,
+      "loss": 0.20030151221123607,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 9,
+      "loss": 0.19926468212427748,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 10,
+      "loss": 0.20167789296281563,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 11,
+      "loss": 0.19965884079162113,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 12,
+      "loss": 0.19818773093987593,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 13,
+      "loss": 0.19838523965867955,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 14,
+      "loss": 0.1989902467867442,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 15,
+      "loss": 0.1975041967027282,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 16,
+      "loss": 0.19733219976607022,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 17,
+      "loss": 0.1976510977511975,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 18,
+      "loss": 0.19945383763172306,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 19,
+      "loss": 0.19751780689139362,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 20,
+      "loss": 0.19732986054180424,
+      "queries": 772,
+      "route": "mlp_boundary",
+      "seed": 42
+    },
+    {
+      "epoch": 1,
+      "loss": 3.5887889304046485,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 2,
+      "loss": 3.5474074573951433,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 3,
+      "loss": 3.5180304341648845,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 4,
+      "loss": 3.497433749881881,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 5,
+      "loss": 3.4880823652626574,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 6,
+      "loss": 3.47831179749323,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 7,
+      "loss": 3.4763897151150536,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 8,
+      "loss": 3.4642733586616457,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 9,
+      "loss": 3.4639285168489824,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 10,
+      "loss": 3.465451314253399,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 11,
+      "loss": 3.458487838496422,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 12,
+      "loss": 3.452651366638031,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 13,
+      "loss": 3.4520028872005493,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 14,
+      "loss": 3.4466362617006205,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 15,
+      "loss": 3.444941616441151,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 16,
+      "loss": 3.4468105419154553,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 17,
+      "loss": 3.439326082775614,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 18,
+      "loss": 3.443252242777659,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 19,
+      "loss": 3.4315344914061336,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 20,
+      "loss": 3.4318128785478965,
+      "queries": 772,
+      "route": "mlp_mass",
+      "seed": 42
+    },
+    {
+      "epoch": 1,
+      "loss": 0.29201089605713193,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 2,
+      "loss": 0.2383329684148876,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 3,
+      "loss": 0.2059768147538445,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 4,
+      "loss": 0.2014947569931632,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 5,
+      "loss": 0.20031041660268764,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 6,
+      "loss": 0.19924116007076223,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 7,
+      "loss": 0.19908134441555564,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 8,
+      "loss": 0.1985591858692732,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 9,
+      "loss": 0.1982590703261932,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 10,
+      "loss": 0.19811159706783726,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 11,
+      "loss": 0.19773219375631645,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 12,
+      "loss": 0.19763250002305074,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 13,
+      "loss": 0.1973182267129493,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 14,
+      "loss": 0.19682817339198422,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 15,
+      "loss": 0.19667208660592198,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 16,
+      "loss": 0.19633187404985328,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 17,
+      "loss": 0.19559783795188104,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 18,
+      "loss": 0.1955015192362391,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 19,
+      "loss": 0.1951202787914349,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 20,
+      "loss": 0.1945970076408905,
+      "queries": 760,
+      "route": "linear_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 1,
+      "loss": 0.2855889282427244,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 2,
+      "loss": 0.2130678464821104,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 3,
+      "loss": 0.20537003147541882,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 4,
+      "loss": 0.2009545424726426,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 5,
+      "loss": 0.20089282310443823,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 6,
+      "loss": 0.20029935016535838,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 7,
+      "loss": 0.19868035192734732,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 8,
+      "loss": 0.19829285230408375,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 9,
+      "loss": 0.19902104573860205,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 10,
+      "loss": 0.19755334031951688,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 11,
+      "loss": 0.1967973145789888,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 12,
+      "loss": 0.19588779076954613,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 13,
+      "loss": 0.19794574433665907,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 14,
+      "loss": 0.19763550582118322,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 15,
+      "loss": 0.19468105263634408,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 16,
+      "loss": 0.19637981405805707,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 17,
+      "loss": 0.19531696669756948,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 18,
+      "loss": 0.1957414725841958,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 19,
+      "loss": 0.1961827917816699,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 20,
+      "loss": 0.1968069777752213,
+      "queries": 760,
+      "route": "mlp_boundary",
+      "seed": 2026
+    },
+    {
+      "epoch": 1,
+      "loss": 3.6070262512300486,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 2,
+      "loss": 3.56205546561325,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 3,
+      "loss": 3.522620794195081,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 4,
+      "loss": 3.50301865695708,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 5,
+      "loss": 3.4916404967845414,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 6,
+      "loss": 3.4863129828323802,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 7,
+      "loss": 3.4757383537886466,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 8,
+      "loss": 3.4709240083872612,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 9,
+      "loss": 3.4635135944381545,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 10,
+      "loss": 3.46280140299835,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 11,
+      "loss": 3.456549067225417,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 12,
+      "loss": 3.4567516134590854,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 13,
+      "loss": 3.45525815922772,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 14,
+      "loss": 3.4548894905775547,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 15,
+      "loss": 3.44675303293494,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 16,
+      "loss": 3.4465702901196513,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 17,
+      "loss": 3.447582834871854,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 18,
+      "loss": 3.4407132989338094,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 19,
+      "loss": 3.4418675150971128,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    },
+    {
+      "epoch": 20,
+      "loss": 3.437544757902768,
+      "queries": 760,
+      "route": "mlp_mass",
+      "seed": 2026
+    }
+  ],
+  "elapsed_seconds": 9.85230580001371,
+  "status": "TRAINED"
+}

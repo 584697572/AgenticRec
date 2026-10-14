@@ -1,0 +1,11 @@
+{
+  "status": "VERIFIED",
+  "independent_ranking_formula_predictions_replayed": 10710,
+  "real_training_groups_loss_formula_verified": 2302,
+  "producer_inference_helpers_used": false,
+  "bounded_residual_verified": true,
+  "api_requests": 0,
+  "report_sha256": "cf9a705c0cd91a0879aeaa66774e681920fcd22dfdb20fb90b539323828c2ba6",
+  "auditor_sha256": "8e984cd5a5085d857b2027d0b87baa6ee6da7c3b436888e431608109736f3c81",
+  "predictions_sha256": "3d117080d98e30aacec348ae8e2231b40517123490601d934a3ee6358d4f1920"
+}

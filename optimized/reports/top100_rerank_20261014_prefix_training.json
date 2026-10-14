@@ -1,0 +1,368 @@
+{
+  "api_requests": 0,
+  "curves": [
+    {
+      "epoch": 1,
+      "loss": 7.390791796977476,
+      "seed": 7,
+      "snapshot": 0
+    },
+    {
+      "epoch": 2,
+      "loss": 7.200857002573933,
+      "seed": 7,
+      "snapshot": 0
+    },
+    {
+      "epoch": 3,
+      "loss": 7.010897230141711,
+      "seed": 7,
+      "snapshot": 0
+    },
+    {
+      "epoch": 4,
+      "loss": 6.492472696417296,
+      "seed": 7,
+      "snapshot": 0
+    },
+    {
+      "epoch": 5,
+      "loss": 5.961354268103409,
+      "seed": 7,
+      "snapshot": 0
+    },
+    {
+      "epoch": 6,
+      "loss": 5.564755372669129,
+      "seed": 7,
+      "snapshot": 0
+    },
+    {
+      "epoch": 7,
+      "loss": 5.305133690181403,
+      "seed": 7,
+      "snapshot": 0
+    },
+    {
+      "epoch": 8,
+      "loss": 5.1246140527664386,
+      "seed": 7,
+      "snapshot": 0
+    },
+    {
+      "epoch": 9,
+      "loss": 5.010782394683793,
+      "seed": 7,
+      "snapshot": 0
+    },
+    {
+      "epoch": 10,
+      "loss": 4.924334832395342,
+      "seed": 7,
+      "snapshot": 0
+    },
+    {
+      "epoch": 1,
+      "loss": 7.389301086788689,
+      "seed": 42,
+      "snapshot": 0
+    },
+    {
+      "epoch": 2,
+      "loss": 7.177575418678424,
+      "seed": 42,
+      "snapshot": 0
+    },
+    {
+      "epoch": 3,
+      "loss": 6.830951427531325,
+      "seed": 42,
+      "snapshot": 0
+    },
+    {
+      "epoch": 4,
+      "loss": 6.2587197467844975,
+      "seed": 42,
+      "snapshot": 0
+    },
+    {
+      "epoch": 5,
+      "loss": 5.7732955425277055,
+      "seed": 42,
+      "snapshot": 0
+    },
+    {
+      "epoch": 6,
+      "loss": 5.436925167982666,
+      "seed": 42,
+      "snapshot": 0
+    },
+    {
+      "epoch": 7,
+      "loss": 5.21962803449052,
+      "seed": 42,
+      "snapshot": 0
+    },
+    {
+      "epoch": 8,
+      "loss": 5.080837233157372,
+      "seed": 42,
+      "snapshot": 0
+    },
+    {
+      "epoch": 9,
+      "loss": 4.982704825233583,
+      "seed": 42,
+      "snapshot": 0
+    },
+    {
+      "epoch": 10,
+      "loss": 4.908188646209464,
+      "seed": 42,
+      "snapshot": 0
+    },
+    {
+      "epoch": 1,
+      "loss": 7.3866241699101955,
+      "seed": 2026,
+      "snapshot": 0
+    },
+    {
+      "epoch": 2,
+      "loss": 7.213344415202696,
+      "seed": 2026,
+      "snapshot": 0
+    },
+    {
+      "epoch": 3,
+      "loss": 6.983093634011512,
+      "seed": 2026,
+      "snapshot": 0
+    },
+    {
+      "epoch": 4,
+      "loss": 6.479749076979526,
+      "seed": 2026,
+      "snapshot": 0
+    },
+    {
+      "epoch": 5,
+      "loss": 5.946942773742148,
+      "seed": 2026,
+      "snapshot": 0
+    },
+    {
+      "epoch": 6,
+      "loss": 5.548300832265579,
+      "seed": 2026,
+      "snapshot": 0
+    },
+    {
+      "epoch": 7,
+      "loss": 5.28968977289424,
+      "seed": 2026,
+      "snapshot": 0
+    },
+    {
+      "epoch": 8,
+      "loss": 5.122474856991053,
+      "seed": 2026,
+      "snapshot": 0
+    },
+    {
+      "epoch": 9,
+      "loss": 5.002887861485774,
+      "seed": 2026,
+      "snapshot": 0
+    },
+    {
+      "epoch": 10,
+      "loss": 4.90961584680737,
+      "seed": 2026,
+      "snapshot": 0
+    },
+    {
+      "epoch": 1,
+      "loss": 7.3605822481019665,
+      "seed": 7,
+      "snapshot": 1
+    },
+    {
+      "epoch": 2,
+      "loss": 7.172707995990817,
+      "seed": 7,
+      "snapshot": 1
+    },
+    {
+      "epoch": 3,
+      "loss": 6.776667613789256,
+      "seed": 7,
+      "snapshot": 1
+    },
+    {
+      "epoch": 4,
+      "loss": 6.2683225262286255,
+      "seed": 7,
+      "snapshot": 1
+    },
+    {
+      "epoch": 5,
+      "loss": 5.8871974855773015,
+      "seed": 7,
+      "snapshot": 1
+    },
+    {
+      "epoch": 6,
+      "loss": 5.626728420655571,
+      "seed": 7,
+      "snapshot": 1
+    },
+    {
+      "epoch": 7,
+      "loss": 5.461515742996403,
+      "seed": 7,
+      "snapshot": 1
+    },
+    {
+      "epoch": 8,
+      "loss": 5.347059962965066,
+      "seed": 7,
+      "snapshot": 1
+    },
+    {
+      "epoch": 9,
+      "loss": 5.268961880920149,
+      "seed": 7,
+      "snapshot": 1
+    },
+    {
+      "epoch": 10,
+      "loss": 5.211142928795486,
+      "seed": 7,
+      "snapshot": 1
+    },
+    {
+      "epoch": 1,
+      "loss": 7.3629650021058595,
+      "seed": 42,
+      "snapshot": 1
+    },
+    {
+      "epoch": 2,
+      "loss": 7.141397627998381,
+      "seed": 42,
+      "snapshot": 1
+    },
+    {
+      "epoch": 3,
+      "loss": 6.669303384038967,
+      "seed": 42,
+      "snapshot": 1
+    },
+    {
+      "epoch": 4,
+      "loss": 6.147447250309062,
+      "seed": 42,
+      "snapshot": 1
+    },
+    {
+      "epoch": 5,
+      "loss": 5.782325997972565,
+      "seed": 42,
+      "snapshot": 1
+    },
+    {
+      "epoch": 6,
+      "loss": 5.554845615782924,
+      "seed": 42,
+      "snapshot": 1
+    },
+    {
+      "epoch": 7,
+      "loss": 5.41027231736895,
+      "seed": 42,
+      "snapshot": 1
+    },
+    {
+      "epoch": 8,
+      "loss": 5.307514607045279,
+      "seed": 42,
+      "snapshot": 1
+    },
+    {
+      "epoch": 9,
+      "loss": 5.239738727394051,
+      "seed": 42,
+      "snapshot": 1
+    },
+    {
+      "epoch": 10,
+      "loss": 5.179385434248156,
+      "seed": 42,
+      "snapshot": 1
+    },
+    {
+      "epoch": 1,
+      "loss": 7.3616735678805965,
+      "seed": 2026,
+      "snapshot": 1
+    },
+    {
+      "epoch": 2,
+      "loss": 7.188790569846295,
+      "seed": 2026,
+      "snapshot": 1
+    },
+    {
+      "epoch": 3,
+      "loss": 6.918481304787135,
+      "seed": 2026,
+      "snapshot": 1
+    },
+    {
+      "epoch": 4,
+      "loss": 6.408043557274718,
+      "seed": 2026,
+      "snapshot": 1
+    },
+    {
+      "epoch": 5,
+      "loss": 5.957847087251879,
+      "seed": 2026,
+      "snapshot": 1
+    },
+    {
+      "epoch": 6,
+      "loss": 5.6627060266150835,
+      "seed": 2026,
+      "snapshot": 1
+    },
+    {
+      "epoch": 7,
+      "loss": 5.474483358598508,
+      "seed": 2026,
+      "snapshot": 1
+    },
+    {
+      "epoch": 8,
+      "loss": 5.356784411073688,
+      "seed": 2026,
+      "snapshot": 1
+    },
+    {
+      "epoch": 9,
+      "loss": 5.266696928911123,
+      "seed": 2026,
+      "snapshot": 1
+    },
+    {
+      "epoch": 10,
+      "loss": 5.194675948161885,
+      "seed": 2026,
+      "snapshot": 1
+    }
+  ],
+  "elapsed_seconds": 92.25809920000029,
+  "status": "TRAINED",
+  "targets_outside_prefix_not_used": true
+}

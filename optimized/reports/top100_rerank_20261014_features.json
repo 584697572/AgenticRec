@@ -1,0 +1,74 @@
+{
+  "candidate_insertion": false,
+  "elapsed_seconds": 81.62442830001237,
+  "feature_names": [
+    "popularity",
+    "cf_mean",
+    "cf_max",
+    "content",
+    "co_max",
+    "genre_affinity",
+    "history_length",
+    "seed_pop_mean",
+    "seed_pop_min",
+    "supported_fraction",
+    "sequence_score",
+    "sequence_rank",
+    "cf_pool_rank",
+    "content_pool_rank",
+    "pop_pool_rank"
+  ],
+  "hidden_history_filter": false,
+  "sequence_future_labels_in_features": false,
+  "statistics": [
+    {
+      "no_positive": 254,
+      "queries": 600,
+      "seed": 7,
+      "snapshot": 0,
+      "target_coverage": 0.5766666531562805,
+      "usable": 346
+    },
+    {
+      "no_positive": 270,
+      "queries": 600,
+      "seed": 42,
+      "snapshot": 0,
+      "target_coverage": 0.550000011920929,
+      "usable": 330
+    },
+    {
+      "no_positive": 279,
+      "queries": 600,
+      "seed": 2026,
+      "snapshot": 0,
+      "target_coverage": 0.5350000262260437,
+      "usable": 321
+    },
+    {
+      "no_positive": 323,
+      "queries": 747,
+      "seed": 7,
+      "snapshot": 1,
+      "target_coverage": 0.5676037669181824,
+      "usable": 424
+    },
+    {
+      "no_positive": 305,
+      "queries": 747,
+      "seed": 42,
+      "snapshot": 1,
+      "target_coverage": 0.5917001366615295,
+      "usable": 442
+    },
+    {
+      "no_positive": 308,
+      "queries": 747,
+      "seed": 2026,
+      "snapshot": 1,
+      "target_coverage": 0.5876840949058533,
+      "usable": 439
+    }
+  ],
+  "status": "BUILT"
+}

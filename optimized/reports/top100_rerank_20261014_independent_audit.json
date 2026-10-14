@@ -1,0 +1,21 @@
+{
+  "status": "VERIFIED",
+  "source_hashes_verified": true,
+  "raw_prefix_graphs_and_queries_verified": true,
+  "prefix_training_samples_rebuilt": 12963,
+  "prefix_epochs_verified": 60,
+  "residual_epochs_verified": 180,
+  "feature_query_replays": 5031,
+  "development_predictions_scored_and_replayed": 8550,
+  "configurations_verified": 19,
+  "formal_scores_independently_verified": 2700,
+  "new_formal_predictions_replayed": 2160,
+  "historical_controls_matched": 540,
+  "baseline_predictions_matched": 540,
+  "fixed_top100_pools_verified": 540,
+  "raw_public_inputs_and_targets_verified": true,
+  "statistics_verified": true,
+  "api_requests": 0,
+  "report_sha256": "cf9a705c0cd91a0879aeaa66774e681920fcd22dfdb20fb90b539323828c2ba6",
+  "auditor_sha256": "19893462d9636f86e242a05aab95cbc8681f285906819bbec255501b9b9d3ef8"
+}
